@@ -1,5 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { v4 as uuidv4 } from 'uuid';
+
+var sparql_update = "";
+
+var chatter = 'getting started';
+if (Astro.request.method === "POST") {
+
+
+chatter = "see a post";
+
+  try {
+    const post_data = await Astro.request.formData();
+    const post_add = post_data.get("add");
+    const post_label = post_data.get("label");
+    chatter = post_add;
+
+sparql_update = 'prefix :		<https://github.com/michael-n-cooper/a11y-data/daf/#>				prefix a11y:	<https://aihal.net/accessibility/daf/#>				prefix owl:		<http://www.w3.org/2002/07/owl#>				prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>				prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>				insert data	{					:' + uuidv4() + ' a owl:NamedIndividual ;						a a11y:Category ;						rdfs:label "' + post_label + '"@en .				}';
+
+
+
+
+
+    if (post_add != null && post_label != null) {
+    chatter = 'gonna add';
+		const post_response = await fetch("http://localhost:7200/repositories/a11y-data/statements",
+		  {
+		    method: 'POST',
+		    headers: {'Content-Type':'application/sparql-update', 'Accept':'application/json'},
+		    body: sparql_update
+		  });
+		  chatter=post_response.body;
+    }
+    
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
+  }
+
+}
 
 const response = await fetch("http://localhost:7200/repositories/a11y-data",
   {
@@ -13,7 +53,7 @@ prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
 
 select ?s ?l
 where {
-    ?s a a11y:FunctionalNeed .
+    ?s a a11y:Category .
     ?s rdfs:label ?l
 }
 order by ?l`
@@ -27,11 +67,18 @@ const json = await response.json();
 <Layout title="Categories">
 	<main>
 		<h1>Categories</h1>
+		<p>{chatter}</p>
+		<p>{sparql_update}</p>
 		<code>{JSON.stringify(json)}</code>
 		<p>Categories to date:</p>
 		<ul>
-			{json.results.bindings.map((item) => <li>{item.l.value}</li>)}
+			{json.results.bindings.map((item) => <li><a href={'?id=' + item.s.value}>{item.l.value}</a></li>)}
 		</ul>
+		<form method="post">
+		<p><label for="add-label">Add category:</label>
+		<input type="text" name="label" id="add-label" /></p>
+		<p><input type="submit" name="add" value="Add category"/></p>
+		</form>
 	</main>
 </Layout>
 
