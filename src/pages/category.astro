@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const response = await fetch("http://localhost:7200/repositories/a11y-data",
+  {
+    method: 'POST',
+    headers: {'Content-Type':'application/sparql-query', 'Accept':'application/json'},
+    body: `prefix :		<https://github.com/michael-n-cooper/a11y-data/daf/#>
+prefix a11y:	<https://aihal.net/accessibility/daf/#>
+prefix owl:		<http://www.w3.org/2002/07/owl#>
+prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
+
+select ?s ?l
+where {
+    ?s a a11y:FunctionalNeed .
+    ?s rdfs:label ?l
+}
+order by ?l`
+  });
+
+const json = await response.json();
+
+
+---
+
+<Layout title="Categories">
+	<main>
+		<h1>Categories</h1>
+		<code>{JSON.stringify(json)}</code>
+		<p>Categories to date:</p>
+		<ul>
+			{json.results.bindings.map((item) => <li>{item.l.value}</li>)}
+		</ul>
+	</main>
+</Layout>
+
