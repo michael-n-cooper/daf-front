@@ -3,7 +3,7 @@ import dbquery from '../script/dbquery.js';
 
 const {type, title} = Astro.props;
 
-if (Astro.request.method === "POST") {
+async function processPost() {
   try {
     const post_data = await Astro.request.formData();
     const post_add = post_data.get("add");
@@ -13,17 +13,29 @@ if (Astro.request.method === "POST") {
 			const post_sparql = 'insert data	{ :' + dbquery.uuid() + ' a owl:NamedIndividual ;	a a11y:' + type + ' ;	 rdfs:label "' + post_label + '"@en }';
 			dbquery.updateQuery(post_sparql);
     }
-
+	return true;
   } catch (error) {
     if (error instanceof Error) {
       console.log(error.message);
     }
+    return false;
   }
-
 }
 
-const sparql = "select ?s ?l where { ?s a a11y:" + type + " . ?s rdfs:label ?l } order by ?l";
-const json = await dbquery.selectQuery(sparql);
+async function processFetch() {
+	const sparql = "select ?s ?l where { ?s a a11y:" + type + " . ?s rdfs:label ?l } order by ?l";
+	json = await dbquery.selectQuery(sparql);
+	return json;
+}
+
+async function setup() {
+	var success;
+	if (Astro.request.method === "POST") success = await processPost();
+	json = await processFetch();
+	return json;
+}
+
+var json = await setup();
 
 ---
 <ul>
