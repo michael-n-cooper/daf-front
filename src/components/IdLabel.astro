@@ -10,7 +10,7 @@ if (Astro.request.method === "POST") {
     const post_label = post_data.get("label");
     
     if (post_add != null && post_label != null) {
-			const post_sparql = 'insert data	{ :' + dbquery.uuid() + ' a owl:NamedIndividual ;	a a11y:" + type + " ;	 rdfs:label "' + post_label + '"@en }';
+			const post_sparql = 'insert data	{ :' + dbquery.uuid() + ' a owl:NamedIndividual ;	a a11y:' + type + ' ;	 rdfs:label "' + post_label + '"@en }';
 			dbquery.updateQuery(post_sparql);
     }
 

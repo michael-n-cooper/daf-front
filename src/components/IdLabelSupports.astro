@@ -1,6 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { v4 as uuidv4 } from 'uuid';
+import dbquery from '../script/dbquery.js';
+import TypeOptionList from './TypeOptionList.astro';
+
+const {type, title, supportsType, supportsTypeTitle} = Astro.props;
+
 
 if (Astro.request.method === "POST") {
   try {
@@ -9,7 +12,7 @@ if (Astro.request.method === "POST") {
     const post_label = post_data.get("label");
     
     if (post_add != null && post_label != null) {
-			const post_sparql = 'insert data	{ :' + dbquery.uuid() + ' a owl:NamedIndividual ;	a a11y:UserNeedCategory ;	 rdfs:label "' + post_label + '"@en }';
+			const post_sparql = 'insert { :' + dbquery.uuid() + ' a owl:NamedIndividual ; a a11y:' + type + ' ; rdfs:label "' + post_label + '"@en ; a11y:supports ?supports_id } where { ?supports_id a a11y:' + supportsType + "' ; rdfs:label ' + supportsTypeTitle'"}';
 			const post_response = dbquery.updateQuery(post_sparql);
     }
 
@@ -21,23 +24,24 @@ if (Astro.request.method === "POST") {
 
 }
 
-const sparql = "select ?s ?l where { ?s a a11y:UserNeedCategory . ?s rdfs:label ?l } order by ?l";
+const sparql = "select ?id ?label ?supports_id ?supports_label where { ?id a a11y:" + type + " . ?id rdfs:label ?label . ?id a11y:supports ?supports_id . ?supports_id rdfs:label ?supports_label}";
 const json = await dbquery.selectQuery(sparql);
 
 ---
 
-<Layout title="Categories">
-	<main>
-		<h1>Categories</h1>
-		<p>Categories to date:</p>
-		<ul>
-			{json.results.bindings.map((item) => <li><a href={'?id=' + item.s.value}>{item.l.value}</a></li>)}
-		</ul>
-		<form method="post">
-		<p><label for="add-label">Add category:</label>
-		<input type="text" name="label" id="add-label" /></p>
-		<p><input type="submit" name="add" value="Add category"/></p>
-		</form>
-	</main>
-</Layout>
+<table>
+	<thead>
+		<th>{title}</th>
+		<th>{supportsTypeTitle}</th>
+	</thead>
+	<tbody>
+		{json.results.bindings.map((item) => <tr><td><a href={'?id=' + item.id.value}>{item.label.value}</a></td><td><a href={'?id=' + item.sup_id.value}>{item.sup_label.value}</a></td></tr>)}
+	</tbody>
+</table>
+<form method="post">
+	<p><label for="add-label">Add functional need:</label>
+	<input type="text" name="label" id="add-label" /></p>
+	<TypeOptionList type={supportsType} title={supportsTypeTitle}></TypeOptionList>
+	<p><input type="submit" name="add" value={"Add " + title}/></p>
+</form>
 

@@ -1,0 +1,13 @@
+---
+import dbquery from '../script/dbquery.js';
+
+const {type, title} = Astro.props;
+
+const sparql = "select ?id ?label where { ?id a a11y:" + type + " } order by ?label";
+const json = await dbquery.selectQuery(sparql);
+
+---
+<label for="category">{title}</label>
+<select name="category" id="category">
+	{json.results.bindings.map((item) => <option id={id}>{label}</option>)}
+</select>
