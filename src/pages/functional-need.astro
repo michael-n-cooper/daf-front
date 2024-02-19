@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { v4 as uuidv4 } from 'uuid';
+import dbquery from '../script/dbquery.js';
 
 if (Astro.request.method === "POST") {
   try {
@@ -9,13 +9,8 @@ if (Astro.request.method === "POST") {
     const post_label = post_data.get("label");
 
     if (post_add != null && post_label != null) {
-		const sparql_update = 'prefix :		<https://github.com/michael-n-cooper/a11y-data/daf/#>				prefix a11y:	<https://aihal.net/accessibility/daf/#>				prefix owl:		<http://www.w3.org/2002/07/owl#>				prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>				prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>				insert data	{					:' + uuidv4() + ' a owl:NamedIndividual ;						a a11y:UserNeedCategory ;						rdfs:label "' + post_label + '"@en .				}';
-		const post_response = await fetch("http://localhost:7200/repositories/a11y-data/statements",
-		  {
-		    method: 'POST',
-		    headers: {'Content-Type':'application/sparql-update', 'Accept':'application/json'},
-		    body: sparql_update
-		  });
+			const post_sparql = 'insert data	{ :' + dbquery.uuid() + ' a owl:NamedIndividual ; a a11y:UserNeedCategory ; rdfs:label "' + post_label + '"@en}';
+			const post_response = dbquery.updateQuery(post_sparql);
     }
     
   } catch (error) {
@@ -26,32 +21,16 @@ if (Astro.request.method === "POST") {
 
 }
 
-const response = await fetch("http://localhost:7200/repositories/a11y-data",
-  {
-    method: 'POST',
-    headers: {'Content-Type':'application/sparql-query', 'Accept':'application/json'},
-    body: `prefix :		<https://github.com/michael-n-cooper/a11y-data/daf/#>
-prefix a11y:	<https://aihal.net/accessibility/daf/#>
-prefix owl:		<http://www.w3.org/2002/07/owl#>
-prefix rdf:		<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
+const sparql = "select ?id ?label ?sup_id ?sup_label where { ?id a a11y:FunctionalNeed . ?id rdfs:label ?label . ?id a11y:supports ?sup_id . ?sup_id rdfs:label ?sup_label } order by ?label";
+const json = await dbquery.selectQuery(sparql);
 
-select ?id ?label ?sup_id ?sup_label
-where {
-    ?id a a11y:FunctionalNeed .
-    ?id rdfs:label ?label .
-	?id a11y:supports ?sup_id .
-	?sup_id rdfs:label ?sup_label
-}
-order by ?label`
-  });
-
-const json = await response.json();
+const catsparql = "select ?id ?label where { ?id a a11y:FunctionalNeedCategory } order by ?label";
+const catjson = await dbquery.selectQuery(catsparql);
 
 
 ---
 
-<Layout title="Categories">
+<Layout title="Functional Needs">
 	<main>
 		<h1>Functional Needs</h1>
 		<p>Functional needs to date:</p>
@@ -62,9 +41,13 @@ const json = await response.json();
 			</tbody>
 		</table>
 		<form method="post">
-		<p><label for="add-label">Add category:</label>
+		<p><label for="add-label">Add functional need:</label>
 		<input type="text" name="label" id="add-label" /></p>
-		<p><input type="submit" name="add" value="Add category"/></p>
+		<p><label for="category">Category:</label>
+		<select name="category" id="category">
+			{catjson.results.bindings.map((item) => <option id={id}>{label}</option>)}
+		</select>
+		<p><input type="submit" name="add" value="Add functional need"/></p>
 		</form>
 	</main>
 </Layout>
