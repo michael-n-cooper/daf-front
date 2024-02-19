@@ -27,8 +27,8 @@ const updateQuery = async function(sparql) {
 	    headers: {'Content-Type':'application/sparql-update', 'Accept':'application/json'},
 	    body: prefixes + sparql
 	  });
-	const json = await response.json();
-	return (json);
+	//const json = await post_response.json();
+	//return (json);
 }
 
 const dbquery = {

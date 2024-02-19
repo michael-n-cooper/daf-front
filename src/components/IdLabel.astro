@@ -1,0 +1,38 @@
+---
+import dbquery from '../script/dbquery.js';
+
+const {type, title} = Astro.props;
+
+if (Astro.request.method === "POST") {
+  try {
+    const post_data = await Astro.request.formData();
+    const post_add = post_data.get("add");
+    const post_label = post_data.get("label");
+    
+    if (post_add != null && post_label != null) {
+			const post_sparql = 'insert data	{ :' + dbquery.uuid() + ' a owl:NamedIndividual ;	a a11y:" + type + " ;	 rdfs:label "' + post_label + '"@en }';
+			dbquery.updateQuery(post_sparql);
+    }
+
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
+  }
+
+}
+
+const sparql = "select ?s ?l where { ?s a a11y:" + type + " . ?s rdfs:label ?l } order by ?l";
+const json = await dbquery.selectQuery(sparql);
+
+---
+<ul>
+	{json.results.bindings.map((item) => <li><a href={'?id=' + item.s.value}>{item.l.value}</a></li>)}
+</ul>
+<form method="post">
+	<input type="hidden" name="type" value={type}/>
+	<p><label for="add-label">Add {title}:</label>
+	<input type="text" name="label" id="add-label" /></p>
+	<p><input type="submit" name="add" value={"Add " + title}/></p>
+</form>
+
