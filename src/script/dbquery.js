@@ -29,6 +29,7 @@ const updateQuery = async function(sparql) {
 	  });
 	//const json = await post_response.json();
 	//return (json);
+	return true;
 }
 
 const dbquery = {

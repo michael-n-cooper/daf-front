@@ -4,38 +4,39 @@ import dbquery from '../script/dbquery.js';
 const {type, title} = Astro.props;
 
 async function processPost() {
-  try {
-    const post_data = await Astro.request.formData();
-    const post_add = post_data.get("add");
-    const post_label = post_data.get("label");
-    
-    if (post_add != null && post_label != null) {
-			const post_sparql = 'insert data	{ :' + dbquery.uuid() + ' a owl:NamedIndividual ;	a a11y:' + type + ' ;	 rdfs:label "' + post_label + '"@en }';
-			dbquery.updateQuery(post_sparql);
-    }
-	return true;
-  } catch (error) {
-    if (error instanceof Error) {
-      console.log(error.message);
-    }
-    return false;
-  }
+	if (Astro.request.method === "POST") {
+	  try {
+	    const data = await Astro.request.formData();
+	    const add = data.get("add");
+	    const label = data.get("label");
+	    
+	    if (add != null && label != null) {
+				const sparql = 'insert data	{ :' + dbquery.uuid() + ' a owl:NamedIndividual ;	a a11y:' + type + ' ;	 rdfs:label "' + label + '"@en }';
+				const result = await dbquery.updateQuery(sparql);
+				return result;
+	    } else return false;
+	  } catch (error) {
+	    if (error instanceof Error) {
+	      console.log(error.message);
+	    }
+	    return false;
+	  }
+  } else return false;
 }
 
 async function processFetch() {
 	const sparql = "select ?s ?l where { ?s a a11y:" + type + " . ?s rdfs:label ?l } order by ?l";
-	json = await dbquery.selectQuery(sparql);
+	const json = await dbquery.selectQuery(sparql);
 	return json;
 }
 
-async function setup() {
-	var success;
-	if (Astro.request.method === "POST") success = await processPost();
-	json = await processFetch();
+async function process() {
+	const posted = await processPost();
+	const json = await processFetch();
 	return json;
-}
+} 
 
-var json = await setup();
+const json = await process();
 
 ---
 <ul>
