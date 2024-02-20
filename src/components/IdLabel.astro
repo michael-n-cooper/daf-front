@@ -39,13 +39,13 @@ async function process() {
 const json = await process();
 
 ---
-<ul>
-	{json.results.bindings.map((item) => <li><a href={'?id=' + item.s.value}>{item.l.value}</a></li>)}
-</ul>
 <form method="post">
 	<input type="hidden" name="type" value={type}/>
 	<p><label for="add-label">Add {title}:</label>
 	<input type="text" name="label" id="add-label" /></p>
 	<p><input type="submit" name="add" value={"Add " + title}/></p>
 </form>
+<ul>
+	{json.results.bindings.map((item) => <li><a href={'?id=' + item.s.value}>{item.l.value}</a></li>)}
+</ul>
 
