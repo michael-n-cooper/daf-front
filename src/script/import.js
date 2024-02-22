@@ -67,8 +67,7 @@ function storeTypo(inc, cor) {
 
 async function saveTypos() {
 	try {
-		const promise = writeFile(typosPath, JSON.stringify(typos), { encoding: 'utf8' });
-		await promise;
+		await writeFile(typosPath, JSON.stringify(typos), { encoding: 'utf8' });
 	} catch (err) {
 	  console.error(err);
 	} 
@@ -88,23 +87,14 @@ function idFrag(uri) {
 async function getMatrixDimId(label) {
 	// check against list of known typos, correct
 	label = checkTypo(label);
+	var matrixDimId = knownMatrix.forEach(function(matrixDim) {
+		if (matrixDim.label.toLowerCase() === label.toLowerCase()) return matrixDim.id;
+	});
+	// if not found, ask for typo correction, store
+	
 	
 	// look for mapping idd where { ?id a a11y:MatrixDimension ; rdfs:label "' + label + '"@en }');
-	var matrixDimId = await lookupMatrixDimId(label);
-	var matrixDimId = await lookupMatrixDimId(label);
 	
-}
-
-async function lookupMatrixDimId(label) {
-	const sparql = 'select ?id where { ?id a a11y:MatrixDimension ; rdfs:label ?uc filter(lcase(str(?uc)) = "' + label.toLowerCase() + '") }';
-	var res = await dbquery.selectQuery(sparql);
-	// if not found, ask for typo correction, store
-	if (res.results.bindings.length == 0) {
-
-
-	// repeat look for mapping id
-	}
-	return idFrag(res.results.bindings[0].id.value);
 }
 
 function expandMappings(metadata) {
