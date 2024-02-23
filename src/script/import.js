@@ -19,8 +19,7 @@ const { metadata, content } = parseMD(data);
 const mappings = expandMappings(metadata);
 //console.log(JSON.stringify(mappings));
 
-var mappingIds = new Array();
-await getMappingIds(mappings);
+var mappingIds = await getMappingIds(mappings);
 console.log("IDs: " + JSON.stringify(mappingIds));
 
 // retrieve references, divide into research and guidelines
@@ -170,13 +169,16 @@ function expandMappings(metadata) {
 }
 
 async function getMappingIds(mappings) {
-	console.log("mappings: " + JSON.stringify(mappings));
-	mappings.forEach(async function(mapping) {
-	console.log("mapping: " + JSON.stringify(mapping));
-		const mappingId = await getMappingId(mapping[0], mapping[1], mapping[2]);
-		console.log("mappingid: " + mappingId);
-		mappingIds.push(mappingId);
-	});
+	async function collect() {
+		let promises = new Array();
+		var result = new Array();
+		mappings.forEach(function(mapping) {
+			promises.push(getMappingId(mapping[0], mapping[1], mapping[2]));
+		});
+		return Promise.all(promises);
+	}
+	var results = await collect();
+	return results;
 }
 
 async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
