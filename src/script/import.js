@@ -1,23 +1,27 @@
 import { readFile, writeFile, open } from 'node:fs/promises';
 import parseMD from 'parse-md';
 import dbquery from './dbquery.js';
+import inquirer from 'inquirer';
 
-const testFilePath = '../../../../accessiblecommunity/Digital-Accessibility-Framework/sensory-intersection-instruction-references.md';
+const testFilePath = '../../../../accessiblecommunity/Digital-Accessibility-Framework/wayfinding-accessible-route.md';
 const typosPath = 'typos.json';
 
 const data = await getFileData(testFilePath);
-const knownMatrix = await getKnownMatrix();
-const typos = await getTypos();
+const { knownMatrix, knownMatrixLabels } = await getKnownMatrix();
+//console.log(JSON.stringify(knownMatrix));
+//const typos = await getTypos();
+
 
 const { metadata, content } = parseMD(data);
 //console.log(JSON.stringify(metadata));
 
 // work out the full set of mappings
 const mappings = expandMappings(metadata);
-//console.log(mappings);
+//console.log(JSON.stringify(mappings));
 
-// retrieve the ids for those mappings from the db
-const mappingIds = getMappingIds(mappings);
+var mappingIds = new Array();
+await getMappingIds(mappings);
+console.log("IDs: " + JSON.stringify(mappingIds));
 
 // retrieve references, divide into research and guidelines
 const references = retrieveReferences(metadata);
@@ -31,6 +35,15 @@ const { title, statement } = retrieveContent(content);
 // statement goes to a11y:stmtGuidance
 
 // construct the sparql statement
+var sparql = 'insert data :' + dbquery.uuid() + ' a a11y:AccessibilityStatement ; a owl:NamedIndividual ';
+mappings.forEach(function(mapping) {
+console.log (JSON.stringify(mapping));
+	sparql += ' ; a11y: supports ' + mapping.id;
+});
+sparql += ' ; rdfs:label "' + title + '"';
+sparql += ' ; a11y:stmtGuidance "' + statement + '"';
+sparql += ' }';
+console.log (sparql);
 
 async function getFileData(path) {
 	try {
@@ -42,13 +55,19 @@ async function getFileData(path) {
 	}
 }
 
-async function getKnownMatrix() {
+async function getKnownMatrix() { // add intersections
 	var matrix = new Array();	
+	var knownMLs = new Array();
 	const fromDb = await dbquery.selectQuery('select ?id ?label where { ?id a a11y:MatrixDimension ; rdfs:label ?label } order by ?label'); // should split into one for each type to avoid same-label issues
 	fromDb.results.bindings.forEach(function(item) {
 		matrix.push({id: idFrag(item.id.value), label: item.label.value});
+		knownMLs.push(item.label.value);
 	});
-	return matrix;
+	return { knownMatrix: matrix, knownMatrixLabels: knownMLs };
+}
+
+function lookupIntersectionFromLabel () {
+	
 }
 
 async function getTypos() {
@@ -84,17 +103,39 @@ function idFrag(uri) {
 	return uri.substring(uri.indexOf("#") + 1)
 }
 
-async function getMatrixDimId(label) {
-	// check against list of known typos, correct
-	label = checkTypo(label);
-	var matrixDimId = knownMatrix.forEach(function(matrixDim) {
-		if (matrixDim.label.toLowerCase() === label.toLowerCase()) return matrixDim.id;
-	});
-	// if not found, ask for typo correction, store
+function getMatrixDimId(label) {
+	var returnval = null;
 	
+	// check against list of known typos, correct
+	//label = checkTypo(label);
+	
+	var matrixDimId = knownMatrix.forEach(function(matrixDim) {
+		if (matrixDim.label.toLowerCase() === label.toLowerCase()) {
+			returnval = matrixDim.id;
+		}
+	});
+	return returnval;
+	// if not found, ask for typo correction, store
+	//const answer = await promptTypoCorrection(label);
 	
 	// look for mapping idd where { ?id a a11y:MatrixDimension ; rdfs:label "' + label + '"@en }');
 	
+}
+
+async function promptTypoCorrection(label) {
+	inquirer.prompt([
+    {
+    		type: "rawlist",
+    		name: "corLabel",
+    		message: "Unable to find '" + label + "'. Please select the correct item from the list.",
+    		choices: ["choice 1", "choice 2", "testing"],
+    		waitUserInput: true,
+    		loop: false
+    }
+	  	]).then((answer) => {
+	  		console.log(JSON.stringify(answer));
+			return answer;
+	  	});
 }
 
 function expandMappings(metadata) {
@@ -114,56 +155,42 @@ function expandMappings(metadata) {
 		
 		// expand out arrays of mapped items
 		functionalNeeds.forEach(function(functionalNeed) {
+			const functionalNeedId = getMatrixDimId(functionalNeed);
 			userNeeds.forEach(function(userNeed) {
+				const userNeedId = getMatrixDimId(userNeed);
 				userNeedRelevances.forEach(function(userNeedRelevance) {
-					const functionalNeedId = getMatrixDimId(functionalNeed);
-					const userNeedId = getMatrixDimId(userNeed);
 					const userNeedRelevanceId = getMatrixDimId(userNeedRelevance);
 					expandedMappings.push([functionalNeedId, userNeedId, userNeedRelevanceId]);
 				});
 			});
 		});
 	});
+	console.log(expandedMappings);
 	return (expandedMappings);
-
 }
 
-function getMappingIds(mappings) {
-	var mappingIds = new Array();
-	mappings.forEach(function(mapping) {
-		var mId;
-		
-
-
-		// select id for that mapping
-		/* 
-		var sparql = "select ?id where { ?id a a11y:Mapping . ";
-		if (typeof mapping[0] === 'object') sparql += "?id a a11y:Mapping ; a11y:supports ?in . ?in a a11y:IntersectionNeed ; a11y:supports ?fn1 ; a11y:supports ?fn2 . ?fn1 rdfs:label ?fn1l filter (lcase(str(?fn1l)) = '" + mapping[0].intersection[0].toLowerCase() + "') . ?fn2 rdfs:label ?fn2l filter (lcase(str(?fn2l)) = '" + mapping[0].intersection[1].toLowerCase() + "')";
-		else sparql += "?id a11y:supports ?fn . ?fn a a11y:FunctionalNeed ; rdfs:label ?fnl filter (lcase(str(?fnl)) = '" + mapping[0].toLowerCase() + "') . ";
-		sparql += "?id a11y:supports ?un . ?un a a11y:UserNeed ; rdfs:label ?unl filter (lcase(str(?unl)) = '" + mapping[1].toLowerCase() + "') . ";
-		sparql += "?id a11y:supports ?unr . ?unr a a11y:UserNeedRelevance ; rdfs:label ?unrl filter (lcase(str(?unrl)) = '" + mapping[2].toLowerCase() + "')";
-		sparql += "}";
-		 *  */
-		//console.log(sparql);
-		
-		//run query and get value from the JSON
-		// TODO
-		// if null, add mapping
-		/* 
-			mId = dbquery.uuid();
-			sparql = "insert {:" + mId + " a owl:NamedIndividual ; a a11y:MatrixMapping ; a11y:supports ?fn ; a11y:supports ?un ; a11y:supports ?unr } where {";
-			if (typeof mapping[0] === 'object') sparql += "?fn a a11y:IntersectionNeed ; a11y:supports ?fn1 ; a11y:supports ?fn2 . ?fn1 rdfs:label ?fn1l filter (lcase(str(?fn1l)) = '" + mapping[0].intersection[0].toLowerCase() + "') . ?fn2 rdfs:label ?fn2l filter (lcase(str(?fn2l)) = '" + mapping[0].intersection[1].toLowerCase() + "') .";
-			else sparql += "?fn a a11y:FunctionalNeed ; rdfs:label ?fnl filter (lcase(str(?fnl)) = '" + mapping[0].toLowerCase() + "') . ";
-			sparql += "?un a a11y:UserNeed ; rdfs:label ?unl filter (lcase(str(?unl)) = '" + mapping[1].toLowerCase() + "') . ";
-			sparql += "?unr a a11y:UserNeedRelevance ; rdfs:label ?unrl filter (lcase(str(?unrl)) = '" + mapping[2].toLowerCase() + "')";
-			sparql += "}";
-			console.log(sparql);
-		
-		
-		//mappingIds.push(mId);
-		 *  */
+async function getMappingIds(mappings) {
+	console.log("mappings: " + JSON.stringify(mappings));
+	mappings.forEach(async function(mapping) {
+	console.log("mapping: " + JSON.stringify(mapping));
+		const mappingId = await getMappingId(mapping[0], mapping[1], mapping[2]);
+		console.log("mappingid: " + mappingId);
+		mappingIds.push(mappingId);
 	});
-	return mappingIds;
+}
+
+async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
+	const sparql = 'select ?id where { ?id a a11y:MatrixMapping ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
+	console.log ("mappingidsparql: " + sparql);
+	var results = await dbquery.selectQuery(sparql);
+	if (results.results.bindings.length == 0) {
+		const uuid = dbquery.uuid();
+		const update = 'insert data { :' + uuid + ' a a11y:MatrixMapping ; a owl:NamedIndividual ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
+		await dbquery.updateQuery(update);
+		return (uuid);
+	} else {
+		return idFrag(results.results.bindings[0].id.value);
+	}
 }
 
 function retrieveReferences(mappings) {
