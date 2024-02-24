@@ -2,13 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 import dbquery from '../../script/dbquery.js';
 
-const id = Astro.params;
+const {id} = Astro.params;
 
 const stmtSparql = 'select ?id ?label ?guidance where { ?id rdfs:label ?label ; a11y:stmtGuidance ?guidance . values ?id { :' + id + ' } } ';
-stmtResult = await dbquery.selectQuery(stmtSparql);
-console.log(stmtResult);
+const stmtResult = await dbquery.selectQuery(stmtSparql);
 ---
-
+{JSON.stringify(stmtResult)}
 <Layout title="Guidance statement">
 	
 </Layout>
