@@ -32,10 +32,15 @@ const updateQuery = async function(sparql) {
 	return true;
 }
 
+const idFrag = function(uri) {
+	return uri.substring(uri.indexOf("#") + 1)
+}
+
 const dbquery = {
 	uuid: uuidv4,
 	selectQuery: selectQuery,
-	updateQuery: updateQuery
+	updateQuery: updateQuery,
+	idFrag: idFrag
 };
 export default dbquery;
 
