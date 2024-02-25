@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import dbquery from '../script/dbquery.js';
+
+// Get the matrix data, including mapping info etc.
+
+// Get the FunctionalNeedCategory, FunctionalNeed, UserNeed, UserNeedRelevance into arrays (FN grouped into FNC)
+const functionalNeedCategories = await lookupFunctionalNeedCategories();
+const userNeeds = await lookupList('UserNeed');
+const userNeedRelevances = await lookupList('UserNeedRelevance');
+
+// Go through the FNC array and generate the first two rows
+
+// Go through the UN/UNR/FN arrays and put in appropriate content from the matrix data, or empty cell if not present
+
+// returning a object {id, label, functionalNeeds[id, label]}
+async function lookupFunctionalNeedCategories () {
+	let fncs = new Array();
+	
+	const fncRes = await lookupList('FunctionalNeedCategory');
+	fncRes.forEach(function(fnc) {
+		fncs.push({"id": dbquery.idFrag(fnc.id), "label": fnc.label, functionalNeeds: []});
+	});
+	
+	const fnSparql = 'select ?cid ?id ?label where { ?id a a11y:FunctionalNeed ; rdfs:label ?label ; a11y:supports ?cid . ?cid rdfs:label ?clabel } order by ?clabel ?label';	const fnRes = await dbquery.selectQuery(fnSparql);
+	fnRes.results.bindings.forEach(function(fn) {
+		fncs.forEach(function(fnc) {
+			if (dbquery.idFrag(fn.cid.value) == fnc.id) fnc.functionalNeeds.push({"id": dbquery.idFrag(fn.id.value), "label": fn.label.value});
+		});
+	});
+	return fncs;
+}
+async function lookupList(type) {
+	let returnval = new Array();
+	
+	const sparql = 'select ?id ?label where { ?id a a11y:' + type + ' ; rdfs:label ?label } order by ?label';
+	const result = await dbquery.selectQuery(sparql);
+
+	result.results.bindings.forEach(function(item) {
+		returnval.push({"id": dbquery.idFrag(item.id.value), "label": item.label.value});
+	});
+	
+	return returnval;
+}
+---
+{JSON.stringify(functionalNeedCategories)}
+<Layout title="Digital Accessibility Framework">
+
+<p>There will be a ginormous table here.</p>
+
+</Layout>
