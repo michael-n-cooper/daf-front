@@ -4,11 +4,33 @@ import dbquery from '../../script/dbquery.js';
 
 const {id} = Astro.params;
 
+// get the main statement
 const stmtSparql = 'select ?id ?label ?guidance where { ?id rdfs:label ?label ; a11y:stmtGuidance ?guidance . values ?id { :' + id + ' } } ';
 const stmtResult = await dbquery.selectQuery(stmtSparql);
+
+// get the mappings
+const mapSparql = 'select ?fn_id ?fn_label ?un_id ?un_label ?unr_id ?unr_label where { values ?id { :' + id + ' } . ?id a11y:supports ?mapping . ?mapping a a11y:MatrixMapping ; a11y:supports ?fn_id ; a11y:supports ?un_id ; a11y:supports ?unr_id . ?fn_id a a11y:FunctionalNeed ; rdfs:label ?fn_label . ?un_id a a11y:UserNeed ; rdfs:label ?un_label . ?unr_id a a11y:UserNeedRelevance ; rdfs:label ?unr_label }';
+const mapResult = await dbquery.selectQuery(mapSparql);
+
+const refSparql = 'select ?iri ?note ?type where { values ?stmtid { :' + id + ' } . ?stmtid a11y:references ?id . ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label ?type }';
+const refResult = await dbquery.selectQuery(refSparql);
+
 ---
-{JSON.stringify(stmtResult)}
-<Layout title="Guidance statement">
-	
+<Layout title={stmtResult.results.bindings[0].label.value}>
+	<p>{stmtResult.results.bindings[0].guidance.value}</p>
+	<h2>Supports</h2>
+	<table>
+		<thead>
+			<tr><th>Functional need</th><th>User need</th><th>Relevance</th></tr>
+		</thead>
+		<tbody>
+			{mapResult.results.bindings.map((item) => <tr><td><a href={'/functional-needs/' + dbquery.idFrag(item.fn_id.value)}>{item.fn_label.value}</a></td><td><a href={'/user-needs/' + dbquery.idFrag(item.un_id.value)}>{item.un_label.value}</a></td><td><a href={'/user-need-relevances/' + dbquery.idFrag(item.unr_id.value)}>{item.unr_label.value}</a></td></tr>)}
+		</tbody>
+	</table>
+	<h2>References</h2>
+	<ul>
+		{refResult.results.bindings.map((item) => <li>{item.type.value}: <a href={item.iri.value}>{item.note.value}</a></li>)}
+	</ul>
+	<h2>Tags</h2>
 </Layout>
 
