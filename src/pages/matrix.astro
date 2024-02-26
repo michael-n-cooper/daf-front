@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import dbquery from '../script/dbquery.js';
-
+var debug;
 // Get the matrix data, including mapping info etc.
 
 // Get the FunctionalNeedCategory, FunctionalNeed, UserNeed, UserNeedRelevance into arrays (FN grouped into FNC)
@@ -9,27 +9,118 @@ const functionalNeedCategories = await lookupFunctionalNeedCategories();
 const userNeeds = await lookupList('UserNeed');
 const userNeedRelevances = await lookupList('UserNeedRelevance');
 
+// Get the set of matrix items
+const mappings = await lookupMappings();
+
+const table = buildTable();
+
 // Go through the FNC array and generate the first two rows
 
 // Go through the UN/UNR/FN arrays and put in appropriate content from the matrix data, or empty cell if not present
+function buildTable() {
+	var table = "<table border>";
+	
+	// row 1
+	table += "<tr><td></td><td></td>"; 
+	functionalNeedCategories.forEach(function(fnc) {
+		table += "<th scope='colgroup' colspan='" + fnc.functionalNeeds.length + "'>" + fnc.label + "</th>"; 
+	});
+	table += "<th scope='colgroup' colspan='2'>Total</th>";
+	table += "</tr>"
+	
+	// row 2
+	table += "<tr><td></td><td></td>"; 
+	functionalNeedCategories.forEach(function(fnc) {
+		fnc.functionalNeeds.forEach(function(fn) {
+		table += "<th scope='col'>" + fn.label + "</th>"; 
+		});
+	});
+	table += "<th scope='col'>User need</th>";
+	table += "<th scope='col'>Relevance</th>";
+	table += "</tr>"
+	
+	// rows per user need
+	userNeeds.forEach(function(un) {
+		table += "<tr><th scope='rowgroup' rowspan=" + userNeedRelevances.length + "><a href='/user-needs/" + un.id + "'>" + un.label + "</a></th>";
+		var rowNum = 1;
+		userNeedRelevances.forEach(function(unr) {
+			if (rowNum > 2) table += "<tr>";
+			table += "<th scope='row'><a href='/user-need-relevances/" + unr.id + "'>" + unr.label + "</a></th>";
+			
+			functionalNeedCategories.forEach(function(fnc) {
+				fnc.functionalNeeds.forEach(function(fn) {
+					table += "<td></td>";
+				});
+			});
+			table += "<td></td><td></td>"; // for totals 
+			table += "</tr>";
+			rowNum++;
+		});
+	});
+	
+	table += "<tr><th colspan'2' scope='row'>Total Functional need</th>"; // total
+	functionalNeedCategories.forEach(function(fnc) {
+		fnc.functionalNeeds.forEach(function(fn) {
+			table += "<td></td>";
+		});
+	});
+	table += "</tr>";
+	
+	table += "</table>";
+	
+	return table;
+}
 
 // returning a object {id, label, functionalNeeds[id, label]}
 async function lookupFunctionalNeedCategories () {
 	let fncs = new Array();
+	let fns = new Array();
 	
+	//functional needs
+	const fnSparql = 'select ?cid ?id ?label where { ?id a a11y:FunctionalNeed ; rdfs:label ?label ; a11y:supports ?cid . ?cid rdfs:label ?clabel } order by ?clabel ?label';	
+	const fnRes = await dbquery.selectQuery(fnSparql);
+	fnRes.results.bindings.forEach(function(fn) {
+		fns.push({"id": dbquery.idFrag(fn.id.value), "label": fn.label.value, "cid": dbquery.idFrag(fn.cid.value)});
+	});
+
+	//runctional need categories
 	const fncRes = await lookupList('FunctionalNeedCategory');
 	fncRes.forEach(function(fnc) {
-		fncs.push({"id": dbquery.idFrag(fnc.id), "label": fnc.label, functionalNeeds: []});
-	});
-	
-	const fnSparql = 'select ?cid ?id ?label where { ?id a a11y:FunctionalNeed ; rdfs:label ?label ; a11y:supports ?cid . ?cid rdfs:label ?clabel } order by ?clabel ?label';	const fnRes = await dbquery.selectQuery(fnSparql);
-	fnRes.results.bindings.forEach(function(fn) {
-		fncs.forEach(function(fnc) {
-			if (dbquery.idFrag(fn.cid.value) == fnc.id) fnc.functionalNeeds.push({"id": dbquery.idFrag(fn.id.value), "label": fn.label.value});
-		});
+		const filtered = filterObjs(fns, "cid", dbquery.idFrag(fnc.id));
+		fncs.push({"id": dbquery.idFrag(fnc.id), "label": fnc.label, "functionalNeeds": filtered});
 	});
 	return fncs;
 }
+
+async function lookupMappings() {
+	let matrix = new Array();
+	let statements = new Array();
+
+	const stmtSparql = 'select ?mId ?sId ?sLabel where { ?mId a a11y:MatrixMapping . ?sId a a11y:AccessibilityStatement ; a11y:supports ?mId ; rdfs:label ?sLabel }';
+	const stmtResult = await dbquery.selectQuery(stmtSparql);
+	stmtResult.results.bindings.forEach(function(stmt) {
+		statements.push({"id": dbquery.idFrag(stmt.sId.value), "label": stmt.sLabel.value, "mId": dbquery.idFrag(stmt.mId.value)});
+	});
+	
+	const sparql = 'select ?mId ?applicable ?fnId ?unId ?unrId where { ?mId a a11y:MatrixMapping ; a11y:supports ?fnId ; a11y:supports ?unId ; a11y:supports ?unrId . ?fnId a a11y:FunctionalNeed . ?unId a a11y:UserNeed . ?unrId a a11y:UserNeedRelevance . optional { ?mId a11y:applicable ?applicable } }';
+	const result = await dbquery.selectQuery(sparql);
+	result.results.bindings.forEach(function(mapping) {
+		const filtered = filterObjs(statements, "mId", dbquery.idFrag(mapping["mId"].value));
+		matrix.push({"id": dbquery.idFrag(mapping.mId.value), "applicable": true, "fnId": mapping.fnId.value, "unId": mapping.unId.value, "unrId": mapping.unrId.value, "statements": filtered});
+});
+	
+	return matrix;
+}
+
+function filterObjs(array, col, val) {
+	var returnval = new Array();
+	array.forEach(function(row) {
+		if (row[col] == val) returnval.push(row);
+	});
+	
+	return returnval;
+}
+
 async function lookupList(type) {
 	let returnval = new Array();
 	
@@ -42,10 +133,10 @@ async function lookupList(type) {
 	
 	return returnval;
 }
+
+
 ---
-{JSON.stringify(functionalNeedCategories)}
 <Layout title="Digital Accessibility Framework">
 
-<p>There will be a ginormous table here.</p>
-
+<table set:html={table}>
 </Layout>
