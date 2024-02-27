@@ -6,57 +6,21 @@ const {type, title, supportsType, supportsTypeTitle} = Astro.props;
 
 var selectedId = "";
 
-async function processPost() {
-	if (Astro.request.method === "POST") {
-	  try {
-	    const data = await Astro.request.formData();
-	    const add = data.get("add");
-	    const label = data.get("label");
-	    const categoryId = data.get("category");
-	    selectedId = categoryId;
-	    
-	    if (add != null && label != null) {
-				const sparql = 'insert data { :' + dbquery.uuid() + ' a owl:NamedIndividual ; a a11y:' + type + ' ; rdfs:label "' + label + '"@en ; a11y:supports <' + categoryId + '> }';
-				const result = await dbquery.updateQuery(sparql);
-				return result;
-	    } else return false;
-	  } catch (error) {
-	    if (error instanceof Error) {
-	      console.log(error.message);
-	    }
-	    return false;
-	  }
-	} else return false;
-}
-
 async function processFetch() {
 	const sparql = "select ?id ?label ?supports_id ?supports_label where { ?id a a11y:" + type + " ; rdfs:label ?label ;  a11y:supports ?supports_id .  ?supports_id rdfs:label ?supports_label }";
 	const json = await dbquery.selectQuery(sparql);
 	return json;
 }
 
-async function process() {
-	const posted = await processPost();
-	const json = await processFetch();
-	return json;
-} 
-
-const json = await process();
-
+const json = await processFetch();
 ---
-<form method="post">
-	<p><label for="add-label">Add functional need:</label>
-	<input type="text" name="label" id="add-label" /></p>
-	<TypeOptionList type={supportsType} title={supportsTypeTitle} selectedId={selectedId}></TypeOptionList>
-	<p><input type="submit" name="add" value={"Add " + title}/></p>
-</form>
 <table>
 	<thead>
 		<th>{title}</th>
 		<th>{supportsTypeTitle}</th>
 	</thead>
 	<tbody>
-		{json.results.bindings.map((item) => <tr><td><a href={'?id=' + item.id.value}>{item.label.value}</a></td><td><a href={'functional-need-category?id=' + item.supports_id.value}>{item.supports_label.value}</a></td></tr>)}
+		{json.results.bindings.map((item) => <tr><td><a href={'/functional-needs/' + dbquery.idFrag(item.id.value)}>{item.label.value}</a></td><td><a href={'/functional-need-categories/' + dbquery.idFrag(item.supports_id.value)}>{item.supports_label.value}</a></td></tr>)}
 	</tbody>
 </table>
 
