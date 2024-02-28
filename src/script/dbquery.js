@@ -9,7 +9,7 @@ prefix rdfs:	<http://www.w3.org/2000/01/rdf-schema#>
 const selectEndpoint = "http://localhost:7200/repositories/a11y-data";
 const updateEndpoint = "http://localhost:7200/repositories/a11y-data/statements";
 
-const selectQuery = async function(sparql) {
+async function selectQuery(sparql) {
 	const post_response = await fetch(selectEndpoint,
 	  {
 	    method: 'POST',
@@ -20,7 +20,7 @@ const selectQuery = async function(sparql) {
 	return (json);
 }
 
-const updateQuery = async function(sparql) {
+async function updateQuery(sparql) {
 	const post_response = await fetch(updateEndpoint,
 	  {
 	    method: 'POST',
@@ -32,15 +32,10 @@ const updateQuery = async function(sparql) {
 	return true;
 }
 
-const idFrag = function(uri) {
+function idFrag(uri) {
 	return uri.substring(uri.indexOf("#") + 1)
 }
 
-const dbquery = {
-	uuid: uuidv4,
-	selectQuery: selectQuery,
-	updateQuery: updateQuery,
-	idFrag: idFrag
-};
-export default dbquery;
+export { uuidv4, selectQuery, updateQuery, idFrag};
+
 

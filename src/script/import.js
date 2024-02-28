@@ -1,6 +1,6 @@
 import { readFile, writeFile, open } from 'node:fs/promises';
 import parseMD from 'parse-md';
-import dbquery from './dbquery.js';
+import * as dbquery from './dbquery.js';
 import inquirer from 'inquirer';
 
 const testFilePath = '../../../../accessiblecommunity/Digital-Accessibility-Framework/no-vision-interactive-equivalent.md';
