@@ -3,41 +3,22 @@ import parseMD from 'parse-md';
 import dbquery from './dbquery.js';
 import inquirer from 'inquirer';
 
-const testFilePath = '../../../../accessiblecommunity/Digital-Accessibility-Framework/sensory-intersection-instruction-references.md';
+const testFilePath = '../../../../accessiblecommunity/Digital-Accessibility-Framework/no-vision-interactive-equivalent.md';
 const typosPath = 'typos.json';
 
 const data = await getFileData(testFilePath);
 
 const { metadata, content } = parseMD(data);
-//console.log(JSON.stringify(metadata));
 
 const { knownMatrix, knownMatrixLabels } = await getKnownMatrix();
-//console.log(JSON.stringify(knownMatrix));
-
 //const typos = await getTypos();
-
-// work out the full set of mappings
 const mappings = expandMappings(metadata);
-//console.log(JSON.stringify(mappings));
-
-// ids of the mapping objects corresponding to the above
-const mappingIds = await getMappingIds(mappings);
-//console.log("IDs: " + JSON.stringify(mappingIds));
-
+const mappingIds = await getMappingIds(mappings); // ids of the mapping objects corresponding to the above
 const referenceTypes = await lookupIdLabels("ReferenceType");
-//console.log(referenceTypes);
 const tags = await lookupIdLabels("Tag");
-
-// retrieve references, divide into research and guidelines
-const { research, guidelines } = retrieveReferences(metadata);
-
-// retrieve tags
-const tagsArr = metadata.tags ? metadata.tags : new Array();
-
-// retrieve title and statement
-const { title, statement } = retrieveContent(content);
-// title goes to rdfs:label
-// statement goes to a11y:stmtGuidance
+const tagsArr = metadata.tags ? metadata.tags : new Array(); // retrieve tags
+const { research, guidelines } = retrieveReferences(metadata); // retrieve references, divide into research and guidelines
+const { title, statement } = retrieveContent(content); // retrieve title and statement
 
 // construct the sparql statement
 const stmtId = dbquery.uuid();
@@ -46,6 +27,9 @@ sparql += ' ; a11y:stmtGuidance "' + statement + '"@en';
 sparql += ' ; rdfs:label "' + title + '"@en';
 mappingIds.forEach(function(mapping) {
 	sparql += ' ; a11y:supports :' + mapping;
+});
+tagsArr.forEach(function(tag) {
+	sparql += ' ; a11y:tags :' + getIdByLabel(tags, tag, 'Tag');
 });
 if (research.length > 0) {
 	research.forEach(function(link) {
@@ -62,7 +46,9 @@ if (guidelines.length > 0) {
 	});
 }
 sparql += ' }';
-await dbquery.updateQuery(sparql);
+console.log(sparql);
+const importResult = await dbquery.updateQuery(sparql);
+console.log(JSON.stringify(importResult));
 
 async function getFileData(path) {
 	try {
@@ -239,12 +225,12 @@ function retrieveReferences(metadata) {
 		references.forEach(function(referenceType) {
 			if (referenceType.research !== undefined && Array.isArray(referenceType.research)) {
 				referenceType.research.forEach(function(ref) {
-					if (Array.isArray(ref)) research.push({"uri": ref[0], "note": ref[1]});
+					if (Array.isArray(ref) && isValidUrl(ref[0])) research.push({"uri": ref[0], "note": ref.slice(1).join(", ")});
 				});
 			}
 			if (referenceType.guidelines !== undefined && Array.isArray(referenceType.guidelines)) {
 				referenceType.guidelines.forEach(function(ref) {
-					if (Array.isArray(ref)) guidelines.push({"uri": ref[0], "note": ref[1]});
+					if (Array.isArray(ref) && isValidUrl(ref[0])) guidelines.push({"uri": ref[0], "note": ref.slice(1).join(", ")});
 				});
 			}
 		});
@@ -258,6 +244,17 @@ function retrieveContent(content) {
 	const title = content.match(/(?<=#\s).*/)[0];
 	const statement = content.match(/^\w.*$/m)[0];
 	return {"title": title, "statement": statement};
+}
+
+// from https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
+function isValidUrl(urlString) {
+  	var urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // validate domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // validate OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // validate port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
+    '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
+  return !!urlPattern.test(urlString);
 }
 
 function compareStr(str1, str2) {
