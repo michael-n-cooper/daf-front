@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import * as dbquery from '../script/dbquery.js';
+import {findObjectByProperties, filterObjectByProperties} from '../script/util.js';
 var debug = new Array();
 // Get the matrix data, including mapping info etc.
 
@@ -79,20 +80,6 @@ function buildTable() {
 	table += "</table>";
 	
 	return table;
-}
-
-// Function to find an object based on multiple properties
-function findObjectByProperties(array, properties) {
-  return array.find(obj => {
-    // Check if all specified properties match
-    return Object.keys(properties).every(key => obj[key] === properties[key]);
-  });
-}
-function filterObjectByProperties(array, properties) {
-  return array.filter(obj => {
-    // Check if all specified properties match
-    return Object.keys(properties).every(key => obj[key] === properties[key]);
-  });
 }
 
 // returning a object {id, label, functionalNeeds[id, label]}

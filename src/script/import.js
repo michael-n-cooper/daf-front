@@ -1,17 +1,23 @@
 import { readFile, writeFile, open } from 'node:fs/promises';
 import parseMD from 'parse-md';
 import * as dbquery from './dbquery.js';
+import {findObjectByProperties, filterObjectByProperties} from '../script/util.js';
 import inquirer from 'inquirer';
 
 const testFilePath = '../../../../accessiblecommunity/Digital-Accessibility-Framework/no-vision-interactive-equivalent.md';
-const typosPath = 'typos.json';
+const typosPath = './typos.json';
 
 const data = await getFileData(testFilePath);
 
 const { metadata, content } = parseMD(data);
 
-const { knownMatrix, knownMatrixLabels } = await getKnownMatrix();
-//const typos = await getTypos();
+const knownMatrix = await getKnownMatrix();
+
+const typos = await getTypos(); console.log(JSON.stringify(typos));
+await findMatrixTypos();
+
+
+
 const mappings = expandMappings(metadata);
 const mappingIds = await getMappingIds(mappings); // ids of the mapping objects corresponding to the above
 const referenceTypes = await lookupIdLabels("ReferenceType");
@@ -47,7 +53,7 @@ if (guidelines.length > 0) {
 }
 sparql += ' }';
 console.log(sparql);
-const importResult = await dbquery.updateQuery(sparql);
+//const importResult = await dbquery.updateQuery(sparql);
 console.log(JSON.stringify(importResult));
 
 async function getFileData(path) {
@@ -62,13 +68,11 @@ async function getFileData(path) {
 
 async function getKnownMatrix() { // add intersections
 	var matrix = new Array();	
-	var knownMLs = new Array();
 	const fromDb = await dbquery.selectQuery('select ?id ?label where { ?id a a11y:MatrixDimension ; rdfs:label ?label } order by ?label'); // should split into one for each type to avoid same-label issues
 	fromDb.results.bindings.forEach(function(item) {
 		matrix.push({id: idFrag(item.id.value), label: item.label.value});
-		knownMLs.push(item.label.value);
 	});
-	return { knownMatrix: matrix, knownMatrixLabels: knownMLs };
+	return matrix;
 }
 
 async function getTypos() {
@@ -94,33 +98,23 @@ async function saveTypos() {
 }
 
 function checkTypo(value) {
-	typos.forEach(function (typo) {
-		if (compareStr(value, typo.incorrect)) return typo.correct;
-	});
-	return value;
+	var typoObj = findObjectByProperties(typos, {"incorrect": value});
+	if (typeof typoObj !== 'undefined') return typoObj.correct;
+	else return value;
 }
 
 function idFrag(uri) {
 	return uri.substring(uri.indexOf("#") + 1)
 }
 
-function getMatrixDimId(label) {
+async function getMatrixDimId(label) {
 	var returnval = null;
 	
 	// check against list of known typos, correct
-	//label = checkTypo(label);
+	label = checkTypo(label);
 	
-	var matrixDimId = knownMatrix.forEach(function(matrixDim) {
-		if (compareStr(matrixDim.label, label)) {
-			returnval = matrixDim.id;
-		}
-	});
-	return returnval;
-	// if not found, ask for typo correction, store
-	//const answer = await promptTypoCorrection(label);
-	
-	// look for mapping idd where { ?id a a11y:MatrixDimension ; rdfs:label "' + label + '"@en }');
-	
+	var matrixDimId = findObjectByProperties(knownMatrix, {"label": label});
+	return matrixDimId
 }
 
 function getIdByLabel(arr, label, addClass) {
@@ -142,13 +136,38 @@ function getIdByLabel(arr, label, addClass) {
 	return id;
 }
 
-async function promptTypoCorrection(label) {
-	inquirer.prompt([
+async function findMatrixTypos() {
+	var promises = new Array();
+
+	const mp = metadata.mappings;
+	mp.forEach(function(mapping) {
+	//check for arrays Array.isArray(obj)
+	//handle intersection objects
+		const functionalNeeds = (typeof mapping['functional-need'] === 'string') ? [mapping['functional-need']] : mapping['functional-need'];
+		const userNeeds = (typeof mapping['user-need'] === 'string') ? [mapping['user-need']] : mapping['user-need'];
+		const userNeedRelevances = (typeof mapping['user-need-relevance'] === 'string') ? [mapping['user-need-relevance']] : mapping['user-need-relevance'];
+		
+		functionalNeeds.forEach(function(functionalNeed) {
+			if (!findObjectByProperties(knownMatrix, {"label": functionalNeed.label})) promises.push (promptTypoCorrection(functionalNeed.label, knownMatrix));
+			userNeeds.forEach(function(userNeed) {
+				if (!findObjectByProperties(knownMatrix, {"label": userNeed.label})) promises.push (promptTypoCorrection(userNeed.label, knownMatrix));
+				userNeedRelevances.forEach(function(userNeedRelevance) {
+					if (!findObjectByProperties(knownMatrix, {"label": userNeedRelevance.label})) promises.push (promptTypoCorrection(userNeedRelevance.label, knownMatrix));
+				});
+			});
+		});
+	});
+	
+	await Promise.all(promises);
+}
+
+async function promptTypoCorrection(label, arr) { //candidateArr contains candidate typo, referenceArr is the array of known values as obj.label
+		inquirer.prompt([
     {
     		type: "rawlist",
     		name: "corLabel",
     		message: "Unable to find '" + label + "'. Please select the correct item from the list.",
-    		choices: ["choice 1", "choice 2", "testing"],
+    		choices: getOneProp(arr, 'label'),
     		waitUserInput: true,
     		loop: false
     }
@@ -156,6 +175,12 @@ async function promptTypoCorrection(label) {
 	  		console.log(JSON.stringify(answer));
 			return answer;
 	  	});
+}
+
+function getOneProp(arr, prop) {
+	var returnval = new Array();
+	arr.forEach((item) => returnval.push(item[prop]));
+	return returnval;
 }
 
 function expandMappings(metadata) {
