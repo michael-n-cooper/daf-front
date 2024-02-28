@@ -32,7 +32,7 @@ function buildTable() {
 	table += "<tr><td></td><td></td>"; 
 	functionalNeedCategories.forEach(function(fnc) {
 		fnc.functionalNeeds.forEach(function(fn) {
-		table += "<th scope='col'>" + fn.label + "</th>"; 
+		table += "<th scope='col'><a href='/functional-needs/" + fn.id + "'>" + fn.label + "</a></th>"; 
 		});
 	});
 	table += "<th scope='col'>User need</th>";
