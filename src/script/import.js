@@ -14,6 +14,9 @@ const { metadata, content } = parseMD(data);
 const knownMatrix = await getKnownMatrix();
 
 const typos = await getTypos(); console.log(JSON.stringify(typos));
+const functionalNeedList = await lookupIdLabels("FunctionalNeed");
+const userNeedList = await lookupIdLabels("UserNeed");
+const userNeedRelevanceList = await lookupIdLabels("UserNeedRelevance");
 await findMatrixTypos();
 
 
@@ -54,7 +57,7 @@ if (guidelines.length > 0) {
 sparql += ' }';
 console.log(sparql);
 //const importResult = await dbquery.updateQuery(sparql);
-console.log(JSON.stringify(importResult));
+//console.log(JSON.stringify(importResult));
 
 async function getFileData(path) {
 	try {
@@ -107,14 +110,14 @@ function idFrag(uri) {
 	return uri.substring(uri.indexOf("#") + 1)
 }
 
-async function getMatrixDimId(label) {
+function getMatrixDimId(label) {
 	var returnval = null;
 	
 	// check against list of known typos, correct
 	label = checkTypo(label);
 	
 	var matrixDimId = findObjectByProperties(knownMatrix, {"label": label});
-	return matrixDimId
+	return matrixDimId.id;
 }
 
 function getIdByLabel(arr, label, addClass) {
@@ -137,8 +140,9 @@ function getIdByLabel(arr, label, addClass) {
 }
 
 async function findMatrixTypos() {
-	var promises = new Array();
-
+	var incorrects = new Array();
+	var questions = new Array();
+	
 	const mp = metadata.mappings;
 	mp.forEach(function(mapping) {
 	//check for arrays Array.isArray(obj)
@@ -148,33 +152,46 @@ async function findMatrixTypos() {
 		const userNeedRelevances = (typeof mapping['user-need-relevance'] === 'string') ? [mapping['user-need-relevance']] : mapping['user-need-relevance'];
 		
 		functionalNeeds.forEach(function(functionalNeed) {
-			if (!findObjectByProperties(knownMatrix, {"label": functionalNeed.label})) promises.push (promptTypoCorrection(functionalNeed.label, knownMatrix));
+			if (!findObjectByProperties(functionalNeedList, {"label": functionalNeed}) && !findObjectByProperties(typos, {"incorrect": functionalNeed})) incorrects.push ([functionalNeed, functionalNeedList]);
 			userNeeds.forEach(function(userNeed) {
-				if (!findObjectByProperties(knownMatrix, {"label": userNeed.label})) promises.push (promptTypoCorrection(userNeed.label, knownMatrix));
+				if (!findObjectByProperties(userNeedList, {"label": userNeed}) && !findObjectByProperties(typos, {"incorrect": userNeed})) incorrects.push ([userNeed, userNeedList]);
 				userNeedRelevances.forEach(function(userNeedRelevance) {
-					if (!findObjectByProperties(knownMatrix, {"label": userNeedRelevance.label})) promises.push (promptTypoCorrection(userNeedRelevance.label, knownMatrix));
+					if (!findObjectByProperties(userNeedRelevanceList, {"label": userNeedRelevance}) && !findObjectByProperties(typos, {"incorrect": userNeedRelevance})) incorrects.push ([userNeedRelevance, userNeedRelevanceList]);
 				});
 			});
 		});
 	});
 	
-	await Promise.all(promises);
+	if (incorrects.length > 0) {
+		incorrects.forEach(function(inc, index) {
+			  questions.push(makeInquirerQuestion("q" + index, inc[0], inc[1]));
+		});
+	
+		const answers = await inquirer.prompt(questions).then((answers) => answers);
+		for (var i = 0; i < questions.length; i++) {
+			typos.push({"incorrect": incorrects[i][0], "correct": answers["q"+i]});
+		}
+		
+		writeFile(typosPath, JSON.stringify(typos));
+	}
 }
 
-async function promptTypoCorrection(label, arr) { //candidateArr contains candidate typo, referenceArr is the array of known values as obj.label
-		inquirer.prompt([
-    {
-    		type: "rawlist",
-    		name: "corLabel",
-    		message: "Unable to find '" + label + "'. Please select the correct item from the list.",
-    		choices: getOneProp(arr, 'label'),
-    		waitUserInput: true,
-    		loop: false
-    }
-	  	]).then((answer) => {
-	  		console.log(JSON.stringify(answer));
-			return answer;
-	  	});
+function makeInquirerQuestion(qId, label, arr) {
+	var q = {
+    	type: "rawlist",
+    	name: qId,
+    	message: "Unable to find '" + label + "'. Please select the correct item from the list.",
+    	choices: getOneProp(arr, 'label'),
+    	waitUserInput: true,
+    	loop: false
+  };
+  return q;
+}
+
+async function promptTypoCorrections(questions) {
+	await inquirer.prompt(questions).then((answer) => {
+		return answer;
+  	});
 }
 
 function getOneProp(arr, prop) {
@@ -194,10 +211,6 @@ function expandMappings(metadata) {
 		const userNeeds = (typeof mapping['user-need'] === 'string') ? [mapping['user-need']] : mapping['user-need'];
 		const userNeedRelevances = (typeof mapping['user-need-relevance'] === 'string') ? [mapping['user-need-relevance']] : mapping['user-need-relevance'];
 		
-		//console.log(functionalNeeds);
-		//console.log(userNeeds);
-		//console.log(userNeedRelevances);
-		
 		// expand out arrays of mapped items
 		functionalNeeds.forEach(function(functionalNeed) {
 			const functionalNeedId = getMatrixDimId(functionalNeed);
@@ -210,7 +223,6 @@ function expandMappings(metadata) {
 			});
 		});
 	});
-	//console.log(expandedMappings);
 	return (expandedMappings);
 }
 
@@ -229,7 +241,6 @@ async function getMappingIds(mappings) {
 
 async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
 	const sparql = 'select ?id where { ?id a a11y:MatrixMapping ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
-	//console.log ("mappingidsparql: " + sparql);
 	var results = await dbquery.selectQuery(sparql);
 	if (results.results.bindings.length == 0) {
 		const uuid = dbquery.uuid();

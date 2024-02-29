@@ -36,6 +36,6 @@ function idFrag(uri) {
 	return uri.substring(uri.indexOf("#") + 1)
 }
 
-export { uuidv4, selectQuery, updateQuery, idFrag};
+export { uuidv4 as uuid, selectQuery, updateQuery, idFrag};
 
 
