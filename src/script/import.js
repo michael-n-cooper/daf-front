@@ -4,16 +4,18 @@ import * as dbquery from './dbquery.js';
 import {findObjectByProperties, filterObjectByProperties} from '../script/util.js';
 import inquirer from 'inquirer';
 
-const testFilePath = '../../../../accessiblecommunity/Digital-Accessibility-Framework/no-vision-interactive-equivalent.md';
+const importDir = '../../../../accessiblecommunity/Digital-Accessibility-Framework/';
+const importFileName = await inquirer.prompt([{"name": "fileName", "message": "File to import:", }]).then((answer) => answer.fileName); //'no-vision-interactive-equivalent.md';
 const typosPath = './typos.json';
+const contentIriBase = 'https://github.com/accessiblecommunity/Digital-Accessibility-Framework';
 
-const data = await getFileData(testFilePath);
+const data = await getFileData(importDir + importFileName);
 
 const { metadata, content } = parseMD(data);
 
 const knownMatrix = await getKnownMatrix();
 
-const typos = await getTypos(); console.log(JSON.stringify(typos));
+const typos = await getTypos();
 const functionalNeedList = await lookupIdLabels("FunctionalNeed");
 const userNeedList = await lookupIdLabels("UserNeed");
 const userNeedRelevanceList = await lookupIdLabels("UserNeedRelevance");
@@ -34,6 +36,7 @@ const stmtId = dbquery.uuid();
 var sparql = 'insert data { :' + stmtId + ' a a11y:AccessibilityStatement ; a owl:NamedIndividual ';
 sparql += ' ; a11y:stmtGuidance "' + statement + '"@en';
 sparql += ' ; rdfs:label "' + title + '"@en';
+sparql += ' ; a11y:contentIRI <' + contentIriBase + importFileName + ">";
 mappingIds.forEach(function(mapping) {
 	sparql += ' ; a11y:supports :' + mapping;
 });
@@ -55,9 +58,9 @@ if (guidelines.length > 0) {
 	});
 }
 sparql += ' }';
-console.log(sparql);
-//const importResult = await dbquery.updateQuery(sparql);
-//console.log(JSON.stringify(importResult));
+//console.log(sparql);
+const importResult = await dbquery.updateQuery(sparql);
+console.log(JSON.stringify(importResult));
 
 async function getFileData(path) {
 	try {
