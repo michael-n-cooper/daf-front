@@ -5,7 +5,7 @@ import * as dbquery from '../../script/dbquery.js';
 const {id} = Astro.params;
 
 // get the main statement
-const stmtSparql = 'select ?id ?label ?guidance where { ?id rdfs:label ?label ; a11y:stmtGuidance ?guidance . values ?id { :' + id + ' } } ';
+const stmtSparql = 'select ?id ?label ?guidance ?contentIRI where { ?id rdfs:label ?label ; a11y:stmtGuidance ?guidance . optional {?id a11y:contentIRI ?contentIRI} . values ?id { :' + id + ' } } ';
 const stmtResult = await dbquery.selectQuery(stmtSparql);
 
 // get the mappings
@@ -20,6 +20,7 @@ const tagResult = await dbquery.selectQuery(tagSparql);
 ---
 <Layout title={stmtResult.results.bindings[0].label.value}>
 	<p>{stmtResult.results.bindings[0].guidance.value}</p>
+	<p>Imported from {stmtResult.results.bindings[0].contentIRI.value}</p>
 	<h2>Supports</h2>
 	<table>
 		<thead>
