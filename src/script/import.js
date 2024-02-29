@@ -5,11 +5,11 @@ import {findObjectByProperties, filterObjectByProperties} from '../script/util.j
 import inquirer from 'inquirer';
 
 const importDir = '../../../../accessiblecommunity/Digital-Accessibility-Framework/';
-const importFileName = await inquirer.prompt([{"name": "fileName", "message": "File to import:", }]).then((answer) => answer.fileName); //'no-vision-interactive-equivalent.md';
+const importFileName = await inquirer.prompt([{"name": "fileName", "message": "File to import:", }]).then((answer) => answer.fileName); 
 const typosPath = './typos.json';
 const contentIriBase = 'https://github.com/accessiblecommunity/Digital-Accessibility-Framework';
 
-const data = await getFileData(importDir + importFileName);
+const data = await getFileData(importDir + importFileName); // need to catch bad file name
 
 const { metadata, content } = parseMD(data);
 
@@ -165,6 +165,7 @@ async function findMatrixTypos() {
 		});
 	});
 	
+	//todo: remove duplicates from the array before proceeding
 	if (incorrects.length > 0) {
 		incorrects.forEach(function(inc, index) {
 			  questions.push(makeInquirerQuestion("q" + index, inc[0], inc[1]));
