@@ -15,6 +15,8 @@ const mapResult = await dbquery.selectQuery(mapSparql);
 const refSparql = 'select ?iri ?note ?type where { values ?stmtid { :' + id + ' } . ?stmtid a11y:references ?id . ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label ?type }';
 const refResult = await dbquery.selectQuery(refSparql);
 
+const tagSparql = 'select ?id ?label where { values ?stmtid { :' + id + ' } . ?stmtid a11y:tags ?id . ?id a a11y:Tag ; rdfs:label ?label }';
+const tagResult = await dbquery.selectQuery(tagSparql);
 ---
 <Layout title={stmtResult.results.bindings[0].label.value}>
 	<p>{stmtResult.results.bindings[0].guidance.value}</p>
@@ -32,5 +34,8 @@ const refResult = await dbquery.selectQuery(refSparql);
 		{refResult.results.bindings.map((item) => <li>{item.type.value}: <a href={item.iri.value}>{item.note.value}</a></li>)}
 	</ul>
 	<h2>Tags</h2>
+	<ul>
+		{tagResult.results.bindings.map((item) => <li><a href={'/tags/' + dbquery.idFrag(item.id.value)}>{item.label.value}</a></li>)}
+	</ul>
 </Layout>
 

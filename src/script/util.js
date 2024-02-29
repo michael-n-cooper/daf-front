@@ -12,3 +12,7 @@ export function filterObjectByProperties(array, properties) {
   });
 }
 
+export function idFrag(uri) {
+	return uri.substring(uri.indexOf("#") + 1)
+}
+
