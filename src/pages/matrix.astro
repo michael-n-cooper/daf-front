@@ -55,9 +55,14 @@ function buildTable() {
 					let mappingObj = findObjectByProperties(mappings, {"fnId": fn.id, "unId": un.id, "unrId": unr.id});
 					if (typeof mappingObj !== 'undefined') {
 						if (mappingObj.statements !== undefined) {
+							var list = mappingObj.statements.length > 1;
+							if (list) table += "<ul>";
 							mappingObj.statements.forEach(function(stmt) {
+								if (list) table += "<li>";
 								table += "<a href='/guidance-statements/" + stmt.id + "'>" + stmt.label + "</a>";
+								if (list) table += "</li>";
 							});
+							if (list) table += "</ul>";
 						}
 					}
 					table += "</td>";
@@ -139,5 +144,21 @@ async function lookupList(type) {
 
 ---
 <Layout title="Digital Accessibility Framework">
+<style is:global>
+td, th {
+	min-width: 10em;
+	padding: .5ex;
+	vertical-align: top;
+	horizontal-align: left;
+}
+table, td, th {
+	border: thin solid black;
+	border-collapse: collapse;
+}
+ul {
+	padding-left: 1em;
+	margin-top: 0;
+}
+</style>
 <table set:html={table}>
 </Layout>
