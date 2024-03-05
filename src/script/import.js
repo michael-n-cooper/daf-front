@@ -21,8 +21,6 @@ const userNeedList = await lookupIdLabels("UserNeed");
 const userNeedRelevanceList = await lookupIdLabels("UserNeedRelevance");
 await findMatrixTypos();
 
-
-
 const mappings = expandMappings(metadata);
 const mappingIds = await getMappingIds(mappings); // ids of the mapping objects corresponding to the above
 const referenceTypes = await lookupIdLabels("ReferenceType");
@@ -62,6 +60,8 @@ sparql += ' }';
 const importResult = await dbquery.updateQuery(sparql);
 console.log(JSON.stringify(importResult));
 
+
+// get a {id, label} of matrix dimensions
 async function getKnownMatrix() { // add intersections
 	var matrix = new Array();	
 	const fromDb = await dbquery.selectQuery('select ?id ?label where { ?id a a11y:MatrixDimension ; rdfs:label ?label } order by ?label'); // should split into one for each type to avoid same-label issues
@@ -71,34 +71,7 @@ async function getKnownMatrix() { // add intersections
 	return matrix;
 }
 
-async function getTypos() {
-	try {
-	  const contents = await readFile(typosPath, { encoding: 'utf8' });
-	  const json = JSON.parse(contents);
-	  return (json);
-	} catch (err) {
-	  console.error(err.message);
-	}
-}
-
-function storeTypo(inc, cor) {
-	typos.push({incorrect: inc, correct: cor});
-}
-
-async function saveTypos() {
-	try {
-		await writeFile(typosPath, JSON.stringify(typos), { encoding: 'utf8' });
-	} catch (err) {
-	  console.error(err);
-	} 
-}
-
-function checkTypo(value) {
-	var typoObj = findObjectByProperties(typos, {"incorrect": value});
-	if (typeof typoObj !== 'undefined') return typoObj.correct;
-	else return value;
-}
-
+// matrix dimensions (functional needs, user needs, relevances)
 function getMatrixDimId(label) {
 	var returnval = null;
 	
@@ -109,15 +82,66 @@ function getMatrixDimId(label) {
 	return matrixDimId.id;
 }
 
-function getIdByLabel(arr, label, addClass) {
-	var id = null;
+// matrix mappings
+function expandMappings(metadata) {
+	var expandedMappings = new Array();
+	const mappings = metadata.mappings;
 	
-	arr.forEach(function(item) {
-		if (compareStr(item.label, label)) {
-			id = item.id;
-		}
+	mappings.forEach(function(mapping) {
+	//check for arrays Array.isArray(obj)
+	//handle intersection objects
+		const functionalNeeds = (typeof mapping['functional-need'] === 'string') ? [mapping['functional-need']] : mapping['functional-need'];
+		const userNeeds = (typeof mapping['user-need'] === 'string') ? [mapping['user-need']] : mapping['user-need'];
+		const userNeedRelevances = (typeof mapping['user-need-relevance'] === 'string') ? [mapping['user-need-relevance']] : mapping['user-need-relevance'];
+		
+		// expand out arrays of mapped items
+		functionalNeeds.forEach(function(functionalNeed) {
+			const functionalNeedId = getMatrixDimId(functionalNeed);
+			userNeeds.forEach(function(userNeed) {
+				const userNeedId = getMatrixDimId(userNeed);
+				userNeedRelevances.forEach(function(userNeedRelevance) {
+					const userNeedRelevanceId = getMatrixDimId(userNeedRelevance);
+					expandedMappings.push([functionalNeedId, userNeedId, userNeedRelevanceId]);
+				});
+			});
+		});
 	});
-	
+	return (expandedMappings);
+}
+
+// populate array with ids of mapping objects corresponding to a set of [functional need, user need, relevance]
+async function getMappingIds(mappings) {
+	async function collect() {
+		let promises = new Array();
+		var result = new Array();
+		mappings.forEach(function(mapping) {
+			promises.push(getMappingId(mapping[0], mapping[1], mapping[2]));
+		});
+		return Promise.all(promises);
+	}
+	var results = await collect();
+	return results;
+}
+
+// get a single mapping object from the stored array
+async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
+	const sparql = 'select ?id where { ?id a a11y:MatrixMapping ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
+	var results = await dbquery.selectQuery(sparql);
+	if (results.results.bindings.length == 0) {
+		const uuid = dbquery.uuid();
+		const update = 'insert data { :' + uuid + ' a a11y:MatrixMapping ; a owl:NamedIndividual ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
+		await dbquery.updateQuery(update);
+		return (uuid);
+	} else {
+		return idFrag(results.results.bindings[0].id.value);
+	}
+}
+
+// general
+
+// get the id for a label on a class, add it to the database if not found
+function getIdByLabel(arr, label, addClass) {
+	var id = findObjectByProperties(arr, {"label": label});
 	
 	if (id == null && addClass !== undefined) {
 		id = dbquery.uuid();
@@ -128,6 +152,86 @@ function getIdByLabel(arr, label, addClass) {
 	return id;
 }
 
+// get an array of {id, label} for a class
+async function lookupIdLabels(type) {
+	var returnval = new Array();
+	const sparql = 'select ?id ?label where { ?id a a11y:' + type + ' ; rdfs:label ?label } order by ?label';
+	const results = await dbquery.selectQuery(sparql);
+	if (results.results.bindings.length > 0) {
+		results.results.bindings.forEach(function(result) {
+			returnval.push({id: idFrag(result.id.value), label: result.label.value});
+		});
+	}
+	return returnval;
+}
+
+// references
+function retrieveReferences(metadata) {
+	var research = new Array();
+	var guidelines = new Array();
+	if (metadata.references) {
+		const references = metadata.references;
+		
+		references.forEach(function(referenceType) {
+			if (referenceType.research !== undefined && Array.isArray(referenceType.research)) {
+				referenceType.research.forEach(function(ref) {
+					if (Array.isArray(ref) && isValidUrl(ref[0])) research.push({"uri": ref[0], "note": ref.slice(1).join(", ")});
+				});
+			}
+			if (referenceType.guidelines !== undefined && Array.isArray(referenceType.guidelines)) {
+				referenceType.guidelines.forEach(function(ref) {
+					if (Array.isArray(ref) && isValidUrl(ref[0])) guidelines.push({"uri": ref[0], "note": ref.slice(1).join(", ")});
+				});
+			}
+		});
+		
+	}
+	
+	return {"research": research, "guidelines": guidelines};
+}
+
+// content
+function retrieveContent(content) {
+	const title = content.match(/(?<=#\s).*/)[0];
+	const statement = content.match(/^\w.*$/m)[0];
+	return {"title": title, "statement": statement};
+}
+
+// typo handling
+
+// load list of typos
+async function getTypos() {
+	try {
+	  const contents = await readFile(typosPath, { encoding: 'utf8' });
+	  const json = JSON.parse(contents);
+	  return (json);
+	} catch (err) {
+	  console.error(err.message);
+	}
+}
+
+// add a typo to the list
+function storeTypo(inc, cor) {
+	typos.push({incorrect: inc, correct: cor});
+}
+
+// save the list of typos
+async function saveTypos() {
+	try {
+		await writeFile(typosPath, JSON.stringify(typos), { encoding: 'utf8' });
+	} catch (err) {
+	  console.error(err);
+	} 
+}
+
+// check if a value is in the list of known typos
+function checkTypo(value) {
+	var typoObj = findObjectByProperties(typos, {"incorrect": value});
+	if (typeof typoObj !== 'undefined') return typoObj.correct;
+	else return value;
+}
+
+// look for potential typos in the yaml mappings
 async function findMatrixTypos() {
 	var incorrects = new Array();
 	var questions = new Array();
@@ -166,6 +270,14 @@ async function findMatrixTypos() {
 	}
 }
 
+// send typos to the inquirer prompt
+async function promptTypoCorrections(questions) {
+	await inquirer.prompt(questions).then((answer) => {
+		return answer;
+  	});
+}
+
+// inquirer
 function makeInquirerQuestion(qId, label, arr) {
 	var q = {
     	type: "rawlist",
@@ -178,102 +290,3 @@ function makeInquirerQuestion(qId, label, arr) {
   return q;
 }
 
-async function promptTypoCorrections(questions) {
-	await inquirer.prompt(questions).then((answer) => {
-		return answer;
-  	});
-}
-
-function expandMappings(metadata) {
-	var expandedMappings = new Array();
-	const mappings = metadata.mappings;
-	
-	mappings.forEach(function(mapping) {
-	//check for arrays Array.isArray(obj)
-	//handle intersection objects
-		const functionalNeeds = (typeof mapping['functional-need'] === 'string') ? [mapping['functional-need']] : mapping['functional-need'];
-		const userNeeds = (typeof mapping['user-need'] === 'string') ? [mapping['user-need']] : mapping['user-need'];
-		const userNeedRelevances = (typeof mapping['user-need-relevance'] === 'string') ? [mapping['user-need-relevance']] : mapping['user-need-relevance'];
-		
-		// expand out arrays of mapped items
-		functionalNeeds.forEach(function(functionalNeed) {
-			const functionalNeedId = getMatrixDimId(functionalNeed);
-			userNeeds.forEach(function(userNeed) {
-				const userNeedId = getMatrixDimId(userNeed);
-				userNeedRelevances.forEach(function(userNeedRelevance) {
-					const userNeedRelevanceId = getMatrixDimId(userNeedRelevance);
-					expandedMappings.push([functionalNeedId, userNeedId, userNeedRelevanceId]);
-				});
-			});
-		});
-	});
-	return (expandedMappings);
-}
-
-async function getMappingIds(mappings) {
-	async function collect() {
-		let promises = new Array();
-		var result = new Array();
-		mappings.forEach(function(mapping) {
-			promises.push(getMappingId(mapping[0], mapping[1], mapping[2]));
-		});
-		return Promise.all(promises);
-	}
-	var results = await collect();
-	return results;
-}
-
-async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
-	const sparql = 'select ?id where { ?id a a11y:MatrixMapping ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
-	var results = await dbquery.selectQuery(sparql);
-	if (results.results.bindings.length == 0) {
-		const uuid = dbquery.uuid();
-		const update = 'insert data { :' + uuid + ' a a11y:MatrixMapping ; a owl:NamedIndividual ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
-		await dbquery.updateQuery(update);
-		return (uuid);
-	} else {
-		return idFrag(results.results.bindings[0].id.value);
-	}
-}
-
-function retrieveReferences(metadata) {
-	var research = new Array();
-	var guidelines = new Array();
-	if (metadata.references) {
-		const references = metadata.references;
-		
-		references.forEach(function(referenceType) {
-			if (referenceType.research !== undefined && Array.isArray(referenceType.research)) {
-				referenceType.research.forEach(function(ref) {
-					if (Array.isArray(ref) && isValidUrl(ref[0])) research.push({"uri": ref[0], "note": ref.slice(1).join(", ")});
-				});
-			}
-			if (referenceType.guidelines !== undefined && Array.isArray(referenceType.guidelines)) {
-				referenceType.guidelines.forEach(function(ref) {
-					if (Array.isArray(ref) && isValidUrl(ref[0])) guidelines.push({"uri": ref[0], "note": ref.slice(1).join(", ")});
-				});
-			}
-		});
-		
-	}
-	
-	return {"research": research, "guidelines": guidelines};
-}
-
-function retrieveContent(content) {
-	const title = content.match(/(?<=#\s).*/)[0];
-	const statement = content.match(/^\w.*$/m)[0];
-	return {"title": title, "statement": statement};
-}
-
-async function lookupIdLabels(type) {
-	var returnval = new Array();
-	const sparql = 'select ?id ?label where { ?id a a11y:' + type + ' ; rdfs:label ?label } order by ?label';
-	const results = await dbquery.selectQuery(sparql);
-	if (results.results.bindings.length > 0) {
-		results.results.bindings.forEach(function(result) {
-			returnval.push({id: idFrag(result.id.value), label: result.label.value});
-		});
-	}
-	return returnval;
-}
