@@ -13,6 +13,7 @@
     "@astrojs/node": "^8.2.0",
     "astro": "^4.3.7",
     "inquirer": "^9.2.15",
+    "jsdom": "^24.0.0",
     "parse-md": "^3.0.3",
     "uuid": "^9.0.1"
   }
