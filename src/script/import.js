@@ -1,7 +1,7 @@
 import { readFile, writeFile, open } from 'node:fs/promises';
 import parseMD from 'parse-md';
 import * as dbquery from './dbquery.js';
-import {findObjectByProperties, filterObjectByProperties} from '../script/util.js';
+import {findObjectByProperties, filterObjectByProperties, idFrag, compareStr, isValidUrl, getOneProp, getFileData} from './util.js';
 import inquirer from 'inquirer';
 
 const importDir = '../../../../accessiblecommunity/Digital-Accessibility-Framework/';
@@ -62,16 +62,6 @@ sparql += ' }';
 const importResult = await dbquery.updateQuery(sparql);
 console.log(JSON.stringify(importResult));
 
-async function getFileData(path) {
-	try {
-	  const contents = await readFile(path, { encoding: 'utf8' });
-	  return (contents);
-	} catch (err) {
-	  console.error(err.message);
-	  return null;
-	}
-}
-
 async function getKnownMatrix() { // add intersections
 	var matrix = new Array();	
 	const fromDb = await dbquery.selectQuery('select ?id ?label where { ?id a a11y:MatrixDimension ; rdfs:label ?label } order by ?label'); // should split into one for each type to avoid same-label issues
@@ -107,10 +97,6 @@ function checkTypo(value) {
 	var typoObj = findObjectByProperties(typos, {"incorrect": value});
 	if (typeof typoObj !== 'undefined') return typoObj.correct;
 	else return value;
-}
-
-function idFrag(uri) {
-	return uri.substring(uri.indexOf("#") + 1)
 }
 
 function getMatrixDimId(label) {
@@ -198,12 +184,6 @@ async function promptTypoCorrections(questions) {
   	});
 }
 
-function getOneProp(arr, prop) {
-	var returnval = new Array();
-	arr.forEach((item) => returnval.push(item[prop]));
-	return returnval;
-}
-
 function expandMappings(metadata) {
 	var expandedMappings = new Array();
 	const mappings = metadata.mappings;
@@ -284,22 +264,6 @@ function retrieveContent(content) {
 	const title = content.match(/(?<=#\s).*/)[0];
 	const statement = content.match(/^\w.*$/m)[0];
 	return {"title": title, "statement": statement};
-}
-
-// from https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
-function isValidUrl(urlString) {
-  	var urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
-    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // validate domain name
-    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // validate OR ip (v4) address
-    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // validate port and path
-    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
-    '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
-  return !!urlPattern.test(urlString);
-}
-
-function compareStr(str1, str2) {
-	if (str1.trim().replace(/\s+/g, ' ').toLowerCase() == str2.trim().replace(/\s+/g, ' ').toLowerCase()) return true;
-	else return false;
 }
 
 async function lookupIdLabels(type) {
