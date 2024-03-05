@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import * as dbquery from '../script/dbquery.js';
 import {findObjectByProperties, filterObjectByProperties} from '../script/util.js';
+
+import JSDOM from "../script/jsdom.js";
+
 var debug = new Array();
 // Get the matrix data, including mapping info etc.
 
@@ -19,6 +22,8 @@ const table = buildTable();
 
 // Go through the UN/UNR/FN arrays and put in appropriate content from the matrix data, or empty cell if not present
 function buildTable() {
+	const document = new JSDOM(`<p>Here I am</p>`).window;
+
 	var table = "<table border>";
 	
 	// row 1
@@ -160,5 +165,6 @@ ul {
 	margin-top: 0;
 }
 </style>
+{document}
 <table set:html={table}>
 </Layout>
