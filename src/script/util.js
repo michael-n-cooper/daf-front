@@ -1,3 +1,5 @@
+import { readFile, writeFile, open } from 'node:fs/promises';
+
 // Function to find an object based on multiple properties
 export function findObjectByProperties(array, properties) {
   return array.find(obj => {

@@ -17,6 +17,7 @@ const knownMatrix = await getKnownMatrix();
 
 const typos = await getTypos();
 const functionalNeedList = await lookupIdLabels("FunctionalNeed");
+const intersectionNeedList = await lookupIntersectionNeeds();
 const userNeedList = await lookupIdLabels("UserNeed");
 const userNeedRelevanceList = await lookupIdLabels("UserNeedRelevance");
 await findMatrixTypos();
@@ -82,6 +83,29 @@ function getMatrixDimId(label) {
 	return matrixDimId.id;
 }
 
+// find an intersection need in the local array from 2 functional need ids
+function getIntersectionNeedId(fn1, fn2) {
+	var inId = findObjectByProperties(intersectionNeedList, {"fn1": fn1, "fn2": fn2});
+	
+	if (typeof inId === 'undefined') {
+		inId = dbquery.uuid();
+		const update = 'insert data { :' + inId + ' a a11y:IntersectionNeed ; a11y:supports :' + fn1 + ' ; a11y:supports :' + fn2 + ' }';
+		dbquery.updateQuery(update);
+	}
+	return inId;
+}
+
+// get intersection needs from the db
+function lookupIntersectionNeeds() {
+	var arr = new Array();
+	const sparql = 'select ?id ?fn1 ?fn2 where { ?id a a11y:IntersectionNeed ; a11y:supports ?fn1 ; a11y:supports ?fn2 . filter (!sameterm(?fn1, ?fn2)) }';
+	const results = dbquery.selectQuery(sparql);
+	if (typeof results.bindings !== 'undefined') results.bindings.forEach(function(item) {
+		arr.push({"id": item.id.value, "fn1": item.fn1.value, "fn2": item.fn2.value});
+	});
+	return arr;
+}
+
 // matrix mappings
 function expandMappings(metadata) {
 	var expandedMappings = new Array();
@@ -90,13 +114,19 @@ function expandMappings(metadata) {
 	mappings.forEach(function(mapping) {
 	//check for arrays Array.isArray(obj)
 	//handle intersection objects
-		const functionalNeeds = (typeof mapping['functional-need'] === 'string') ? [mapping['functional-need']] : mapping['functional-need'];
+		const functionalNeeds = (typeof mapping['functional-need'] === 'string' || (typeof mapping['functional-need'] === 'object' && !Array.isArray(mapping['functional-need']))) ? [mapping['functional-need']] : mapping['functional-need'];
 		const userNeeds = (typeof mapping['user-need'] === 'string') ? [mapping['user-need']] : mapping['user-need'];
 		const userNeedRelevances = (typeof mapping['user-need-relevance'] === 'string') ? [mapping['user-need-relevance']] : mapping['user-need-relevance'];
 		
 		// expand out arrays of mapped items
 		functionalNeeds.forEach(function(functionalNeed) {
-			const functionalNeedId = getMatrixDimId(functionalNeed);
+			var functionalNeedId;
+			if (typeof functionalNeed === 'object') {
+				console.log(functionalNeed.intersection[1]);
+				const fn1 = getMatrixDimId(functionalNeed.intersection[0]);
+				const fn2 = getMatrixDimId(functionalNeed.intersection[1]);
+				functionalNeedId = getIntersectionNeedId(fn1, fn2);
+			} else functionalNeedId = getMatrixDimId(functionalNeed);
 			userNeeds.forEach(function(userNeed) {
 				const userNeedId = getMatrixDimId(userNeed);
 				userNeedRelevances.forEach(function(userNeedRelevance) {
@@ -123,7 +153,7 @@ async function getMappingIds(mappings) {
 	return results;
 }
 
-// get a single mapping object from the stored array
+// get a single mapping object from the stored array, or add one if not exists
 async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
 	const sparql = 'select ?id where { ?id a a11y:MatrixMapping ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
 	var results = await dbquery.selectQuery(sparql);
@@ -199,7 +229,7 @@ function retrieveContent(content) {
 
 // typo handling
 
-// load list of typos
+// load list of typs
 async function getTypos() {
 	try {
 	  const contents = await readFile(typosPath, { encoding: 'utf8' });
@@ -240,20 +270,29 @@ async function findMatrixTypos() {
 	mp.forEach(function(mapping) {
 	//check for arrays Array.isArray(obj)
 	//handle intersection objects
-		const functionalNeeds = (typeof mapping['functional-need'] === 'string') ? [mapping['functional-need']] : mapping['functional-need'];
+		const functionalNeeds = (typeof mapping['functional-need'] === 'string' || (typeof mapping['functional-need'] === 'object' && !Array.isArray(mapping['functional-need']))) ? [mapping['functional-need']] : mapping['functional-need'];
 		const userNeeds = (typeof mapping['user-need'] === 'string') ? [mapping['user-need']] : mapping['user-need'];
 		const userNeedRelevances = (typeof mapping['user-need-relevance'] === 'string') ? [mapping['user-need-relevance']] : mapping['user-need-relevance'];
 		
 		functionalNeeds.forEach(function(functionalNeed) {
-			if (!findObjectByProperties(functionalNeedList, {"label": functionalNeed}) && !findObjectByProperties(typos, {"incorrect": functionalNeed})) incorrects.push ([functionalNeed, functionalNeedList]);
+			if (typeof functionalNeed === 'object') {
+				checkEach(functionalNeedList, functionalNeed.intersection[0]);
+				checkEach(functionalNeedList, functionalNeed.intersection[1]);
+			} else checkEach(functionalNeedList, functionalNeed);
 			userNeeds.forEach(function(userNeed) {
-				if (!findObjectByProperties(userNeedList, {"label": userNeed}) && !findObjectByProperties(typos, {"incorrect": userNeed})) incorrects.push ([userNeed, userNeedList]);
+				checkEach(userNeedList, userNeed);
 				userNeedRelevances.forEach(function(userNeedRelevance) {
-					if (!findObjectByProperties(userNeedRelevanceList, {"label": userNeedRelevance}) && !findObjectByProperties(typos, {"incorrect": userNeedRelevance})) incorrects.push ([userNeedRelevance, userNeedRelevanceList]);
+					checkEach(userNeedRelevanceList, userNeedRelevance);
 				});
 			});
 		});
 	});
+	
+	function checkEach(list, label) {
+		if (typeof findObjectByProperties(list, {"label": label}) === 'undefined' && typeof findObjectByProperties(typos, {"incorrect": label}) === 'undefined') {
+			incorrects.push(label, list);
+		}
+	}
 	
 	//todo: remove duplicates from the array before proceeding
 	if (incorrects.length > 0) {
