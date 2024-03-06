@@ -80,6 +80,7 @@ function buildTable() {
 			table += "<td></td>";
 		});
 	});
+	table += "<td></td><td></td>"; // for totals 
 	table += "</tr>";
 	
 	table += "</table>";
@@ -105,7 +106,27 @@ async function lookupFunctionalNeedCategories () {
 		const filtered = fns.filter(obj => obj.cId == dbquery.idFrag(fnc.id));
 		fncs.push({"id": dbquery.idFrag(fnc.id), "label": fnc.label, "functionalNeeds": filtered});
 	});
+	
+	// add intersections
+	const itscNeeds = await lookupIntersectionNeeds();
+	fncs.push({"id": "placeholder", "label": "Intersections", "functionalNeeds": itscNeeds});
+	
 	return fncs;
+}
+
+// look up intersection needs
+async function lookupIntersectionNeeds() {
+	var arr = new Array();
+	var seen = new Array();
+	const itscSparql = 'select ?id ?fn1Label ?fn2Label where { ?id a a11y:IntersectionNeed ; a11y:supports ?fn1Id ; a11y:supports ?fn2Id . ?fn1Id rdfs:label ?fn1Label . ?fn2Id rdfs:label ?fn2Label . filter (!sameterm(?fn1Id, ?fn2Id)) } order by ?fn1Id ?fn2Id';
+	const itscRes = await dbquery.selectQuery(itscSparql);
+	if (typeof itscRes.results !== 'undefined') itscRes.results.bindings.forEach(function(itsc) {
+		if (!seen.includes(itsc.id.value)) {
+		 	arr.push({"id": itsc.id.value, "label": itsc.fn1Label.value + " and " + itsc.fn2Label.value});
+		 	seen.push(itsc.id.value);
+		}
+	});
+	return arr;
 }
 
 async function lookupMappings() {
