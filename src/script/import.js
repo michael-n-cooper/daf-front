@@ -58,8 +58,8 @@ if (guidelines.length > 0) {
 }
 sparql += ' }';
 //console.log(sparql);
-const importResult = await dbquery.updateQuery(sparql);
-console.log(JSON.stringify(importResult));
+//const importResult = await dbquery.updateQuery(sparql);
+//console.log(JSON.stringify(importResult));
 
 
 // get a {id, label} of matrix dimensions
@@ -122,7 +122,6 @@ function expandMappings(metadata) {
 		functionalNeeds.forEach(function(functionalNeed) {
 			var functionalNeedId;
 			if (typeof functionalNeed === 'object') {
-				console.log(functionalNeed.intersection[1]);
 				const fn1 = getMatrixDimId(functionalNeed.intersection[0]);
 				const fn2 = getMatrixDimId(functionalNeed.intersection[1]);
 				functionalNeedId = getIntersectionNeedId(fn1, fn2);
@@ -155,7 +154,8 @@ async function getMappingIds(mappings) {
 
 // get a single mapping object from the stored array, or add one if not exists
 async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
-	const sparql = 'select ?id where { ?id a a11y:MatrixMapping ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
+	const sparql = 'select ?id where { ?id a a11y:Mapping ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
+	console.log(sparql);
 	var results = await dbquery.selectQuery(sparql);
 	if (results.results.bindings.length == 0) {
 		const uuid = dbquery.uuid();
@@ -171,7 +171,10 @@ async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
 
 // get the id for a label on a class, add it to the database if not found
 function getIdByLabel(arr, label, addClass) {
-	var id = findObjectByProperties(arr, {"label": label});
+	var id = null;
+	
+	const idObj = findObjectByProperties(arr, {"label": label});
+	if (typeof idObj !== 'undefined') id = idObj.id;
 	
 	if (id == null && addClass !== undefined) {
 		id = dbquery.uuid();

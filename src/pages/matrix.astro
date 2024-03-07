@@ -122,7 +122,7 @@ async function lookupIntersectionNeeds() {
 	const itscRes = await dbquery.selectQuery(itscSparql);
 	if (typeof itscRes.results !== 'undefined') itscRes.results.bindings.forEach(function(itsc) {
 		if (!seen.includes(itsc.id.value)) {
-		 	arr.push({"id": itsc.id.value, "label": itsc.fn1Label.value + " and " + itsc.fn2Label.value});
+		 	arr.push({"id": dbquery.idFrag(itsc.id.value), "label": itsc.fn1Label.value + " and " + itsc.fn2Label.value});
 		 	seen.push(itsc.id.value);
 		}
 	});
@@ -133,13 +133,13 @@ async function lookupMappings() {
 	let matrix = new Array();
 	let statements = new Array();
 
-	const stmtSparql = 'select ?mId ?sId ?sLabel where { ?mId a a11y:MatrixMapping . ?sId a a11y:AccessibilityStatement ; a11y:supports ?mId ; rdfs:label ?sLabel }';
+	const stmtSparql = 'select ?mId ?sId ?sLabel where { ?mId a a11y:Mapping . ?sId a a11y:AccessibilityStatement ; a11y:supports ?mId ; rdfs:label ?sLabel }';
 	const stmtResult = await dbquery.selectQuery(stmtSparql);
 	stmtResult.results.bindings.forEach(function(stmt) {
 		statements.push({"id": dbquery.idFrag(stmt.sId.value), "label": stmt.sLabel.value, "mId": dbquery.idFrag(stmt.mId.value)});
 	});
 	
-	const sparql = 'select ?mId ?applicable ?fnId ?unId ?unrId where { ?mId a a11y:MatrixMapping ; a11y:supports ?fnId ; a11y:supports ?unId ; a11y:supports ?unrId . ?fnId a a11y:FunctionalNeed . ?unId a a11y:UserNeed . ?unrId a a11y:UserNeedRelevance . optional { ?mId a11y:applicable ?applicable } }';
+	const sparql = 'select ?mId ?applicable ?fnId ?unId ?unrId where { ?mId a a11y:Mapping ; a11y:supports ?fnId ; a11y:supports ?unId ; a11y:supports ?unrId . { ?fnId a a11y:FunctionalNeed } union { ?fnId a a11y:IntersectionNeed } . ?unId a a11y:UserNeed . ?unrId a a11y:UserNeedRelevance . optional { ?mId a11y:applicable ?applicable } }';
 	const result = await dbquery.selectQuery(sparql);
 	result.results.bindings.forEach(function(mapping) {
 		const filtered = filterObjectByProperties(statements, {"mId": dbquery.idFrag(mapping.mId.value)}); //filter(obj => obj.mId == dbquery.idFrag(mapping.mId.value));
