@@ -171,7 +171,10 @@ async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
 
 // get the id for a label on a class, add it to the database if not found
 function getIdByLabel(arr, label, addClass) {
-	var id = findObjectByProperties(arr, {"label": label});
+	var id = null;
+	
+	const idObj = findObjectByProperties(arr, {"label": label});
+	if (typeof idObj !== 'undefined') id = idObj.id;
 	
 	if (id == null && addClass !== undefined) {
 		id = dbquery.uuid();
