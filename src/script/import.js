@@ -1,7 +1,7 @@
 import { readFile, writeFile, open } from 'node:fs/promises';
 import parseMD from 'parse-md';
 import * as dbquery from './dbquery.js';
-import {findObjectByProperties, filterObjectByProperties, idFrag, compareStr, isValidUrl, getOneProp, getFileData} from './util.js';
+import {findObjectByProperties, filterObjectByProperties, idFrag, compareStr, isValidUrl, getOneProp, getFileData, escSparql} from './util.js';
 import inquirer from 'inquirer';
 
 const importDir = '../../../../accessiblecommunity/Digital-Accessibility-Framework/';
@@ -33,8 +33,8 @@ const { title, statement } = retrieveContent(content); // retrieve title and sta
 // construct the sparql statement
 const stmtId = dbquery.uuid();
 var sparql = 'insert data { :' + stmtId + ' a a11y:AccessibilityStatement ; a owl:NamedIndividual ';
-sparql += ' ; a11y:stmtGuidance "' + statement + '"@en';
-sparql += ' ; rdfs:label "' + title + '"@en';
+sparql += ' ; a11y:stmtGuidance "' + escSparql(statement) + '"@en';
+sparql += ' ; rdfs:label "' + escSparql(title) + '"@en';
 sparql += ' ; a11y:contentIRI <' + contentIriBase + importFileName + ">";
 mappingIds.forEach(function(mapping) {
 	sparql += ' ; a11y:supports :' + mapping;
@@ -45,14 +45,14 @@ tagsArr.forEach(function(tag) {
 if (research.length > 0) {
 	research.forEach(function(link) {
 		const linkId = dbquery.uuid();
-		sparql += ' . :' + linkId + ' a a11y:Reference ; a11y:refIRI <' + link.uri + '> ; a11y:refNote "' + link.note + '"@en ; a11y:refType :' + getIdByLabel(referenceTypes, 'research', 'ReferenceType');
+		sparql += ' . :' + linkId + ' a a11y:Reference ; a11y:refIRI <' + link.uri + '> ; a11y:refNote "' + escSparql(link.note) + '"@en ; a11y:refType :' + getIdByLabel(referenceTypes, 'research', 'ReferenceType');
 		sparql += ' . :' + stmtId + ' a11y:references :' + linkId;
 	});
 }
 if (guidelines.length > 0) {
 	guidelines.forEach(function(link) {
 		const linkId = dbquery.uuid();
-		sparql += ' . :' + linkId + ' a a11y:Reference ; a11y:refIRI <' + link.uri + '> ; a11y:refNote "' + link.note + '"@en ; a11y:refType :' + getIdByLabel(referenceTypes, 'guidelines', 'ReferenceType');
+		sparql += ' . :' + linkId + ' a a11y:Reference ; a11y:refIRI <' + link.uri + '> ; a11y:refNote "' + escSparql(link.note) + '"@en ; a11y:refType :' + getIdByLabel(referenceTypes, 'guidelines', 'ReferenceType');
 		sparql += ' . :' + stmtId + ' a11y:references :' + linkId;
 	});
 }
@@ -293,10 +293,10 @@ async function findMatrixTypos() {
 	
 	function checkEach(list, label) {
 		if (typeof findObjectByProperties(list, {"label": label}) === 'undefined' && typeof findObjectByProperties(typos, {"incorrect": label}) === 'undefined') {
-			incorrects.push(label, list);
+			incorrects.push([label, list]);
 		}
 	}
-	
+		
 	//todo: remove duplicates from the array before proceeding
 	if (incorrects.length > 0) {
 		incorrects.forEach(function(inc, index) {
@@ -321,6 +321,7 @@ async function promptTypoCorrections(questions) {
 
 // inquirer
 function makeInquirerQuestion(qId, label, arr) {
+console.log(arr);
 	var q = {
     	type: "rawlist",
     	name: qId,
