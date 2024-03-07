@@ -7,7 +7,7 @@ import inquirer from 'inquirer';
 const importDir = '../../../../accessiblecommunity/Digital-Accessibility-Framework/';
 const importFileName = await inquirer.prompt([{"name": "fileName", "message": "File to import:", }]).then((answer) => answer.fileName); 
 const typosPath = './typos.json';
-const contentIriBase = 'https://github.com/accessiblecommunity/Digital-Accessibility-Framework';
+const contentIriBase = 'https://github.com/accessiblecommunity/Digital-Accessibility-Framework/';
 
 const data = await getFileData(importDir + importFileName); // need to catch bad file name
 
@@ -57,7 +57,7 @@ if (guidelines.length > 0) {
 	});
 }
 sparql += ' }';
-//console.log(sparql);
+console.log(sparql);
 const importResult = await dbquery.updateQuery(sparql);
 console.log(JSON.stringify(importResult));
 
