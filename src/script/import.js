@@ -122,7 +122,6 @@ function expandMappings(metadata) {
 		functionalNeeds.forEach(function(functionalNeed) {
 			var functionalNeedId;
 			if (typeof functionalNeed === 'object') {
-				console.log(functionalNeed.intersection[1]);
 				const fn1 = getMatrixDimId(functionalNeed.intersection[0]);
 				const fn2 = getMatrixDimId(functionalNeed.intersection[1]);
 				functionalNeedId = getIntersectionNeedId(fn1, fn2);
@@ -321,7 +320,6 @@ async function promptTypoCorrections(questions) {
 
 // inquirer
 function makeInquirerQuestion(qId, label, arr) {
-console.log(arr);
 	var q = {
     	type: "rawlist",
     	name: qId,
