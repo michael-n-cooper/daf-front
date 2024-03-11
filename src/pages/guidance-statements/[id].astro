@@ -2,6 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 import * as dbquery from '../../script/dbquery.js';
 
+export async function getStaticPaths() { 
+	const module = await import('./ids.js');
+	const {ids} = module;
+	return (ids);
+}
+
 const {id} = Astro.params;
 
 // get the main statement
