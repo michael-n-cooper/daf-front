@@ -57,9 +57,9 @@ if (guidelines.length > 0) {
 	});
 }
 sparql += ' }';
-console.log(sparql);
-//const importResult = await dbquery.updateQuery(sparql);
-//console.log(JSON.stringify(importResult));
+//console.log(sparql);
+const importResult = await dbquery.updateQuery(sparql);
+console.log(JSON.stringify(importResult));
 
 
 // get a {id, label} of matrix dimensions
@@ -121,16 +121,18 @@ function expandMappings(metadata) {
 		// expand out arrays of mapped items
 		functionalNeeds.forEach(function(functionalNeed) {
 			var functionalNeedId;
+			var fnType = "FunctionalNeed";
 			if (typeof functionalNeed === 'object') {
 				const fn1 = getMatrixDimId(functionalNeed.intersection[0]);
 				const fn2 = getMatrixDimId(functionalNeed.intersection[1]);
 				functionalNeedId = getIntersectionNeedId(fn1, fn2);
+				fnType = "IntersectionNeed"
 			} else functionalNeedId = getMatrixDimId(functionalNeed);
 			userNeeds.forEach(function(userNeed) {
 				const userNeedId = getMatrixDimId(userNeed);
 				userNeedRelevances.forEach(function(userNeedRelevance) {
 					const userNeedRelevanceId = getMatrixDimId(userNeedRelevance);
-					expandedMappings.push([functionalNeedId, userNeedId, userNeedRelevanceId]);
+					expandedMappings.push({[fnType]: functionalNeedId, "UserNeed": userNeedId, "UserNeedRelevance": userNeedRelevanceId});
 				});
 			});
 		});
@@ -144,7 +146,7 @@ async function getMappingIds(mappings) {
 		let promises = new Array();
 		var result = new Array();
 		mappings.forEach(function(mapping) {
-			promises.push(getMappingId(mapping[0], mapping[1], mapping[2]));
+			promises.push(getMappingId(mapping));
 		});
 		return Promise.all(promises);
 	}
@@ -153,13 +155,15 @@ async function getMappingIds(mappings) {
 }
 
 // get a single mapping object from the stored array, or add one if not exists
-async function getMappingId(functionalNeedId, userNeedId, userNeedRelevanceId) {
-	const sparql = 'select ?id where { ?id a a11y:Mapping ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
-	console.log(sparql);
+async function getMappingId(mapping) {
+	var functionalNeedId = (mapping.FunctionalNeed || mapping.IntersectionNeed);
+	const sparql = 'select ?id where { ?id a a11y:Mapping ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + mapping.UserNeed + ' ; a11y:supports :' + mapping.UserNeedRelevance + ' }';
 	var results = await dbquery.selectQuery(sparql);
 	if (results.results.bindings.length == 0) {
+		var mapType = "MatrixMapping";
+		if (typeof mapping.FunctionalNeed === 'undefined') mapType = "IntersectionMapping";
 		const uuid = dbquery.uuid();
-		const update = 'insert data { :' + uuid + ' a a11y:MatrixMapping ; a owl:NamedIndividual ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + userNeedId + ' ; a11y:supports :' + userNeedRelevanceId + '}';
+		const update = 'insert data { :' + uuid + ' a a11y:' + mapType + ' ; a owl:NamedIndividual ; a11y:supports :' + functionalNeedId + ' ; a11y:supports :' + mapping.UserNeed + ' ; a11y:supports :' + mapping.UserNeedRelevance + ' }';
 		await dbquery.updateQuery(update);
 		return (uuid);
 	} else {
