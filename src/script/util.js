@@ -50,3 +50,6 @@ export async function getFileData(path) {
 	}
 }
 
+export function escSparql(str) {
+	return str.replaceAll("\"", "\\\"");
+}
