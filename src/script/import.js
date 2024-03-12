@@ -89,7 +89,9 @@ function getIntersectionNeedId(fn1, fn2) {
 	
 	if (typeof inId === 'undefined') {
 		inId = dbquery.uuid();
-		const update = 'insert data { :' + inId + ' a a11y:IntersectionNeed ; a11y:supports :' + fn1 + ' ; a11y:supports :' + fn2 + ' }';
+		const label1 = findObjectByProperties(functionalNeedList, {"id": fn1}).label;
+		const label2 = findObjectByProperties(functionalNeedList, {"id": fn2}).label;
+		const update = 'insert data { :' + inId + ' a a11y:IntersectionNeed ; a11y:supports :' + fn1 + ' ; a11y:supports :' + fn2 + ' ; rdfs:label "' + label1 + " and " + label2 + '"@en}';
 		dbquery.updateQuery(update);
 	}
 	return inId;

@@ -97,14 +97,14 @@ async function lookupFunctionalNeedCategories () {
 	const fnSparql = 'select ?cId ?id ?label where { ?id a a11y:FunctionalNeed ; rdfs:label ?label ; a11y:supports ?cId . ?cId rdfs:label ?clabel } order by ?clabel ?label';	
 	const fnRes = await dbquery.selectQuery(fnSparql);
 	fnRes.results.bindings.forEach(function(fn) {
-		fns.push({"id": dbquery.idFrag(fn.id.value), "label": fn.label.value, "cId": dbquery.idFrag(fn.cId.value)});
+		if (!fn.label.value.includes("intersection")) fns.push({"id": dbquery.idFrag(fn.id.value), "label": fn.label.value, "cId": dbquery.idFrag(fn.cId.value)});
 	});
 
 	//functional need categories
 	const fncRes = await lookupList('FunctionalNeedCategory');
 	fncRes.forEach(function(fnc) {
 		const filtered = fns.filter(obj => obj.cId == dbquery.idFrag(fnc.id));
-		fncs.push({"id": dbquery.idFrag(fnc.id), "label": fnc.label, "functionalNeeds": filtered});
+		if (fnc.label != 'Intersections') fncs.push({"id": dbquery.idFrag(fnc.id), "label": fnc.label, "functionalNeeds": filtered});
 	});
 	
 	// add intersections
@@ -118,11 +118,11 @@ async function lookupFunctionalNeedCategories () {
 async function lookupIntersectionNeeds() {
 	var arr = new Array();
 	var seen = new Array();
-	const itscSparql = 'select ?id ?fn1Label ?fn2Label where { ?id a a11y:IntersectionNeed ; a11y:supports ?fn1Id ; a11y:supports ?fn2Id . ?fn1Id rdfs:label ?fn1Label . ?fn2Id rdfs:label ?fn2Label . filter (!sameterm(?fn1Id, ?fn2Id)) } order by ?fn1Id ?fn2Id';
+	const itscSparql = 'select ?id ?label where { ?id a a11y:IntersectionNeed ; rdfs:label ?label }';
 	const itscRes = await dbquery.selectQuery(itscSparql);
 	if (typeof itscRes.results !== 'undefined') itscRes.results.bindings.forEach(function(itsc) {
 		if (!seen.includes(itsc.id.value)) {
-		 	arr.push({"id": dbquery.idFrag(itsc.id.value), "label": itsc.fn1Label.value + " and " + itsc.fn2Label.value});
+		 	arr.push({"id": dbquery.idFrag(itsc.id.value), "label": itsc.label.value});
 		 	seen.push(itsc.id.value);
 		}
 	});

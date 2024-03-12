@@ -9,7 +9,7 @@ const stmtSparql = 'select ?id ?label ?guidance ?contentIRI where { ?id rdfs:lab
 const stmtResult = await dbquery.selectQuery(stmtSparql);
 
 // get the mappings
-const mapSparql = 'select ?fn_id ?fn_label ?un_id ?un_label ?unr_id ?unr_label where { values ?id { :' + id + ' } . ?id a11y:supports ?mapping . ?mapping a a11y:MatrixMapping ; a11y:supports ?fn_id ; a11y:supports ?un_id ; a11y:supports ?unr_id . ?fn_id a a11y:FunctionalNeed ; rdfs:label ?fn_label . ?un_id a a11y:UserNeed ; rdfs:label ?un_label . ?unr_id a a11y:UserNeedRelevance ; rdfs:label ?unr_label }';
+const mapSparql = 'select ?fn_id ?fn_label ?un_id ?un_label ?unr_id ?unr_label where { values ?id { :' + id + ' } . ?id a11y:supports ?mapping . ?mapping a a11y:Mapping ; a11y:supports ?fn_id ; a11y:supports ?un_id ; a11y:supports ?unr_id . ?fn_id a a11y:FunctionalNeed ; rdfs:label ?fn_label . ?un_id a a11y:UserNeed ; rdfs:label ?un_label . ?unr_id a a11y:UserNeedRelevance ; rdfs:label ?unr_label }';
 const mapResult = await dbquery.selectQuery(mapSparql);
 
 const refSparql = 'select ?iri ?note ?type where { values ?stmtid { :' + id + ' } . ?stmtid a11y:references ?id . ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label ?type }';
