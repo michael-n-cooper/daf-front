@@ -1,54 +1,19 @@
-# Astro Starter Kit: Basics
+# Digital Accessibility Framework database front end
 
-```sh
-npm create astro@latest -- --template basics
-```
+This is a [Node](nodejs.org) project using the [Astro framework](astro.build) to create a front-end to a RDF database containing content of the [Digital Accessibility Framework](https://github.com/accessiblecommunity/Digital-Accessibility-Framework). A [copy of the data](https://github.com/michael-n-cooper/a11y-data/blob/main/digital-a11y.jsonld) in JSON-LD format can be imported into a RDF database and used with this tool.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Working with this tool
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+In addition to normal astro files, the `src/scripts` folder includes `import.js` to import content from the markdown / yaml format. The command line in that folder is `node import` and when prompted give the name of the file to import. The base path is hardcoded for now, and for now it must be called once per file to import. At the moment, re-importing a file creates a duplicate of the data.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+Run with astro server with `npm run dev`. The `dbquery.js` file manages the connection to the server (a SPARQL endpoint), with a hardcoded location for now.
 
-## 🚀 Project Structure
+## Static build
 
-Inside of your Astro project, you'll see the following folders and files:
+The `static` branch of this repository is configured to build static copies of the site. To update the build:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Switch to the `static` branch.
+1. Update from the `main` branch.
+1. In the `src\script` folder run `node static-ids`. This will pull information from the database to drive the build.
+1. In the project root folder, run `npm run build`. This will put the static site into the `dist` folder.
+1. Commit all the changes into the `static` branch and push to the server.
