@@ -20,6 +20,7 @@ async function process(section) {
 let paths = new Array();
 paths.push({"path": "functional-need-categories", "type": "FunctionalNeedCategory"});
 paths.push({"path": "functional-needs", "type": "FunctionalNeed"});
+paths.push({"path": "intersection-needs", "type": "IntersectionNeed"});
 paths.push({"path": "guidance-statements", "type": "AccessibilityStatement"});
 paths.push({"path": "references", "type": "Reference"});
 paths.push({"path": "tags", "type": "Tag"});
