@@ -9,5 +9,5 @@ const json = await dbquery.selectQuery(sparql);
 ---
 <label for="category">{title}</label>
 <select name="category" id="category">
-	{json.results.bindings.map((item) => <option value={item.id.value} selected={(selectedId == item.id.value) ? 'selected' : undefined}>{item.label.value}</option>)}
+	{json.results.bindings.map((item) => <option value={dbquery.idFrag(item.id.value)} selected={(selectedId == dbquery.idFrag(item.id.value)) ? 'selected' : undefined}>{item.label.value}</option>)}
 </select>

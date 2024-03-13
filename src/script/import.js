@@ -108,7 +108,7 @@ function lookupIntersectionNeeds() {
 	const sparql = 'select ?id ?fn1 ?fn2 where { ?id a a11y:IntersectionNeed ; a11y:supports ?fn1 ; a11y:supports ?fn2 . filter (!sameterm(?fn1, ?fn2)) }';
 	const results = dbquery.selectQuery(sparql);
 	if (typeof results.bindings !== 'undefined') results.bindings.forEach(function(item) {
-		arr.push({"id": item.id.value, "fn1": item.fn1.value, "fn2": item.fn2.value});
+		arr.push({"id": idFrag(item.id.value), "fn1": idFrag(item.fn1.value), "fn2": idFrag(item.fn2.value)});
 	});
 	return arr;
 }
@@ -347,7 +347,7 @@ async function checkReimport(contentIri) {
 	const sparql = 'select ?id ?label where { ?id a11y:contentIRI <' + contentIri + '> ; rdfs:label ?label }';
 	const result = await dbquery.selectQuery(sparql);
 	if (result.results.bindings.length > 0) {
-		const id = dbquery.idFrag(result.results.bindings[0].id.value);
+		const id = idFrag(result.results.bindings[0].id.value);
 		const label = result.results.bindings[0].label.value;
 		const replace = await inquirer.prompt([{"type": "confirm", "name": "replace", "message": "Do you want to reimport " + label + "?", }]).then((answer) => answer.replace); 
 		if (!replace) return false;

@@ -121,9 +121,10 @@ async function lookupIntersectionNeeds() {
 	const itscSparql = 'select ?id ?label where { ?id a a11y:IntersectionNeed ; rdfs:label ?label }';
 	const itscRes = await dbquery.selectQuery(itscSparql);
 	if (typeof itscRes.results !== 'undefined') itscRes.results.bindings.forEach(function(itsc) {
-		if (!seen.includes(itsc.id.value)) {
-		 	arr.push({"id": dbquery.idFrag(itsc.id.value), "label": itsc.label.value});
-		 	seen.push(itsc.id.value);
+		const itscId = dbquery.idFrag(itsc.id.value);
+		if (!seen.includes(itscId)) {
+		 	arr.push({"id": dbquery.idFrag(itscId), "label": itsc.label.value});
+		 	seen.push(itscId);
 		}
 	});
 	return arr;
