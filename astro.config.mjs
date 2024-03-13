@@ -7,5 +7,7 @@ export default defineConfig({
   output: "static",
   adapter: node({
     mode: "standalone"
-  })
+  }),
+  site: 'https://michael-n-cooper.github.io',
+  base: '/daf-front'
 });
