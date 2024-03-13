@@ -30,36 +30,41 @@ const tagsArr = metadata.tags ? metadata.tags : new Array(); // retrieve tags
 const { research, guidelines } = retrieveReferences(metadata); // retrieve references, divide into research and guidelines
 const { title, statement } = retrieveContent(content); // retrieve title and statement
 
-// construct the sparql statement
-const stmtId = dbquery.uuid();
-var sparql = 'insert data { :' + stmtId + ' a a11y:AccessibilityStatement ; a owl:NamedIndividual ';
-sparql += ' ; a11y:stmtGuidance "' + escSparql(statement) + '"@en';
-sparql += ' ; rdfs:label "' + escSparql(title) + '"@en';
-sparql += ' ; a11y:contentIRI <' + contentIriBase + importFileName + ">";
-mappingIds.forEach(function(mapping) {
-	sparql += ' ; a11y:supports :' + mapping;
-});
-tagsArr.forEach(function(tag) {
-	sparql += ' ; a11y:tags :' + getIdByLabel(tags, tag, 'Tag');
-});
-if (research.length > 0) {
-	research.forEach(function(link) {
-		const linkId = dbquery.uuid();
-		sparql += ' . :' + linkId + ' a a11y:Reference ; a11y:refIRI <' + link.uri + '> ; a11y:refNote "' + escSparql(link.note) + '"@en ; a11y:refType :' + getIdByLabel(referenceTypes, 'research', 'ReferenceType');
-		sparql += ' . :' + stmtId + ' a11y:references :' + linkId;
+// check for previous
+var stmtId = await checkReimport(contentIriBase + importFileName);
+if (stmtId != false) {
+	
+	// construct the sparql statement
+	if (stmtId == null) stmtId = dbquery.uuid();
+	var sparql = 'insert data { :' + stmtId + ' a a11y:AccessibilityStatement ; a owl:NamedIndividual ';
+	sparql += ' ; a11y:stmtGuidance "' + escSparql(statement) + '"@en';
+	sparql += ' ; rdfs:label "' + escSparql(title) + '"@en';
+	sparql += ' ; a11y:contentIRI <' + contentIriBase + importFileName + ">";
+	mappingIds.forEach(function(mapping) {
+		sparql += ' ; a11y:supports :' + mapping;
 	});
-}
-if (guidelines.length > 0) {
-	guidelines.forEach(function(link) {
-		const linkId = dbquery.uuid();
-		sparql += ' . :' + linkId + ' a a11y:Reference ; a11y:refIRI <' + link.uri + '> ; a11y:refNote "' + escSparql(link.note) + '"@en ; a11y:refType :' + getIdByLabel(referenceTypes, 'guidelines', 'ReferenceType');
-		sparql += ' . :' + stmtId + ' a11y:references :' + linkId;
+	tagsArr.forEach(function(tag) {
+		sparql += ' ; a11y:tags :' + getIdByLabel(tags, tag, 'Tag');
 	});
-}
-sparql += ' }';
-//console.log(sparql);
-const importResult = await dbquery.updateQuery(sparql);
-console.log(JSON.stringify(importResult));
+	if (research.length > 0) {
+		research.forEach(function(link) {
+			const linkId = dbquery.uuid();
+			sparql += ' . :' + linkId + ' a a11y:Reference ; a11y:refIRI <' + link.uri + '> ; a11y:refNote "' + escSparql(link.note) + '"@en ; a11y:refType :' + getIdByLabel(referenceTypes, 'research', 'ReferenceType');
+			sparql += ' . :' + stmtId + ' a11y:references :' + linkId;
+		});
+	}
+	if (guidelines.length > 0) {
+		guidelines.forEach(function(link) {
+			const linkId = dbquery.uuid();
+			sparql += ' . :' + linkId + ' a a11y:Reference ; a11y:refIRI <' + link.uri + '> ; a11y:refNote "' + escSparql(link.note) + '"@en ; a11y:refType :' + getIdByLabel(referenceTypes, 'guidelines', 'ReferenceType');
+			sparql += ' . :' + stmtId + ' a11y:references :' + linkId;
+		});
+	}
+	sparql += ' }';
+	//console.log(sparql);
+	const importResult = await dbquery.updateQuery(sparql);
+	console.log(JSON.stringify(importResult));
+} else console.log("Aborting");
 
 
 // get a {id, label} of matrix dimensions
@@ -103,7 +108,7 @@ function lookupIntersectionNeeds() {
 	const sparql = 'select ?id ?fn1 ?fn2 where { ?id a a11y:IntersectionNeed ; a11y:supports ?fn1 ; a11y:supports ?fn2 . filter (!sameterm(?fn1, ?fn2)) }';
 	const results = dbquery.selectQuery(sparql);
 	if (typeof results.bindings !== 'undefined') results.bindings.forEach(function(item) {
-		arr.push({"id": item.id.value, "fn1": item.fn1.value, "fn2": item.fn2.value});
+		arr.push({"id": idFrag(item.id.value), "fn1": idFrag(item.fn1.value), "fn2": idFrag(item.fn2.value)});
 	});
 	return arr;
 }
@@ -338,3 +343,18 @@ function makeInquirerQuestion(qId, label, arr) {
   return q;
 }
 
+async function checkReimport(contentIri) {
+	const sparql = 'select ?id ?label where { ?id a11y:contentIRI <' + contentIri + '> ; rdfs:label ?label }';
+	const result = await dbquery.selectQuery(sparql);
+	if (result.results.bindings.length > 0) {
+		const id = idFrag(result.results.bindings[0].id.value);
+		const label = result.results.bindings[0].label.value;
+		const replace = await inquirer.prompt([{"type": "confirm", "name": "replace", "message": "Do you want to reimport " + label + "?", }]).then((answer) => answer.replace); 
+		if (!replace) return false;
+		else {
+			const updateSparql = 'delete { ?s ?p ?o } where { values ?s { :' + id + ' } . ?s ?p ?o }';
+			await dbquery.updateQuery(updateSparql);
+			return id;
+		}
+	} else return null;
+}
