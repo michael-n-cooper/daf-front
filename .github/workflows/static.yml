@@ -25,6 +25,7 @@ jobs:
         with:
           path: deploy
           ref: gh-pages
+          token: ${{ env.GH_TOKEN }}
       - name: Cleanup old files
         run: rm -rf deploy/
       - name: Copy files
