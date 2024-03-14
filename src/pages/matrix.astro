@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import * as dbquery from '../script/dbquery.js';
 import {findObjectByProperties, filterObjectByProperties} from '../script/util.js';
-const baseURI = '/daf-front';
+const baseURI = '/';
 
 var debug = new Array();
 // Get the matrix data, including mapping info etc.
@@ -35,7 +35,7 @@ function buildTable() {
 	table += "<tr><td></td><td></td>"; 
 	functionalNeedCategories.forEach(function(fnc) {
 		fnc.functionalNeeds.forEach(function(fn) {
-		table += "<th scope='col'><a href=baseURI + '/functional-needs/" + fn.id + "'>" + fn.label + "</a></th>"; 
+		table += "<th scope='col'><a href='" + baseURI + "functional-needs/" + fn.id + "'>" + fn.label + "</a></th>"; 
 		});
 	});
 	table += "<th scope='col'>User need</th>";
@@ -44,11 +44,11 @@ function buildTable() {
 	
 	// rows per user need
 	userNeeds.forEach(function(un) {
-		table += "<tr><th scope='rowgroup' rowspan=" + userNeedRelevances.length + "><a href=baseURI + '/user-needs/" + un.id + "'>" + un.label + "</a></th>";
+		table += "<tr><th scope='rowgroup' rowspan=" + userNeedRelevances.length + "><a href='" + baseURI + "user-needs/" + un.id + "'>" + un.label + "</a></th>";
 		var rowNum = 1;
 		userNeedRelevances.forEach(function(unr) {
 			if (rowNum > 2) table += "<tr>";
-			table += "<th scope='row'><a href=baseURI + '/user-need-relevances/" + unr.id + "'>" + unr.label + "</a></th>";
+			table += "<th scope='row'><a href='" + baseURI + "user-need-relevances/" + unr.id + "'>" + unr.label + "</a></th>";
 			
 			functionalNeedCategories.forEach(function(fnc) {
 				fnc.functionalNeeds.forEach(function(fn) {
@@ -61,7 +61,7 @@ function buildTable() {
 							if (list) table += "<ul>";
 							mappingObj.statements.forEach(function(stmt) {
 								if (list) table += "<li>";
-								table += "<a href=baseURI + '/guidance-statements/" + stmt.id + "' title='" + stmt.guidance + "'>" + stmt.label + "</a>";
+								table += "<a href='" + baseURI + "guidance-statements/" + stmt.id + "' title='" + stmt.guidance + "'>" + stmt.label + "</a>";
 								if (list) table += "</li>";
 							});
 							if (list) table += "</ul>";
