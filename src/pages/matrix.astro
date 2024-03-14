@@ -59,7 +59,7 @@ function buildTable() {
 							if (list) table += "<ul>";
 							mappingObj.statements.forEach(function(stmt) {
 								if (list) table += "<li>";
-								table += "<a href='/guidance-statements/" + stmt.id + "'>" + stmt.label + "</a>";
+								table += "<a href='/guidance-statements/" + stmt.id + "' title='" + stmt.guidance + "'>" + stmt.label + "</a>";
 								if (list) table += "</li>";
 							});
 							if (list) table += "</ul>";
@@ -134,10 +134,10 @@ async function lookupMappings() {
 	let matrix = new Array();
 	let statements = new Array();
 
-	const stmtSparql = 'select ?mId ?sId ?sLabel where { ?mId a a11y:Mapping . ?sId a a11y:AccessibilityStatement ; a11y:supports ?mId ; rdfs:label ?sLabel }';
+	const stmtSparql = 'select ?mId ?sId ?sLabel ?sGuidance where { ?mId a a11y:Mapping . ?sId a a11y:AccessibilityStatement ; a11y:supports ?mId ; rdfs:label ?sLabel ; a11y:stmtGuidance ?sGuidance }';
 	const stmtResult = await dbquery.selectQuery(stmtSparql);
 	stmtResult.results.bindings.forEach(function(stmt) {
-		statements.push({"id": dbquery.idFrag(stmt.sId.value), "label": stmt.sLabel.value, "mId": dbquery.idFrag(stmt.mId.value)});
+		statements.push({"id": dbquery.idFrag(stmt.sId.value), "label": stmt.sLabel.value, "mId": dbquery.idFrag(stmt.mId.value), "guidance": stmt.sGuidance.value});
 	});
 	
 	const sparql = 'select ?mId ?applicable ?fnId ?unId ?unrId where { ?mId a a11y:Mapping ; a11y:supports ?fnId ; a11y:supports ?unId ; a11y:supports ?unrId . { ?fnId a a11y:FunctionalNeed } union { ?fnId a a11y:IntersectionNeed } . ?unId a a11y:UserNeed . ?unrId a a11y:UserNeedRelevance . optional { ?mId a11y:applicable ?applicable } }';
