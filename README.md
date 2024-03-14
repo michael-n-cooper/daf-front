@@ -17,3 +17,7 @@ The `static` branch of this repository is configured to build static copies of t
 1. In the `src\script` folder run `node static-ids`. This will pull information from the database to drive the build.
 1. In the project root folder, run `npm run build`. This will put the static site into the `dist` folder.
 1. Commit all the changes into the `static` branch and push to the server.
+
+## GitHub site
+
+The `gh-pages` branch serves a live version of the site with data as of last build. Update is not yet automated; to update, copy the contents of the `dist` folder from the `static` branch into the root folder of the `gh-pages` branch.

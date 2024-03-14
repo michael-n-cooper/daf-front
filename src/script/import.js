@@ -352,8 +352,10 @@ async function checkReimport(contentIri) {
 		const replace = await inquirer.prompt([{"type": "confirm", "name": "replace", "message": "Do you want to reimport " + label + "?", }]).then((answer) => answer.replace); 
 		if (!replace) return false;
 		else {
-			const updateSparql = 'delete { ?s ?p ?o } where { values ?s { :' + id + ' } . ?s ?p ?o }';
-			await dbquery.updateQuery(updateSparql);
+			const updateSparql1 = 'delete where { :' + id + ' a11y:references ?s . ?s ?p ?o}';
+			const updateSparql2 = 'delete where { :' + id + ' ?p ?o }';
+			await dbquery.updateQuery(updateSparql1);
+			await dbquery.updateQuery(updateSparql2);
 			return id;
 		}
 	} else return null;
