@@ -2,7 +2,7 @@
 import * as dbquery from '../script/dbquery.js';
 import {baseUri, idFrag} from '../script/util.js';
 
-const {type, title} = Astro.props;
+const {type, section, title} = Astro.props;
 
 async function processFetch() {
 	const sparql = "select ?s ?l where { ?s a a11y:" + type + " . ?s rdfs:label ?l } order by ?l";
@@ -14,6 +14,6 @@ const json = await processFetch();
 
 ---
 <ul>
-	{json.results.bindings.map((item) => <li><a href={baseUri + idFrag(item.s.value)}>{item.l.value}</a></li>)}
+	{json.results.bindings.map((item) => <li><a href={baseUri + section + '/' + idFrag(item.s.value)}>{item.l.value}</a></li>)}
 </ul>
 

@@ -1,13 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import * as dbquery from '../../script/dbquery.js';
+import {baseUri, idFrag} from '../script/util.js';
 
 const sparql = 'select ?id ?iri ?note ?type ?stmtId ?stmtLabel where { ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label ?type . ?stmtId a11y:references ?id ; rdfs:label ?stmtLabel }';
 const result = await dbquery.selectQuery(sparql);
 ---
 <Layout title="References">
 		<ul>
-			{result.results.bindings.map((reference) => <li><a href={reference.iri.value}>{reference.note.value}</a> - referenced in <a href={'/guidance-statements/' + dbquery.idFrag(reference.stmtId.value)}>{reference.stmtLabel.value}</a></li>)}
+			{result.results.bindings.map((reference) => <li><a href={reference.iri.value}>{reference.note.value}</a> - referenced in <a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId.value)}>{reference.stmtLabel.value}</a></li>)}
 		</ul>
 </Layout>
 
