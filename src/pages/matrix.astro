@@ -61,14 +61,13 @@ function buildTable() {
 					let mappingObj = findObjectByProperties(mappings, {"fnId": fn.id, "unId": un.id, "unrId": unr.id});
 					if (typeof mappingObj !== 'undefined') {
 						if (mappingObj.statements !== undefined) {
-							var list = mappingObj.statements.length > 1;
-							if (list) table += "<ul>";
+							table += "<ul>";
 							mappingObj.statements.forEach(function(stmt) {
-								if (list) table += "<li>";
+								table += "<li>";
 								table += "<a href='" + baseUri + "guidance-statements/" + stmt.id + "' title='" + stmt.guidance + "'>" + stmt.label + "</a>";
-								if (list) table += "</li>";
+								table += "</li>";
 							});
-							if (list) table += "</ul>";
+							table += "</ul>";
 						}
 					}
 					table += "</td>";
