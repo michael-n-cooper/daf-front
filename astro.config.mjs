@@ -9,5 +9,5 @@ export default defineConfig({
     mode: "standalone"
   }),
   site: 'https://michael-n-cooper.github.io',
-  base: 'daf-front'
+  base: 'daf-front/'
 });
