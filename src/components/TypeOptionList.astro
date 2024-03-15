@@ -1,5 +1,6 @@
 ---
 import * as dbquery from '../script/dbquery.js';
+import {idFrag} from '../script/util.js';
 
 const {type, title, selectedId } = Astro.props;
 
@@ -9,5 +10,5 @@ const json = await dbquery.selectQuery(sparql);
 ---
 <label for="category">{title}</label>
 <select name="category" id="category">
-	{json.results.bindings.map((item) => <option value={dbquery.idFrag(item.id.value)} selected={(selectedId == dbquery.idFrag(item.id.value)) ? 'selected' : undefined}>{item.label.value}</option>)}
+	{json.results.bindings.map((item) => <option value={idFrag(item.id.value)} selected={(selectedId == idFrag(item.id.value)) ? 'selected' : undefined}>{item.label.value}</option>)}
 </select>
