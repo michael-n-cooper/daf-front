@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import * as dbquery from '../../script/dbquery.js';
+import {baseUri, idFrag} from '../../script/util.js';
 
 const {id} = Astro.params;
 
@@ -27,7 +28,7 @@ const tagResult = await dbquery.selectQuery(tagSparql);
 			<tr><th>Functional need</th><th>User need</th><th>Relevance</th></tr>
 		</thead>
 		<tbody>
-			{mapResult.results.bindings.map((item) => <tr><td><a href={'/functional-needs/' + dbquery.idFrag(item.fn_id.value)}>{item.fn_label.value}</a></td><td><a href={'/user-needs/' + dbquery.idFrag(item.un_id.value)}>{item.un_label.value}</a></td><td><a href={'/user-need-relevances/' + dbquery.idFrag(item.unr_id.value)}>{item.unr_label.value}</a></td></tr>)}
+			{mapResult.results.bindings.map((item) => <tr><td><a href={baseUri + 'functional-needs/' + idFrag(item.fn_id.value)}>{item.fn_label.value}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.un_id.value)}>{item.un_label.value}</a></td><td><a href={baseUri + 'user-need-relevances/' + idFrag(item.unr_id.value)}>{item.unr_label.value}</a></td></tr>)}
 		</tbody>
 	</table>
 	<h2>References</h2>
@@ -36,7 +37,17 @@ const tagResult = await dbquery.selectQuery(tagSparql);
 	</ul>
 	<h2>Tags</h2>
 	<ul>
-		{tagResult.results.bindings.map((item) => <li><a href={'/tags/' + dbquery.idFrag(item.id.value)}>{item.label.value}</a></li>)}
+		{tagResult.results.bindings.map((item) => <li><a href={baseUri + 'tags/' + idFrag(item.id.value)}>{item.label.value}</a></li>)}
 	</ul>
 </Layout>
-
+<style is:global>
+td, th {
+	padding: .5ex;
+	vertical-align: top;
+	horizontal-align: left;
+}
+table, td, th {
+	border: thin solid black;
+	border-collapse: collapse;
+}
+</style>
