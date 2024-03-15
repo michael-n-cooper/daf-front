@@ -1,6 +1,7 @@
 ---
 import * as dbquery from '../script/dbquery.js';
 import TypeOptionList from './TypeOptionList.astro';
+import {baseUri, idFrag} from '../script/util.js';
 
 const {type, title, supportsType, supportsTypeTitle} = Astro.props;
 
@@ -20,7 +21,7 @@ const json = await processFetch();
 		<th>{supportsTypeTitle}</th>
 	</thead>
 	<tbody>
-		{json.results.bindings.map((item) => <tr><td><a href={'/functional-needs/' + dbquery.idFrag(item.id.value)}>{item.label.value}</a></td><td><a href={'/functional-need-categories/' + dbquery.idFrag(item.supports_id.value)}>{item.supports_label.value}</a></td></tr>)}
+		{json.results.bindings.map((item) => <tr><td><a href={baseUri + 'functional-needs/' + idFrag(item.id.value)}>{item.label.value}</a></td><td><a href={baseUri + 'functional-need-categories/' + idFrag(item.supports_id.value)}>{item.supports_label.value}</a></td></tr>)}
 	</tbody>
 </table>
 

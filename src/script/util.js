@@ -53,3 +53,5 @@ export async function getFileData(path) {
 export function escSparql(str) {
 	return str.replaceAll("\"", "\\\"");
 }
+
+export const baseUri = import.meta.env.BASE_URL;
