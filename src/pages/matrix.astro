@@ -20,7 +20,14 @@ const table = buildTable();
 
 // Go through the UN/UNR/FN arrays and put in appropriate content from the matrix data, or empty cell if not present
 function buildTable() {
-	var table = "<table border>";
+	var table = "<table>";
+	
+	//table += "<caption>Matrix</caption>"
+	table += "<col /><col />";
+	functionalNeedCategories.forEach(function(fnc) {
+		table += "<colgroup span='" + fnc.functionalNeeds.length + "' />";
+	});
+	table += "<thead>";
 	
 	// row 1
 	table += "<tr><td></td><td></td>"; 
@@ -41,6 +48,9 @@ function buildTable() {
 	table += "<th scope='col'>Relevance</th>";
 	table += "</tr>"
 	
+	table += "</thead>";
+	table += "<tbody>";
+	
 	// rows per user need
 	userNeeds.forEach(function(un) {
 		table += "<tr><th scope='rowgroup' rowspan=" + userNeedRelevances.length + "><a href='" + baseUri + "user-needs/" + un.id + "'>" + un.label + "</a></th>";
@@ -56,14 +66,13 @@ function buildTable() {
 					let mappingObj = findObjectByProperties(mappings, {"fnId": fn.id, "unId": un.id, "unrId": unr.id});
 					if (typeof mappingObj !== 'undefined') {
 						if (mappingObj.statements !== undefined) {
-							var list = mappingObj.statements.length > 1;
-							if (list) table += "<ul>";
+							table += "<ul>";
 							mappingObj.statements.forEach(function(stmt) {
-								if (list) table += "<li>";
+								table += "<li>";
 								table += "<a href='" + baseUri + "guidance-statements/" + stmt.id + "' title='" + stmt.guidance + "'>" + stmt.label + "</a>";
-								if (list) table += "</li>";
+								table += "</li>";
 							});
-							if (list) table += "</ul>";
+							table += "</ul>";
 						}
 					}
 					table += "</td>";
@@ -84,6 +93,7 @@ function buildTable() {
 	table += "<td></td><td></td>"; // for totals 
 	table += "</tr>";
 	
+	table += "</tbody>";
 	table += "</table>";
 	
 	return table;
@@ -166,13 +176,15 @@ async function lookupList(type) {
 
 
 ---
-<Layout title="Digital Accessibility Framework">
+<Layout title="Matrix">
 <style is:global>
 td, th {
 	min-width: 10em;
 	padding: .5ex;
 	vertical-align: top;
-	horizontal-align: left;
+	align: left;
+	background-color: white;
+	color: black;
 }
 table, td, th {
 	border: thin solid black;
@@ -182,6 +194,26 @@ ul {
 	padding-left: 1em;
 	margin-top: 0;
 }
+#matrix {
+	max-width: 100vw;
+	max-height: 90vh;
+	overflow: auto;
+}
+#matrix thead, #matrix th { 
+	position: sticky; 
+}
+#matrix thead { 
+	top: 0; 
+	z-index: 2; 
+}
+#matrix th { 
+	left: 0; 
+	z-index: 1; 
+}
+#matrix th[scope="row"] {
+	left: calc(10em + 1ex);
+}
 </style>
-<table set:html={table}>
+<div id="matrix" set:html={table}>
+</div>
 </Layout>

@@ -3,6 +3,8 @@ interface Props {
 	title: string;
 }
 
+import {baseUri} from '../script/util.js';
+
 const { title } = Astro.props;
 ---
 
@@ -22,13 +24,15 @@ const { title } = Astro.props;
 		</header>
 		<main><slot/></main>
 		<footer>
-			<p><a href="/">Back to index</a></p>
+			<p><a href={baseUri}>Overview</a> | <a href={baseUri + "matrix"}>Matrix</a></p>
 		</footer>
 	</body>
 </html>
 <style is:global>
 	body {
 		font-family: sans-serif;
+		background-color: white;
+		color: black;
 	}
 	a:link, a:visited {
 	  color: #000066;
