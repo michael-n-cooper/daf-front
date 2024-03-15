@@ -8,7 +8,5 @@ export default defineConfig({
   adapter: node({
     mode: "standalone"
   }),
-  // site: 'https://michael-n-cooper.github.io',
-  // base: '/daf-front',
-  trailingSlash: 'always'
+  site: 'https://michael-n-cooper.github.io',
 });
