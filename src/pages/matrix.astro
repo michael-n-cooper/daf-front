@@ -20,8 +20,13 @@ const table = buildTable();
 
 // Go through the UN/UNR/FN arrays and put in appropriate content from the matrix data, or empty cell if not present
 function buildTable() {
-	var table = "<table border>";
+	var table = "<table>";
 	
+	//table += "<caption>Matrix</caption>"
+	table += "<col /><col />";
+	functionalNeedCategories.forEach(function(fnc) {
+		table += "<colgroup span='" + fnc.functionalNeeds.length + "' />";
+	});
 	table += "<thead>";
 	
 	// row 1
@@ -171,7 +176,7 @@ async function lookupList(type) {
 
 
 ---
-<Layout title="Digital Accessibility Framework">
+<Layout title="Matrix">
 <style is:global>
 td, th {
 	min-width: 10em;
@@ -191,7 +196,7 @@ ul {
 }
 #matrix {
 	max-width: 100vw;
-	max-height: 100vh;
+	max-height: 90vh;
 	overflow: auto;
 }
 #matrix thead, #matrix th { 
@@ -209,7 +214,6 @@ ul {
 	left: calc(10em + 1ex);
 }
 </style>
-<div id="matrix">
-<table set:html={table}>
+<div id="matrix" set:html={table}>
 </div>
 </Layout>
