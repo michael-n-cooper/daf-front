@@ -41,7 +41,8 @@ function buildTable() {
 	table += "<tr><td></td><td></td>"; 
 	functionalNeedCategories.forEach(function(fnc) {
 		fnc.functionalNeeds.forEach(function(fn) {
-		table += "<th scope='col'><a href='" + baseUri + "functional-needs/" + fn.id + "'>" + fn.label + "</a></th>"; 
+			const section = fnc.label == 'Intersections' ? "intersection-needs/" : "functional-needs/";
+			table += "<th scope='col'><a href='" + baseUri + section + fn.id + "'>" + fn.label + "</a></th>"; 
 		});
 	});
 	table += "<th scope='col'>User need</th>";
@@ -61,7 +62,6 @@ function buildTable() {
 			
 			functionalNeedCategories.forEach(function(fnc) {
 				fnc.functionalNeeds.forEach(function(fn) {
-				//debug.push(unr.id);
 					table += "<td>";
 					let mappingObj = findObjectByProperties(mappings, {"fnId": fn.id, "unId": un.id, "unrId": unr.id});
 					if (typeof mappingObj !== 'undefined') {
@@ -180,15 +180,7 @@ async function lookupList(type) {
 <style is:global>
 td, th {
 	min-width: 10em;
-	padding: .5ex;
-	vertical-align: top;
-	align: left;
-	background-color: white;
-	color: black;
-}
-table, td, th {
-	border: thin solid black;
-	border-collapse: collapse;
+	scroll-snap-align: start;
 }
 ul {
 	padding-left: 1em;
@@ -198,6 +190,7 @@ ul {
 	max-width: 100vw;
 	max-height: 90vh;
 	overflow: auto;
+	scroll-snap-type: x mandatory;
 }
 #matrix thead, #matrix th { 
 	position: sticky; 

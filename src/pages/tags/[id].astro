@@ -1,6 +1,7 @@
 ---
-import MatrixItemDetails from '../../components/MatrixItemDetails.astro';
+import * as dbquery from '../../script/dbquery.js';
 import Layout from '../../layouts/Layout.astro';
+import {baseUri, idFrag} from '../../script/util.js';
 
 export async function getStaticPaths() { 
 	const module = await import('./ids.js');
@@ -9,6 +10,16 @@ export async function getStaticPaths() {
 }
 
 const {id} = Astro.params;
----
-<MatrixItemDetails id={id} type="Tag"></MatrixItemDetails>
 
+const labelSparql = "select ?id ?label where { values ?id {:" + id + "} . ?id rdfs:label ?label }";
+const labelResult = await dbquery.selectQuery(labelSparql);
+
+const statementsSparql = "select distinct ?id ?label where { values ?itemId {:" + id + "} . ?id a11y:tags ?itemId ; rdfs:label ?label }";
+const statementsResult = await dbquery.selectQuery(statementsSparql);
+---
+<Layout title={"Tag: " + labelResult.results.bindings[0].label.value}>
+<p>Statements that support this item:</p>
+<ul>
+{statementsResult.results.bindings.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id.value)}>{statement.label.value}</a></li>)}
+</ul>
+</Layout>
