@@ -79,7 +79,7 @@ function buildTable() {
 							table += "<ul>";
 							mappingObj.statements.forEach(function(stmt) {
 								table += "<li>";
-								table += "<a href='" + baseUri + "guidance-statements/" + stmt.id + "' title='" + stmt.guidance + "'>" + stmt.label + "</a>";
+								table += "<a href='" + baseUri + "guidance-statements/" + stmt.id + "' title='" + stmt.guidance + "' class='" + stmt.id + "'>" + stmt.label + "</a>";
 								table += "</li>";
 							});
 							table += "</ul>";
@@ -219,6 +219,9 @@ ul {
 .rch {
 	background-color: #EEEEEE;
 }
+.stmt, .stmt:link, .stmt:active, .stmt:visited {
+	color: red;
+}
 </style>
 <script>
 var curRow = 0; var curCol = 0;
@@ -264,12 +267,32 @@ function blurRowCol(cell) {
 	}
 }
 
+function focusStmt(id) {
+	const nl = document.getElementsByClassName(id);
+	for (let i = 0; i < nl.length; i++) nl[i].classList.add("stmt");
+}
+function blurStmt(id) {
+	const nl = document.getElementsByClassName(id);
+	for (let i = 0; i < nl.length; i++) {
+		nl[i].classList.remove("stmt");
+	}
+}
+
 function attachListeners() {
-	const nl = document.getElementsByTagName("TD");
+	const nl = document.getElementsByTagName("td");
 	for (let i = 0; i < nl.length; i++) {
 		nl[i].addEventListener("mouseover", function(){focusRowCol(nl[i])});
 		nl[i].addEventListener("mouseout", function(){blurRowCol(nl[i])});
 	};
+	
+	const stmtList = document.getElementsByTagName("a");
+	for (let i = 0; i < stmtList.length; i++) {
+		if (stmtList[i].className.length > 0) {
+			const id = stmtList[i].className;
+			stmtList[i].addEventListener("mouseover", function(){focusStmt(id)});
+			stmtList[i].addEventListener("mouseout", function(){blurStmt(id)});
+		}
+	}
 }
 
 window.addEventListener("load", attachListeners());
