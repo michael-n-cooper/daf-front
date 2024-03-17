@@ -16,10 +16,14 @@ const mappings = await lookupMappings();
 
 const table = buildTable();
 
-// Go through the FNC array and generate the first two rows
+// generate a class attribute for row and column number
+function rc(row, col) {
+	return "row" + row + " col" + col;
+}
 
 // Go through the UN/UNR/FN arrays and put in appropriate content from the matrix data, or empty cell if not present
 function buildTable() {
+	var rowNum = 1; var colNum = 1;
 	var table = "<table>";
 	
 	//table += "<caption>Matrix</caption>"
@@ -38,11 +42,12 @@ function buildTable() {
 	table += "</tr>"
 	
 	// row 2
-	table += "<tr><td></td><td></td>"; 
+	rowNum++;
+	table += "<tr><td></td><td></td>"; colNum = 3;
 	functionalNeedCategories.forEach(function(fnc) {
 		fnc.functionalNeeds.forEach(function(fn) {
 			const section = fnc.label == 'Intersections' ? "intersection-needs/" : "functional-needs/";
-			table += "<th scope='col'><a href='" + baseUri + section + fn.id + "'>" + fn.label + "</a></th>"; 
+			table += "<th scope='col' class='" + rc(rowNum, colNum++) + "'><a href='" + baseUri + section + fn.id + "'>" + fn.label + "</a></th>"; 
 		});
 	});
 	table += "<th scope='col'>User need</th>";
@@ -54,22 +59,27 @@ function buildTable() {
 	
 	// rows per user need
 	userNeeds.forEach(function(un) {
-		table += "<tr><th scope='rowgroup' rowspan=" + userNeedRelevances.length + "><a href='" + baseUri + "user-needs/" + un.id + "'>" + un.label + "</a></th>";
-		var rowNum = 1;
+		rowNum++;
+		table += "<tr><th scope='rowgroup' rowspan='" + userNeedRelevances.length + "'><a href='" + baseUri + "user-needs/" + un.id + "'>" + un.label + "</a></th>";
+		var groupPos = 1;
 		userNeedRelevances.forEach(function(unr) {
-			if (rowNum > 2) table += "<tr>";
-			table += "<th scope='row'><a href='" + baseUri + "user-need-relevances/" + unr.id + "'>" + unr.label + "</a></th>";
+			if (groupPos > 2) {
+				table += "<tr>"; 
+			}
+			rowNum++;
+			table += "<th scope='row' class='" + rc(rowNum, 2) + "'><a href='" + baseUri + "user-need-relevances/" + unr.id + "'>" + unr.label + "</a></th>";
 			
+			colNum = 3;
 			functionalNeedCategories.forEach(function(fnc) {
 				fnc.functionalNeeds.forEach(function(fn) {
-					table += "<td>";
+					table += "<td class='" + rc(rowNum, colNum++) + "'>";
 					let mappingObj = findObjectByProperties(mappings, {"fnId": fn.id, "unId": un.id, "unrId": unr.id});
 					if (typeof mappingObj !== 'undefined') {
 						if (mappingObj.statements !== undefined) {
 							table += "<ul>";
 							mappingObj.statements.forEach(function(stmt) {
 								table += "<li>";
-								table += "<a href='" + baseUri + "guidance-statements/" + stmt.id + "' title='" + stmt.guidance + "'>" + stmt.label + "</a>";
+								table += "<a href='" + baseUri + "guidance-statements/" + stmt.id + "' title='" + stmt.guidance + "' class='" + stmt.id + "'>" + stmt.label + "</a>";
 								table += "</li>";
 							});
 							table += "</ul>";
@@ -80,7 +90,7 @@ function buildTable() {
 			});
 			table += "<td></td><td></td>"; // for totals 
 			table += "</tr>";
-			rowNum++;
+			groupPos++;
 		});
 	});
 	
@@ -206,7 +216,87 @@ ul {
 #matrix th[scope="row"] {
 	left: calc(10em + 1ex);
 }
+.rch {
+	background-color: #EEEEEE;
+}
+.stmt, .stmt:link, .stmt:active, .stmt:visited {
+	color: red;
+}
 </style>
+<script>
+var curRow = 0; var curCol = 0;
+
+// generate a class attribute for row and column number
+function rc(row, col) {
+	return "row" + row + " col" + col;
+}
+
+
+function focusRowCol(cell) {
+	var row = null; var col = null;
+	cell.classList.forEach(function(val) {
+		if (val.includes("row")) row = val.substr(3);
+		if (val.includes("col")) col = val.substr(3);
+	});
+	if (row != null && col != null) {
+//	console.log("row" + row + " col" + col);
+		show(document.getElementsByClassName("row" + row));
+		show(document.getElementsByClassName("col" + col));
+	}
+	function show(list) {
+		for (let i = 0; i < list.length; i++) {
+			list[i].classList.add("rch");
+		}
+	}
+}
+
+function blurRowCol(cell) {
+	var row = null; var col = null;
+	cell.classList.forEach(function(val) {
+		if (val.includes("row")) row = val.substr(3);
+		if (val.includes("col")) col = val.substr(3);
+	});
+	if (row != null && col != null) {
+		clear(document.getElementsByClassName("row" + row));
+		clear(document.getElementsByClassName("col" + col));
+	}
+	function clear(list) {
+		for (let i = 0; i < list.length; i++) {
+			list[i].classList.remove("rch");
+		}
+	}
+}
+
+function focusStmt(id) {
+	const nl = document.getElementsByClassName(id);
+	for (let i = 0; i < nl.length; i++) nl[i].classList.add("stmt");
+}
+function blurStmt(id) {
+	const nl = document.getElementsByClassName(id);
+	for (let i = 0; i < nl.length; i++) {
+		nl[i].classList.remove("stmt");
+	}
+}
+
+function attachListeners() {
+	const nl = document.getElementsByTagName("td");
+	for (let i = 0; i < nl.length; i++) {
+		nl[i].addEventListener("mouseover", function(){focusRowCol(nl[i])});
+		nl[i].addEventListener("mouseout", function(){blurRowCol(nl[i])});
+	};
+	
+	const stmtList = document.getElementsByTagName("a");
+	for (let i = 0; i < stmtList.length; i++) {
+		if (stmtList[i].className.length > 0) {
+			const id = stmtList[i].className;
+			stmtList[i].addEventListener("mouseover", function(){focusStmt(id)});
+			stmtList[i].addEventListener("mouseout", function(){blurStmt(id)});
+		}
+	}
+}
+
+window.addEventListener("load", attachListeners());
+</script>
 <div id="matrix" set:html={table}>
 </div>
 </Layout>
