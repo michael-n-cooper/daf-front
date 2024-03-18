@@ -1,7 +1,7 @@
 import { readFile, writeFile, open } from 'node:fs/promises';
 import parseMD from 'parse-md';
 import * as dbquery from './dbquery.js';
-import {findObjectByProperties, filterObjectByProperties, idFrag, compareStr, isValidUrl, getOneProp, getFileData, escSparql} from './util.js';
+import {findObjectByProperties, filterObjectByProperties, idFrag, compareStr, isValidUrl, getOneProp, getFileData, escSparql} from './util-base.js';
 import inquirer from 'inquirer';
 
 const importDir = '../../../../accessiblecommunity/Digital-Accessibility-Framework/';
