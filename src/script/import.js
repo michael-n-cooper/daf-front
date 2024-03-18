@@ -119,8 +119,12 @@ function expandMappings(metadata) {
 	const mappings = metadata.mappings;
 	
 	mappings.forEach(function(mapping) {
-	//check for arrays Array.isArray(obj)
-	//handle intersection objects
+		// check for keyword "all"
+		if (compareStr(mapping['functional-need'], "all")) mapping['functional-need'] = getOneProp(functionalNeedList, 'label');
+		if (compareStr(mapping['user-need'], "all")) mapping['user-need'] = getOneProp(userNeedList, 'label');
+		if (compareStr(mapping['user-need-relevance'], "all")) mapping['user-need-relevance'] = getOneProp(userNeedRelevanceList, 'label');
+	
+		// make sure the values are arrays
 		const functionalNeeds = (typeof mapping['functional-need'] === 'string' || (typeof mapping['functional-need'] === 'object' && !Array.isArray(mapping['functional-need']))) ? [mapping['functional-need']] : mapping['functional-need'];
 		const userNeeds = (typeof mapping['user-need'] === 'string') ? [mapping['user-need']] : mapping['user-need'];
 		const userNeedRelevances = (typeof mapping['user-need-relevance'] === 'string') ? [mapping['user-need-relevance']] : mapping['user-need-relevance'];
