@@ -77,7 +77,7 @@ function buildTable() {
 					let mappingObj = findObjectByProperties(mappings, {"fnId": fn.id, "unId": un.id, "unrId": unr.id});
 					if (typeof mappingObj !== 'undefined') {
 						table += "<div id='" + mappingObj.id + "' class='mapping " + (mappingObj.applicable == true ? "applicable" : "na") + "'>";
-						if (mappingObj.applicable) table += "N/A";
+						if (mappingObj.applicable == 'false') table += "N/A";
 						if (mappingObj.statements.length > 0) {
 							table += "<ul>";
 							mappingObj.statements.forEach(function(stmt) {
