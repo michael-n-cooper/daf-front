@@ -21,6 +21,9 @@ toLoop.forEach(function(un) {
 			if (typeof existing === 'undefined') {
 				id = dbquery.uuid();
 				sparql += ":" + id + " a a11y:MatrixMapping .\n";
+				sparql += ":" + id + " a11y:supports :" + fnId + " .\n";
+				sparql += ":" + id + " a11y:supports :" + unId + " .\n";
+				sparql += ":" + id + " a11y:supports :" + unrId + " .\n";
 			} else {
 				id = existing.id;
 			}
