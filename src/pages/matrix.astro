@@ -31,6 +31,7 @@ function buildTable() {
 	functionalNeedCategories.forEach(function(fnc) {
 		table += "<colgroup span='" + fnc.functionalNeeds.length + "' />";
 	});
+	table += "<col /><col />";
 	table += "<thead>";
 	
 	// row 1
@@ -75,7 +76,9 @@ function buildTable() {
 					table += "<td class='" + rc(rowNum, colNum++) + "'>";
 					let mappingObj = findObjectByProperties(mappings, {"fnId": fn.id, "unId": un.id, "unrId": unr.id});
 					if (typeof mappingObj !== 'undefined') {
-						if (mappingObj.statements !== undefined) {
+						table += "<div id='" + mappingObj.id + "' class='mapping " + (mappingObj.applicable == true ? "applicable" : "na") + "'>";
+						if (mappingObj.applicable) table += "N/A";
+						if (mappingObj.statements.length > 0) {
 							table += "<ul>";
 							mappingObj.statements.forEach(function(stmt) {
 								table += "<li>";
@@ -84,6 +87,7 @@ function buildTable() {
 							});
 							table += "</ul>";
 						}
+						table += "</div>";
 					}
 					table += "</td>";
 				});
@@ -94,6 +98,8 @@ function buildTable() {
 		});
 	});
 	
+	table += "</tbody>";
+	table += "<tfoot>";
 	table += "<tr><th colspan'2' scope='row'>Total Functional need</th>"; // total
 	functionalNeedCategories.forEach(function(fnc) {
 		fnc.functionalNeeds.forEach(function(fn) {
@@ -103,7 +109,7 @@ function buildTable() {
 	table += "<td></td><td></td>"; // for totals 
 	table += "</tr>";
 	
-	table += "</tbody>";
+	table += "</tfoot>";
 	table += "</table>";
 	
 	return table;
@@ -164,8 +170,9 @@ async function lookupMappings() {
 	const sparql = 'select ?mId ?applicable ?fnId ?unId ?unrId where { ?mId a a11y:Mapping ; a11y:supports ?fnId ; a11y:supports ?unId ; a11y:supports ?unrId . { ?fnId a a11y:FunctionalNeed } union { ?fnId a a11y:IntersectionNeed } . ?unId a a11y:UserNeed . ?unrId a a11y:UserNeedRelevance . optional { ?mId a11y:applicable ?applicable } }';
 	const result = await dbquery.selectQuery(sparql);
 	result.results.bindings.forEach(function(mapping) {
+		const applicable = typeof mapping.applicable !== 'undefined' ? mapping.applicable.value : true;
 		const filtered = filterObjectByProperties(statements, {"mId": dbquery.idFrag(mapping.mId.value)}); //filter(obj => obj.mId == dbquery.idFrag(mapping.mId.value));
-		matrix.push({"id": dbquery.idFrag(mapping.mId.value), "applicable": true, "fnId": dbquery.idFrag(mapping.fnId.value), "unId": dbquery.idFrag(mapping.unId.value), "unrId": dbquery.idFrag(mapping.unrId.value), "statements": filtered});
+		matrix.push({"id": dbquery.idFrag(mapping.mId.value), "applicable": applicable, "fnId": dbquery.idFrag(mapping.fnId.value), "unId": dbquery.idFrag(mapping.unId.value), "unrId": dbquery.idFrag(mapping.unrId.value), "statements": filtered});
 });
 	
 	return matrix;
@@ -192,6 +199,18 @@ td, th {
 	min-width: 10em;
 	scroll-snap-align: start;
 }
+tr, td, th {
+	width: 100%;
+	height: 100%;
+}
+td {
+	padding: 0;
+}
+.mapping {
+	width: calc(100% - 1ex);
+	height: calc(100% - 1ex);
+	padding: .5ex;
+}
 ul {
 	padding-left: 1em;
 	margin-top: 0;
@@ -217,10 +236,13 @@ ul {
 	left: calc(10em + 1ex);
 }
 .rch {
-	background-color: #EEEEEE;
+	background-color: #F9F9F9;
 }
 .stmt, .stmt:link, .stmt:active, .stmt:visited {
 	color: red;
+}
+.na {
+	background-color: #DDDDDD;
 }
 </style>
 <script>
