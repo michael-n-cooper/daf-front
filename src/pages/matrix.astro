@@ -76,7 +76,7 @@ function buildTable() {
 					table += "<td class='" + rc(rowNum, colNum++) + "'>";
 					let mappingObj = findObjectByProperties(mappings, {"fnId": fn.id, "unId": un.id, "unrId": unr.id});
 					if (typeof mappingObj !== 'undefined') {
-						table += "<div id='" + mappingObj.id + "' class='mapping " + (mappingObj.applicable == true ? "applicable" : "na") + "'>";
+						table += "<div id='" + mappingObj.id + "' class='mapping " + (mappingObj.applicable == true ? "applicable" : "na") + "' popovertarget='" + mappingObj.id + "-popover" + "'>";
 						if (mappingObj.applicable == 'false') table += "N/A";
 						if (mappingObj.statements.length > 0) {
 							table += "<ul>";
@@ -88,6 +88,7 @@ function buildTable() {
 							table += "</ul>";
 						}
 						table += "</div>";
+						table += "<div popover id='" + mappingObj.id + "-popover" + "'></div>";
 					}
 					table += "</td>";
 				});
@@ -244,6 +245,10 @@ ul {
 .na {
 	background-color: #DDDDDD;
 }
+*[popover] {
+	margin: 0;
+	position: absolute;
+}
 </style>
 <script>
 var curRow = 0; var curCol = 0;
@@ -300,6 +305,44 @@ function blurStmt(id) {
 	}
 }
 
+var curOpenerId = "";
+var curPopoverId = "";
+
+function enterCell(id) {
+	openPopover(id);
+	curPopoverId = id;
+	curOpenerId = id;
+}
+function leaveCell(id) {
+	if (curPopoverId != id) {
+		curOpenerId = "";
+		closePopover(id);
+	}
+}
+
+function enterPopover(id) {
+	curPopoverId = id;
+}
+function leavePopover(id) {
+	if (curOpenerId != id) {
+		closePopover(id);
+		curPopoverId = "";
+	}
+}
+
+// Events to show/hide the subpopover when the mouse moves over and out
+function openPopover(id) {
+  const popover = document.getElementById(id + "-popover");
+  popover.showPopover();
+}
+
+function closePopover(id) {
+	const popover = document.getElementById(id + "-popover");
+  if (popover.matches(":popover-open")) {
+    popover.hidePopover();
+  }
+}
+
 function attachListeners() {
 	const nl = document.getElementsByTagName("td");
 	for (let i = 0; i < nl.length; i++) {
@@ -313,6 +356,22 @@ function attachListeners() {
 			const id = stmtList[i].className;
 			stmtList[i].addEventListener("mouseover", function(){focusStmt(id)});
 			stmtList[i].addEventListener("mouseout", function(){blurStmt(id)});
+		}
+	}
+	
+	const divs = document.getElementsByTagName("div");
+	for (let i = 0; i < divs.length; i++) {
+		if (divs[i].getAttribute("popovertarget") != null) {
+			const id = divs[i].id;
+			const opener = divs[i];
+			const rect = opener.getBoundingClientRect();
+			const popover = document.getElementById(id + "-popover");
+			popover.innerHTML = opener.innerHTML;
+			popover.style = "left: " + rect.left + "px; top: calc(" + rect.bottom + "px - .5ex); width: " + rect.width + "px; height: " + rect.height + "px;";
+			opener.addEventListener("mouseover", function(){enterCell(id);});
+			opener.addEventListener("mouseout", function(){leaveCell(id);});
+			popover.addEventListener("mouseover", function(){enterPopover(id);});
+			popover.addEventListener("mouseout", function(){leavePopover(id);});
 		}
 	}
 }
