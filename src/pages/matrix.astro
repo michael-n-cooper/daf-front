@@ -24,7 +24,7 @@ function rc(row, col) {
 // Go through the UN/UNR/FN arrays and put in appropriate content from the matrix data, or empty cell if not present
 function buildTable() {
 	var rowNum = 1; var colNum = 1;
-	var table = "<table>";
+	var table = "<table id='table'>";
 	
 	//table += "<caption>Matrix</caption>"
 	table += "<col /><col />";
@@ -374,6 +374,12 @@ function attachListeners() {
 			popover.addEventListener("mouseout", function(){leavePopover(id);});
 		}
 	}
+	
+	const matrix = document.getElementById("matrix");
+	const table = document.getElementById("table");
+	const proportion = matrix.clientWidth / table.scrollWidth * 100;
+	console.log (proportion); 
+	table.style = "width: " + proportion + "%; font-size: " + proportion + "%;";
 }
 
 window.addEventListener("load", attachListeners());
