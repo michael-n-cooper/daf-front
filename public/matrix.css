@@ -1,0 +1,53 @@
+td, th {
+	min-width: 10em;
+	scroll-snap-align: start;
+}
+tr, td, th {
+	width: 100%;
+	height: 100%;
+}
+td {
+	padding: 0;
+}
+.mapping {
+	width: calc(100% - 1ex);
+	height: calc(100% - 1ex);
+	padding: .5ex;
+}
+ul {
+	padding-left: 1em;
+	margin-top: 0;
+}
+#matrix {
+	max-width: 100vw;
+	max-height: 90vh;
+	overflow: auto;
+	scroll-snap-type: x mandatory;
+}
+#matrix thead, #matrix th { 
+	position: sticky; 
+}
+#matrix thead { 
+	top: 0; 
+	z-index: 2; 
+}
+#matrix th { 
+	left: 0; 
+	z-index: 1; 
+}
+#matrix th[scope="row"] {
+	left: calc(10em + 1ex);
+}
+.rch {
+	background-color: #F9F9F9;
+}
+.stmt, .stmt:link, .stmt:active, .stmt:visited {
+	color: red;
+}
+.na {
+	background-color: #DDDDDD;
+}
+*[popover] {
+	margin: 0;
+	position: absolute;
+}
