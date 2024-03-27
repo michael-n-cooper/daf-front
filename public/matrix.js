@@ -56,22 +56,26 @@ function blurStmt(id) {
 var curOpenerId = "";
 var curPopoverId = "";
 
-function enterCell(id) {
+function enterCell(event) {
+	const id = this.id;
 	openPopover(id);
 	curPopoverId = id;
 	curOpenerId = id;
 }
-function leaveCell(id) {
+function leaveCell(event) {
+	const id = this.id;
 	if (curPopoverId != id) {
 		curOpenerId = "";
 		closePopover(id);
 	}
 }
 
-function enterPopover(id) {
+function enterPopover(event) {
+	const id = this.id;
 	curPopoverId = id;
 }
-function leavePopover(id) {
+function leavePopover(event) {
+	const id = this.id;
 	if (curOpenerId != id) {
 		closePopover(id);
 		curPopoverId = "";
@@ -86,7 +90,7 @@ function openPopover(id) {
 
 function closePopover(id) {
 	const popover = document.getElementById(id + "-popover");
-  if (popover.matches(":popover-open")) {
+  if (popover != null && popover.matches(":popover-open")) {
     popover.hidePopover();
   }
 }
@@ -102,6 +106,58 @@ function sizePopovers() {
 			popover.style = "left: " + rect.left + "px; top: " + rect.bottom + "px; width: " + rect.width / proportion + "px; height: " + rect.height / proportion + "px; font-size: " + 100 / proportion + "%;";
 		}
 	}
+}
+
+function attachPopovers() {
+	const divs = document.getElementsByTagName("div");
+	for (let i = 0; i < divs.length; i++) {
+		if (divs[i].getAttribute("popovertarget") != null) {
+			const id = divs[i].id;
+			const opener = divs[i];
+			const popover = document.getElementById(id + "-popover");
+			popover.innerHTML = opener.innerHTML;
+			opener.addEventListener("mouseover", enterCell);
+			opener.addEventListener("mouseout", leaveCell);
+			popover.addEventListener("mouseover", enterPopover);
+			popover.addEventListener("mouseout", leavePopover);
+		}
+	}
+	sizePopovers();
+}
+
+function removePopovers() {
+	const divs = document.getElementsByTagName("div");
+	for (let i = 0; i < divs.length; i++) {
+		if (divs[i].getAttribute("popovertarget") != null) {
+			const id = divs[i].id;
+			const opener = divs[i];
+			const popover = document.getElementById(id + "-popover");
+			const parent = popover.parentElement;
+			opener.removeEventListener("mouseover", enterCell);
+			opener.removeEventListener("mouseout", leaveCell);
+			parent.removeChild(popover);
+		}
+	}
+}
+
+function sizeTable(shrink) {
+	const matrix = document.getElementById("matrix");
+	const table = document.getElementById("table");
+	if (shrink) {
+		proportion = matrix.clientWidth / table.scrollWidth;
+		//console.log (proportion); 
+		//console.log (100 / proportion);
+		table.style = "width: " + 100 * proportion + "%; font-size: " + 100 * proportion + "%";
+		
+		attachPopovers();
+		
+		matrix.addEventListener("scrollend", (event) => {sizePopovers(); console.log("scroll");});
+	} else {
+		table.style = "";
+		removePopovers();
+	}
+	
+	
 }
 
 function attachListeners() {
@@ -120,30 +176,8 @@ function attachListeners() {
 		}
 	}
 	
-	const divs = document.getElementsByTagName("div");
-	for (let i = 0; i < divs.length; i++) {
-		if (divs[i].getAttribute("popovertarget") != null) {
-			const id = divs[i].id;
-			const opener = divs[i];
-			const popover = document.getElementById(id + "-popover");
-			popover.innerHTML = opener.innerHTML;
-			opener.addEventListener("mouseover", function(){enterCell(id);});
-			opener.addEventListener("mouseout", function(){leaveCell(id);});
-			popover.addEventListener("mouseover", function(){enterPopover(id);});
-			popover.addEventListener("mouseout", function(){leavePopover(id);});
-		}
-	}
-	
-	const matrix = document.getElementById("matrix");
-	const table = document.getElementById("table");
-	proportion = matrix.clientWidth / table.scrollWidth;
-	//console.log (proportion); 
-	//console.log (100 / proportion);
-	table.style = "width: " + 100 * proportion + "%; font-size: " + 100 * proportion + "%";
-	
-	sizePopovers();
-	
-	matrix.addEventListener("scrollend", (event) => {sizePopovers(); console.log("scroll");});
+	const shrinkTableControl = document.getElementById("shrinkMatrixControl");
+	shrinkTableControl.addEventListener("change", function(event){sizeTable(event.target.checked)})
 }
 
 
