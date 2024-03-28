@@ -114,8 +114,11 @@ function attachPopovers() {
 		if (divs[i].getAttribute("popovertarget") != null) {
 			const id = divs[i].id;
 			const opener = divs[i];
-			const popover = document.getElementById(id + "-popover");
+			const popover = document.createElement("div");
+			popover.id = id + "-popover";
+			popover.setAttribute("popover", "");
 			popover.innerHTML = opener.innerHTML;
+			opener.insertAdjacentElement("afterend", popover);
 			opener.addEventListener("mouseover", enterCell);
 			opener.addEventListener("mouseout", leaveCell);
 			popover.addEventListener("mouseover", enterPopover);
