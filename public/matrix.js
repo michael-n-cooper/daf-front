@@ -7,8 +7,9 @@ function rc(row, col) {
 }
 
 
-function focusRowCol(cell) {
+function focusRowCol(event) {
 	var row = null; var col = null;
+	let cell = this;
 	cell.classList.forEach(function(val) {
 		if (val.includes("row")) row = val.substr(3);
 		if (val.includes("col")) col = val.substr(3);
@@ -25,8 +26,9 @@ function focusRowCol(cell) {
 	}
 }
 
-function blurRowCol(cell) {
+function blurRowCol(event) {
 	var row = null; var col = null;
+	let cell = this;
 	cell.classList.forEach(function(val) {
 		if (val.includes("row")) row = val.substr(3);
 		if (val.includes("col")) col = val.substr(3);
@@ -42,12 +44,16 @@ function blurRowCol(cell) {
 	}
 }
 
-function focusStmt(id) {
-	const nl = document.getElementsByClassName(id);
-	for (let i = 0; i < nl.length; i++) nl[i].classList.add("stmt");
+function focusStmt(event) {
+	const id = this.getAttribute("class");
+	let nl = document.getElementsByClassName(id);
+	for (let i = 0; i < nl.length; i++) {
+		nl[i].classList.add("stmt");
+	}
 }
-function blurStmt(id) {
-	const nl = document.getElementsByClassName(id);
+function blurStmt(event) {
+	const id = this.classList[0];
+	let nl = document.getElementsByClassName(id);
 	for (let i = 0; i < nl.length; i++) {
 		nl[i].classList.remove("stmt");
 	}
@@ -143,7 +149,8 @@ function removePopovers() {
 	}
 }
 
-function sizeTable(shrink) {
+function sizeTable(event) {
+	const shrink = this.checked;
 	const matrix = document.getElementById("matrix");
 	const table = document.getElementById("table");
 	if (shrink) {
@@ -166,21 +173,20 @@ function sizeTable(shrink) {
 function attachListeners() {
 	const nl = document.getElementsByTagName("td");
 	for (let i = 0; i < nl.length; i++) {
-		nl[i].addEventListener("mouseover", function(){focusRowCol(nl[i])});
-		nl[i].addEventListener("mouseout", function(){blurRowCol(nl[i])});
+		nl[i].addEventListener("mouseover", focusRowCol);
+		nl[i].addEventListener("mouseout", blurRowCol);
 	};
 	
 	const stmtList = document.getElementsByTagName("a");
 	for (let i = 0; i < stmtList.length; i++) {
 		if (stmtList[i].className.length > 0) {
-			const id = stmtList[i].className;
-			stmtList[i].addEventListener("mouseover", function(){focusStmt(id)});
-			stmtList[i].addEventListener("mouseout", function(){blurStmt(id)});
+			stmtList[i].addEventListener("mouseover", focusStmt);
+			stmtList[i].addEventListener("mouseout", blurStmt);
 		}
 	}
 	
 	const shrinkTableControl = document.getElementById("shrinkMatrixControl");
-	shrinkTableControl.addEventListener("change", function(event){sizeTable(event.target.checked)})
+	shrinkTableControl.addEventListener("change", sizeTable)
 }
 
 
