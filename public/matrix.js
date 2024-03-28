@@ -7,8 +7,9 @@ function rc(row, col) {
 }
 
 
-function focusRowCol(cell) {
+function focusRowCol(event) {
 	var row = null; var col = null;
+	let cell = this;
 	cell.classList.forEach(function(val) {
 		if (val.includes("row")) row = val.substr(3);
 		if (val.includes("col")) col = val.substr(3);
@@ -25,8 +26,9 @@ function focusRowCol(cell) {
 	}
 }
 
-function blurRowCol(cell) {
+function blurRowCol(event) {
 	var row = null; var col = null;
+	let cell = this;
 	cell.classList.forEach(function(val) {
 		if (val.includes("row")) row = val.substr(3);
 		if (val.includes("col")) col = val.substr(3);
@@ -42,12 +44,16 @@ function blurRowCol(cell) {
 	}
 }
 
-function focusStmt(id) {
-	const nl = document.getElementsByClassName(id);
-	for (let i = 0; i < nl.length; i++) nl[i].classList.add("stmt");
+function focusStmt(event) {
+	const id = this.getAttribute("class");
+	let nl = document.getElementsByClassName(id);
+	for (let i = 0; i < nl.length; i++) {
+		nl[i].classList.add("stmt");
+	}
 }
-function blurStmt(id) {
-	const nl = document.getElementsByClassName(id);
+function blurStmt(event) {
+	const id = this.classList[0];
+	let nl = document.getElementsByClassName(id);
 	for (let i = 0; i < nl.length; i++) {
 		nl[i].classList.remove("stmt");
 	}
@@ -64,8 +70,8 @@ function enterCell(event) {
 }
 function leaveCell(event) {
 	const id = this.id;
+	curOpenerId = "";
 	if (curPopoverId != id) {
-		curOpenerId = "";
 		closePopover(id);
 	}
 }
@@ -78,8 +84,8 @@ function leavePopover(event) {
 	const id = this.id;
 	if (curOpenerId != id) {
 		closePopover(id);
-		curPopoverId = "";
 	}
+	curPopoverId = "";
 }
 
 // Events to show/hide the subpopover when the mouse moves over and out
@@ -114,8 +120,11 @@ function attachPopovers() {
 		if (divs[i].getAttribute("popovertarget") != null) {
 			const id = divs[i].id;
 			const opener = divs[i];
-			const popover = document.getElementById(id + "-popover");
+			const popover = document.createElement("div");
+			popover.id = id + "-popover";
+			popover.setAttribute("popover", "");
 			popover.innerHTML = opener.innerHTML;
+			opener.insertAdjacentElement("afterend", popover);
 			opener.addEventListener("mouseover", enterCell);
 			opener.addEventListener("mouseout", leaveCell);
 			popover.addEventListener("mouseover", enterPopover);
@@ -140,7 +149,8 @@ function removePopovers() {
 	}
 }
 
-function sizeTable(shrink) {
+function sizeTable(event) {
+	const shrink = this.checked;
 	const matrix = document.getElementById("matrix");
 	const table = document.getElementById("table");
 	if (shrink) {
@@ -156,28 +166,47 @@ function sizeTable(shrink) {
 		table.style = "";
 		removePopovers();
 	}
-	
-	
 }
 
-function attachListeners() {
+function highlightCellPos(event) {
+	const show = this.checked;
 	const nl = document.getElementsByTagName("td");
 	for (let i = 0; i < nl.length; i++) {
-		nl[i].addEventListener("mouseover", function(){focusRowCol(nl[i])});
-		nl[i].addEventListener("mouseout", function(){blurRowCol(nl[i])});
+		if (show) {
+			nl[i].addEventListener("mouseover", focusRowCol);
+			nl[i].addEventListener("mouseout", blurRowCol);
+		} else {
+			nl[i].removeEventListener("mouseover", focusRowCol);
+			nl[i].removeEventListener("mouseout", blurRowCol);
+		}
 	};
-	
+}
+
+function highlightSameStmt(event) {
+	const show = this.checked;
 	const stmtList = document.getElementsByTagName("a");
 	for (let i = 0; i < stmtList.length; i++) {
 		if (stmtList[i].className.length > 0) {
-			const id = stmtList[i].className;
-			stmtList[i].addEventListener("mouseover", function(){focusStmt(id)});
-			stmtList[i].addEventListener("mouseout", function(){blurStmt(id)});
+			if (show) {
+				stmtList[i].addEventListener("mouseover", focusStmt);
+				stmtList[i].addEventListener("mouseout", blurStmt);
+			} else {
+				stmtList[i].removeEventListener("mouseover", focusStmt);
+				stmtList[i].removeEventListener("mouseout", blurStmt);
+			}
 		}
 	}
+}
+
+function attachListeners() {
+	const highlightCellPosControl = document.getElementById("highlightCellPosControl");
+	highlightCellPosControl.addEventListener("change", highlightCellPos);
+	
+	const highlightSameStmtControl = document.getElementById("highlightSameStmtControl");
+	highlightSameStmtControl.addEventListener("change", highlightSameStmt);
 	
 	const shrinkTableControl = document.getElementById("shrinkMatrixControl");
-	shrinkTableControl.addEventListener("change", function(event){sizeTable(event.target.checked)})
+	shrinkTableControl.addEventListener("change", sizeTable);
 }
 
 
