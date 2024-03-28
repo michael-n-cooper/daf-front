@@ -8,7 +8,11 @@ import {table} from "../components/build-matrix.js";
 <script>
 window.addEventListener("load", attachListeners());
 </script>
-<p><input type="checkbox" id="shrinkMatrixControl"/> <label for="shrinkMatrixControl">Shrink matrix</label></p>
+<p>
+<input type="checkbox" id="highlightCellPosControl"/> <label for="highlightCellPosControl">Show cell position</label>
+<input type="checkbox" id="highlightSameStmtControl"/> <label for="highlightSameStmtControl">Show same statements</label>
+<input type="checkbox" id="shrinkMatrixControl"/> <label for="shrinkMatrixControl">Fit matrix</label>
+</p>
 <div id="matrix" set:html={table}>
 </div>
 </Layout>

@@ -166,27 +166,47 @@ function sizeTable(event) {
 		table.style = "";
 		removePopovers();
 	}
-	
-	
 }
 
-function attachListeners() {
+function highlightCellPos(event) {
+	const show = this.checked;
 	const nl = document.getElementsByTagName("td");
 	for (let i = 0; i < nl.length; i++) {
-		nl[i].addEventListener("mouseover", focusRowCol);
-		nl[i].addEventListener("mouseout", blurRowCol);
+		if (show) {
+			nl[i].addEventListener("mouseover", focusRowCol);
+			nl[i].addEventListener("mouseout", blurRowCol);
+		} else {
+			nl[i].removeEventListener("mouseover", focusRowCol);
+			nl[i].removeEventListener("mouseout", blurRowCol);
+		}
 	};
-	
+}
+
+function highlightSameStmt(event) {
+	const show = this.checked;
 	const stmtList = document.getElementsByTagName("a");
 	for (let i = 0; i < stmtList.length; i++) {
 		if (stmtList[i].className.length > 0) {
-			stmtList[i].addEventListener("mouseover", focusStmt);
-			stmtList[i].addEventListener("mouseout", blurStmt);
+			if (show) {
+				stmtList[i].addEventListener("mouseover", focusStmt);
+				stmtList[i].addEventListener("mouseout", blurStmt);
+			} else {
+				stmtList[i].removeEventListener("mouseover", focusStmt);
+				stmtList[i].removeEventListener("mouseout", blurStmt);
+			}
 		}
 	}
+}
+
+function attachListeners() {
+	const highlightCellPosControl = document.getElementById("highlightCellPosControl");
+	highlightCellPosControl.addEventListener("change", highlightCellPos);
+	
+	const highlightSameStmtControl = document.getElementById("highlightSameStmtControl");
+	highlightSameStmtControl.addEventListener("change", highlightSameStmt);
 	
 	const shrinkTableControl = document.getElementById("shrinkMatrixControl");
-	shrinkTableControl.addEventListener("change", sizeTable)
+	shrinkTableControl.addEventListener("change", sizeTable);
 }
 
 
