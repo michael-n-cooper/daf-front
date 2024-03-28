@@ -64,8 +64,8 @@ function enterCell(event) {
 }
 function leaveCell(event) {
 	const id = this.id;
+	curOpenerId = "";
 	if (curPopoverId != id) {
-		curOpenerId = "";
 		closePopover(id);
 	}
 }
@@ -78,8 +78,8 @@ function leavePopover(event) {
 	const id = this.id;
 	if (curOpenerId != id) {
 		closePopover(id);
-		curPopoverId = "";
 	}
+	curPopoverId = "";
 }
 
 // Events to show/hide the subpopover when the mouse moves over and out
