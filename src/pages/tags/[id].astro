@@ -3,6 +3,12 @@ import * as dbquery from '../../script/dbquery.js';
 import Layout from '../../layouts/Layout.astro';
 import {baseUri, idFrag} from '../../script/util.js';
 
+export async function getStaticPaths() { 
+	const module = await import('./ids.js');
+	const {ids} = module;
+	return (ids);
+}
+
 const {id} = Astro.params;
 
 const labelSparql = "select ?id ?label where { values ?id {:" + id + "} . ?id rdfs:label ?label }";
