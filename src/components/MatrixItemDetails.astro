@@ -5,15 +5,15 @@ import {baseUri, idFrag} from '../script/util.js';
 
 const {id, type} = Astro.props;
 
-const labelSparql = "select ?id ?label where { values ?id {:" + id + "} . ?id rdfs:label ?label }";
+const labelSparql = "select ?id ?label ?stmt where { values ?id {:" + id + "} . ?id rdfs:label ?label }";
 const labelResult = await dbquery.selectQuery(labelSparql);
 
-const statementsSparql = "select distinct ?id ?label where { values ?itemId {:" + id + "} . ?id a11y:supports/a11y:supports ?itemId ; rdfs:label ?label }";
+const statementsSparql = "select distinct ?id ?label ?stmt where { values ?itemId {:" + id + "} . ?id a11y:supports/a11y:supports ?itemId ; rdfs:label ?label ; a11y:stmtGuidance ?stmt }";
 const statementsResult = await dbquery.selectQuery(statementsSparql);
 ---
 <Layout title={type + ": " + labelResult.results.bindings[0].label.value}>
 <p>Statements that support this item:</p>
 <ul>
-{statementsResult.results.bindings.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id.value)}>{statement.label.value}</a></li>)}
+{statementsResult.results.bindings.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id.value)}>{statement.label.value}</a> - {statement.stmt.value}</li>)}
 </ul>
 </Layout>
