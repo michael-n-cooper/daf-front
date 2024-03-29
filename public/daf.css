@@ -1,0 +1,25 @@
+body {
+	font-family: sans-serif;
+	background-color: white;
+	color: black;
+}
+a:link, a:visited {
+  color: #000099;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+	background-color: yellow;
+  cursor: link;
+}
+table, td, th {
+	border: thin solid black;
+	border-collapse: collapse;
+}
+td, th {
+	padding: .5ex;
+	vertical-align: top;
+	text-align: left;
+	background-color: white;
+	color: black;
+}
