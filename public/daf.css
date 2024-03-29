@@ -23,3 +23,9 @@ td, th {
 	background-color: white;
 	color: black;
 }
+li {
+	padding-bottom: 1ex;
+}
+li > ul {
+	padding-top: 1ex;
+}
