@@ -5,7 +5,9 @@ import {baseUri, idFrag} from '../script/util.js';
 
 const {id, type} = Astro.props;
 
-const labelSparql = "select ?id ?label ?stmt where { values ?id {:" + id + "} . ?id rdfs:label ?label }";
+var labelSparql = "";
+if (type == "Reference") labelSparql = "select ?id ?label where { values ?id {:" + id + "} . ?id a11y:refNote ?label }";
+else labelSparql = "select ?id ?label where { values ?id {:" + id + "} . ?id rdfs:label ?label }";
 const labelResult = await dbquery.selectQuery(labelSparql);
 
 const statementsSparql = "select distinct ?id ?label ?stmt where { values ?itemId {:" + id + "} . ?id a11y:supports/a11y:supports ?itemId ; rdfs:label ?label ; a11y:stmtGuidance ?stmt }";
