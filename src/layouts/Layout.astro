@@ -15,6 +15,7 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href={baseUri + "favicon.svg"} />
+		<link rel="stylesheet" type="text/css" href={baseUri + "daf.css"} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -28,30 +29,3 @@ const { title } = Astro.props;
 		</footer>
 	</body>
 </html>
-<style is:global>
-	body {
-		font-family: sans-serif;
-		background-color: white;
-		color: black;
-	}
-	a:link, a:visited {
-	  color: #000099;
-	  text-decoration: none;
-	}
-	
-	a:hover, a:active {
-		background-color: yellow;
-	  cursor: link;
-	}
-	table, td, th {
-		border: thin solid black;
-		border-collapse: collapse;
-	}
-	td, th {
-		padding: .5ex;
-		vertical-align: top;
-		text-align: left;
-		background-color: white;
-		color: black;
-	}
-</style>
