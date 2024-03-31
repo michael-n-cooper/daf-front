@@ -1,10 +1,16 @@
 ---
-import IdLabel from '../../components/IdLabel.astro';
+import * as dbquery from '../../script/dbquery.js';
 import Layout from '../../layouts/Layout.astro';
+import {baseUri, idFrag} from '../../script/util.js';
+
+const statementsSparql = "select distinct ?id ?label ?stmt where { ?id a a11y:AccessibilityStatement ; rdfs:label ?label ; a11y:stmtGuidance ?stmt } order by ?label";
+const statementsResult = await dbquery.selectQuery(statementsSparql);
 
 ---
 
-<Layout title="Guidance statement">
-		<IdLabel type="AccessibilityStatement" section="guidance-statements" title="Guidance statement"></IdLabelSupports>
+<Layout title="Guidance statements">
+<ul>
+{statementsResult.results.bindings.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id.value)}>{statement.label.value}</a> - {statement.stmt.value}</li>)}
+</ul>
 </Layout>
 
