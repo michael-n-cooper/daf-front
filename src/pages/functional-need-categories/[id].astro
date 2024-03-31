@@ -1,6 +1,7 @@
 ---
-import MatrixItemDetails from '../../components/MatrixItemDetails.astro';
 import Layout from '../../layouts/Layout.astro';
+import * as dbquery from '../../script/dbquery.js';
+import {baseUri, idFrag} from '../../script/util.js';
 
 export async function getStaticPaths() { 
 	const module = await import('./ids.js');
@@ -9,6 +10,17 @@ export async function getStaticPaths() {
 }
 
 const {id} = Astro.params;
----
-<MatrixItemDetails id={id} type="Functional Need"></MatrixItemDetails>
 
+const labelSparql = "select ?label where { values ?id { :" + id + " } . ?id rdfs:label ?label }";
+const labelResult = await dbquery.selectQuery(labelSparql);
+
+const sparql = "select ?id ?label where { values ?cat { :" + id + "} . ?id a a11y:FunctionalNeed ; a11y:supports ?cat ; rdfs:label ?label } order by ?label";
+const json = await dbquery.selectQuery(sparql);
+
+---
+<Layout title={"Functional Need Category: " + labelResult.results.bindings[0].label.value}>
+<p>This category includes the following functional needs:</p>
+<ul>
+	{json.results.bindings.map((item) => <li><a href={baseUri + 'functional-needs/' + idFrag(item.id.value)}>{item.label.value}</a></li>)}
+</ul>
+</Layout>
