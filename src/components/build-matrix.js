@@ -62,7 +62,7 @@ function buildTable() {
 		table += "<tr><th scope='rowgroup' rowspan='" + userNeedRelevances.length + "'><a href='" + baseUri + "user-needs/" + un.id + "'>" + un.label + "</a></th>";
 		var groupPos = 1;
 		userNeedRelevances.forEach(function(unr) {
-			if (groupPos > 2) {
+			if (groupPos > 1) {
 				table += "<tr>"; 
 			}
 			rowNum++;
@@ -98,7 +98,7 @@ function buildTable() {
 	
 	table += "</tbody>";
 	table += "<tfoot>";
-	table += "<tr><th colspan'2' scope='row'>Total Functional need</th>"; // total
+	table += "<tr><th colspan='2' scope='row'>Total Functional need</th>"; // total
 	functionalNeedCategories.forEach(function(fnc) {
 		fnc.functionalNeeds.forEach(function(fn) {
 			table += "<td></td>";
