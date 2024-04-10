@@ -49,16 +49,19 @@ ul {
 	overflow: auto;
 	scroll-snap-type: x mandatory;
 }
-#matrix thead, #matrix th { 
+thead, th { 
 	position: sticky; 
 }
-#matrix thead { 
+thead { 
 	top: 0; 
 	z-index: 2; 
 }
-#matrix th { 
+th { 
 	left: 0; 
 	z-index: 1; 
+}
+td .mapping
+{
 }
 .rch {
 	background-color: #F9F9F9;
