@@ -14,7 +14,7 @@ const statementsSparql = "select distinct ?id ?label ?stmt where { values ?itemI
 const statementsResult = await dbquery.selectQuery(statementsSparql);
 ---
 <Layout title={type + ": " + labelResult.results.bindings[0].label.value}>
-<p>Statements that support this item:</p>
+<p>There are {statementsResult.results.bindings.length} guidance statements that support this {type.toLowerCase()}:</p>
 <ul>
 {statementsResult.results.bindings.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id.value)}>{statement.label.value}</a> - {statement.stmt.value}</li>)}
 </ul>
