@@ -9,7 +9,7 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-	background-color: yellow;
+	background-color: #FFFDD0;
   cursor: link;
 }
 li {
