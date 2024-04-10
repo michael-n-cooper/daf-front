@@ -1,7 +1,7 @@
 import * as dbquery from './dbquery.js';
 import {findObjectByProperties, filterObjectByProperties, idFrag, compareStr, isValidUrl, getOneProp, getFileData, escSparql} from './util-base.js';
 
-const functionalNeedList = await lookupIds("FunctionalNeed");
+const functionalNeedList = ["f65b7ac6-6d0d-4540-8891-73769f96b05f", "3a3bd86d-f18d-499a-a4d1-923c7e6eda4c", "95746028-e638-446c-9f6e-890d20faf446", "79e8cb4e-1c3b-44dd-81d7-a21bd9945758"];// await lookupIds("FunctionalNeed");
 const existingSet = await getExisting(); 
 const toLoop = new Array();
 toLoop.push(["7e3efc35-5658-4fbd-acb3-0706f1fe861e", ["b73ddfdd-30f2-40b7-b8ed-9255899daa7b", "499a693e-9b66-428d-80ff-74bde49eea81", "d8ae8224-8347-4987-8d0b-d8711c5beabd", "7218d01b-fda9-44a6-bd1d-13931cfc0840"]]);
@@ -49,7 +49,7 @@ async function lookupIds(type) {
 
 async function getExisting() {
 	var returnval = new Array();
-	const existingSparql = 'select ?id ?fnId ?unId ?unrId where { values ?list {:20d9f38e-d72e-4fca-abf8-dc7c61b6c57b :6fda1b60-0fec-4b34-a1dc-8328d90750d5 :17436ecc-2b51-417d-a69a-17f14d13b776 :383dbc49-8012-4299-9443-06812baeae24 :2c75ba30-a758-4cc2-98fb-090fa0e061d3} ?id a a11y:Mapping ; a11y:supports :420fdce5-b640-4210-a93d-571e9a8b33f4 ; a11y:supports ?list ; a11y:supports ?fnId ; a11y:supports ?unId ; a11y:supports ?unrId . ?fnId a a11y:FunctionalNeed . ?unId a a11y:UserNeed . ?unrId a a11y:UserNeedRelevance }';
+	const existingSparql = 'select ?id ?fnId ?unId ?unrId where { ?id a a11y:Mapping ; a11y:supports ?fnId ; a11y:supports ?unId ; a11y:supports ?unrId . ?fnId a a11y:FunctionalNeed . ?unId a a11y:UserNeed . ?unrId a a11y:UserNeedRelevance }';
 	const existingResult = await dbquery.selectQuery(existingSparql);
 	if (typeof existingResult.results.bindings !== 'undefined') {
 		existingResult.results.bindings.forEach(function(result) {

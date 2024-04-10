@@ -22,7 +22,7 @@ const supResult = await dbquery.selectQuery(supSparql);
 ---
 <Layout title={"Intersection need: " + labelResult.results.bindings[0].label.value}>
 <p>This is an intersection of the functional needs <a href={baseUri + "functional-needs/" + idFrag(supResult.results.bindings[0].fn1.value)}>{supResult.results.bindings[0].fn1Label.value}</a> and <a href={baseUri + "functional-needs/" + idFrag(supResult.results.bindings[0].fn2.value)}>{supResult.results.bindings[0].fn2Label.value}</a>.</p>
-<p>Statements that support this item:</p>
+<p>There are {statementsResult.results.bindings.length} guidance statements that support this intersection need:</p>
 <ul>
 {statementsResult.results.bindings.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id.value)}>{statement.label.value}</a></li>)}
 </ul>
