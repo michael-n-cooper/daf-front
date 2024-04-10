@@ -1,14 +1,12 @@
 import * as dbquery from '../script/dbquery.js';
-import {findObjectByProperties, filterObjectByProperties, baseUri} from '../script/util.js';
+import {findObjectByProperties, filterObjectByProperties, baseUri, idFrag} from '../script/util.js';
 
 var debug = new Array();
 // Get the matrix data, including mapping info etc.
 
 // Get the FunctionalNeedCategory, FunctionalNeed, UserNeed, UserNeedRelevance into arrays (FN grouped into FNC)
 const functionalNeedCategories = await lookupFunctionalNeedCategories();
-//const userNeeds = await lookupUserNeeds();
-const userNeeds = await lookupList('UserNeed');
-const userNeedRelevances = await lookupList('UserNeedRelevance');
+const userNeeds = await lookupUserNeeds();
 
 // Get the set of matrix items
 const mappings = await lookupMappings();
@@ -57,14 +55,14 @@ function buildTable() {
 	// rows per user need
 	userNeeds.forEach(function(un) {
 		rowNum++;
-		table += "<tr><th scope='rowgroup' rowspan='" + userNeedRelevances.length + "'><a href='" + baseUri + "user-needs/" + un.id + "'>" + un.label + "</a></th>";
+		table += "<tr><th scope='rowgroup' rowspan='" + un.relevances.length + "'><a href='" + baseUri + "user-needs/" + un.id + "'>" + un.label + "</a> <span class='total'>(" + un.total + ")</span></th>";
 		var groupPos = 1;
-		userNeedRelevances.forEach(function(unr) {
+		un.relevances.forEach(function(unr) {
 			if (groupPos > 1) {
 				table += "<tr>"; 
 			}
 			rowNum++;
-			table += "<th scope='row' class='" + rc(rowNum, 2) + "'><a href='" + baseUri + "user-need-relevances/" + unr.id + "'>" + unr.label + "</a></th>";
+			table += "<th scope='row' class='" + rc(rowNum, 2) + "'><a href='" + baseUri + "user-need-relevances/" + unr.id + "'>" + unr.label + "</a> <span class='total'>(" + unr.total + ")</span></th>";
 			
 			colNum = 3;
 			functionalNeedCategories.forEach(function(fnc) {
@@ -134,6 +132,29 @@ async function lookupIntersectionNeeds() {
 	 	arr.push({"id": dbquery.idFrag(itsc.id.value), "label": itsc.label.value, "total": typeof itsc.total !== 'undefined' ? itsc.total.value : 0});
 	});
 	return arr;
+}
+
+async function lookupUserNeeds() {
+	let userNeeds = new Array();
+	
+	// user needs
+	const unSparql = 'select ?id ?label ?total where { ?id a a11y:UserNeed ; rdfs:label ?label . optional { select ?id (count(?supId) as ?total) where { select distinct ?id ?supId where { ?id a a11y:UserNeed . ?supId a a11y:AccessibilityStatement ; a11y:supports / a11y:supports ?id  } } group by ?id } } order by ?label';
+	const unResult = await dbquery.selectQuery(unSparql);
+	unResult.results.bindings.forEach(async function(un) {
+		const unId = idFrag(un.id.value);
+		let needs = new Array();
+		let relevances = new Array();
+		
+		const relevanceSparql = 'select ?id ?label ?total where { ?id a a11y:UserNeedRelevance ; rdfs:label ?label . optional { select ?id (count(?supId) as ?total) where { select distinct ?id ?supId where { ?id a a11y:UserNeedRelevance . ?supId a a11y:AccessibilityStatement ; a11y:supports / a11y:supports ?id ; a11y:supports / a11y:supports :' + unId + '  } } group by ?id } } order by ?label';
+		const relevanceResult = await dbquery.selectQuery(relevanceSparql);
+		relevanceResult.results.bindings.forEach(function(relevance) {
+			relevances.push({"id": idFrag(relevance.id.value), "label": relevance.label.value, "total": typeof relevance.total !== 'undefined' ? relevance.total.value : 0});
+		});
+
+		userNeeds.push({"id": unId, "label": un.label.value, "total": typeof un.total !== 'undefined' ? un.total.value : 0, "relevances": relevances});
+	});
+
+	return userNeeds;
 }
 
 async function lookupMappings() {
