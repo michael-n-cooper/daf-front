@@ -6,6 +6,7 @@ var debug = new Array();
 
 // Get the FunctionalNeedCategory, FunctionalNeed, UserNeed, UserNeedRelevance into arrays (FN grouped into FNC)
 const functionalNeedCategories = await lookupFunctionalNeedCategories();
+//const userNeeds = await lookupUserNeeds();
 const userNeeds = await lookupList('UserNeed');
 const userNeedRelevances = await lookupList('UserNeedRelevance');
 
@@ -98,7 +99,7 @@ function buildTable() {
 	return table;
 }
 
-// returning a object {id, label, functionalNeeds[id, label]}
+// returning a object {id, label, functionalNeeds[id, label, total]}
 async function lookupFunctionalNeedCategories () {
 	let fncs = new Array();
 	let fns = new Array();
@@ -127,15 +128,10 @@ async function lookupFunctionalNeedCategories () {
 // look up intersection needs
 async function lookupIntersectionNeeds() {
 	var arr = new Array();
-	var seen = new Array();
-	const itscSparql = 'select ?id ?label where { ?id a a11y:IntersectionNeed ; rdfs:label ?label }';
+	const itscSparql = 'select ?id ?label ?total where { ?id a a11y:IntersectionNeed ; rdfs:label ?label . optional { select ?id (count(?supId) as ?total) where { select distinct ?id ?supId where { ?id a a11y:IntersectionNeed . ?supId a a11y:AccessibilityStatement ; a11y:supports / a11y:supports ?id  } } group by ?id } } order by ?label';
 	const itscRes = await dbquery.selectQuery(itscSparql);
 	if (typeof itscRes.results !== 'undefined') itscRes.results.bindings.forEach(function(itsc) {
-		const itscId = dbquery.idFrag(itsc.id.value);
-		if (!seen.includes(itscId)) {
-		 	arr.push({"id": dbquery.idFrag(itscId), "label": itsc.label.value});
-		 	seen.push(itscId);
-		}
+	 	arr.push({"id": dbquery.idFrag(itsc.id.value), "label": itsc.label.value, "total": typeof itsc.total !== 'undefined' ? itsc.total.value : 0});
 	});
 	return arr;
 }
