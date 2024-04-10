@@ -73,3 +73,8 @@ ul {
 	margin: 0;
 	position: absolute;
 }
+.total 
+{
+	font-weight: normal;
+	font-stretch: condensed;
+}
