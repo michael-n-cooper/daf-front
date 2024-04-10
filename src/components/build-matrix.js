@@ -104,7 +104,7 @@ async function lookupFunctionalNeedCategories () {
 	let fns = new Array();
 	
 	//functional needs
-	const fnSparql = 'select ?cId ?id ?label ?total where { ?id a a11y:FunctionalNeed ; rdfs:label ?label ; a11y:supports ?cId . ?cId rdfs:label ?clabel optional { select ?id (count(?supId) as ?total) where { ?id a a11y:FunctionalNeed . ?supId a a11y:AccessibilityStatement ; a11y:supports / a11y:supports ?id } group by ?id } } order by ?clabel ?label';	
+	const fnSparql = 'select ?cId ?id ?label ?total where { ?id a a11y:FunctionalNeed ; rdfs:label ?label ; a11y:supports ?cId . ?cId rdfs:label ?clabel . optional { select ?id (count(?supId) as ?total) where { select distinct ?id ?supId where { ?id a a11y:FunctionalNeed . ?supId a a11y:AccessibilityStatement ; a11y:supports / a11y:supports ?id  } } group by ?id } } order by ?clabel ?label';	
 	const fnRes = await dbquery.selectQuery(fnSparql);
 	fnRes.results.bindings.forEach(function(fn) {
 		if (!fn.label.value.includes("intersection")) fns.push({"id": dbquery.idFrag(fn.id.value), "label": fn.label.value, "cId": dbquery.idFrag(fn.cId.value), "total": typeof fn.total !== 'undefined' ? fn.total.value : 0});
