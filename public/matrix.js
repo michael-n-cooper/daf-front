@@ -206,7 +206,11 @@ function attachListeners() {
 	highlightSameStmtControl.addEventListener("change", highlightSameStmt);
 	
 	const shrinkTableControl = document.getElementById("shrinkMatrixControl");
-	shrinkTableControl.addEventListener("change", sizeTable);
+	if (HTMLElement.prototype.hasOwnProperty("popover")) {
+		shrinkTableControl.addEventListener("change", sizeTable);
+	} else {
+		shrinkTableControl.disabled = true;
+	}
 }
 
 

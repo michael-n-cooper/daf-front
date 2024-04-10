@@ -78,3 +78,6 @@ ul {
 	font-weight: normal;
 	font-stretch: condensed;
 }
+input:disabled+label {
+  color: #ccc;
+}
