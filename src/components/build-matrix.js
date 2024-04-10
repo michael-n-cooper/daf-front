@@ -55,7 +55,7 @@ function buildTable() {
 	// rows per user need
 	userNeeds.forEach(function(un) {
 		rowNum++;
-		table += "<tr><th scope='rowgroup' rowspan='" + un.relevances.length + "'><a href='" + baseUri + "user-needs/" + un.id + "'>" + un.label + "</a> <span class='total'>(" + un.total + ")</span></th>";
+		table += "<tr><th scope='rowgroup' rowspan='" + un.relevances.length + "'><div><a href='" + baseUri + "user-needs/" + un.id + "'>" + un.label + "</a> <span class='total'>(" + un.total + ")</span></div></th>";
 		var groupPos = 1;
 		un.relevances.forEach(function(unr) {
 			if (groupPos > 1) {

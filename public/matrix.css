@@ -24,15 +24,15 @@ thead th[colspan] {
 th[rowspan] {
 	vertical-align: middle;
 }
-th[rowspan] a {
+th[rowspan] div {
 	transform: rotate(-90deg);
 	transform-origin: center right;
 	position: relative;
 	left: -1.5em;
 	display: block;
-	text-wrap: nowrap;
 	margin: 0;
 	padding: 0;
+	text-wrap: nowrap;
 }
 .mapping {
 	width: calc(100% - 1ex);
