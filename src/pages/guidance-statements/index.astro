@@ -13,14 +13,14 @@ const noGlResult = await dbquery.selectQuery(statementsSparql("not"));
 <p><a href="#guideline-derived-statements">Guideline-derived statements</a> | <a href="#matrix-derived-statements">Matrix-derived statements</a></p>
 <section id="guideline-derived-statements">
 <h2>Guideline-derived statements</h2>
-<p>The following guidance statements refer to content from established guidelines:</p> 
+<p>The following {statementsResult.results.bindings.length} guidance statements refer to content from established guidelines:</p> 
 <ul>
 {statementsResult.results.bindings.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id.value)}>{statement.label.value}</a> - {statement.stmt.value}</li>)}
 </ul>
 </section>
 <section id="matrix-derived-statements">
 <h2>Matrix-derived statements</h2>
-<p>The following guidance statements were created while seeking to fill guidelines gaps using the top-down nature of the matrix:</p>
+<p>The following {noGlResult.results.bindings.length} guidance statements were created while seeking to fill guidelines gaps using the top-down nature of the matrix:</p>
 <ul>
 {noGlResult.results.bindings.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id.value)}>{statement.label.value}</a> - {statement.stmt.value}</li>)}
 </ul>
