@@ -110,7 +110,7 @@ function sizePopovers() {
 				const popover = document.getElementById(opener.id + "-popover");
 				const rect = opener.getBoundingClientRect();
 	
-				popover.style = "left: " + rect.left + "px; top: " + rect.bottom + "px; width: " + rect.width / proportion + "px; height: " + rect.height / proportion + "px; font-size: " + 100 / proportion + "%;";
+				popover.style = "left: " + rect.left + "px; top: calc(" + rect.top + "px + 3ex); width: " + rect.width / proportion + "px; height: " + rect.height / proportion + "px; font-size: " + 100 / proportion + "%;";
 			}
 		}
 	}
