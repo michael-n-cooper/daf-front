@@ -82,7 +82,7 @@ function buildTable() {
 							table += "</ul>";
 						}
 						table += "</div>";
-					}
+					} else table += "<div class='mapping'></div>";
 					table += "</td>";
 				});
 			});

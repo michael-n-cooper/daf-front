@@ -49,22 +49,25 @@ ul {
 	overflow: auto;
 	scroll-snap-type: x mandatory;
 }
-#matrix thead, #matrix th { 
+thead, th { 
 	position: sticky; 
 }
-#matrix thead { 
+thead { 
 	top: 0; 
 	z-index: 2; 
 }
-#matrix th { 
+th { 
 	left: 0; 
 	z-index: 1; 
 }
+td .mapping
+{
+}
 .rch {
-	background-color: #F9F9F9;
 }
 .stmt, .stmt:link, .stmt:active, .stmt:visited {
-	color: red;
+	color: #355E3B;
+	text-shadow: 0 0 1px #355E3B;
 }
 .na {
 	background-color: #DDDDDD;
@@ -72,9 +75,13 @@ ul {
 *[popover] {
 	margin: 0;
 	position: absolute;
+	background-color: white;
 }
 .total 
 {
 	font-weight: normal;
 	font-stretch: condensed;
+}
+input:disabled+label {
+  color: #ccc;
 }
