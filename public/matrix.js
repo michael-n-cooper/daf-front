@@ -129,6 +129,7 @@ function attachPopovers() {
 				popover.innerHTML = opener.innerHTML;
 				opener.insertAdjacentElement("afterend", popover);
 				opener.addEventListener("mouseover", enterCell);
+				opener.addEventListener("focus", enterCell, {capture: true});
 				popover.addEventListener("mouseover", enterPopover);
 			}
 		}
