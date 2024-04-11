@@ -67,25 +67,13 @@ function enterCell(event) {
 	openPopover(id);
 	curPopoverId = id;
 	curOpenerId = id;
-}
-function leaveCell(event) {
-	const id = this.id;
-	curOpenerId = "";
-	if (curPopoverId != id) {
-		closePopover(id);
-	}
+	event.stopPropagation();
 }
 
 function enterPopover(event) {
-	const id = this.id;
+	const id = this.id.substr(0, this.id.length - 8);
 	curPopoverId = id;
-}
-function leavePopover(event) {
-	const id = this.id;
-	if (curOpenerId != id) {
-		closePopover(id);
-	}
-	curPopoverId = "";
+	event.stopPropagation();
 }
 
 // Events to show/hide the subpopover when the mouse moves over and out
@@ -99,6 +87,17 @@ function closePopover(id) {
   if (popover != null && popover.matches(":popover-open")) {
     popover.hidePopover();
   }
+}
+
+function clearPopover() {
+	if (curPopoverId != "") {
+		popover = document.getElementById(curPopoverId + "-popover");
+	  if (popover != null && popover.matches(":popover-open")) {
+	    popover.hidePopover();
+	  }
+	  curPopoverId = "";
+	  curOpenerId = "";
+	}
 }
 
 function sizePopovers() {
@@ -126,11 +125,11 @@ function attachPopovers() {
 			popover.innerHTML = opener.innerHTML;
 			opener.insertAdjacentElement("afterend", popover);
 			opener.addEventListener("mouseover", enterCell);
-			opener.addEventListener("mouseout", leaveCell);
 			popover.addEventListener("mouseover", enterPopover);
-			popover.addEventListener("mouseout", leavePopover);
 		}
 	}
+	const table = document.getElementById("table");
+	table.addEventListener("mouseover", clearPopover);
 	sizePopovers();
 }
 
@@ -143,10 +142,11 @@ function removePopovers() {
 			const popover = document.getElementById(id + "-popover");
 			const parent = popover.parentElement;
 			opener.removeEventListener("mouseover", enterCell);
-			opener.removeEventListener("mouseout", leaveCell);
 			parent.removeChild(popover);
 		}
 	}
+	const table = document.getElementById("table");
+	table.removeEventListener("mouseover", clearPopover);
 }
 
 function sizeTable(event) {
@@ -161,7 +161,7 @@ function sizeTable(event) {
 		
 		attachPopovers();
 		
-		matrix.addEventListener("scrollend", (event) => {sizePopovers(); console.log("scroll");});
+		matrix.addEventListener("scrollend", sizePopovers);
 	} else {
 		table.style = "";
 		removePopovers();
@@ -206,7 +206,11 @@ function attachListeners() {
 	highlightSameStmtControl.addEventListener("change", highlightSameStmt);
 	
 	const shrinkTableControl = document.getElementById("shrinkMatrixControl");
-	shrinkTableControl.addEventListener("change", sizeTable);
+	if (HTMLElement.prototype.hasOwnProperty("popover")) {
+		shrinkTableControl.addEventListener("change", sizeTable);
+	} else {
+		shrinkTableControl.disabled = true;
+	}
 }
 
 
