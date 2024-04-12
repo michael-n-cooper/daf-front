@@ -3,16 +3,35 @@ import Layout from '../../layouts/Layout.astro';
 import * as dbquery from '../../script/dbquery.js';
 import {baseUri, idFrag} from '../../script/util.js';
 
-const sparql = 'select ?id ?iri ?note ?type ?stmtId ?stmtLabel where { ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label ?type . ?stmtId a11y:references ?id ; rdfs:label ?stmtLabel } order by ?iri';
-const result = await dbquery.selectQuery(sparql);
+const glSparql = 'select ?id ?iri ?note ?stmtId ?stmtLabel where { ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label "guidelines"@en . ?stmtId a11y:references ?id ; rdfs:label ?stmtLabel } order by ?iri';
+const glResult = await dbquery.selectQuery(glSparql);
+
+const researchSparql = 'select ?id ?iri ?note ?stmtId ?stmtLabel where { ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label "research"@en . ?stmtId a11y:references ?id ; rdfs:label ?stmtLabel } order by ?iri';
+const researchResult = await dbquery.selectQuery(researchSparql);
+
 ---
 <Layout title="References">
+<p><a href="#guidelines">Guidelines</a> | <a href="#research">Research</a></p>
+	<section id="guidelines">
+		<h2>Guidelines</h2>
+		<table>
+			<thead>
+				<tr><th scope="col">Reference URI</th><th scope="col">Note</th><th scope="col">Used in</th></tr>
+			</thead>
+			<tbody>
+				{glResult.results.bindings.map((reference) => <tr><td><a href={reference.iri.value}>{reference.iri.value}</a></td><td>{reference.note.value}</td><td><a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId.value)}>{reference.stmtLabel.value}</a></td></tr>)}
+			</tbody>
+		</table>
+	</section>
+	<section id="research">
+		<h2>Research</h2>
+	</section>
 	<table>
 		<thead>
 			<tr><th scope="col">Reference URI</th><th scope="col">Note</th><th scope="col">Used in</th></tr>
 		</thead>
 		<tbody>
-			{result.results.bindings.map((reference) => <tr><td><a href={reference.iri.value}>{reference.iri.value}</a></td><td>{reference.note.value}</td><td><a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId.value)}>{reference.stmtLabel.value}</a></td></tr>)}
+			{researchResult.results.bindings.map((reference) => <tr><td><a href={reference.iri.value}>{reference.iri.value}</a></td><td>{reference.note.value}</td><td><a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId.value)}>{reference.stmtLabel.value}</a></td></tr>)}
 		</tbody>
 	</table>
 </Layout>
