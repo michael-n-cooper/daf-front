@@ -1,5 +1,6 @@
 var curRow = 0; var curCol = 0;
 var proportion = 1;
+const popovers = HTMLElement.prototype.hasOwnProperty("popover");
 
 // generate a class attribute for row and column number
 function rc(row, col) {
@@ -101,52 +102,59 @@ function clearPopover() {
 }
 
 function sizePopovers() {
-	const divs = document.getElementsByTagName("div");
-	for (let i = 0; i < divs.length; i++) {
-		if (divs[i].getAttribute("popovertarget") != null) {
-			const opener = divs[i];
-			const popover = document.getElementById(opener.id + "-popover");
-			const rect = opener.getBoundingClientRect();
-
-			popover.style = "left: " + rect.left + "px; top: " + rect.bottom + "px; width: " + rect.width / proportion + "px; height: " + rect.height / proportion + "px; font-size: " + 100 / proportion + "%;";
+	if (popovers) {
+		const divs = document.getElementsByTagName("div");
+		for (let i = 0; i < divs.length; i++) {
+			if (divs[i].getAttribute("popovertarget") != null) {
+				const opener = divs[i];
+				const popover = document.getElementById(opener.id + "-popover");
+				const rect = opener.getBoundingClientRect();
+	
+				popover.style = "left: " + rect.left + "px; top: calc(" + rect.top + "px + 3ex); width: " + rect.width / proportion + "px; height: " + rect.height / proportion + "px; font-size: " + 100 / proportion + "%;";
+			}
 		}
 	}
 }
 
 function attachPopovers() {
-	const divs = document.getElementsByTagName("div");
-	for (let i = 0; i < divs.length; i++) {
-		if (divs[i].getAttribute("popovertarget") != null) {
-			const id = divs[i].id;
-			const opener = divs[i];
-			const popover = document.createElement("div");
-			popover.id = id + "-popover";
-			popover.setAttribute("popover", "");
-			popover.innerHTML = opener.innerHTML;
-			opener.insertAdjacentElement("afterend", popover);
-			opener.addEventListener("mouseover", enterCell);
-			popover.addEventListener("mouseover", enterPopover);
+	if (popovers) {
+		const divs = document.getElementsByTagName("div");
+		for (let i = 0; i < divs.length; i++) {
+			if (divs[i].getAttribute("popovertarget") != null) {
+				const id = divs[i].id;
+				const opener = divs[i];
+				const popover = document.createElement("div");
+				popover.id = id + "-popover";
+				popover.setAttribute("popover", "");
+				popover.innerHTML = opener.innerHTML;
+				opener.insertAdjacentElement("afterend", popover);
+				opener.addEventListener("mouseover", enterCell);
+				opener.addEventListener("focus", enterCell, {capture: true});
+				popover.addEventListener("mouseover", enterPopover);
+			}
 		}
+		const table = document.getElementById("table");
+		table.addEventListener("mouseover", clearPopover);
+		sizePopovers();
 	}
-	const table = document.getElementById("table");
-	table.addEventListener("mouseover", clearPopover);
-	sizePopovers();
 }
 
 function removePopovers() {
-	const divs = document.getElementsByTagName("div");
-	for (let i = 0; i < divs.length; i++) {
-		if (divs[i].getAttribute("popovertarget") != null) {
-			const id = divs[i].id;
-			const opener = divs[i];
-			const popover = document.getElementById(id + "-popover");
-			const parent = popover.parentElement;
-			opener.removeEventListener("mouseover", enterCell);
-			parent.removeChild(popover);
+	if (popovers) {
+		const divs = document.getElementsByTagName("div");
+		for (let i = 0; i < divs.length; i++) {
+			if (divs[i].getAttribute("popovertarget") != null) {
+				const id = divs[i].id;
+				const opener = divs[i];
+				const popover = document.getElementById(id + "-popover");
+				const parent = popover.parentElement;
+				opener.removeEventListener("mouseover", enterCell);
+				parent.removeChild(popover);
+			}
 		}
+		const table = document.getElementById("table");
+		table.removeEventListener("mouseover", clearPopover);
 	}
-	const table = document.getElementById("table");
-	table.removeEventListener("mouseover", clearPopover);
 }
 
 function sizeTable(event) {
@@ -206,11 +214,7 @@ function attachListeners() {
 	highlightSameStmtControl.addEventListener("change", highlightSameStmt);
 	
 	const shrinkTableControl = document.getElementById("shrinkMatrixControl");
-	if (HTMLElement.prototype.hasOwnProperty("popover")) {
-		shrinkTableControl.addEventListener("change", sizeTable);
-	} else {
-		shrinkTableControl.disabled = true;
-	}
+	shrinkTableControl.addEventListener("change", sizeTable);
 }
 
 
