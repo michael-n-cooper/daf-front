@@ -22,3 +22,4 @@ pnpm-debug.log*
 
 # Visual Studio
 .vs/
+.vscode/

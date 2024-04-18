@@ -4,11 +4,9 @@ import {baseUri} from '../script/util.js';
 ---
 
 <Layout title="Digital Accessibility Framework">
-	<p>This resource accesses a database of accessibility statements generated in the <a href="https://github.com/accessiblecommunity/Digital-Accessibility-Framework">Digital Accessibility Framework</a> project and presents it in a <a href={baseUri + "matrix"}>matrix</a> of functional needs, user needs, and user need relevances. </p>
+	<p><a href={baseUri + "matrix"}>Matrix</a> | <a href={baseUri + "docs"}>Documentation</a></p>
 	
-	<p><strong><a href={baseUri + "matrix"}>Matrix</a></strong> | <a href={baseUri + "docs"}>Documentation</a></p>
-	
-	<p>The matrix shows guidance statements and their relationship to the above dimensions. Links go to greater detail about the item and its relationships. This content can also be accessed by category:</p>
+	<p>This resource accesses a database of accessibility statements generated in the <a href="https://github.com/accessiblecommunity/Digital-Accessibility-Framework">Digital Accessibility Framework</a> project and presents it in a <a href={baseUri + "matrix"}>matrix</a> of functional needs, user needs, and user need relevances. This content can also be accessed by category:</p>
 	
 	<ul>
 		<li><a href={baseUri + "functional-need-categories"}>Functional need categories</a>
@@ -28,5 +26,8 @@ import {baseUri} from '../script/util.js';
 				<li><a href={baseUri + "references"}>References</a></li>
 			</ul>
 		</li>
+		<li><a href={baseUri + "matrix"}>Matrix</a></li>
 	</ul>
+
+	<p>This site is a static copy and not connnected the database that generates the content. Structured data in JSON-LD format is available at <a href={baseUri + "statements.jsonld"}>statements.jsonld</a>.</p>
 </Layout>
