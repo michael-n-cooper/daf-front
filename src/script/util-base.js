@@ -45,7 +45,7 @@ export async function getFileData(path) {
 	  const contents = await readFile(path, { encoding: 'utf8' });
 	  return (contents);
 	} catch (err) {
-	  console.error(err.message);
+	  //console.error(err.message);
 	  return null;
 	}
 }

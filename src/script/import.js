@@ -9,7 +9,28 @@ const importFileName = await inquirer.prompt([{"name": "fileName", "message": "F
 const typosPath = './typos.json';
 const contentIriBase = 'https://github.com/accessiblecommunity/Digital-Accessibility-Framework/';
 
-const data = await getFileData(importDir + importFileName); // need to catch bad file name
+const data = await getFileData(importDir + importFileName);
+// need to catch bad file name
+if (data == null) {
+	// check if file previously imported but deleted
+	let sparql = 'select ?id where { ?id a11y:contentIRI <' + contentIriBase + importFileName + '> }';
+	let result = await dbquery.selectQuery(sparql);
+	// previously imported
+	if (result.results.bindings.length > 0) {
+		const message = "The file \"" + importFileName + "\" was previously imported but cannot be found. Do you want to delete data from this file?";
+		const todel = await inquirer.prompt([{ "name": "todel", "type": "confirm", "message": message, }]).then((answer) => answer.todel);
+		if (todel) {
+			deleteStatement(idFrag(result.results.bindings[0].id.value));
+			console.log("Deleted " + importFileName);
+		} else console.log("Aborting");
+		process.exit(0);
+	}
+	// bad file name
+	else {
+		console.log("Unable to find file \"" + importFileName + "\"");
+		process.exit(1);
+	}
+}
 
 const { metadata, content } = parseMD(data);
 
@@ -31,12 +52,12 @@ const { research, guidelines } = retrieveReferences(metadata); // retrieve refer
 const { title, statement } = retrieveContent(content); // retrieve title and statement
 
 // check for previous
-var stmtId = await checkReimport(contentIriBase + importFileName);
+let stmtId = await checkReimport(contentIriBase + importFileName);
 if (stmtId != false) {
 	
 	// construct the sparql statement
 	if (stmtId == null) stmtId = dbquery.uuid();
-	var sparql = 'insert data { :' + stmtId + ' a a11y:AccessibilityStatement ; a owl:NamedIndividual ';
+	let sparql = 'insert data { :' + stmtId + ' a a11y:AccessibilityStatement ; a owl:NamedIndividual ';
 	sparql += ' ; a11y:stmtGuidance "' + escSparql(statement) + '"@en';
 	sparql += ' ; rdfs:label "' + escSparql(title) + '"@en';
 	sparql += ' ; a11y:contentIRI <' + contentIriBase + importFileName + ">";
@@ -358,11 +379,15 @@ async function checkReimport(contentIri) {
 		const replace = await inquirer.prompt([{"type": "confirm", "name": "replace", "message": "Do you want to reimport " + label + "?", }]).then((answer) => answer.replace); 
 		if (!replace) return false;
 		else {
-			const updateSparql1 = 'delete where { :' + id + ' a11y:references ?s . ?s ?p ?o}';
-			const updateSparql2 = 'delete where { :' + id + ' ?p ?o }';
-			await dbquery.updateQuery(updateSparql1);
-			await dbquery.updateQuery(updateSparql2);
+			await deleteStatement(id);
 			return id;
 		}
 	} else return null;
+}
+
+async function deleteStatement(id) {
+	const updateSparql1 = 'delete where { :' + id + ' a11y:references ?s . ?s ?p ?o}';
+	const updateSparql2 = 'delete where { :' + id + ' ?p ?o }';
+	await dbquery.updateQuery(updateSparql1);
+	await dbquery.updateQuery(updateSparql2);
 }
