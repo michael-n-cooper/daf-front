@@ -1,4 +1,5 @@
 import { readFile, writeFile, open } from 'node:fs/promises';
+import * as commonmark from 'commonmark';
 
 // Function to find an object based on multiple properties
 export function findObjectByProperties(array, properties) {
@@ -23,6 +24,10 @@ export function compareStr(str1, str2) {
 	else return false;
 }
 
+export function normalizeStr(str) {
+	return str.trim().replace(/\s+/g, ' ');
+}
+
 // from https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
 export function isValidUrl(urlString) {
   	var urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
@@ -35,9 +40,9 @@ export function isValidUrl(urlString) {
 }
 
 export function getOneProp(arr, prop) {
-	var returnval = new Array();
-	arr.forEach((item) => returnval.push(item[prop]));
-	return returnval;
+	var val = new Array();
+	arr.forEach((item) => val.push(item[prop]));
+	return val;
 }
 
 export async function getFileData(path) {
@@ -51,7 +56,15 @@ export async function getFileData(path) {
 }
 
 export function escSparql(str) {
-	return str.replaceAll("\"", "\\\"");
+	let val = str.replaceAll(/[\n\r]/g, "\\n");
+	val = val.replaceAll("\"", "\\\"");
+	return val;
 }
 
-
+export function mdToHtml(str) {
+	let reader = new commonmark.Parser();
+	let writer = new commonmark.HtmlRenderer();
+	let parsed = reader.parse(str);
+	let result = writer.render(parsed);
+	return result;
+}
