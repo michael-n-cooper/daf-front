@@ -1,15 +1,37 @@
 import { readFile, writeFile, open } from 'node:fs/promises';
 import parseMD from 'parse-md';
 import * as dbquery from './dbquery.js';
-import {findObjectByProperties, filterObjectByProperties, idFrag, compareStr, isValidUrl, getOneProp, getFileData, escSparql} from './util-base.js';
+import {findObjectByProperties, filterObjectByProperties, idFrag, compareStr, normalizeStr, isValidUrl, getOneProp, getFileData, escSparql} from './util-base.js';
 import inquirer from 'inquirer';
+import * as commonmark from 'commonmark';
 
 const importDir = '../../../../accessiblecommunity/Digital-Accessibility-Framework/';
 const importFileName = await inquirer.prompt([{"name": "fileName", "message": "File to import:", }]).then((answer) => answer.fileName); 
 const typosPath = './typos.json';
 const contentIriBase = 'https://github.com/accessiblecommunity/Digital-Accessibility-Framework/';
 
-const data = await getFileData(importDir + importFileName); // need to catch bad file name
+const data = await getFileData(importDir + importFileName);
+// need to catch bad file name
+if (data == null) {
+	// check if file previously imported but deleted
+	let sparql = 'select ?id where { ?id a11y:contentIRI <' + contentIriBase + importFileName + '> }';
+	let result = await dbquery.selectQuery(sparql);
+	// previously imported
+	if (result.results.bindings.length > 0) {
+		const message = "The file \"" + importFileName + "\" was previously imported but cannot be found. Do you want to delete data from this file?";
+		const todel = await inquirer.prompt([{ "name": "todel", "type": "confirm", "message": message, }]).then((answer) => answer.todel);
+		if (todel) {
+			deleteStatement(idFrag(result.results.bindings[0].id.value));
+			console.log("Deleted " + importFileName);
+		} else console.log("Aborting");
+		process.exit(0);
+	}
+	// bad file name
+	else {
+		console.log("Unable to find file \"" + importFileName + "\"");
+		process.exit(1);
+	}
+}
 
 const { metadata, content } = parseMD(data);
 
@@ -28,17 +50,18 @@ const referenceTypes = await lookupIdLabels("ReferenceType");
 const tags = await lookupIdLabels("Tag");
 const tagsArr = metadata.tags ? metadata.tags : new Array(); // retrieve tags
 const { research, guidelines } = retrieveReferences(metadata); // retrieve references, divide into research and guidelines
-const { title, statement } = retrieveContent(content); // retrieve title and statement
+const { title, statement, notes } = retrieveContent(content); // retrieve title and statement
 
 // check for previous
-var stmtId = await checkReimport(contentIriBase + importFileName);
+let stmtId = await checkReimport(contentIriBase + importFileName);
 if (stmtId != false) {
 	
 	// construct the sparql statement
 	if (stmtId == null) stmtId = dbquery.uuid();
-	var sparql = 'insert data { :' + stmtId + ' a a11y:AccessibilityStatement ; a owl:NamedIndividual ';
+	let sparql = 'insert data { :' + stmtId + ' a a11y:AccessibilityStatement ; a owl:NamedIndividual ';
 	sparql += ' ; a11y:stmtGuidance "' + escSparql(statement) + '"@en';
 	sparql += ' ; rdfs:label "' + escSparql(title) + '"@en';
+	if (notes.length > 0) sparql += ' ; a11y:note "' + escSparql(notes) + '"@en';
 	sparql += ' ; a11y:contentIRI <' + contentIriBase + importFileName + ">";
 	mappingIds.forEach(function(mapping) {
 		sparql += ' ; a11y:supports :' + mapping;
@@ -240,9 +263,71 @@ function retrieveReferences(metadata) {
 
 // content
 function retrieveContent(content) {
-	const title = content.match(/(?<=#\s).*/)[0];
-	const statement = content.match(/^\w.*$/m)[0];
-	return {"title": title, "statement": statement};
+	let reader = new commonmark.Parser();
+	let parsed = reader.parse(content);
+	//console.log(parsed);
+	let walker = parsed.walker();
+
+	let event, node, entering;
+	let title = "";
+	let statement = "";
+	let notes = ""; // content.substring(content.lastIndexOf('---') + 3); // doing this way so I don't have to remarkupize
+	let lookingFor = "heading"
+	let inside = "";
+	let pbreak = false;
+	while ((event = walker.next())) {
+		node = event.node;
+		entering = event.entering;
+
+		if (node.type == 'heading') {
+			if (entering) {
+				inside = "heading";
+			}
+			else {
+				inside = "";
+				lookingFor = "statement";
+			}
+		}
+		if (node.type == 'paragraph') {
+			if (entering) {
+				if (inside != "item") {
+					inside = "paragraph";
+					pbreak = true;
+				}
+			}
+			else {
+				if (inside != "item") inside = "";
+				if (lookingFor == "statement") lookingFor = "thematic_break";
+				pbreak = false;
+			}
+		}
+		if (node.type == 'thematic_break') {
+			lookingFor = "notes";
+		}
+		if (node.type == 'item') {
+			if (entering) {
+				inside = "item";
+			}
+			else {
+				inside = "";
+			}
+		}
+		if (node.type == "text") {
+			if (lookingFor == "heading" && inside == "heading") title += node.literal + " ";
+			if (lookingFor == "statement" && inside == "paragraph") statement += node.literal + " ";
+			if (lookingFor == "notes" && (inside == "paragraph" || inside == "item")) {
+				if (notes.length > 0) {
+					notes += "\\n";
+					if (pbreak) notes += "\\n";
+					pbreak = false;
+				}
+				if (inside == "item") notes += "* ";
+				notes += node.literal;
+			}
+		}
+	}
+
+	return { "title": normalizeStr(title), "statement": normalizeStr(statement), "notes": notes.trim() };
 }
 
 // typo handling
@@ -358,11 +443,15 @@ async function checkReimport(contentIri) {
 		const replace = await inquirer.prompt([{"type": "confirm", "name": "replace", "message": "Do you want to reimport " + label + "?", }]).then((answer) => answer.replace); 
 		if (!replace) return false;
 		else {
-			const updateSparql1 = 'delete where { :' + id + ' a11y:references ?s . ?s ?p ?o}';
-			const updateSparql2 = 'delete where { :' + id + ' ?p ?o }';
-			await dbquery.updateQuery(updateSparql1);
-			await dbquery.updateQuery(updateSparql2);
+			await deleteStatement(id);
 			return id;
 		}
 	} else return null;
+}
+
+async function deleteStatement(id) {
+	const updateSparql1 = 'delete where { :' + id + ' a11y:references ?s . ?s ?p ?o}';
+	const updateSparql2 = 'delete where { :' + id + ' ?p ?o }';
+	await dbquery.updateQuery(updateSparql1);
+	await dbquery.updateQuery(updateSparql2);
 }

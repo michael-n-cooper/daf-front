@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import * as dbquery from '../../script/dbquery.js';
-import {baseUri, idFrag} from '../../script/util.js';
+import {baseUri, idFrag, mdToHtml} from '../../script/util.js';
 
 export async function getStaticPaths() { 
 	const module = await import('./ids.js');
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 const {id} = Astro.params;
 
 // get the main statement
-const stmtSparql = 'select ?id ?label ?guidance ?contentIRI where { ?id rdfs:label ?label ; a11y:stmtGuidance ?guidance . optional {?id a11y:contentIRI ?contentIRI} . values ?id { :' + id + ' } } ';
+const stmtSparql = 'select ?id ?label ?guidance ?note ?contentIRI where { ?id rdfs:label ?label ; a11y:stmtGuidance ?guidance . optional {?id a11y:contentIRI ?contentIRI} . optional {?id a11y:note ?note} . values ?id { :' + id + ' } } ';
 const stmtResult = await dbquery.selectQuery(stmtSparql);
 
 // get the mappings
@@ -25,8 +25,21 @@ const refResult = await dbquery.selectQuery(refSparql);
 const tagSparql = 'select ?id ?label where { values ?stmtid { :' + id + ' } . ?stmtid a11y:tags ?id . ?id a a11y:Tag ; rdfs:label ?label }';
 const tagResult = await dbquery.selectQuery(tagSparql);
 ---
+<style is:global>
+.stmt {
+	font-weight: bold;
+}
+main {
+	padding-left: 3em;
+}
+h2, h3, h4, h5, h6 {
+	position: relative;
+	left: -2em;
+}
+</style>
 <Layout title={stmtResult.results.bindings[0].label.value}>
-	<p>{stmtResult.results.bindings[0].guidance.value}</p>
+	<p class="stmt">{stmtResult.results.bindings[0].guidance.value}</p>
+	{typeof stmtResult.results.bindings[0].note !== 'undefined' ? <Fragment set:html={"<h2>Notes</h2>" + mdToHtml(stmtResult.results.bindings[0].note.value)}></Fragment> : ""}
 	<h2>Supports</h2>
 	<table>
 		<thead>
@@ -44,16 +57,5 @@ const tagResult = await dbquery.selectQuery(tagSparql);
 	<ul>
 		{tagResult.results.bindings.map((item) => <li><a href={baseUri + 'tags/' + idFrag(item.id.value)}>{item.label.value}</a></li>)}
 	</ul>
-	<p>Imported from {stmtResult.results.bindings[0].contentIRI.value}</p>
+	<p>Imported from <a href={stmtResult.results.bindings[0].contentIRI.value}>{stmtResult.results.bindings[0].contentIRI.value}</a></p>
 </Layout>
-<style is:global>
-td, th {
-	padding: .5ex;
-	vertical-align: top;
-	horizontal-align: left;
-}
-table, td, th {
-	border: thin solid black;
-	border-collapse: collapse;
-}
-</style>
