@@ -37,10 +37,10 @@ h2, h3, h4, h5, h6 {
 	<h2>Supports</h2>
 	<table>
 		<thead>
-			<tr><th>Functional need</th><th>User need</th><th>Relevance</th></tr>
+			<tr><th>Functional need</th><th>User need</th><th>Context</th></tr>
 		</thead>
 		<tbody>
-			{mapResult.results.bindings.map((item) => <tr><td><a href={baseUri + (idFrag(item.needType.value) == "IntersectionNeed" ? "intersection-needs/" : "functional-needs/" ) + idFrag(item.fn_id.value)}>{item.fn_label.value}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.un_id.value)}>{item.un_label.value}</a></td><td><a href={baseUri + 'user-need-relevances/' + idFrag(item.unr_id.value)}>{item.unr_label.value}</a></td></tr>)}
+			{mapResult.results.bindings.map((item) => <tr><td><a href={baseUri + (idFrag(item.needType.value) == "IntersectionNeed" ? "intersection-needs/" : "functional-needs/" ) + idFrag(item.fn_id.value)}>{item.fn_label.value}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.un_id.value)}>{item.un_label.value}</a></td><td><a href={baseUri + 'user-need-contexts/' + idFrag(item.unr_id.value)}>{item.unr_label.value}</a></td></tr>)}
 		</tbody>
 	</table>
 	<h2>References</h2>
