@@ -3082,6 +3082,39 @@
         ]
     },
     {
+        "@id": "https://aihal.net/accessibility/daf/#IntersectionNeed",
+        "@type": [
+            "http://www.w3.org/2000/01/rdf-schema#Class",
+            "http://www.w3.org/2002/07/owl#Class",
+            "http://www.w3.org/2002/07/owl#Thing"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+            {
+                "@id": "http://www.w3.org/2002/07/owl#Thing"
+            },
+            {
+                "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
+            },
+            {
+                "@id": "https://aihal.net/accessibility/daf/#4bd95df0_27d4_4de2_b173_bc8f8c8b2504"
+            },
+            {
+                "@id": "_:node305"
+            }
+        ],
+        "http://www.w3.org/2002/07/owl#equivalentClass": [
+            {
+                "@id": "https://aihal.net/accessibility/daf/#4bd95df0_27d4_4de2_b173_bc8f8c8b2504"
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "IntersectionNeed"
+            }
+        ]
+    },
+    {
         "@id": "_:node272",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
@@ -6580,26 +6613,6 @@
         ]
     },
     {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#IntersectionNeed"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "No vision and No hearing"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#12af495f-dd3c-488e-9324-dc1ef54260f8"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e8c95c64-edf1-40cf-930b-7eeb843e3310"
-            }
-        ]
-    },
-    {
         "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c9971a8c-c0f0-4f14-8907-93da43f27aec",
         "@type": [
             "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -6611,9 +6624,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#68464f13-d2c4-4606-9735-01e60c3a137f"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ]
     },
@@ -21996,49 +22006,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#IntersectionNeed"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Limited hearing and Limited vision"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#37d5e7fa-7b54-4c4d-b93a-42edf5891153"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#863b0042-5d00-4388-9a39-a702a77fff8e"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#IntersectionNeed"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "No hearing and Limited vision"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#37d5e7fa-7b54-4c4d-b93a-42edf5891153"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e8c95c64-edf1-40cf-930b-7eeb843e3310"
             }
         ]
     },
@@ -22054,9 +22021,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ]
     },
@@ -22072,9 +22036,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ]
     },
@@ -22090,9 +22051,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ]
     },
@@ -22108,9 +22066,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ]
     },
@@ -22126,9 +22081,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ]
     },
@@ -22144,9 +22096,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ]
     },
@@ -22162,9 +22111,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ]
     },
@@ -26834,9 +26780,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -26857,9 +26800,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -26880,9 +26820,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -26926,9 +26863,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -26949,9 +26883,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -26972,9 +26903,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27018,9 +26946,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d8ae8224-8347-4987-8d0b-d8711c5beabd"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27041,9 +26966,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d8ae8224-8347-4987-8d0b-d8711c5beabd"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27064,9 +26986,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d8ae8224-8347-4987-8d0b-d8711c5beabd"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27110,9 +27029,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7218d01b-fda9-44a6-bd1d-13931cfc0840"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27133,9 +27049,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7218d01b-fda9-44a6-bd1d-13931cfc0840"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27156,9 +27069,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7218d01b-fda9-44a6-bd1d-13931cfc0840"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27202,9 +27112,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#20d9f38e-d72e-4fca-abf8-dc7c61b6c57b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27225,9 +27132,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#20d9f38e-d72e-4fca-abf8-dc7c61b6c57b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27248,9 +27152,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#20d9f38e-d72e-4fca-abf8-dc7c61b6c57b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27294,9 +27195,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6fda1b60-0fec-4b34-a1dc-8328d90750d5"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27317,9 +27215,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6fda1b60-0fec-4b34-a1dc-8328d90750d5"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27340,9 +27235,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6fda1b60-0fec-4b34-a1dc-8328d90750d5"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27386,9 +27278,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#17436ecc-2b51-417d-a69a-17f14d13b776"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27409,9 +27298,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#17436ecc-2b51-417d-a69a-17f14d13b776"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27432,9 +27318,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#17436ecc-2b51-417d-a69a-17f14d13b776"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27478,9 +27361,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#383dbc49-8012-4299-9443-06812baeae24"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27501,9 +27381,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#383dbc49-8012-4299-9443-06812baeae24"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27524,9 +27401,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#383dbc49-8012-4299-9443-06812baeae24"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27570,9 +27444,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c75ba30-a758-4cc2-98fb-090fa0e061d3"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27593,9 +27464,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c75ba30-a758-4cc2-98fb-090fa0e061d3"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27616,9 +27484,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c75ba30-a758-4cc2-98fb-090fa0e061d3"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27662,9 +27527,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#20d9f38e-d72e-4fca-abf8-dc7c61b6c57b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27685,9 +27547,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#20d9f38e-d72e-4fca-abf8-dc7c61b6c57b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27708,9 +27567,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#20d9f38e-d72e-4fca-abf8-dc7c61b6c57b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27754,9 +27610,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6fda1b60-0fec-4b34-a1dc-8328d90750d5"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27777,9 +27630,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6fda1b60-0fec-4b34-a1dc-8328d90750d5"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27800,9 +27650,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6fda1b60-0fec-4b34-a1dc-8328d90750d5"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27846,9 +27693,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#17436ecc-2b51-417d-a69a-17f14d13b776"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27869,9 +27713,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#17436ecc-2b51-417d-a69a-17f14d13b776"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27892,9 +27733,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#17436ecc-2b51-417d-a69a-17f14d13b776"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27938,9 +27776,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#383dbc49-8012-4299-9443-06812baeae24"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27961,9 +27796,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#383dbc49-8012-4299-9443-06812baeae24"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -27984,9 +27816,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#383dbc49-8012-4299-9443-06812baeae24"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -28030,9 +27859,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c75ba30-a758-4cc2-98fb-090fa0e061d3"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3a3bd86d-f18d-499a-a4d1-923c7e6eda4c"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -28053,9 +27879,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c75ba30-a758-4cc2-98fb-090fa0e061d3"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95746028-e638-446c-9f6e-890d20faf446"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -28076,9 +27899,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c75ba30-a758-4cc2-98fb-090fa0e061d3"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#79e8cb4e-1c3b-44dd-81d7-a21bd9945758"
             }
         ],
         "https://aihal.net/accessibility/daf/#applicable": [
@@ -29881,46 +29701,6 @@
         ]
     },
     {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e6a5b635-996f-4736-9d6c-1f00fb91db42",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#IntersectionNeed"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "No hearing and Limited vision"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#37d5e7fa-7b54-4c4d-b93a-42edf5891153"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e8c95c64-edf1-40cf-930b-7eeb843e3310"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1385d59e-f867-4655-8318-aec2d5f932ee",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#IntersectionNeed"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Limited hearing and Limited vision"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#37d5e7fa-7b54-4c4d-b93a-42edf5891153"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#863b0042-5d00-4388-9a39-a702a77fff8e"
-            }
-        ]
-    },
-    {
         "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dbf7559f-47c0-46a9-b6af-e67325929827",
         "@type": [
             "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -29932,9 +29712,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e6a5b635-996f-4736-9d6c-1f00fb91db42"
             }
         ]
     },
@@ -29950,9 +29727,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e6a5b635-996f-4736-9d6c-1f00fb91db42"
             }
         ]
     },
@@ -29968,9 +29742,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1385d59e-f867-4655-8318-aec2d5f932ee"
             }
         ]
     },
@@ -29986,9 +29757,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e6a5b635-996f-4736-9d6c-1f00fb91db42"
             }
         ]
     },
@@ -30004,9 +29772,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1385d59e-f867-4655-8318-aec2d5f932ee"
             }
         ]
     },
@@ -30022,9 +29787,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1385d59e-f867-4655-8318-aec2d5f932ee"
             }
         ]
     },
@@ -30040,9 +29802,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1385d59e-f867-4655-8318-aec2d5f932ee"
             }
         ]
     },
@@ -30058,9 +29817,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#499a693e-9b66-428d-80ff-74bde49eea81"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e6a5b635-996f-4736-9d6c-1f00fb91db42"
             }
         ]
     },
