@@ -24,7 +24,7 @@ paths.push({"path": "intersection-needs", "type": "IntersectionNeed"});
 paths.push({"path": "guidance-statements", "type": "AccessibilityStatement"});
 paths.push({"path": "references", "type": "Reference"});
 paths.push({"path": "tags", "type": "Tag"});
-paths.push({"path": "user-need-relevances", "type": "UserNeedRelevance"});
+paths.push({"path": "user-need-contexts", "type": "UserNeedRelevance"});
 paths.push({"path": "user-needs", "type": "UserNeed"});
 
 let promises = new Array();
