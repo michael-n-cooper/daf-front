@@ -16,8 +16,8 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-	background-color: #FFFDD0;
-  cursor: link;
+	text-shadow: .25ex .25ex .5ex #ffd800;
+	cursor: link;
 }
 li {
     padding-bottom: 1ex;

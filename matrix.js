@@ -1,6 +1,7 @@
 var curRow = 0; var curCol = 0;
 var proportion = 1;
 const popovers = HTMLElement.prototype.hasOwnProperty("popover");
+var usingPopovers = false;
 
 // generate a class attribute for row and column number
 function rc(row, col) {
@@ -134,13 +135,16 @@ function attachPopovers() {
 			}
 		}
 		const table = document.getElementById("table");
+		const matrix = document.getElementById("matrix");
 		table.addEventListener("mouseover", clearPopover);
+		matrix.addEventListener("scrollend", sizePopovers);
 		sizePopovers();
+		usingPopovers = true;
 	}
 }
 
 function removePopovers() {
-	if (popovers) {
+	if (popovers && usingPopovers) {
 		const divs = document.getElementsByTagName("div");
 		for (let i = 0; i < divs.length; i++) {
 			if (divs[i].getAttribute("popovertarget") != null) {
@@ -154,6 +158,8 @@ function removePopovers() {
 		}
 		const table = document.getElementById("table");
 		table.removeEventListener("mouseover", clearPopover);
+		matrix.removeEventListener("scrollend", sizePopovers);
+		usingPopovers = false;
 	}
 }
 
@@ -161,19 +167,23 @@ function sizeTable(event) {
 	const shrink = this.checked;
 	const matrix = document.getElementById("matrix");
 	const table = document.getElementById("table");
+	const showPopupsControl = document.getElementById("showPopupsControl");
 	if (shrink) {
 		proportion = matrix.clientWidth / table.scrollWidth;
-		//console.log (proportion); 
-		//console.log (100 / proportion);
-		table.style = "width: " + 100 * proportion + "%; font-size: " + 100 * proportion + "%";
+		table.style = "width: " + 100 * proportion + "%; font-size: " + 100 * proportion + "% ";
 		
-		attachPopovers();
+		showPopupsControl.disabled = false;
 		
-		matrix.addEventListener("scrollend", sizePopovers);
 	} else {
+		showPopupsControl.disabled = true;
 		table.style = "";
 		removePopovers();
 	}
+}
+
+function togglePopovers(event) {
+	if (this.checked) attachPopovers();
+	else removePopovers();
 }
 
 function highlightCellPos(event) {
@@ -215,6 +225,9 @@ function attachListeners() {
 	
 	const shrinkTableControl = document.getElementById("shrinkMatrixControl");
 	shrinkTableControl.addEventListener("change", sizeTable);
+
+	const showPopupsControl = document.getElementById("showPopupsControl");
+	showPopupsControl.addEventListener("change", togglePopovers);
 }
 
 
