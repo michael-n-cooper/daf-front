@@ -67,8 +67,8 @@ td .mapping
 	background-color: #F9F9F9;
 }
 .stmt, .stmt:link, .stmt:active, .stmt:visited {
-	color: #355E3B;
-	text-shadow: 0 0 1px #355E3B;
+	color: #283d2b;
+	background-color: #ffffcc;
 }
 .na {
 	background-color: #DDDDDD;
