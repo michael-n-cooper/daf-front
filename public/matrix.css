@@ -86,3 +86,7 @@ td .mapping
 input:disabled+label {
   color: #ccc;
 }
+footer {
+	margin-top: 0;
+	border-top: 0;
+}
