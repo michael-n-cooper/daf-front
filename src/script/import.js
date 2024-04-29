@@ -113,24 +113,27 @@ function getMatrixDimId(label) {
 
 // find an intersection need in the local array from 2 functional need ids
 function getIntersectionNeedId(fn1, fn2) {
-	var inId = findObjectByProperties(intersectionNeedList, {"fn1": fn1, "fn2": fn2});
+	var inId;
+	const intersection = findObjectByProperties(intersectionNeedList, {"fn1": fn1, "fn2": fn2});
 	
-	if (typeof inId === 'undefined') {
+	if (typeof intersection === 'undefined') {
 		inId = dbquery.uuid();
 		const label1 = findObjectByProperties(functionalNeedList, {"id": fn1}).label;
 		const label2 = findObjectByProperties(functionalNeedList, {"id": fn2}).label;
 		const update = 'insert data { :' + inId + ' a a11y:IntersectionNeed ; a11y:supports :' + fn1 + ' ; a11y:supports :' + fn2 + ' ; rdfs:label "' + label1 + " and " + label2 + '"@en}';
 		dbquery.updateQuery(update);
+	} else {
+		inId = intersection.id;
 	}
 	return inId;
 }
 
 // get intersection needs from the db
-function lookupIntersectionNeeds() {
+async function lookupIntersectionNeeds() {
 	var arr = new Array();
 	const sparql = 'select ?id ?fn1 ?fn2 where { ?id a a11y:IntersectionNeed ; a11y:supports ?fn1 ; a11y:supports ?fn2 . filter (!sameterm(?fn1, ?fn2)) }';
-	const results = dbquery.selectQuery(sparql);
-	if (typeof results.bindings !== 'undefined') results.bindings.forEach(function(item) {
+	const results = await dbquery.selectQuery(sparql);
+	if (typeof results.results.bindings !== 'undefined') results.results.bindings.forEach(function(item) {
 		arr.push({"id": idFrag(item.id.value), "fn1": idFrag(item.fn1.value), "fn2": idFrag(item.fn2.value)});
 	});
 	return arr;
