@@ -62,7 +62,7 @@ function buildTable() {
 				table += "<tr>"; 
 			}
 			rowNum++;
-			table += "<th scope='row' class='" + rc(rowNum, 2) + "'><a href='" + baseUri + "user-need-relevances/" + unr.id + "'>" + unr.label + "</a> <span class='total'>(" + unr.total + ")</span></th>";
+			table += "<th scope='row' class='" + rc(rowNum, 2) + "'><a href='" + baseUri + "user-need-contexts/" + unr.id + "'>" + unr.label + "</a> <span class='total'>(" + unr.total + ")</span></th>";
 			
 			colNum = 3;
 			functionalNeedCategories.forEach(function(fnc) {
