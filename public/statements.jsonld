@@ -7641,7 +7641,13 @@
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a82f6b1-1e48-40a1-944d-5e293f54dc55"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#197ccd20-b4a7-4f59-8f11-9920c0aa9f87"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5446d9d3-a401-4cc2-946d-c97121e7d6f6"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e3c83f88-cf8c-4d7e-85a7-3d1c126cc9d2"
             }
         ],
         "https://aihal.net/accessibility/daf/#note": [
@@ -18296,16 +18302,19 @@
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1dd6ab16-9038-470c-8b0b-a948807a8660"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ad82b9e4-5cd5-414e-a8ae-34d7a1e2d678"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#56f16be8-766a-4d91-bb79-71e758bdf48d"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a4ef6624-d6f5-4fdf-aa7a-1777d20c9141"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ddf8c7fd-8b39-4717-b942-49fc6874b675"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c3df32c3-36b6-435a-bb83-8d580c465b62"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#25291484-6f01-4e2a-9a22-8c35f30df1b1"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a7889038-d415-410d-852e-38c7d51a71d3"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f7227fc8-4759-4032-8318-4de7ac6ca394"
             }
         ]
     },
@@ -19279,13 +19288,16 @@
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#fe6565fd-3ea4-447c-86ad-7a58a6252202"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b510cb67-0398-4727-8fd4-942450c2f6cd"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#56e72aa6-f962-4a23-b5f1-6882382085bd"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#49b159ec-ccfa-4ab8-87c8-dc43de5bede4"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ab56ec40-0d99-4e7b-8867-94a93bf0b540"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#69c6bf8f-48ac-4608-b6c6-3842d7f93887"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c8d4c576-4b20-4687-bb3b-8d412bd4be5b"
             }
         ],
         "https://aihal.net/accessibility/daf/#note": [
@@ -20266,43 +20278,52 @@
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6936edd4-df3e-4eb7-a1ff-cac603403e74"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a59f9f86-3669-404d-aa0f-7cdde6e4ff7a"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#00d6ea17-8892-408e-98fc-e51ec7b49fe5"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#94edb56d-2074-42f2-b2c0-26fa761bcb3c"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6c5b1471-e500-45ce-9309-3fff154a806f"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8b47a1bf-9e68-4d42-8c1f-44e5faaf425c"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7014d43c-6839-42c9-ae58-08926e59ee1a"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#626d45c8-b930-41f6-85f9-674c0f9d9c4c"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e31fcb33-43cc-4a11-b55c-9645e2566f3f"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c03dafe-922e-4a53-a435-6b01d639b2e4"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c37505b5-f5ba-46ab-a090-bffa407c0a91"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f9e708a3-244a-4c0f-a360-9a9a6884b93f"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#82cb7d45-9429-4616-bc45-5405e843a1c6"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#32806b95-6050-4003-bd8e-d7befc082bec"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#bb508bb6-eb89-4c6d-a62b-cab6d7fabf7f"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#93550d09-c142-45af-a93e-2cc0fbf2e158"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#80687963-e88e-4875-8fb2-6a99f48d8e00"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#9050494a-07d7-4d7c-aa6d-238b2f1cc038"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0d551055-579d-4408-b11c-b150a1b34192"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#45709170-313c-4955-a3cb-deedb014cb67"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1a8ce7de-4dbe-4c44-9607-0fe80d5d83e0"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a9792d76-331b-4f76-ac95-e9238b203933"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d8e0d013-c2e9-49c6-a72d-1479eb424024"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0215e492-062a-48a6-a122-70de80eaa180"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#19e8dab6-3d31-4625-97b2-5e96a055202d"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f4072d65-d8fe-4a78-b891-78112b97f64d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8916defa-5992-4f60-93cb-dc28666c3b65"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#97bff983-bcbc-40db-ba86-d3c7f79103d8"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2959c22e-a290-4c56-ade1-f0aff54b0f7a"
             }
         ],
         "https://aihal.net/accessibility/daf/#note": [
@@ -26173,6 +26194,14 @@
                 "@language": "en",
                 "@value": "As a person subject to repetitive motion injuries, I need interfaces that can involve extensive repetitive action to provide alternate input devices or approaches."
             }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7b7468bf-c055-420e-a9f1-bab17ad0f9cf"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#45669a83-1791-448e-bb2b-f6c4a74d02a4"
+            }
         ]
     },
     {
@@ -27812,6 +27841,11 @@
                 "@language": "en",
                 "@value": "As a person who fatigues easily, I need alternatives to motion-based input."
             }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#84b56029-2e4a-4b63-af6c-d5c83c454032"
+            }
         ]
     },
     {
@@ -28378,28 +28412,6 @@
             {
                 "@language": "en",
                 "@value": "4-3-b to receive information regading the progress of completing a task"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a82f6b1-1e48-40a1-944d-5e293f54dc55",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#3-1-a"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "3-1-a to choose modalities to be used for inputs to the system"
             }
         ],
         "https://aihal.net/accessibility/daf/#refType": [
@@ -31927,94 +31939,6 @@
         ]
     },
     {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1dd6ab16-9038-470c-8b0b-a948807a8660",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#keyboard"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "2.1.1 Keyboard"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#56f16be8-766a-4d91-bb79-71e758bdf48d",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#no-keyboard-trap"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "2.1.2 No Keyboard Trap"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ddf8c7fd-8b39-4717-b942-49fc6874b675",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#keyboard-no-exception"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "2.1.3 Keyboard (No Exception)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#25291484-6f01-4e2a-9a22-8c35f30df1b1",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#navigation-traps"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "2.5.2. Navigation traps"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#924730a1-b3f9-48bd-a513-dd67741fee9d",
         "@type": [
             "https://aihal.net/accessibility/daf/#Reference"
@@ -33840,72 +33764,6 @@
         ]
     },
     {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#fe6565fd-3ea4-447c-86ad-7a58a6252202",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#target-size-enhanced"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "2.5.5 Target Size (Enhanced)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#56e72aa6-f962-4a23-b5f1-6882382085bd",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#target-size-minimum"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "2.5.8 Target Size (Minimum)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ab56ec40-0d99-4e7b-8867-94a93bf0b540",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#touch-target-size"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "2.1.1. Touch Target Size"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b3d75ba7-aa4e-482e-8043-f8b3896781dc",
         "@type": [
             "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -35037,292 +34895,6 @@
             {
                 "@language": "en",
                 "@value": "4.8.5 Make It Easy to Find Help and Give Feedback (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6936edd4-df3e-4eb7-a1ff-cac603403e74",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#orientation"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.3.4 Orientation"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#00d6ea17-8892-408e-98fc-e51ec7b49fe5",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#resize-text"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.4 Resize Text"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6c5b1471-e500-45ce-9309-3fff154a806f",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#images-of-text"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.5 Images of Text"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7014d43c-6839-42c9-ae58-08926e59ee1a",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#images-of-text-no-exception"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.9 Images of Text (No Exception)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e31fcb33-43cc-4a11-b55c-9645e2566f3f",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#visual-presentation"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.8 Visual Presentation"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c37505b5-f5ba-46ab-a090-bffa407c0a91",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#reflow"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.10 Reflow"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#82cb7d45-9429-4616-bc45-5405e843a1c6",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#text-spacing"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.12 Text Spacing"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#bb508bb6-eb89-4c6d-a62b-cab6d7fabf7f",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-2-2-d"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-2-2-d to have coherent word-wrap and paging, even with magnified text"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#80687963-e88e-4875-8fb2-6a99f48d8e00",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#text-lines-length"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "3.3.5. Text Lines Length"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0d551055-579d-4408-b11c-b150a1b34192",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#text-scaling"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.1.1. Text Scaling"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1a8ce7de-4dbe-4c44-9607-0fe80d5d83e0",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#adaptive-display-modes"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.1.2. Adaptive Display Modes"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d8e0d013-c2e9-49c6-a72d-1479eb424024",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#locked-orientation"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.1.4. Locked Orientation"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#19e8dab6-3d31-4625-97b2-5e96a055202d",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#orientation-resilient-display"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.1.5. Orientation-Resilient Display"
             }
         ],
         "https://aihal.net/accessibility/daf/#refType": [
@@ -38973,6 +38545,1906 @@
             {
                 "@language": "en",
                 "@value": "5-2-5-k to turn off visual output"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e043627a-e26f-4014-9af7-b0377e1c13d7",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Alternative to holding"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a4504b19-a0a6-4037-9d46-5bee77516d9a"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a83e44c-2913-4f8c-aa5e-048d463632b5"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#75952d23-5e25-4417-a811-f00e76ff7199"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#40309971-3b33-4487-80b1-61525814ae9d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bd15220-4ac4-4621-8e13-ee0e4e41da42"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2b1467f3-0786-482d-b36d-45d48ed634e1"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#968e9688-516c-4162-bf6c-d5f212a60092"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d5c3c98f-642e-4b93-9f3b-931afcbbbc0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e3f023d9-bb80-4077-a1c1-d90fa9c2f6b9"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ccd42e67-d401-4ee4-9d93-cc00981280ba"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#72553afe-564b-4aff-a7ee-2db1848ceb0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#55ce962e-d128-4798-b2b5-c537c98597d8"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f82864f6-38b9-40b1-a2b1-0944a57980ed"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#970d6810-d9b3-41b3-80b5-3e25396c8128"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4d511181-baaf-4763-9dc1-fcb03d0e2304"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#03adb40f-730d-4d8f-bab7-5d2c6b1209f0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c98cccc4-3758-4945-9f20-fbf5a775d49d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f953263a-0707-4cca-8e09-8edbded19c43"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#cab744b4-2cef-4069-8697-0f6111928c88"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f9a1c3f5-be00-4d33-8cc5-562c88828018"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a618102e-8b2e-44f6-9eea-6d649bd4fd63"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#180b5b76-381a-4925-8a88-560c69207def"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#da1bb308-4595-4190-859f-7d1cf5734df0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8f21c8fb-0db9-4979-aa4e-6932bd9bedf4"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/alternative-to-holding.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited reach, dexterity, or mobility, I need an alternative to holding a button down."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f918c4b1-d8d1-4c5c-b94c-4d268e513b1c"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f918c4b1-d8d1-4c5c-b94c-4d268e513b1c",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/avoid-provide-alternatives-to-requiring-buttons-to-be-held-down/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Avoid / provide alternatives to requiring buttons to be held down"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#84b56029-2e4a-4b63-af6c-d5c83c454032",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/do-not-rely-on-motion-tracking-of-specific-body-types/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Do not rely on motion tracking of specific body types"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b79eaa46-312d-423b-981f-73399ad455e1",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Control sensitivity"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a4504b19-a0a6-4037-9d46-5bee77516d9a"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a83e44c-2913-4f8c-aa5e-048d463632b5"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#75952d23-5e25-4417-a811-f00e76ff7199"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#40309971-3b33-4487-80b1-61525814ae9d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bd15220-4ac4-4621-8e13-ee0e4e41da42"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2b1467f3-0786-482d-b36d-45d48ed634e1"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#968e9688-516c-4162-bf6c-d5f212a60092"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d5c3c98f-642e-4b93-9f3b-931afcbbbc0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e3f023d9-bb80-4077-a1c1-d90fa9c2f6b9"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ccd42e67-d401-4ee4-9d93-cc00981280ba"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#72553afe-564b-4aff-a7ee-2db1848ceb0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#55ce962e-d128-4798-b2b5-c537c98597d8"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f82864f6-38b9-40b1-a2b1-0944a57980ed"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#970d6810-d9b3-41b3-80b5-3e25396c8128"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4d511181-baaf-4763-9dc1-fcb03d0e2304"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#03adb40f-730d-4d8f-bab7-5d2c6b1209f0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c98cccc4-3758-4945-9f20-fbf5a775d49d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f953263a-0707-4cca-8e09-8edbded19c43"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#cab744b4-2cef-4069-8697-0f6111928c88"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f9a1c3f5-be00-4d33-8cc5-562c88828018"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a618102e-8b2e-44f6-9eea-6d649bd4fd63"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#180b5b76-381a-4925-8a88-560c69207def"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#da1bb308-4595-4190-859f-7d1cf5734df0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8f21c8fb-0db9-4979-aa4e-6932bd9bedf4"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/control-sensitivity.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited reach, dexterity, or mobility, I need to be able to adjust the sensitivity of controls."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#80c26719-2be2-4463-8e43-03fcc5fb713c"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#80c26719-2be2-4463-8e43-03fcc5fb713c",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "http://gameaccessibilityguidelines.com/include-an-option-to-adjust-the-sensitivity-of-controls"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Include an option to adjust the sensitivity of controls"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#57cc6f28-a2ef-4012-950a-36b20d405832",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#17436ecc-2b51-417d-a69a-17f14d13b776"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#43445d41-01bc-47fd-80cf-a3af488afd63"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#9ef9a7c0-f6a9-46dc-ac5b-7096d930da96",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#20d9f38e-d72e-4fca-abf8-dc7c61b6c57b"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#43445d41-01bc-47fd-80cf-a3af488afd63"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#734f3ab9-9627-42b4-884a-0885ae1eacb7",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c75ba30-a758-4cc2-98fb-090fa0e061d3"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#43445d41-01bc-47fd-80cf-a3af488afd63"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#cdabd120-7b30-44a5-a4a2-78b91e9fa0e1",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#43445d41-01bc-47fd-80cf-a3af488afd63"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3ae63a4f-0565-4422-a4fa-a096aa6a17e1",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Game speed"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a4504b19-a0a6-4037-9d46-5bee77516d9a"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#75952d23-5e25-4417-a811-f00e76ff7199"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#40309971-3b33-4487-80b1-61525814ae9d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dc7b9972-76ce-4e37-9f70-f12628680338"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bd15220-4ac4-4621-8e13-ee0e4e41da42"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#968e9688-516c-4162-bf6c-d5f212a60092"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d5c3c98f-642e-4b93-9f3b-931afcbbbc0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8c052032-b2ef-4ef9-a1cb-4aee84b2e709"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e3f023d9-bb80-4077-a1c1-d90fa9c2f6b9"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ccd42e67-d401-4ee4-9d93-cc00981280ba"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#72553afe-564b-4aff-a7ee-2db1848ceb0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#55ce962e-d128-4798-b2b5-c537c98597d8"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f82864f6-38b9-40b1-a2b1-0944a57980ed"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#970d6810-d9b3-41b3-80b5-3e25396c8128"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#cab744b4-2cef-4069-8697-0f6111928c88"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f9a1c3f5-be00-4d33-8cc5-562c88828018"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a618102e-8b2e-44f6-9eea-6d649bd4fd63"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#180b5b76-381a-4925-8a88-560c69207def"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#da1bb308-4595-4190-859f-7d1cf5734df0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8f21c8fb-0db9-4979-aa4e-6932bd9bedf4"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#57cc6f28-a2ef-4012-950a-36b20d405832"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#9ef9a7c0-f6a9-46dc-ac5b-7096d930da96"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#734f3ab9-9627-42b4-884a-0885ae1eacb7"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#cdabd120-7b30-44a5-a4a2-78b91e9fa0e1"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/game-play.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited fine motor control or limited executive functions, I need to be able to adjust the speed of game play."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d6697597-5f99-43ca-b97f-a2967fca15ef"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d6697597-5f99-43ca-b97f-a2967fca15ef",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/include-an-option-to-adjust-the-game-speed/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Include an option to adjust the game speed"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3c443c2e-0b29-4ccc-ac9f-30b804828b0f",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c75ba30-a758-4cc2-98fb-090fa0e061d3"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#057b5d27-6d1f-46a7-bf79-d47582f0f447"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a3b6aef-3184-4eca-b768-b012a2d5de65",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#057b5d27-6d1f-46a7-bf79-d47582f0f447"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#85711c72-8536-48fe-8946-1a824f2abe82",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#17436ecc-2b51-417d-a69a-17f14d13b776"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#057b5d27-6d1f-46a7-bf79-d47582f0f447"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c7051162-24d8-4276-a6d7-abb9eaf96886",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#20d9f38e-d72e-4fca-abf8-dc7c61b6c57b"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#057b5d27-6d1f-46a7-bf79-d47582f0f447"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3d5512a9-091d-493b-9dfe-f91fa12314bf",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Haptic control"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#de5f0d2d-ac00-4f0a-a8da-faac61474003"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#54cc1d4c-6637-4574-bc91-3871a59c9060"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3c443c2e-0b29-4ccc-ac9f-30b804828b0f"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a3b6aef-3184-4eca-b768-b012a2d5de65"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#85711c72-8536-48fe-8946-1a824f2abe82"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c7051162-24d8-4276-a6d7-abb9eaf96886"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/haptic-control.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with carpel tunnel or sensitivity to haptics, I need to be able to control haptic output."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5975c095-6121-4586-aa02-3abf11ff6b24"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c1174973-d97c-444c-a87f-7aa7b6d9418d"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c1174973-d97c-444c-a87f-7aa7b6d9418d",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/include-toggle-slider-for-any-haptics/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Include toggle/slider for any haptics"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#197ccd20-b4a7-4f59-8f11-9920c0aa9f87",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#3-1-a"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "3-1-a to choose modalities to be used for inputs to the system"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5446d9d3-a401-4cc2-946d-c97121e7d6f6",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/support-more-than-one-input-device"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Support more than one input device"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e3c83f88-cf8c-4d7e-85a7-3d1c126cc9d2",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/if-producing-a-pc-game-support-windowed-mode-for-compatibility-with-overlaid-virtual-keyboards/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "If producing a PC game, support windowed mode for compatibility with overlaid virtual keyboards"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3893a19f-dbad-4e72-8349-51abb0d6ba70",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Interface access"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a4504b19-a0a6-4037-9d46-5bee77516d9a"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a83e44c-2913-4f8c-aa5e-048d463632b5"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#75952d23-5e25-4417-a811-f00e76ff7199"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#40309971-3b33-4487-80b1-61525814ae9d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bd15220-4ac4-4621-8e13-ee0e4e41da42"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2b1467f3-0786-482d-b36d-45d48ed634e1"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#968e9688-516c-4162-bf6c-d5f212a60092"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d5c3c98f-642e-4b93-9f3b-931afcbbbc0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e3f023d9-bb80-4077-a1c1-d90fa9c2f6b9"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ccd42e67-d401-4ee4-9d93-cc00981280ba"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#72553afe-564b-4aff-a7ee-2db1848ceb0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#55ce962e-d128-4798-b2b5-c537c98597d8"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f82864f6-38b9-40b1-a2b1-0944a57980ed"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#970d6810-d9b3-41b3-80b5-3e25396c8128"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4d511181-baaf-4763-9dc1-fcb03d0e2304"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#03adb40f-730d-4d8f-bab7-5d2c6b1209f0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c98cccc4-3758-4945-9f20-fbf5a775d49d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f953263a-0707-4cca-8e09-8edbded19c43"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#cab744b4-2cef-4069-8697-0f6111928c88"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f9a1c3f5-be00-4d33-8cc5-562c88828018"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a618102e-8b2e-44f6-9eea-6d649bd4fd63"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#180b5b76-381a-4925-8a88-560c69207def"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#da1bb308-4595-4190-859f-7d1cf5734df0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8f21c8fb-0db9-4979-aa4e-6932bd9bedf4"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/interface-access.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": ""
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bbadc6c-80a6-4c4f-9f41-217de0bfa2d1"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bbadc6c-80a6-4c4f-9f41-217de0bfa2d1",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "http://gameaccessibilityguidelines.com/ensure-that-all-areas-of-the-user-interface-can-be-accessed-using-the-same-input-method-as-the-gameplay"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Ensure that all areas of the user interface can be accessed using the same input method as the gameplay"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ad82b9e4-5cd5-414e-a8ae-34d7a1e2d678",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#keyboard"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.1.1 Keyboard"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a4ef6624-d6f5-4fdf-aa7a-1777d20c9141",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#no-keyboard-trap"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.1.2 No Keyboard Trap"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c3df32c3-36b6-435a-bb83-8d580c465b62",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#keyboard-no-exception"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.1.3 Keyboard (No Exception)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a7889038-d415-410d-852e-38c7d51a71d3",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://getevinced.github.io/mcag/#navigation-traps"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.5.2. Navigation traps"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f7227fc8-4759-4032-8318-4de7ac6ca394",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/ensure-that-all-key-actions-can-be-carried-out-by-digital-controls-pad-keys-presses-with-more-complex-input-eg-analogue-speech-gesture-not-required-and-included-only-as-supplementary-al/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Ensure that all key actions can be carried out by digital controls, with more complex input not required, and included only as supplementary / alternative input methods"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8ef11d83-af3f-48e9-831d-873712ec373d",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b73ddfdd-30f2-40b7-b8ed-9255899daa7b"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f65b7ac6-6d0d-4540-8891-73769f96b05f"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#80de00b3-0f5f-4dac-9dd5-3bb29f671feb",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c75ba30-a758-4cc2-98fb-090fa0e061d3"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f65b7ac6-6d0d-4540-8891-73769f96b05f"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#460407ee-1a25-4a59-b968-f4579859be92",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#17436ecc-2b51-417d-a69a-17f14d13b776"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f65b7ac6-6d0d-4540-8891-73769f96b05f"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#bfe50881-f33a-47c0-8e1e-97149c25a2a6",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#MatrixMapping"
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd94c3ce-3f06-4a29-9ade-899a20fa5a36"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#20d9f38e-d72e-4fca-abf8-dc7c61b6c57b"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f65b7ac6-6d0d-4540-8891-73769f96b05f"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#be8dbc1c-5562-488f-88eb-2f5e236a1006",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Personalized Interface"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f58d60ae-7d6a-4ea2-b5b4-40de8f7bfe83"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#1d9da114-f8ae-47f0-ad15-a3426a508970"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8ef11d83-af3f-48e9-831d-873712ec373d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#80de00b3-0f5f-4dac-9dd5-3bb29f671feb"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#460407ee-1a25-4a59-b968-f4579859be92"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#bfe50881-f33a-47c0-8e1e-97149c25a2a6"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/personalized-interface.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": ""
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5975c095-6121-4586-aa02-3abf11ff6b24"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c16ea0fc-1d0e-4807-823e-b334cdd1a9a7"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c16ea0fc-1d0e-4807-823e-b334cdd1a9a7",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/allow-interfaces-to-be-rearranged/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Allow interfaces to be rearranged"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#190cab64-c01f-463d-81e5-a1d5c87e5fb0",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Reconfigure controls"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a4504b19-a0a6-4037-9d46-5bee77516d9a"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a83e44c-2913-4f8c-aa5e-048d463632b5"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#75952d23-5e25-4417-a811-f00e76ff7199"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#40309971-3b33-4487-80b1-61525814ae9d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bd15220-4ac4-4621-8e13-ee0e4e41da42"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2b1467f3-0786-482d-b36d-45d48ed634e1"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#968e9688-516c-4162-bf6c-d5f212a60092"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d5c3c98f-642e-4b93-9f3b-931afcbbbc0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e3f023d9-bb80-4077-a1c1-d90fa9c2f6b9"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ccd42e67-d401-4ee4-9d93-cc00981280ba"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#72553afe-564b-4aff-a7ee-2db1848ceb0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#55ce962e-d128-4798-b2b5-c537c98597d8"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f82864f6-38b9-40b1-a2b1-0944a57980ed"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#970d6810-d9b3-41b3-80b5-3e25396c8128"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4d511181-baaf-4763-9dc1-fcb03d0e2304"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#03adb40f-730d-4d8f-bab7-5d2c6b1209f0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c98cccc4-3758-4945-9f20-fbf5a775d49d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f953263a-0707-4cca-8e09-8edbded19c43"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#cab744b4-2cef-4069-8697-0f6111928c88"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f9a1c3f5-be00-4d33-8cc5-562c88828018"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a618102e-8b2e-44f6-9eea-6d649bd4fd63"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#180b5b76-381a-4925-8a88-560c69207def"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#da1bb308-4595-4190-859f-7d1cf5734df0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8f21c8fb-0db9-4979-aa4e-6932bd9bedf4"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/reconfigure-controls.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited reach, dexterity, or mobility, I need to be able to remap and reconfigure my controls."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#db8f8ad8-7f2e-4e72-8d17-3a5ed8c2817a"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#db8f8ad8-7f2e-4e72-8d17-3a5ed8c2817a",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "http://gameaccessibilityguidelines.com/allow-controls-to-be-remapped-reconfigured"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Allow controls to be remapped / reconfigured"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7b7468bf-c055-420e-a9f1-bab17ad0f9cf",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/avoid-repeated-inputs-button-mashingquick-time-events/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Avoid repeated inputs (button-mashing/quick time events)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#45669a83-1791-448e-bb2b-f6c4a74d02a4",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/provide-a-macro-system/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Provide a macro system"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#67c664a0-8a66-4769-aadd-5c641b4e5de6",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Simple controls"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a4504b19-a0a6-4037-9d46-5bee77516d9a"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a83e44c-2913-4f8c-aa5e-048d463632b5"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#75952d23-5e25-4417-a811-f00e76ff7199"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#40309971-3b33-4487-80b1-61525814ae9d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bd15220-4ac4-4621-8e13-ee0e4e41da42"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2b1467f3-0786-482d-b36d-45d48ed634e1"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#968e9688-516c-4162-bf6c-d5f212a60092"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d5c3c98f-642e-4b93-9f3b-931afcbbbc0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e3f023d9-bb80-4077-a1c1-d90fa9c2f6b9"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ccd42e67-d401-4ee4-9d93-cc00981280ba"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#72553afe-564b-4aff-a7ee-2db1848ceb0d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#55ce962e-d128-4798-b2b5-c537c98597d8"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f82864f6-38b9-40b1-a2b1-0944a57980ed"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#970d6810-d9b3-41b3-80b5-3e25396c8128"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4d511181-baaf-4763-9dc1-fcb03d0e2304"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#03adb40f-730d-4d8f-bab7-5d2c6b1209f0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c98cccc4-3758-4945-9f20-fbf5a775d49d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f953263a-0707-4cca-8e09-8edbded19c43"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#cab744b4-2cef-4069-8697-0f6111928c88"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f9a1c3f5-be00-4d33-8cc5-562c88828018"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a618102e-8b2e-44f6-9eea-6d649bd4fd63"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#180b5b76-381a-4925-8a88-560c69207def"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#da1bb308-4595-4190-859f-7d1cf5734df0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8f21c8fb-0db9-4979-aa4e-6932bd9bedf4"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/simple-controls.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited reach, dexterity, or mobility, I need simple controls."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#db2dd531-ce48-44e4-aaff-0743938e65d8"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#db2dd531-ce48-44e4-aaff-0743938e65d8",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "http://gameaccessibilityguidelines.com/ensure-controls-are-as-simple-as-possible-or-provide-a-simpler-alternative"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Ensure controls are as simple as possible, or provide a simpler alternative"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#41bbb7a3-fe1c-455c-bbe9-88f6527476f3",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Stop moving targets"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ccd42e67-d401-4ee4-9d93-cc00981280ba"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#55ce962e-d128-4798-b2b5-c537c98597d8"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#03adb40f-730d-4d8f-bab7-5d2c6b1209f0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a618102e-8b2e-44f6-9eea-6d649bd4fd63"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/stop-moving-targets.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited reach, dexterity, or mobility, I need to be able to stop interactive elements from moving."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#eda053d3-353f-4e36-a8f0-b8b078ee2489"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#eda053d3-353f-4e36-a8f0-b8b078ee2489",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/make-interactive-elements-that-require-accuracy-eg-cursortouch-controlled-menu-options-stationary/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Make interactive elements that require accuracy (eg. cursor/touch controlled menu options) stationary"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b510cb67-0398-4727-8fd4-942450c2f6cd",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#target-size-enhanced"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.5.5 Target Size (Enhanced)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#49b159ec-ccfa-4ab8-87c8-dc43de5bede4",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#target-size-minimum"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.5.8 Target Size (Minimum)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#69c6bf8f-48ac-4608-b6c6-3842d7f93887",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://getevinced.github.io/mcag/#touch-target-size"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.1.1. Touch Target Size"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c8d4c576-4b20-4687-bb3b-8d412bd4be5b",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "http://gameaccessibilityguidelines.com/ensure-interactive-elements-virtual-controls-are-large-and-well-spaced-particularly-on-small-or-touch-screens"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Ensure interactive elements / virtual controls are large and well spaced, particularly on small or touch screens"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a59f9f86-3669-404d-aa0f-7cdde6e4ff7a",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#orientation"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "1.3.4 Orientation"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#94edb56d-2074-42f2-b2c0-26fa761bcb3c",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#resize-text"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "1.4.4 Resize Text"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8b47a1bf-9e68-4d42-8c1f-44e5faaf425c",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#images-of-text"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "1.4.5 Images of Text"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#626d45c8-b930-41f6-85f9-674c0f9d9c4c",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#images-of-text-no-exception"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "1.4.9 Images of Text (No Exception)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c03dafe-922e-4a53-a435-6b01d639b2e4",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#visual-presentation"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "1.4.8 Visual Presentation"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f9e708a3-244a-4c0f-a360-9a9a6884b93f",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#reflow"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "1.4.10 Reflow"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#32806b95-6050-4003-bd8e-d7befc082bec",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#text-spacing"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "1.4.12 Text Spacing"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#93550d09-c142-45af-a93e-2cc0fbf2e158",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-2-2-d"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-2-2-d to have coherent word-wrap and paging, even with magnified text"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#9050494a-07d7-4d7c-aa6d-238b2f1cc038",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://getevinced.github.io/mcag/#text-lines-length"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "3.3.5. Text Lines Length"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#45709170-313c-4955-a3cb-deedb014cb67",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://getevinced.github.io/mcag/#text-scaling"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.1.1. Text Scaling"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a9792d76-331b-4f76-ac95-e9238b203933",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://getevinced.github.io/mcag/#adaptive-display-modes"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.1.2. Adaptive Display Modes"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0215e492-062a-48a6-a122-70de80eaa180",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://getevinced.github.io/mcag/#locked-orientation"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.1.4. Locked Orientation"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f4072d65-d8fe-4a78-b891-78112b97f64d",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://getevinced.github.io/mcag/#orientation-resilient-display"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.1.5. Orientation-Resilient Display"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8916defa-5992-4f60-93cb-dc28666c3b65",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "http://gameaccessibilityguidelines.com/allow-play-in-both-landscape-and-portrait"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Allow play in both portrait and landscape"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#97bff983-bcbc-40db-ba86-d3c7f79103d8",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "http://gameaccessibilityguidelines.com/allow-the-font-size-to-be-adjusted"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Allow the font size to be adjusted"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2959c22e-a290-4c56-ade1-f0aff54b0f7a",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/allow-interfaces-to-be-resized/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Allow interfaces to be resized"
             }
         ],
         "https://aihal.net/accessibility/daf/#refType": [
