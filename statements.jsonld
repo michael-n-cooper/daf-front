@@ -27709,42 +27709,42 @@
         "https://aihal.net/accessibility/daf/#stmtGuidance": [
             {
                 "@language": "en",
-                "@value": ""
+                "@value": "As a user with limited langauge abilities, I need a version of content that follows plain language principles."
             }
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#11fffccd-6ab1-4d2c-be76-3d0d0c32ee72"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a9c384a9-f960-4e64-b5c4-5efff983ef8f"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4575dd70-bca2-4313-9b52-cc604820b0cc"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3ea98f30-044a-4235-ada8-e5b30da4c625"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5d921aba-2522-4703-9ff3-817c812f5dc5"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c26613a-c97f-40e9-8bc0-cb2a84994267"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#bfec097c-8332-4659-93ac-c54a4d3466eb"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#813506e7-41c2-4bbd-939c-221647543853"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d047dcf0-4e11-443f-9e9c-53f20393aa6b"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5f1a06fb-0466-4b36-8de1-8b01fdb442cb"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#230f8274-9850-406f-ace0-6b71160fe3d2"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b6f4e46b-6413-4182-96dd-168950c67f98"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f6dfd4cc-78c5-4692-9a05-c669b644b7e0"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#9d8637e3-bfc7-4a2d-948a-fadafc951b2f"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#036dc32d-5bb1-4b00-9db5-37d3e1437b4d"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#56946d61-3715-48a8-a124-9ec4343a1eaf"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#06a53f3f-29ee-49a6-bfc5-8d9f17e5d09c"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6a2f4eaa-948e-4ad0-8bf7-d31bdf58a124"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8f13d2ea-77b3-4052-bc77-14d175822824"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#27df3a15-ece5-40ef-b079-a786b5d97a8c"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a7011d0c-5ed3-40e1-ba5f-1e34d0d0fe3a"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5e2586c5-76e0-4b29-9332-bf0e04ddd776"
             }
         ]
     },
@@ -30017,115 +30017,6 @@
         ]
     },
     {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#48f15f23-7807-455f-81de-dc9fe833983f",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#NamedIndividual",
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "AT-compatible"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5372848e-1e77-4e5b-8722-443bc12db68e"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6d5f21eb-3d7b-4668-a12b-d7ac71158403"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/at-compatible.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": ""
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f24b024b-8a02-40e0-a381-cb0c29db7e00"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a03a1e12-83b3-483b-91de-58cb7a835aaf"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95b06242-13b5-4417-ae08-ca6236ec16a5"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f24b024b-8a02-40e0-a381-cb0c29db7e00",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#accessibility-enabled"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.1.1 Accessibility Enabled"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a03a1e12-83b3-483b-91de-58cb7a835aaf",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#enable-apis-and-extensions-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.9.2 Enable APIs and Extensions (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#95b06242-13b5-4417-ae08-ca6236ec16a5",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#external-aids-devices"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "2.2.1. External aids and devices"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#52620209-0636-42fb-9284-7090835b11dd",
         "@type": [
             "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -30348,7 +30239,7 @@
         "https://aihal.net/accessibility/daf/#stmtGuidance": [
             {
                 "@language": "en",
-                "@value": ""
+                "@value": "As a user with limited language skills, executive fundtion or memory, I need the characters, symbols, and punctuation required to uderstand ambigous words and phrases."
             }
         ],
         "https://aihal.net/accessibility/daf/#tags": [
@@ -30358,54 +30249,10 @@
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#fd11f536-5501-4750-9576-bd0ded6c5b14"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#504d2583-ceb3-4283-b8ad-86f406e415e0"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d1e154b9-5407-4303-9110-e55465c89073"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#fd11f536-5501-4750-9576-bd0ded6c5b14",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#use-clear-unambiguous-formatting-and-punctuation-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.4.6 Use Clear, Unambiguous Formatting and Punctuation (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d1e154b9-5407-4303-9110-e55465c89073",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#include-symbols-and-letters-necessary-to-decipher-the-words-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.4.7 Include Symbols and Letters Necessary to Decipher the Words (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7a63876f-0059-41cb-9c1d-c886a9a1cf60"
             }
         ]
     },
@@ -33033,248 +32880,6 @@
             {
                 "@language": "en",
                 "@value": "1.4.2. Essential Elements' Color Contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#11fffccd-6ab1-4d2c-be76-3d0d0c32ee72",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#use-a-simple-tense-and-voice-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.4.2 Use a Simple Tense and Voice (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4575dd70-bca2-4313-9b52-cc604820b0cc",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#avoid-double-negatives-or-nested-clauses-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.4.3 Avoid Double Negatives or Nested Clauses (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5d921aba-2522-4703-9ff3-817c812f5dc5",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#use-literal-language-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.4.4 Use Literal Language (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#bfec097c-8332-4659-93ac-c54a4d3466eb",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#keep-text-succinct-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.4.5 Keep Text Succinct (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d047dcf0-4e11-443f-9e9c-53f20393aa6b",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#use-clear-words-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.4.1 Use Clear Words (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#230f8274-9850-406f-ace0-6b71160fe3d2",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#use-clear-unambiguous-formatting-and-punctuation-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.4.6 Use Clear, Unambiguous Formatting and Punctuation (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f6dfd4cc-78c5-4692-9a05-c669b644b7e0",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#include-symbols-and-letters-necessary-to-decipher-the-words-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.4.7 Include Symbols and Letters Necessary to Decipher the Words (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#036dc32d-5bb1-4b00-9db5-37d3e1437b4d",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.plainlanguage.gov/guidelines/"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "Federal plain language guidelines"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#06a53f3f-29ee-49a6-bfc5-8d9f17e5d09c",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.iso.org/standard/78907.html"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "ISO 24495-1:2023"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8f13d2ea-77b3-4052-bc77-14d175822824",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#unusual-words"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "Unusual Words"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a7011d0c-5ed3-40e1-ba5f-1e34d0d0fe3a",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#abbreviations"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "Abbreviations"
             }
         ],
         "https://aihal.net/accessibility/daf/#refType": [
@@ -39345,7 +38950,7 @@
         "https://aihal.net/accessibility/daf/#stmtGuidance": [
             {
                 "@language": "en",
-                "@value": ""
+                "@value": "As a user with limited reach, dexterity, or mobility, I need to access all areas of the interface with the same input method as the gameplay."
             }
         ],
         "https://aihal.net/accessibility/daf/#tags": [
@@ -39355,29 +38960,7 @@
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bbadc6c-80a6-4c4f-9f41-217de0bfa2d1"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4bbadc6c-80a6-4c4f-9f41-217de0bfa2d1",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "http://gameaccessibilityguidelines.com/ensure-that-all-areas-of-the-user-interface-can-be-accessed-using-the-same-input-method-as-the-gameplay"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "Ensure that all areas of the user interface can be accessed using the same input method as the gameplay"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8a33d5a0-39b0-4f39-b811-aa25d7d6223f"
             }
         ]
     },
@@ -39603,7 +39186,7 @@
         "https://aihal.net/accessibility/daf/#stmtGuidance": [
             {
                 "@language": "en",
-                "@value": ""
+                "@value": "As a user with a disability, I need to be able to customize my interface."
             }
         ],
         "https://aihal.net/accessibility/daf/#tags": [
@@ -39613,29 +39196,7 @@
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c16ea0fc-1d0e-4807-823e-b334cdd1a9a7"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c16ea0fc-1d0e-4807-823e-b334cdd1a9a7",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://gameaccessibilityguidelines.com/allow-interfaces-to-be-rearranged/"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "Allow interfaces to be rearranged"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8c8962eb-bcd9-4862-bcf3-1a2c756ec0cd"
             }
         ]
     },
@@ -40445,6 +40006,445 @@
             {
                 "@language": "en",
                 "@value": "Allow interfaces to be resized"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#258d90ad-98f1-4a55-b7ba-b7ac507dbf44",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "AT-compatible"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5372848e-1e77-4e5b-8722-443bc12db68e"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6d5f21eb-3d7b-4668-a12b-d7ac71158403"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/at-compatible.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user of assistive technology, content and operable elements can be accessed and presented through assistive technology."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3d0e7332-d7b6-4a19-9866-8c83cbd79469"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8d2d3c2a-f83f-4994-8ef8-db56d692f7f6"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0c0ddbd0-eb5f-49aa-8fb5-7e2b2ed23f91"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3d0e7332-d7b6-4a19-9866-8c83cbd79469",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://getevinced.github.io/mcag/#accessibility-enabled"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "1.1.1 Accessibility Enabled"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8d2d3c2a-f83f-4994-8ef8-db56d692f7f6",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#enable-apis-and-extensions-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.9.2 Enable APIs and Extensions (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0c0ddbd0-eb5f-49aa-8fb5-7e2b2ed23f91",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://getevinced.github.io/mcag/#external-aids-devices"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.2.1. External aids and devices"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#504d2583-ceb3-4283-b8ad-86f406e415e0",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#use-clear-unambiguous-formatting-and-punctuation-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.4.6 Use Clear, Unambiguous Formatting and Punctuation (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7a63876f-0059-41cb-9c1d-c886a9a1cf60",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#include-symbols-and-letters-necessary-to-decipher-the-words-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.4.7 Include Symbols and Letters Necessary to Decipher the Words (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8a33d5a0-39b0-4f39-b811-aa25d7d6223f",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "http://gameaccessibilityguidelines.com/ensure-that-all-areas-of-the-user-interface-can-be-accessed-using-the-same-input-method-as-the-gameplay"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Ensure that all areas of the user interface can be accessed using the same input method as the gameplay"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#8c8962eb-bcd9-4862-bcf3-1a2c756ec0cd",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://gameaccessibilityguidelines.com/allow-interfaces-to-be-rearranged/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Allow interfaces to be rearranged"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a9c384a9-f960-4e64-b5c4-5efff983ef8f",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#use-a-simple-tense-and-voice-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.4.2 Use a Simple Tense and Voice (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3ea98f30-044a-4235-ada8-e5b30da4c625",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#avoid-double-negatives-or-nested-clauses-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.4.3 Avoid Double Negatives or Nested Clauses (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c26613a-c97f-40e9-8bc0-cb2a84994267",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#use-literal-language-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.4.4 Use Literal Language (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#813506e7-41c2-4bbd-939c-221647543853",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#keep-text-succinct-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.4.5 Keep Text Succinct (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5f1a06fb-0466-4b36-8de1-8b01fdb442cb",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#use-clear-words-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.4.1 Use Clear Words (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b6f4e46b-6413-4182-96dd-168950c67f98",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#use-clear-unambiguous-formatting-and-punctuation-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.4.6 Use Clear, Unambiguous Formatting and Punctuation (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#9d8637e3-bfc7-4a2d-948a-fadafc951b2f",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#include-symbols-and-letters-necessary-to-decipher-the-words-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.4.7 Include Symbols and Letters Necessary to Decipher the Words (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#56946d61-3715-48a8-a124-9ec4343a1eaf",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.plainlanguage.gov/guidelines/"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Federal plain language guidelines"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6a2f4eaa-948e-4ad0-8bf7-d31bdf58a124",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.iso.org/standard/78907.html"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "ISO 24495-1:2023"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#27df3a15-ece5-40ef-b079-a786b5d97a8c",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#unusual-words"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Unusual Words"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5e2586c5-76e0-4b29-9332-bf0e04ddd776",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#abbreviations"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "Abbreviations"
             }
         ],
         "https://aihal.net/accessibility/daf/#refType": [
