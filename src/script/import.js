@@ -274,7 +274,7 @@ function retrieveContent(content) {
 	let event, node, entering;
 	let title = "";
 	let statement = "";
-	let notes = ""; // content.substring(content.lastIndexOf('---') + 3); // doing this way so I don't have to remarkupize
+	let notes = ""; 
 	let lookingFor = "heading"
 	let inside = "";
 	let pbreak = false;

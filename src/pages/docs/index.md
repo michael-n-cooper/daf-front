@@ -8,7 +8,7 @@ For most users, the [matrix](../matrix) is the primary resource to explore. Unde
 
 The W3C draft [Framework for Accessible Specification of Technologies (FAST)](https://w3c.github.io/fast/) defines the concepts of functional needs, intersection needs, and user needs that were adopted for this work:
 
-* A functional need is a statement that describes a specific gap in one’s ability, or a specific mismatch between ability and the designed environment or context. 
+* A functional need is a statement that describes a specific gap in one's ability, or a specific mismatch between ability and the designed environment or context. 
 * An intersectional functional need results from an individual having more than one functional need simultaneously in a given context.
 * A user need is a high level accessibility characteristic of content and/or a user interface that is necessary for users to complete an objective.
 
