@@ -17938,15 +17938,27 @@
         "https://aihal.net/accessibility/daf/#stmtGuidance": [
             {
                 "@language": "en",
-                "@value": "Content that can interrupt focus must be identified and allow users to control interaction with it (distractions, interruptions)"
+                "@value": "As a user with a cognitive disability, I must be able to control content that can interrupt my focus"
             }
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e321cbb1-ab9c-4523-86cd-3f36880fa026"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#690d476e-a8e8-4d7f-a9fb-b9d59c9568a8"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c1f610c-658b-43c5-a34c-63e3b607af8e"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c9586c4b-3e31-4e5a-b50a-f768a58da3f0"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#151e3430-64a0-4b59-a10a-4f8c766f70e7"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#df726574-ca86-471c-8263-57b07f3473bf"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#note": [
+            {
+                "@language": "en",
+                "@value": "Content that can interrupt focus must be identified and allow users to control interaction with it (distractions, interruptions).\n\nFor some people, these distractions can include advertisements, side tasks, and pop-ups (including GDPR dialogs)."
             }
         ]
     },
@@ -32830,61 +32842,12 @@
                 "@value": "As a user with low vision, I need user interface components and graphical objects to have sufficient contrast with adjacent colors."
             }
         ],
-        "https://aihal.net/accessibility/daf/#tags": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f0e1ea99-ceba-4233-b603-b701290e6fa1"
-            }
-        ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e515c852-3b1f-4e63-8a7c-27d743eec088"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d344cc26-269b-4608-bbbd-fc90eaf48764"
             },
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#12eceb9d-e8db-4553-bafb-b76e2d0781ba"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e515c852-3b1f-4e63-8a7c-27d743eec088",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#non-text-contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.11 Non-text Contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#12eceb9d-e8db-4553-bafb-b76e2d0781ba",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#essential-elements-color-contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.2. Essential Elements' Color Contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6f306c1b-c5cf-4c79-a214-259b3944c625"
             }
         ]
     },
@@ -34839,50 +34802,6 @@
         ]
     },
     {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e321cbb1-ab9c-4523-86cd-3f36880fa026",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#interruptions"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "2.2.4 Interruptions"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c1f610c-658b-43c5-a34c-63e3b607af8e",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#limit-interruptions-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.6.1 Limit Interruptions (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4fd15742-458c-4589-9a54-c3cf5a800d7f",
         "@type": [
             "https://aihal.net/accessibility/daf/#Reference"
@@ -36730,7 +36649,7 @@
         "https://aihal.net/accessibility/daf/#stmtGuidance": [
             {
                 "@language": "en",
-                "@value": "As a user who is listening to multiple auditory components or channels, I need to be able to clearly perceive and distingish the various auditory components."
+                "@value": "As a user who is listening to multiple auditory components or channels (potentially including assistive technology or accessibility features), I need to be able to clearly perceive and distingish the various auditory components and not have them interfere with each other."
             }
         ],
         "https://aihal.net/accessibility/daf/#tags": [
@@ -36740,35 +36659,16 @@
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#36fb4543-8234-485e-86b0-c283da6d1bfd"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b0c7e05a-3b00-456f-b10c-367828581968"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7a7a1749-c72d-443e-9288-2c53909cf6ab"
             }
         ],
         "https://aihal.net/accessibility/daf/#note": [
             {
                 "@language": "en",
                 "@value": "Examples:\n* Audio descriptions happening in gaps in dialog\n* Audio descriptions made with a voice distinct from other content\n* Background music can be turned off or reduced in volume so it does not interfere"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#36fb4543-8234-485e-86b0-c283da6d1bfd",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-3-1-b"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-3-1-b to distinguish among the individual auditory components being presented"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
             }
         ]
     },
@@ -36947,7 +36847,7 @@
         "https://aihal.net/accessibility/daf/#stmtGuidance": [
             {
                 "@language": "en",
-                "@value": "As a user who is using multiple visual components or channels, I need to be able to clearly perceive and distingish the various visual components."
+                "@value": "As a user who is using multiple visual components or channels (potentially including assistive technology or accessibility features), I need to be able to clearly perceive and distingish the various visual components and not have them interfere with each other."
             }
         ],
         "https://aihal.net/accessibility/daf/#tags": [
@@ -36957,35 +36857,16 @@
         ],
         "https://aihal.net/accessibility/daf/#references": [
             {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c797ddb5-05fd-4153-93be-296d0af99139"
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c8617b34-24b2-42c2-915d-f528c8f714ba"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0934a520-f8b6-4913-88f3-7b490a5dab45"
             }
         ],
         "https://aihal.net/accessibility/daf/#note": [
             {
                 "@language": "en",
                 "@value": "Examples:\n* Important content on a video that is not covered up when captions are turned on\n* Dialogs that do not overlap\n* Tooltip-like interactions that can be dismissed so that content underneath can be perceived and read"
-            }
-        ]
-    },
-    {
-        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c797ddb5-05fd-4153-93be-296d0af99139",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-3-1-a"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-3-1-a to distinguish among the individual visual components being presented"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
             }
         ]
     },
@@ -40445,6 +40326,948 @@
             {
                 "@language": "en",
                 "@value": "Abbreviations"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a29347b8-47a2-44e2-87a1-d9b7e424f484",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Avoid auditory distractions"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e6193214-094a-4dba-938d-e82e26782a94"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6c576b56-12a9-4a9e-96c1-e333161cc186"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7f4ca011-41ed-43be-bb31-73a1cf8f02cc"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6040826d-9fb2-45ff-9d3a-1a9f7c075862"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a1ff813a-74a2-45b4-8584-9f36e196b70d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f2198ad2-ca31-4bd1-b3a4-fb73d404dfce"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-auditory-distractions.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited hearing or who is easily distracted auditorially, I need to avoid auditory distractions that may prevent me from focusing on a task."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a01aae8-ae32-4a51-b105-92198a9644b1"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#12ec5d89-8d64-4ef4-bbd3-bf1973184e1f"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4a01aae8-ae32-4a51-b105-92198a9644b1",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-2-d"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-2-a to avoid auditory distractions that prevent focusing on a task"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#12ec5d89-8d64-4ef4-bbd3-bf1973184e1f",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#limit-interruptions-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.6.1 Limit Interruptions (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#71cba35f-2ea5-4810-b0a0-3aeec763e524",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Avoid environmental glare"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e60daf35-a178-4bce-80cf-e6e46a229c50"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d74745ac-e81b-45ba-8cf3-c7f42a1dd3af"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-environmental-glare.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited vision or who is sensitive to glare or extraneous lighting, I need to avoid glare from excessive brightness of the material or environment."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7a94fca1-f965-426d-ba87-4f8c92f935ac"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7a94fca1-f965-426d-ba87-4f8c92f935ac",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-2-c"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-2-c to avoid glare from excessive brightness (of material or surrounding)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0a15e847-227e-40bb-9e49-dac2acaf90b1",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Avoid tactile distractions"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7f4ca011-41ed-43be-bb31-73a1cf8f02cc"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6040826d-9fb2-45ff-9d3a-1a9f7c075862"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a1ff813a-74a2-45b4-8584-9f36e196b70d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f2198ad2-ca31-4bd1-b3a4-fb73d404dfce"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-olfactory-distractions.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user who may find some smells distracting, I need to avoid olfactory distractions that may prevent me from focusing on a task."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#41983b19-fdb1-41c8-a2dc-3a2ff29f4ee2"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a3148277-5714-41bb-850a-a499fe44b539"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#41983b19-fdb1-41c8-a2dc-3a2ff29f4ee2",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-2-h"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-2-h to avoid olfactory distractions that prevent focusing on a task"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a3148277-5714-41bb-850a-a499fe44b539",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#limit-interruptions-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.6.1 Limit Interruptions (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b49e84f5-e391-445b-9222-238d5e6b7aeb",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Avoid overwhelming audio"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e6193214-094a-4dba-938d-e82e26782a94"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6c576b56-12a9-4a9e-96c1-e333161cc186"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7f4ca011-41ed-43be-bb31-73a1cf8f02cc"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6040826d-9fb2-45ff-9d3a-1a9f7c075862"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a1ff813a-74a2-45b4-8584-9f36e196b70d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f2198ad2-ca31-4bd1-b3a4-fb73d404dfce"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-overwhelming-audio.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited hearing or who is easily overwhelmed by certain types of audio stimuli, I need to avoid audio events that may overload my perception."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#027568db-3668-43d2-94b2-855e1b01bb68"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7996b7bb-bb4b-4c33-bd71-ec85ba2f7724"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#027568db-3668-43d2-94b2-855e1b01bb68",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-2-e"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-2-e to avoid audio effects that overload perception"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7996b7bb-bb4b-4c33-bd71-ec85ba2f7724",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-5-b"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-5-b to avoid auditory overloads"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#eb3079ce-6cdd-488e-a1a2-5e4abfdde46f",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Avoid overwhelming haptics"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7f4ca011-41ed-43be-bb31-73a1cf8f02cc"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6040826d-9fb2-45ff-9d3a-1a9f7c075862"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a1ff813a-74a2-45b4-8584-9f36e196b70d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f2198ad2-ca31-4bd1-b3a4-fb73d404dfce"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-overwhelming-haptics.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user who is easily overwhelmed by certain types of touch or haptic stimuli, I need to avoid haptic effects events that may overload my perception or prevent me from completing a tactile task."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f0e51442-3597-4a75-80e7-b8dcf378899c"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f0e51442-3597-4a75-80e7-b8dcf378899c",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-2-g"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-2-g to avoid haptic effects that prevent executing a tactile task"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7cc980f6-fb80-45a4-9425-ca52a66fd254",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Avoid reflective glare"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e60daf35-a178-4bce-80cf-e6e46a229c50"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d74745ac-e81b-45ba-8cf3-c7f42a1dd3af"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-reflective-glare.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited vision or who is sensitive to glare or extraneous lighting, I need to avoid glare from light sources in the environment reflecting off screens or other reading sources."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#536165be-f6ff-4d67-9276-9198888f55bd"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#536165be-f6ff-4d67-9276-9198888f55bd",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-2-b"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-2-b to avoid reflective glare"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#672ca6a8-7a3e-446e-b08a-5f5a41bacadd",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Avoid tactile distractions"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7f4ca011-41ed-43be-bb31-73a1cf8f02cc"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6040826d-9fb2-45ff-9d3a-1a9f7c075862"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a1ff813a-74a2-45b4-8584-9f36e196b70d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f2198ad2-ca31-4bd1-b3a4-fb73d404dfce"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-tactile-distractions.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user who may find touch and tactile sensations distracting, I need to avoid tactile distractions that may prevent me from focusing on a task."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ed653f32-79a4-45c5-8390-fe09d1b4e7b9"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd06dad2-11db-42ec-a1ae-6c8c6a64aad3"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ed653f32-79a4-45c5-8390-fe09d1b4e7b9",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-2-f"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-2-f to avoid tactile distractions that prevent focusing on a task"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#dd06dad2-11db-42ec-a1ae-6c8c6a64aad3",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#limit-interruptions-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.6.1 Limit Interruptions (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2de64923-7318-4347-aa67-6582f76be82a",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Avoid visual distractions"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e60daf35-a178-4bce-80cf-e6e46a229c50"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d74745ac-e81b-45ba-8cf3-c7f42a1dd3af"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a1ff813a-74a2-45b4-8584-9f36e196b70d"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f2198ad2-ca31-4bd1-b3a4-fb73d404dfce"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-visual-distractions.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user with limited vision or who is easily distracted visually, I need to avoid visual distractions that may prevent me from focusing on a task."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#34925b0a-e824-4c7a-bb65-e856d5689e53"
+            },
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3cc39505-1cec-463b-b2a3-de982ad84de4"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#34925b0a-e824-4c7a-bb65-e856d5689e53",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#pause-stop-hide"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.2.2 Pause Stop Hide"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#3cc39505-1cec-463b-b2a3-de982ad84de4",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-2-a"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-2-a to avoid visual distractions that prevent focusing on a task"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#690d476e-a8e8-4d7f-a9fb-b9d59c9568a8",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#interruptions"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "2.2.4 Interruptions"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c9586c4b-3e31-4e5a-b50a-f768a58da3f0",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/coga-usable/#limit-interruptions-pattern"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "4.6.1 Limit Interruptions (Pattern)"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#151e3430-64a0-4b59-a10a-4f8c766f70e7",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-4-a"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-4-a to remove or prevent content not related to a particular task"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#df726574-ca86-471c-8263-57b07f3473bf",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-4-b"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-4-b to prevent interruption of a task by other tasks"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#b0c7e05a-3b00-456f-b10c-367828581968",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-3-1-b"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-3-1-b to distinguish among the individual auditory components being presented"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7a7a1749-c72d-443e-9288-2c53909cf6ab",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-3-b"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-3-b to have audio accessibility features (such as audio description/audio vision) not interfere with perception of standard information"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c8617b34-24b2-42c2-915d-f528c8f714ba",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-3-1-a"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-3-1-a to distinguish among the individual visual components being presented"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0934a520-f8b6-4913-88f3-7b490a5dab45",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-3-a"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-3-a to have visual accessibility features (such as captions) not interfere with perception of standard information"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d344cc26-269b-4608-bbbd-fc90eaf48764",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://www.w3.org/TR/WCAG22/#non-text-contrast"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "1.4.11 Non-text Contrast"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6f306c1b-c5cf-4c79-a214-259b3944c625",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-1-b"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-1-b to have controls that visually contrast with their surroundings"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refType": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#ae317419-cf35-48de-9919-af49f15a1adb",
+        "@type": [
+            "http://www.w3.org/2002/07/owl#NamedIndividual",
+            "https://aihal.net/accessibility/daf/#AccessibilityStatement"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@language": "en",
+                "@value": "Distinguish auditory components"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#supports": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d5c87480-3125-4b98-a383-aabfc00e2734"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#contentIRI": [
+            {
+                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/prevent-device-interference.md"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#stmtGuidance": [
+            {
+                "@language": "en",
+                "@value": "As a user who is using assistive technology or accessibility features, I need to be able to prevent interference from other devices."
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#tags": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5975c095-6121-4586-aa02-3abf11ff6b24"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#references": [
+            {
+                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4f20978e-1681-4621-b83f-5f22daca6282"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#note": [
+            {
+                "@language": "en",
+                "@value": "Description from ISO parent user need statement 5-4-3 \n\n\"\nTo have accessibility features not interfere with perception of standard information\n\"\n:\n\nThis need focuses on the perception of displayed content and required interactions not being hindered by accessibility features. Where accessibility features are not built in to the way that a system displays its content, it is much harder for users to manipulate the interface between the display content and the accessibility features. This can result in interference between the two, seriously degrading the user experience."
+            }
+        ]
+    },
+    {
+        "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#4f20978e-1681-4621-b83f-5f22daca6282",
+        "@type": [
+            "https://aihal.net/accessibility/daf/#Reference"
+        ],
+        "https://aihal.net/accessibility/daf/#refIRI": [
+            {
+                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-3-c"
+            }
+        ],
+        "https://aihal.net/accessibility/daf/#refNote": [
+            {
+                "@language": "en",
+                "@value": "5-4-3-c to have audio accessibility features (such as audio description/audio vision) not interfere with perception of standard information"
             }
         ],
         "https://aihal.net/accessibility/daf/#refType": [
