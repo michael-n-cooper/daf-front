@@ -1,20 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import * as dbquery from '../../script/dbquery.js';
-import {baseUri, idFrag} from '../../script/util.js';
+import {baseUri, idFrag, apiGet} from '../../script/util.js';
 
 const {id} = Astro.params;
-
-const labelSparql = "select ?label where { values ?id { :" + id + " } . ?id rdfs:label ?label }";
-const labelResult = await dbquery.selectQuery(labelSparql);
-
-const sparql = "select ?id ?label where { values ?cat { :" + id + "} . ?id a a11y:FunctionalNeed ; a11y:supports ?cat ; rdfs:label ?label } order by ?label";
-const json = await dbquery.selectQuery(sparql);
+const json = await apiGet("functional-need-categories/" + id);
 
 ---
-<Layout title={"Functional Need Category: " + labelResult.results.bindings[0].label.value}>
-<p>This category includes the following functional needs:</p>
+<Layout title={"Functional Need Category: " + json[0].label}>
+<p>{json[0].functionalNeeds.length} functional needs:</p>
 <ul>
-	{json.results.bindings.map((item) => <li><a href={baseUri + 'functional-needs/' + idFrag(item.id.value)}>{item.label.value}</a></li>)}
+	{json[0].functionalNeeds.map((item) => <li><a href={baseUri + 'functional-needs/' + idFrag(item.id)}>{item.label}</a></li>)}
 </ul>
 </Layout>
