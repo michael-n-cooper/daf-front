@@ -13,6 +13,7 @@
     "@astrojs/node": "^8.2.0",
     "astro": "^4.3.7",
     "commonmark": "^0.31.0",
+    "file-url": "^4.0.0",
     "inquirer": "^9.2.15",
     "jsdom": "^24.1.0",
     "parse-md": "^3.0.3",
