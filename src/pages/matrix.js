@@ -5,6 +5,7 @@ promises.push(apiGet("functional-needs"));
 promises.push(apiGet("user-needs"));
 promises.push(apiGet("user-need-contexts"));
 promises.push(apiGet("mappings"));
+promises.push(apiGet("statements"));
 
 Promise.all(promises).then((values) => {
 	const functionalNeedCategories = values[0];
@@ -12,6 +13,7 @@ Promise.all(promises).then((values) => {
 	const userNeeds = values[2];
 	const userNeedContexts = values[3];
 	const mappings = values[4];
+	const statements = values[5];
 
 
 	const table = document.getElementById("matrixTable");
@@ -104,15 +106,15 @@ Promise.all(promises).then((values) => {
 				functionalNeedList.forEach(function(fn) {
 					var cell = document.createElement("td");
 
-					var statements = filterObjectByProperties(mappings, {"fnId": fn.id, "unId": need.id, "unrId": context.id});
+					var maps = filterObjectByProperties(mappings, {"fnId": fn.id, "unId": need.id, "unrId": context.id});
 
-					if (statements.length > 0) {
+					if (maps.length > 0) {
 						var list = document.createElement("ul");
-						statements.forEach(function(statement) {
+						maps.forEach(function(map) {
 							var item = document.createElement("li");
 							var link = document.createElement("a");
-							link.href = base + "statements/" + statement.id;
-							link.append(document.createTextNode(findObjectByProperties(statements, {"id": statement.id}).label));
+							link.href = base + "statements/" + map.stmtId;
+							link.append(document.createTextNode(findObjectByProperties(statements, {"id": map.stmtId}).label));
 							item.append(link);
 							list.append(item);
 						});
