@@ -24,45 +24,48 @@ Promise.all(promises).then((values) => {
 	var thead = document.createElement("thead");
 
 	// row 1: functional need categories
-	var row = document.createElement("tr");
-	row.append(document.createElement("td"), document.createElement("td"));
+	var row1 = document.createElement("tr");
+	row1.append(document.createElement("td"), document.createElement("td"));
 
 	functionalNeedCategories.forEach(function(category) {
 		var cell = document.createElement("th");
+		cell.id = idFrag(category.id);
 		cell.scope = "colgroup";
-		cell.colSpan = filterObjectByProperties(functionalNeeds, {"categoryId": category.id}).length;
 
 		var link = document.createElement("a");
-		link.href = base + category.id;
+		link.href = base + "functional-need-categories/" + idFrag(category.id);
 		link.append(document.createTextNode(category.label));
 
 		cell.append(link);
-		row.append(cell);
+		row1.append(cell);
 	});
 
-	thead.append(row);
+	thead.append(row1);
 
 	// row 2: functional needs
-	var row = document.createElement("tr");
-	row.append(document.createElement("td"), document.createElement("td"));
+	var row2 = document.createElement("tr");
+	row2.append(document.createElement("td"), document.createElement("td"));
 
 	functionalNeedCategories.forEach(function(category) {
 		functionalNeedList = filterObjectByProperties(functionalNeeds, {"categoryId": category.id});
+		row1.cells[idFrag(category.id)].colSpan = functionalNeedList.length;
+
 		functionalNeedList.forEach(function(fn) {
 
 			var cell = document.createElement("th");
+			cell.id = idFrag(fn.id);
 			cell.scope = "col";
 		
 			var link = document.createElement("a");
-			link.href = base + "functional-needs/" + fn.id;
+			link.href = base + "functional-needs/" + idFrag(fn.id);
 			link.append(document.createTextNode(fn.label));
 
 			cell.append(link);
-			row.append(cell);
+			row2.append(cell);
 		});
 	});
 
-	thead.append(row);
+	thead.append(row2);
 
 	table.append(thead);
 
@@ -76,14 +79,17 @@ Promise.all(promises).then((values) => {
 		// loop user need contexts
 		userNeedContexts.forEach(function(context) {
 			var row = document.createElement("tr");
+			var nrow;
 
 			if (count == 0) {
+				nrow = row;
 				var cell = document.createElement("th");
+				cell.id = idFrag(need.id);
 				cell.scope = "rowgroup";
 				cell.rowSpan = userNeedContexts.length;
 		
 				var link = document.createElement("a");
-				link.href = base + "user-needs/" + need.id;
+				link.href = base + "user-needs/" + idFrag(need.id);
 				link.append(document.createTextNode(need.label));
 
 				cell.append(link);
@@ -91,10 +97,11 @@ Promise.all(promises).then((values) => {
 			}
 
 			var cell = document.createElement("th");
+			cell.id = idFrag(need.id) + "+" + idFrag(context.id);
 			cell.scope = "row";
 		
 			var link = document.createElement("a");
-			link.href = base + "user-need-contexts/" + context.id;
+			link.href = base + "user-need-contexts/" + idFrag(context.id);
 			link.append(document.createTextNode(context.label));
 
 			cell.append(link);
@@ -109,16 +116,31 @@ Promise.all(promises).then((values) => {
 					var maps = filterObjectByProperties(mappings, {"fnId": fn.id, "unId": need.id, "unrId": context.id});
 
 					if (maps.length > 0) {
-						var list = document.createElement("ul");
-						maps.forEach(function(map) {
-							var item = document.createElement("li");
-							var link = document.createElement("a");
-							link.href = base + "statements/" + map.stmtId;
-							link.append(document.createTextNode(findObjectByProperties(statements, {"id": map.stmtId}).label));
-							item.append(link);
-							list.append(item);
-						});
-						cell.append(list);
+						var div = document.createElement("div");
+						div.id = idFrag(maps[0].id);
+						div.classList.add("mapping");
+						if (maps[0].applicable == "false") {
+							div.classList.add("na");
+							div.append(document.createTextNode("NA"));
+						}
+
+						if (maps.length > 1 || maps[0].stmtId != null) {
+							var list = document.createElement("ul");
+							maps.forEach(function(map) {
+								var stmt = findObjectByProperties(statements, {"id": map.stmtId}).label);
+
+								var item = document.createElement("li");
+								var link = document.createElement("a");
+								link.href = base + "statements/" + idFrag(map.stmtId);
+								link.class = idFrag(map.stmtId);
+								link.title = stmt.stmt;
+								link.append(document.createTextNode(stmt.label);
+								item.append(link);
+								list.append(item);
+							});
+							div.append(list);
+						}
+						cell.append(div);
 					}
 
 					row.append(cell);
