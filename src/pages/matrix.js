@@ -14,11 +14,11 @@ Promise.all(promises).then((values) => {
 	const userNeedContexts = values[3];
 	const mappings = values[4];
 	const statements = values[5];
-
+	
+	const base = "http://localhost:4321/";
+	const counts = {};
 
 	const table = document.getElementById("matrixTable");
-
-	const base = "http://localhost:4321/";
 
 	//thead
 	var thead = document.createElement("thead");
@@ -47,10 +47,13 @@ Promise.all(promises).then((values) => {
 	row2.append(document.createElement("td"), document.createElement("td"));
 
 	functionalNeedCategories.forEach(function(category) {
+		counts[idFrag(category.id)] = 0;
+
 		functionalNeedList = filterObjectByProperties(functionalNeeds, {"categoryId": category.id});
 		row1.cells[idFrag(category.id)].colSpan = functionalNeedList.length;
 
 		functionalNeedList.forEach(function(fn) {
+			counts[idFrag(fn.id)] = 0;
 
 			var cell = document.createElement("th");
 			cell.id = idFrag(fn.id);
@@ -79,10 +82,10 @@ Promise.all(promises).then((values) => {
 		// loop user need contexts
 		userNeedContexts.forEach(function(context) {
 			var row = document.createElement("tr");
-			var nrow;
 
 			if (count == 0) {
-				nrow = row;
+				counts[idFrag(need.id)] = 0;
+
 				var cell = document.createElement("th");
 				cell.id = idFrag(need.id);
 				cell.scope = "rowgroup";
@@ -96,8 +99,10 @@ Promise.all(promises).then((values) => {
 				row.append(cell);
 			}
 
+			var uncid = idFrag(need.id) + "+" + idFrag(context.id);
+			counts[uncid] = 0;
 			var cell = document.createElement("th");
-			cell.id = idFrag(need.id) + "+" + idFrag(context.id);
+			cell.id = uncid;
 			cell.scope = "row";
 		
 			var link = document.createElement("a");
@@ -127,16 +132,21 @@ Promise.all(promises).then((values) => {
 						if (maps.length > 1 || maps[0].stmtId != null) {
 							var list = document.createElement("ul");
 							maps.forEach(function(map) {
-								var stmt = findObjectByProperties(statements, {"id": map.stmtId}).label);
+								var stmt = findObjectByProperties(statements, {"id": map.stmtId});
 
 								var item = document.createElement("li");
 								var link = document.createElement("a");
 								link.href = base + "statements/" + idFrag(map.stmtId);
 								link.class = idFrag(map.stmtId);
 								link.title = stmt.stmt;
-								link.append(document.createTextNode(stmt.label);
+								link.append(document.createTextNode(stmt.label));
 								item.append(link);
 								list.append(item);
+
+								counts[idFrag(need.id)]++;
+								counts[uncid]++;
+								counts[idFrag(category.id)]++;
+								counts[idFrag(fn.id)]++;
 							});
 							div.append(list);
 						}
@@ -154,8 +164,17 @@ Promise.all(promises).then((values) => {
 
 	});
 
-
 	table.append(tbody);
+	console.log(counts);
+
+	var countIterator = Object.keys(counts);
+	countIterator.forEach(function(c) {
+		var cell = document.getElementById(c);
+		var span = document.createElement("span");
+		span.class = "total";
+		span.append(document.createTextNode(" (" + counts[c] + ") "));
+		cell.append(span);
+	});
 });
 
 async function apiGet(path) {
