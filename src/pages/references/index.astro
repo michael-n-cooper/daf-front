@@ -1,13 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import * as dbquery from '../../script/dbquery.js';
-import {baseUri, idFrag} from '../../script/util.js';
+import {baseUri, idFrag, apiGet} from '../../script/util.js';
 
-const glSparql = 'select ?id ?iri ?note ?stmtId ?stmtLabel where { ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label "guidelines"@en . ?stmtId a11y:references ?id ; rdfs:label ?stmtLabel } order by ?iri';
-const glResult = await dbquery.selectQuery(glSparql);
-
-const researchSparql = 'select ?id ?iri ?note ?stmtId ?stmtLabel where { ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label "research"@en . ?stmtId a11y:references ?id ; rdfs:label ?stmtLabel } order by ?iri';
-const researchResult = await dbquery.selectQuery(researchSparql);
+const json = await apiGet("references");
 
 ---
 <Layout title="References">
@@ -19,7 +15,7 @@ const researchResult = await dbquery.selectQuery(researchSparql);
 				<tr><th scope="col">Reference URI</th><th scope="col">Note</th><th scope="col">Used in</th></tr>
 			</thead>
 			<tbody>
-				{glResult.results.bindings.map((reference) => <tr><td><a href={reference.iri.value}>{reference.iri.value}</a></td><td>{reference.note.value}</td><td><a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId.value)}>{reference.stmtLabel.value}</a></td></tr>)}
+				{json.map((reference) => reference.refType == "guidelines" ? <tr><td><a href={reference.refIRI}>{reference.refIRI}</a></td><td>{reference.refNote}</td><td><a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId)}>{reference.stmtLabel}</a></td></tr> : "")}
 			</tbody>
 		</table>
 	</section>
@@ -31,7 +27,7 @@ const researchResult = await dbquery.selectQuery(researchSparql);
 			<tr><th scope="col">Reference URI</th><th scope="col">Note</th><th scope="col">Used in</th></tr>
 		</thead>
 		<tbody>
-			{researchResult.results.bindings.map((reference) => <tr><td><a href={reference.iri.value}>{reference.iri.value}</a></td><td>{reference.note.value}</td><td><a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId.value)}>{reference.stmtLabel.value}</a></td></tr>)}
+				{json.map((reference) => reference.refType == "research" ? <tr><td><a href={reference.refIRI}>{reference.refIRI}</a></td><td>{reference.refNote}</td><td><a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId)}>{reference.stmtLabel}</a></td></tr> : "")}
 		</tbody>
 	</table>
 </Layout>

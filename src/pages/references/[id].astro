@@ -2,13 +2,7 @@
 import MatrixItemDetails from '../../components/MatrixItemDetails.astro';
 import Layout from '../../layouts/Layout.astro';
 
-export async function getStaticPaths() { 
-	const module = await import('./ids.js');
-	const {ids} = module;
-	return (ids);
-}
-
 const {id} = Astro.params;
 ---
-<MatrixItemDetails id={id} type="Reference"></MatrixItemDetails>
+<MatrixItemDetails id={id} type="Reference" section="references"></MatrixItemDetails>
 
