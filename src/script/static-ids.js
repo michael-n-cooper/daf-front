@@ -1,31 +1,31 @@
 import { writeFile } from 'node:fs/promises';
-import * as dbquery from './dbquery.js';
+import { apiGet, idFrag } from './util-base.js';
 
 async function lookupIds(type) {
-	var params = new Array();
-	const sparql = 'select ?id where { ?id a a11y:' + type + ' }';
-	const result = await dbquery.selectQuery(sparql);
-	result.results.bindings.forEach(function(item) {
-		params.push({"params": {"id": dbquery.idFrag(item.id.value)}});
+	console.log(type);
+	const ids = await apiGet(type);
+	var val = new Array();
+	ids.forEach(function(obj) {
+		val.push(idFrag(obj.id));
 	});
-	return params;
+	return val;
 }
 
 async function process(section) {
-	const ids = await lookupIds(section.type);
-	writeFile("../pages/" + section.path + "/ids.js", "export const ids = JSON.parse('" + JSON.stringify(ids) + "');");
+	const ids = await lookupIds(section.path);
+	writeFile("../pages/" + section.localpath + "/ids.js", "export const ids = JSON.parse('" + JSON.stringify(ids) + "');");
 	console.log(section.path);
 }
 
 let paths = new Array();
-paths.push({"path": "functional-need-categories", "type": "FunctionalNeedCategory"});
-paths.push({"path": "functional-needs", "type": "FunctionalNeed"});
-paths.push({"path": "intersection-needs", "type": "IntersectionNeed"});
-paths.push({"path": "guidance-statements", "type": "AccessibilityStatement"});
-paths.push({"path": "references", "type": "Reference"});
-paths.push({"path": "tags", "type": "Tag"});
-paths.push({"path": "user-need-contexts", "type": "UserNeedRelevance"});
-paths.push({"path": "user-needs", "type": "UserNeed"});
+paths.push({"path": "functional-need-categories", "localpath": "functional-need-categories"});
+paths.push({"path": "functional-needs", "localpath": "functional-needs"});
+paths.push({"path": "intersection-needs", "localpath": "intersection-needs"});
+paths.push({"path": "statements", "localpath": "guidance-statements"});
+paths.push({"path": "references", "localpath": "references"});
+paths.push({"path": "tags", "localpath": "tags"});
+paths.push({"path": "user-need-contexts", "localpath": "user-need-contexts"});
+paths.push({"path": "user-needs", "localpath": "user-needs"});
 
 let promises = new Array();
 paths.forEach(function(section) {
