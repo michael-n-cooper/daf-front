@@ -1,7 +1,12 @@
 ---
-import * as dbquery from '../../script/dbquery.js';
 import Layout from '../../layouts/Layout.astro';
-import {baseUri, idFrag} from '../../script/util.js';
+import {baseUri, idFrag, apiGet} from '../../script/util.js';
+
+export async function getStaticPaths() { 
+	const module = await import('./ids.js');
+	const {ids} = module;
+	return (ids);
+}
 
 export async function getStaticPaths() { 
 	const module = await import('./ids.js');
@@ -11,19 +16,13 @@ export async function getStaticPaths() {
 
 const {id} = Astro.params;
 
-const labelSparql = "select ?id ?label where { values ?id {:" + id + "} . ?id rdfs:label ?label }";
-const labelResult = await dbquery.selectQuery(labelSparql);
+const json = await apiGet("intersection-needs/" + id);
 
-const statementsSparql = "select distinct ?id ?label where { values ?itemId {:" + id + "} . ?id a11y:supports/a11y:supports ?itemId ; rdfs:label ?label }";
-const statementsResult = await dbquery.selectQuery(statementsSparql);
-
-const supSparql = "select ?id ?fn1 ?fn1Label ?fn2 ?fn2Label where { values ?id {:" + id + "} . ?id a11y:supports ?fn1 ; a11y:supports ?fn2 . filter (!sameterm(?fn1, ?fn2)) . ?fn1 rdfs:label ?fn1Label . ?fn2 rdfs:label ?fn2Label } limit 1";
-const supResult = await dbquery.selectQuery(supSparql);
 ---
-<Layout title={"Intersection need: " + labelResult.results.bindings[0].label.value}>
-<p>This is an intersection of the functional needs <a href={baseUri + "functional-needs/" + idFrag(supResult.results.bindings[0].fn1.value)}>{supResult.results.bindings[0].fn1Label.value}</a> and <a href={baseUri + "functional-needs/" + idFrag(supResult.results.bindings[0].fn2.value)}>{supResult.results.bindings[0].fn2Label.value}</a>.</p>
-<p>There are {statementsResult.results.bindings.length} guidance statements that support this intersection need:</p>
+<Layout title={"Intersection need: " + json[0].label}>
+<p>This is an intersection of the functional needs <a href={baseUri + "functional-needs/" + idFrag(json[0].functionalNeeds[0].id)}>{json[0].functionalNeeds[0].label}</a> and <a href={baseUri + "functional-needs/" + idFrag(json[0].functionalNeeds[1].id)}>{json[0].functionalNeeds[1].label}</a>.</p>
+<p>There are {json[0].statements.length} guidance statements that support this intersection need:</p>
 <ul>
-{statementsResult.results.bindings.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id.value)}>{statement.label.value}</a></li>)}
+{json[0].statements.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id)} title={statement.stmt}>{statement.label}</a></li>)}
 </ul>
 </Layout>
