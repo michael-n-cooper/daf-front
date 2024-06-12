@@ -34,9 +34,8 @@ h2, h3, h4, h5, h6 {
 }
 </style>
 <Layout title={json[0].label}>
-{JSON.stringify(richerMappings)}
 	<p class="stmt">{json[0].stmt}</p>
-	{typeof json[0].note !== 'undefined' ? <Fragment set:html={"<h2>Notes</h2>" + mdToHtml(json[0].note)}></Fragment> : ""}
+	{typeof json[0].note !== 'undefined' && json[0].note != null ? <Fragment set:html={"<h2>Notes</h2>" + mdToHtml(json[0].note)}></Fragment> : ""}
 	<h2>Supports</h2>
 	<table>
 		<thead>
