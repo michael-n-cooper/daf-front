@@ -2,12 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import {baseUri, idFrag, mdToHtml, apiGet} from '../../script/util.js';
 
-export async function getStaticPaths() { 
-	const module = await import('./ids.js');
-	const {ids} = module;
-	return (ids);
-}
-
 const {id} = Astro.params;
 
 const json = await apiGet ("statements/" + id);
@@ -17,7 +11,7 @@ json[0].mappings.forEach(async function(mapping) {
 	let detail = apiGet("mappings/" + idFrag(mapping.id));
 	rm.push(detail);
 });
-const richerMappings = new Array();//await Promise.all(rm);
+const richerMappings = await Promise.all(rm).then((val) => val);
 
 
 ---
@@ -42,12 +36,11 @@ h2, h3, h4, h5, h6 {
 			<tr><th>Functional need</th><th>User need</th><th>Context</th></tr>
 		</thead>
 		<tbody>
-			{richerMappings.map((item) => <tr><td><a href={baseUri + (typeof item.functionalNeed === 'undefined' ? "intersection-needs/" : "functional-needs/" ) + idFrag(item.functionalNeed.id)}>{item.functionalNeed.label}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.userNeed.id)}>{item.userNeed.label}</a></td><td><a href={baseUri + 'user-need-contexts/' + idFrag(item.userNeedRelevance.id)}>{item.userNeedRelevance.label}</a></td></tr>)}
-		</tbody>
+			{richerMappings[0].map((item) => <tr><td><a href={baseUri + (typeof item.functionalNeed === 'undefined' ? "intersection-needs/" : "functional-needs/" ) + idFrag(item.functionalNeed.id)}>{item.functionalNeed.label}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.userNeed.id)}>{item.userNeed.label}</a></td><td><a href={baseUri + 'user-need-contexts/' + idFrag(item.userNeedRelevance.id)}>{item.userNeedRelevance.label}</a></td></tr>)}		</tbody>
 	</table>
 	<h2>References</h2>
 	<ul>
-		{json[0].references.map((item) => <li>{item.type}: <a href={item.iri}>{item.note}</a></li>)}
+		{json[0].references.map((item) => <li>{idFrag(item.type)}: <a href={item.refIRI}>{item.refNote}</a></li>)}
 	</ul>
 	<h2>Tags</h2>
 	<ul>
