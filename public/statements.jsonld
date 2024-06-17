@@ -19,9 +19,6 @@
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.w3.org/2002/07/owl#Thing"
-            },
-            {
-                "@id": "_:node311"
             }
         ]
     },
@@ -55,9 +52,6 @@
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
-            },
-            {
-                "@id": "_:node315"
             }
         ]
     },
@@ -80,9 +74,6 @@
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
-            },
-            {
-                "@id": "_:node307"
             }
         ]
     },
@@ -116,9 +107,6 @@
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "http://www.w3.org/2002/07/owl#Thing"
-            },
-            {
-                "@id": "_:node306"
             }
         ]
     },
@@ -141,15 +129,6 @@
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#Mapping"
-            },
-            {
-                "@id": "_:node308"
-            },
-            {
-                "@id": "_:node309"
-            },
-            {
-                "@id": "_:node310"
             }
         ]
     },
@@ -161,15 +140,6 @@
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#Mapping"
-            },
-            {
-                "@id": "_:node312"
-            },
-            {
-                "@id": "_:node313"
-            },
-            {
-                "@id": "_:node314"
             }
         ]
     },
@@ -216,16 +186,19 @@
         ]
     },
     {
+        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+        "@type": [
+            "http://www.w3.org/2000/01/rdf-schema#Datatype"
+        ]
+    },
+    {
         "@id": "https://aihal.net/accessibility/daf/#4bd95df0_27d4_4de2_b173_bc8f8c8b2504",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
         ],
         "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
             {
-                "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
-            },
-            {
-                "@id": "_:node305"
+                "@id": "https://aihal.net/accessibility/daf/#FunctionalNeed"
             }
         ],
         "http://www.w3.org/2000/01/rdf-schema#label": [
@@ -2886,105 +2859,6 @@
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6c299fff-a166-455c-8dcb-0b7390d4fb6e"
             }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#IntersectionNeed",
-        "@type": [
-            "http://www.w3.org/2000/01/rdf-schema#Class",
-            "http://www.w3.org/2002/07/owl#Class",
-            "http://www.w3.org/2002/07/owl#Thing"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-            {
-                "@id": "http://www.w3.org/2002/07/owl#Thing"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#4bd95df0_27d4_4de2_b173_bc8f8c8b2504"
-            },
-            {
-                "@id": "_:node305"
-            }
-        ],
-        "http://www.w3.org/2002/07/owl#equivalentClass": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#4bd95df0_27d4_4de2_b173_bc8f8c8b2504"
-            }
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "IntersectionNeed"
-            }
-        ]
-    },
-    {
-        "@id": "_:node272",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node273",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node274",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node275",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node276",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node277",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node278",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node279",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node280",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node281",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
-        ]
-    },
-    {
-        "@id": "_:node282",
-        "@type": [
-            "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
@@ -41973,182 +41847,6 @@
         "https://aihal.net/accessibility/daf/#refType": [
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "_:node283",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#Mapping"
-            }
-        ]
-    },
-    {
-        "@id": "_:node284",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#UserNeedCategory"
-            }
-        ]
-    },
-    {
-        "@id": "_:node285",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#UserNeedRelevance"
-            }
-        ]
-    },
-    {
-        "@id": "_:node286",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#FunctionalNeed"
-            }
-        ]
-    },
-    {
-        "@id": "_:node287",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#FunctionalNeedCategory"
-            }
-        ]
-    },
-    {
-        "@id": "_:node288",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#UserNeed"
-            }
-        ]
-    },
-    {
-        "@id": "_:node289",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#UserNeedRelevance"
-            }
-        ]
-    },
-    {
-        "@id": "_:node290",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#4bd95df0_27d4_4de2_b173_bc8f8c8b2504"
-            }
-        ]
-    },
-    {
-        "@id": "_:node291",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
-            }
-        ]
-    },
-    {
-        "@id": "_:node292",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#FunctionalNeed"
-            }
-        ]
-    },
-    {
-        "@id": "_:node293",
-        "http://www.w3.org/2002/07/owl#someValuesFrom": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#UserNeed"
-            }
-        ]
-    },
-    {
-        "@id": "_:node294",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node295",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node296",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node297",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node298",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node299",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node300",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node301",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node302",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node303",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
-            }
-        ]
-    },
-    {
-        "@id": "_:node304",
-        "http://www.w3.org/2002/07/owl#onProperty": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#supports"
             }
         ]
     }
