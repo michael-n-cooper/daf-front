@@ -129,10 +129,10 @@ Promise.all(promises).then((values) => {
 							div.append(document.createTextNode("NA"));
 						}
 
-						if (maps.length > 1 || maps[0].stmtId != null) {
-							var list = document.createElement("ul");
-							maps.forEach(function(map) {
-								var stmt = findObjectByProperties(statements, {"id": map.stmtId});
+						var list = document.createElement("ul");
+						maps.forEach(function (map) {
+							if (map.stmtId != null) {
+								var stmt = findObjectByProperties(statements, { "id": map.stmtId });
 
 								var item = document.createElement("li");
 								var link = document.createElement("a");
@@ -147,9 +147,10 @@ Promise.all(promises).then((values) => {
 								counts[uncid]++;
 								counts[idFrag(category.id)]++;
 								counts[idFrag(fn.id)]++;
-							});
-							div.append(list);
-						}
+							}
+						});
+						if (list.childNodes.length > 0) div.append(list);
+
 						cell.append(div);
 					}
 
