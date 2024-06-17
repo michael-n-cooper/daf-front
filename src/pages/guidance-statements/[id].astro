@@ -11,7 +11,13 @@ json[0].mappings.forEach(async function(mapping) {
 	let detail = apiGet("mappings/" + idFrag(mapping.id));
 	rm.push(detail);
 });
-const richerMappings = await Promise.all(rm).then((val) => val);
+const richerMappings = await Promise.all(rm).then((val) => {
+	var res = new Array();
+	for (let i = 0; i < val.length; i++) {
+		res.push(val[i][0]);
+	}
+	return res;
+});
 
 
 ---
@@ -28,6 +34,7 @@ h2, h3, h4, h5, h6 {
 }
 </style>
 <Layout title={json[0].label}>
+<div>
 	<p class="stmt">{json[0].stmt}</p>
 	{typeof json[0].note !== 'undefined' && json[0].note != null ? <Fragment set:html={"<h2>Notes</h2>" + mdToHtml(json[0].note)}></Fragment> : ""}
 	<h2>Supports</h2>
@@ -35,8 +42,7 @@ h2, h3, h4, h5, h6 {
 		<thead>
 			<tr><th>Functional need</th><th>User need</th><th>Context</th></tr>
 		</thead>
-		<tbody>
-			{richerMappings[0].map((item) => <tr><td><a href={baseUri + (typeof item.functionalNeed === 'undefined' ? "intersection-needs/" : "functional-needs/" ) + idFrag(item.functionalNeed.id)}>{item.functionalNeed.label}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.userNeed.id)}>{item.userNeed.label}</a></td><td><a href={baseUri + 'user-need-contexts/' + idFrag(item.userNeedRelevance.id)}>{item.userNeedRelevance.label}</a></td></tr>)}		</tbody>
+			{richerMappings.map((item) => <tr><td><a href={baseUri + (typeof item.functionalNeed === 'undefined' ? "intersection-needs/" : "functional-needs/" ) + idFrag(typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.id : item.functionalNeed.id)}>{typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.label : item.functionalNeed.label}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.userNeed.id)}>{item.userNeed.label}</a></td><td><a href={baseUri + 'user-need-contexts/' + idFrag(item.userNeedRelevance.id)}>{item.userNeedRelevance.label}</a></td></tr>)}		</tbody>
 	</table>
 	<h2>References</h2>
 	<ul>
@@ -47,4 +53,5 @@ h2, h3, h4, h5, h6 {
 		{json[0].tags.map((item) => <li><a href={baseUri + 'tags/' + idFrag(item.id)}>{item.label}</a></li>)}
 	</ul>
 	<p>Imported from <a href={json[0].contentIRI}>{json[0].contentIRI}</a></p>
+</div>
 </Layout>
