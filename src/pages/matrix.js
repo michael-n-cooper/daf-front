@@ -14,7 +14,7 @@ Promise.all(promises).then((values) => {
 	const userNeedContexts = values[3];
 	const mappings = values[4];
 	const statements = values[5];
-	
+
 	const base = "http://localhost:4321/";
 	const counts = {};
 
@@ -27,7 +27,7 @@ Promise.all(promises).then((values) => {
 	var row1 = document.createElement("tr");
 	row1.append(document.createElement("td"), document.createElement("td"));
 
-	functionalNeedCategories.forEach(function(category) {
+	functionalNeedCategories.forEach(function (category) {
 		var cell = document.createElement("th");
 		cell.id = idFrag(category.id);
 		cell.scope = "colgroup";
@@ -46,19 +46,19 @@ Promise.all(promises).then((values) => {
 	var row2 = document.createElement("tr");
 	row2.append(document.createElement("td"), document.createElement("td"));
 
-	functionalNeedCategories.forEach(function(category) {
+	functionalNeedCategories.forEach(function (category) {
 		counts[idFrag(category.id)] = 0;
 
-		functionalNeedList = filterObjectByProperties(functionalNeeds, {"categoryId": category.id});
+		functionalNeedList = filterObjectByProperties(functionalNeeds, { "categoryId": category.id });
 		row1.cells[idFrag(category.id)].colSpan = functionalNeedList.length;
 
-		functionalNeedList.forEach(function(fn) {
+		functionalNeedList.forEach(function (fn) {
 			counts[idFrag(fn.id)] = 0;
 
 			var cell = document.createElement("th");
 			cell.id = idFrag(fn.id);
 			cell.scope = "col";
-		
+
 			var link = document.createElement("a");
 			link.href = base + "functional-needs/" + idFrag(fn.id);
 			link.append(document.createTextNode(fn.label));
@@ -76,11 +76,11 @@ Promise.all(promises).then((values) => {
 	var tbody = document.createElement("tbody");
 
 	// loop user needs
-	userNeeds.forEach(function(need) {
+	userNeeds.forEach(function (need) {
 		var count = 0;
 
 		// loop user need contexts
-		userNeedContexts.forEach(function(context) {
+		userNeedContexts.forEach(function (context) {
 			var row = document.createElement("tr");
 
 			if (count == 0) {
@@ -90,7 +90,7 @@ Promise.all(promises).then((values) => {
 				cell.id = idFrag(need.id);
 				cell.scope = "rowgroup";
 				cell.rowSpan = userNeedContexts.length;
-		
+
 				var link = document.createElement("a");
 				link.href = base + "user-needs/" + idFrag(need.id);
 				link.append(document.createTextNode(need.label));
@@ -104,7 +104,7 @@ Promise.all(promises).then((values) => {
 			var cell = document.createElement("th");
 			cell.id = uncid;
 			cell.scope = "row";
-		
+
 			var link = document.createElement("a");
 			link.href = base + "user-need-contexts/" + idFrag(context.id);
 			link.append(document.createTextNode(context.label));
@@ -113,12 +113,12 @@ Promise.all(promises).then((values) => {
 			row.append(cell);
 
 			// loop functional needs
-			functionalNeedCategories.forEach(function(category) {
-				functionalNeedList = filterObjectByProperties(functionalNeeds, {"categoryId": category.id});
-				functionalNeedList.forEach(function(fn) {
+			functionalNeedCategories.forEach(function (category) {
+				functionalNeedList = filterObjectByProperties(functionalNeeds, { "categoryId": category.id });
+				functionalNeedList.forEach(function (fn) {
 					var cell = document.createElement("td");
 
-					var maps = filterObjectByProperties(mappings, {"fnId": fn.id, "unId": need.id, "unrId": context.id});
+					var maps = filterObjectByProperties(mappings, { "fnId": fn.id, "unId": need.id, "unrId": context.id });
 
 					if (maps.length > 0) {
 						var div = document.createElement("div");
@@ -169,7 +169,7 @@ Promise.all(promises).then((values) => {
 	console.log(counts);
 
 	var countIterator = Object.keys(counts);
-	countIterator.forEach(function(c) {
+	countIterator.forEach(function (c) {
 		var cell = document.getElementById(c);
 		var span = document.createElement("span");
 		span.class = "total";
