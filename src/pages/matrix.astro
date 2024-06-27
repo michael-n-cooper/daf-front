@@ -2,7 +2,32 @@
 import Layout from '../layouts/Layout.astro';
 import {table} from "../components/build-matrix.js";
 import {baseUri} from '../script/util.js';
+import { JSDOM } from 'jsdom';
+import fileUrl from 'file-url';
 
+function getPromiseFromEvent(item, event) {
+  return new Promise((resolve) => {
+    const listener = () => {
+      item.removeEventListener(event, listener);
+      resolve();
+    }
+    item.addEventListener(event, listener);
+  })
+}
+
+async function loadMatrix() {
+	const jsdomOptions = {url: fileUrl("./matrix2.html"), runScripts: "dangerously", resources: "usable"};
+	JSDOM.fromFile("./src/pages/matrix2.html", jsdomOptions).then(async (dom) => {
+		var window = dom.window;
+
+		await getPromiseFromEvent(window, "load");
+		//console.log(dom.serialize());
+		let table = window.document.getElementById("matrixTable");
+		return table;
+	});
+}
+
+var table = await loadMatrix();
 ---
 <Layout title="Matrix">
 <link rel="stylesheet" type="text/css" href={baseUri + "matrix.css"}/>
@@ -16,6 +41,6 @@ window.addEventListener("load", attachListeners());
 <input type="checkbox" id="shrinkMatrixControl"/> <label for="shrinkMatrixControl">Fit matrix</label>
 <input type="checkbox" id="showPopupsControl" disabled=true/> <label for="showPopupsControl">Show enlarged popups</label>
 </p>
-<div id="matrix" set:html={table}>
+<div id="matrix" set:html={table.outerHTML}>
 </div>
 </Layout>
