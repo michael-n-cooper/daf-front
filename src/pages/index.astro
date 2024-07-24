@@ -9,6 +9,28 @@ import {baseUri} from '../script/util.js';
 	<p>This resource accesses a database of accessibility statements generated in the <a href="https://github.com/accessiblecommunity/Digital-Accessibility-Framework">Digital Accessibility Framework</a> project and presents it in a <a href={baseUri + "matrix"}>matrix</a> of functional needs, user needs, and user need contexts. This content can also be accessed by category:</p>
 	
 	<ul>
+		<li><a href={baseUri + "guidance-statements"}>Accessibility statements</a>
+			<ul>
+				<li><a href={baseUri + "tags"}>Tags</a></li>
+				<li><a href={baseUri + "references"}>References</a></li>
+			</ul>
+		</li>
+		<li><a href="functional-ability-groups">Functional ability groups<a>
+			<ul>
+			<li><a href="functional-abilities">Functional abilities</a></li>
+			</ul>
+		</li>
+		<li><a href="accommodation-types">Accommodation types</a></li>
+		<li><a href="accessibility-characteristic-groups">Accessibility characteristic groups</a>
+			<ul>
+				<li><a href="accessibility-characteristics">Accessibility characteristics</a></li>
+			</ul>
+		</li>
+		<li>Accommodation types matrix</li>
+	</ul>
+
+	<p>Version 1 mappings:</p>
+	<ul>
 		<li><a href={baseUri + "functional-need-categories"}>Functional need categories</a>
 			<ul>
 				<li><a href={baseUri + "functional-needs"}>Functional needs</a></li>
@@ -18,12 +40,6 @@ import {baseUri} from '../script/util.js';
 		<li><a href={baseUri + "user-needs"}>User needs</a>
 			<ul>
 				<li><a href={baseUri + "user-need-contexts"}>User need contexts</a></li>
-			</ul>
-		</li>
-		<li><a href={baseUri + "guidance-statements"}>Accessibility statements</a>
-			<ul>
-				<li><a href={baseUri + "tags"}>Tags</a></li>
-				<li><a href={baseUri + "references"}>References</a></li>
 			</ul>
 		</li>
 		<li><a href={baseUri + "matrix"}>Matrix</a></li>
