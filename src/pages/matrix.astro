@@ -1,35 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import * as dbquery from '../script/dbquery.js';
-import {findObjectByProperties, filterObjectByProperties} from '../script/util.js';
+import {baseUri} from '../script/util.js';
+import { JSDOM } from 'jsdom';
+import fileUrl from 'file-url';
 
 import JSDOM from "../script/jsdom.js";
 
 var debug = new Array();
 // Get the matrix data, including mapping info etc.
 
-// Get the FunctionalNeedCategory, FunctionalNeed, UserNeed, UserNeedRelevance into arrays (FN grouped into FNC)
-const functionalNeedCategories = await lookupFunctionalNeedCategories();
-const userNeeds = await lookupList('UserNeed');
-const userNeedRelevances = await lookupList('UserNeedRelevance');
-
-// Get the set of matrix items
-const mappings = await lookupMappings();
-
-const table = buildTable();
-
-// Go through the FNC array and generate the first two rows
-
-// Go through the UN/UNR/FN arrays and put in appropriate content from the matrix data, or empty cell if not present
-function buildTable() {
-	const document = new JSDOM(`<p>Here I am</p>`).window;
-
-	var table = "<table border>";
-	
-	// row 1
-	table += "<tr><td></td><td></td>"; 
-	functionalNeedCategories.forEach(function(fnc) {
-		table += "<th scope='colgroup' colspan='" + fnc.functionalNeeds.length + "'>" + fnc.label + "</th>"; 
+		getPromiseFromEvent(window, "load").then(() => {
+			console.log(dom.serialize());
+			let table = window.document.getElementById("matrixTable");
+			return table;
+		});
 	});
 	table += "<th scope='colgroup' colspan='2'>Total</th>";
 	table += "</tr>"
@@ -148,23 +132,18 @@ async function lookupList(type) {
 
 
 ---
-<Layout title="Digital Accessibility Framework">
-<style is:global>
-td, th {
-	min-width: 10em;
-	padding: .5ex;
-	vertical-align: top;
-	horizontal-align: left;
-}
-table, td, th {
-	border: thin solid black;
-	border-collapse: collapse;
-}
-ul {
-	padding-left: 1em;
-	margin-top: 0;
-}
-</style>
-{document}
-<table set:html={table}>
+<Layout title="Matrix">
+<link rel="stylesheet" type="text/css" href={baseUri + "matrix.css"}/>
+<script src={baseUri + "matrix.js"} is:inline></script>
+<script>
+window.addEventListener("load", attachListeners());
+</script>
+<p>
+<input type="checkbox" id="highlightSameStmtControl"/> <label for="highlightSameStmtControl">Show same statements</label>
+<input type="checkbox" id="highlightCellPosControl"/> <label for="highlightCellPosControl">Show cell position</label>
+<input type="checkbox" id="shrinkMatrixControl"/> <label for="shrinkMatrixControl">Fit matrix</label>
+<input type="checkbox" id="showPopupsControl" disabled=true/> <label for="showPopupsControl">Show enlarged popups</label>
+</p>
+<div id="matrix" set:html={table}>
+</div>
 </Layout>
