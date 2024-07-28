@@ -3,8 +3,6 @@ async function generateMatrix() {
 
     let promises = new Array();
 
-    console.log("begin");
-
     promises.push(apiGet("accessibility-characteristic-groups"));
     promises.push(apiGet("accommodation-types"));
     promises.push(apiGet("functional-ability-groups"));
@@ -13,8 +11,6 @@ async function generateMatrix() {
     promises.push(apiGet("statements"));
 
     Promise.all(promises).then(async (values) => {
-        console.log("middle");
-
         const gpChar = values[0];
         const accommodationTypes = values[1];
         const gpFa = values[2];
@@ -52,9 +48,6 @@ async function generateMatrix() {
                 functionalAbilityGroups.push(group[0]);
             });
 
-            console.log(accessibilityCharacteristicGroups);
-            console.log(functionalAbilityGroups);
-
             const base = "http://localhost:4321/";
             const counts = {};
 
@@ -69,7 +62,6 @@ async function generateMatrix() {
             );
 
             accessibilityCharacteristicGroups.forEach(function (group) {
-                console.log("getting there");
                 let cell = document.createElement("th");
                 cell.id = idFrag(group.id);
                 cell.scope = "colgroup";
@@ -136,7 +128,7 @@ async function generateMatrix() {
                 let fagCell = document.createElement("th");
                 fagCell.id = idFrag(faGroup.id);
                 fagCell.scope = "rowgroup";
-                fagCell.rowSpan = faMembers.length;
+                fagCell.rowSpan = faGroup.members.length;
 
                 let fagLink = document.createElement("a");
                 fagLink.href =
@@ -154,11 +146,11 @@ async function generateMatrix() {
                         faCount == 0 ? fagRow : document.createElement("tr");
                     faCount++;
 
+                    let functionalAbilityId =
+                        idFrag(faGroup.id) + "+" + idFrag(functionalAbility.id);
                     counts[functionalAbilityId] = 0;
 
                     //col 2 header
-                    let functionalAbilityId =
-                        idFrag(faGroup.id) + "+" + idFrag(functionalAbility.id);
                     let faCell = document.createElement("th");
                     faCell.id = functionalAbilityId;
                     faCell.scope = "rowgroup";
