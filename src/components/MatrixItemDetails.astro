@@ -1,18 +1,14 @@
 ---
-import * as dbquery from '../script/dbquery.js';
 import Layout from '../layouts/Layout.astro';
+import {baseUri, idFrag, apiGet} from '../script/util.js';
 
-const {id, type} = Astro.props;
+const {section, id, type} = Astro.props;
+const json = await apiGet(section + "/" + id);
 
-const labelSparql = "select ?id ?label where { values ?id {:" + id + "} . ?id rdfs:label ?label }";
-const labelResult = await dbquery.selectQuery(labelSparql);
-
-const statementsSparql = "select distinct ?id ?label where { values ?itemId {:" + id + "} . ?id a11y:supports/a11y:supports ?itemId ; rdfs:label ?label }";
-const statementsResult = await dbquery.selectQuery(statementsSparql);
 ---
-<Layout title={type + ": " + labelResult.results.bindings[0].label.value}>
-<p>Statements that support this item:</p>
+<Layout title={type + ": " + json[0].label}>
+<p>{json[0].statements.length} guidance statements support this {type.toLowerCase()}:</p>
 <ul>
-{statementsResult.results.bindings.map((statement) => <li><a href={'/guidance-statements/' + dbquery.idFrag(statement.id.value)}>{statement.label.value}</a></li>)}
+{json[0].statements.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id)}>{statement.label}</a> - {statement.stmt}</li>)}
 </ul>
 </Layout>

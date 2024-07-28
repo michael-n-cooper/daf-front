@@ -1,35 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {baseUri} from '../script/util.js';
 ---
 
 <Layout title="Digital Accessibility Framework">
-	<p>This resource accesses a database of accessibility statements generated in the Digital Accessibility Framework project. </p>
+	<p><a href={baseUri + "matrix"}>Matrix</a> | <a href={baseUri + "docs"}>Documentation</a></p>
 	
-	<p><a href="matrix">Full matrix</a></p>
+	<p>This resource accesses a database of accessibility statements generated in the <a href="https://github.com/accessiblecommunity/Digital-Accessibility-Framework">Digital Accessibility Framework</a> project and presents it in a <a href={baseUri + "matrix"}>matrix</a> of functional needs, user needs, and user need contexts. This content can also be accessed by category:</p>
 	
-	<p>Content is organized by type, currently including:</p>
 	<ul>
-		<li>Categories
+		<li><a href={baseUri + "guidance-statements"}>Accessibility statements</a>
 			<ul>
-				<li><a href="functional-need-categories">Functional need categorization</a></li>
-				<!-- <li><a href="user-need-categories">User need categorization</a></li> -->
+				<li><a href={baseUri + "tags"}>Tags</a></li>
+				<li><a href={baseUri + "references"}>References</a></li>
 			</ul>
 		</li>
-		<li>Matrix dimensions
+		<li><a href="functional-ability-groups">Functional ability groups<a>
 			<ul>
-				<li><a href="functional-needs">Functional need</a></li>
-				<li>Intersection need</li>
-				<li><a href="user-needs">User need</a></li>
-				<li><a href="user-need-relevances">User need relevance</a></li>
+			<li><a href="functional-abilities">Functional abilities</a></li>
 			</ul>
 		</li>
-		<li><a href="guidance-statements">Mapped statements</a></li>
-		<li>Term lists
+		<li><a href="accommodation-types">Accommodation types</a></li>
+		<li><a href="accessibility-characteristic-groups">Accessibility characteristic groups</a>
 			<ul>
-				<li>Reference types</li>
-				<li><a href="tags">Tags</a></li>
+				<li><a href="accessibility-characteristics">Accessibility characteristics</a></li>
 			</ul>
 		</li>
-		<li><a href="references">References</a></li>
+		<li>Accommodation types matrix</li>
 	</ul>
+
+	<p>Version 1 mappings:</p>
+	<ul>
+		<li><a href={baseUri + "functional-need-categories"}>Functional need categories</a>
+			<ul>
+				<li><a href={baseUri + "functional-needs"}>Functional needs</a></li>
+				<li><a href={baseUri + "intersection-needs"}>Intersection needs</a></li>
+			</ul>
+		</li>
+		<li><a href={baseUri + "user-needs"}>User needs</a>
+			<ul>
+				<li><a href={baseUri + "user-need-contexts"}>User need contexts</a></li>
+			</ul>
+		</li>
+		<li><a href={baseUri + "matrix"}>Matrix</a></li>
+	</ul>
+
+	<p>This site is a static copy and not connnected the database that generates the content. Structured data in JSON-LD format is available at <a href={baseUri + "statements.jsonld"}>statements.jsonld</a>.</p>
 </Layout>

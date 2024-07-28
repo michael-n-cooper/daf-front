@@ -1,13 +1,34 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import * as dbquery from '../../script/dbquery.js';
+import {baseUri, idFrag, apiGet} from '../../script/util.js';
 
-const sparql = 'select ?id ?iri ?note ?type ?stmtId ?stmtLabel where { ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label ?type . ?stmtId a11y:references ?id ; rdfs:label ?stmtLabel }';
-const result = await dbquery.selectQuery(sparql);
+const json = await apiGet("references");
+
 ---
 <Layout title="References">
-		<ul>
-			{result.results.bindings.map((reference) => <li><a href={reference.iri.value}>{reference.note.value}</a> - referenced in <a href={'/guidance-statements/' + reference.stmtId.value}>{reference.stmtLabel.value}</a></li>)}
-		</ul>
+<p><a href="#guidelines">Guidelines</a> | <a href="#research">Research</a></p>
+	<section id="guidelines">
+		<h2>Guidelines</h2>
+		<table>
+			<thead>
+				<tr><th scope="col">Reference URI</th><th scope="col">Note</th><th scope="col">Used in</th></tr>
+			</thead>
+			<tbody>
+				{json.map((reference) => reference.refType == "guidelines" ? <tr><td><a href={reference.refIRI}>{reference.refIRI}</a></td><td>{reference.refNote}</td><td><a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId)}>{reference.stmtLabel}</a></td></tr> : "")}
+			</tbody>
+		</table>
+	</section>
+	<section id="research">
+		<h2>Research</h2>
+	</section>
+	<table>
+		<thead>
+			<tr><th scope="col">Reference URI</th><th scope="col">Note</th><th scope="col">Used in</th></tr>
+		</thead>
+		<tbody>
+				{json.map((reference) => reference.refType == "research" ? <tr><td><a href={reference.refIRI}>{reference.refIRI}</a></td><td>{reference.refNote}</td><td><a href={baseUri + 'guidance-statements/' + idFrag(reference.stmtId)}>{reference.stmtLabel}</a></td></tr> : "")}
+		</tbody>
+	</table>
 </Layout>
 

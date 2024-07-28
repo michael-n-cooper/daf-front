@@ -3,7 +3,9 @@ interface Props {
 	title: string;
 }
 
-const { title } = Astro.props;
+import {baseUri} from '../script/util.js';
+
+const { title } = Astro.props.frontmatter || Astro.props;
 ---
 
 <!doctype html>
@@ -12,7 +14,11 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={baseUri + "favicon.svg"} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href={baseUri + "daf.css"} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -22,21 +28,8 @@ const { title } = Astro.props;
 		</header>
 		<main><slot/></main>
 		<footer>
-			<p><a href="/">Back to index</a></p>
+			<p><a href={baseUri}>Overview</a> | <a href={baseUri + "docs"}>Documentation</a> | <a href={baseUri + "matrix"}>Matrix</a></p>
+			<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">Digital Accessibility Framework database</span> by <span property="cc:attributionName">Michael Cooper</span> is licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"></a></p> 
 		</footer>
 	</body>
 </html>
-<style is:global>
-	body {
-		font-family: sans-serif;
-	}
-	a:link, a:visited {
-	  color: #000066;
-	  text-decoration: none;
-	}
-	
-	a:hover, a:active {
-		background-color: yellow;
-	  cursor: link;
-	}
-</style>

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {baseUri, idFrag, apiGet} from '../script/util.js';
+
+const {id, section, subsection, title} = Astro.props;
+const json = await apiGet(section + '/' + idFrag(id));
+
+---
+
+<Layout title={title + ": " + json[0].label}>
+<p>This group includes the following items:</p>
+<ul>
+	{json[0].members.map((item) => <li><a href={baseUri + subsection + '/' + idFrag(item.id)}>{item.label}</a></li>)}
+</ul>
+</Layout>
+

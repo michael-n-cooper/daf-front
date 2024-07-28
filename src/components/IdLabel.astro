@@ -1,18 +1,14 @@
 ---
-import * as dbquery from '../script/dbquery.js';
+import Layout from '../layouts/Layout.astro';
+import {baseUri, idFrag, apiGet} from '../script/util.js';
 
-const {type, title} = Astro.props;
-
-async function processFetch() {
-	const sparql = "select ?s ?l where { ?s a a11y:" + type + " . ?s rdfs:label ?l } order by ?l";
-	const json = await dbquery.selectQuery(sparql);
-	return json;
-}
-
-const json = await processFetch();
+const {section, title} = Astro.props;
+const json = await apiGet(section);
 
 ---
+<Layout title={title}>
 <ul>
-	{json.results.bindings.map((item) => <li><a href={Astro.request.url + '/' + dbquery.idFrag(item.s.value)}>{item.l.value}</a></li>)}
+	{json.map((item) => <li><a href={baseUri + section + '/' + idFrag(item.id)}>{item.label}</a></li>)}
 </ul>
 
+</Layout>

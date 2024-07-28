@@ -1,0 +1,38 @@
+body {
+	font-family: "Atkinson Hyperlegible", sans-serif;
+	background-color: white;
+	color: black;
+}
+footer {
+	margin-top: 5em;
+	border-top: medium outset silver;
+}
+h2 {
+	font-weight: normal;
+}
+a:link, a:visited {
+  color: #000099;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+	text-shadow: .25ex .25ex .5ex #ffd800;
+	cursor: link;
+}
+li {
+    padding-bottom: 1ex;
+}
+li > ul {
+	padding-top: 1ex;
+}
+table, td, th {
+	border: thin solid black;
+	border-collapse: collapse;
+}
+td, th {
+	padding: .5ex;
+	vertical-align: top;
+	text-align: left;
+	background-color: white;
+	color: black;
+}

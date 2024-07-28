@@ -1,10 +1,15 @@
 ---
-import IdLabel from '../../components/IdLabel.astro';
 import Layout from '../../layouts/Layout.astro';
+import {baseUri, idFrag, apiGet} from '../../script/util.js';
 
+const section = "statements"
+const json = await apiGet(section);
 ---
 
-<Layout title="Guidance statement">
-		<IdLabel type="AccessibilityStatement" title="Guidance statement"></IdLabelSupports>
+<Layout title="Guidance statements">
+<p>{json.length} guidance statements:</p> 
+<ul>
+{json.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id)}>{statement.label}</a> - {statement.stmt}</li>)}
+</ul>
 </Layout>
 

@@ -1,136 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {table} from "../components/build-matrix.js";
 import {baseUri} from '../script/util.js';
 import { JSDOM } from 'jsdom';
 import fileUrl from 'file-url';
 
-import JSDOM from "../script/jsdom.js";
-
-var debug = new Array();
-// Get the matrix data, including mapping info etc.
-
-		getPromiseFromEvent(window, "load").then(() => {
-			console.log(dom.serialize());
-			let table = window.document.getElementById("matrixTable");
-			return table;
-		});
-	});
-	table += "<th scope='colgroup' colspan='2'>Total</th>";
-	table += "</tr>"
-	
-	// row 2
-	table += "<tr><td></td><td></td>"; 
-	functionalNeedCategories.forEach(function(fnc) {
-		fnc.functionalNeeds.forEach(function(fn) {
-		table += "<th scope='col'><a href='/functional-needs/" + fn.id + "'>" + fn.label + "</a></th>"; 
-		});
-	});
-	table += "<th scope='col'>User need</th>";
-	table += "<th scope='col'>Relevance</th>";
-	table += "</tr>"
-	
-	// rows per user need
-	userNeeds.forEach(function(un) {
-		table += "<tr><th scope='rowgroup' rowspan=" + userNeedRelevances.length + "><a href='/user-needs/" + un.id + "'>" + un.label + "</a></th>";
-		var rowNum = 1;
-		userNeedRelevances.forEach(function(unr) {
-			if (rowNum > 2) table += "<tr>";
-			table += "<th scope='row'><a href='/user-need-relevances/" + unr.id + "'>" + unr.label + "</a></th>";
-			
-			functionalNeedCategories.forEach(function(fnc) {
-				fnc.functionalNeeds.forEach(function(fn) {
-				//debug.push(unr.id);
-					table += "<td>";
-					let mappingObj = findObjectByProperties(mappings, {"fnId": fn.id, "unId": un.id, "unrId": unr.id});
-					if (typeof mappingObj !== 'undefined') {
-						if (mappingObj.statements !== undefined) {
-							var list = mappingObj.statements.length > 1;
-							if (list) table += "<ul>";
-							mappingObj.statements.forEach(function(stmt) {
-								if (list) table += "<li>";
-								table += "<a href='/guidance-statements/" + stmt.id + "'>" + stmt.label + "</a>";
-								if (list) table += "</li>";
-							});
-							if (list) table += "</ul>";
+function getPromiseFromEvent(item, event) {
+  return new Promise((resolve) => {
+    const listener = () => {
+      item.removeEventListener(event, listener);
+      resolve();
 						}
-					}
-					table += "</td>";
-				});
-			});
-			table += "<td></td><td></td>"; // for totals 
-			table += "</tr>";
-			rowNum++;
-		});
-	});
-	
-	table += "<tr><th colspan'2' scope='row'>Total Functional need</th>"; // total
-	functionalNeedCategories.forEach(function(fnc) {
-		fnc.functionalNeeds.forEach(function(fn) {
-			table += "<td></td>";
-		});
-	});
-	table += "</tr>";
-	
-	table += "</table>";
-	
-	return table;
+    item.addEventListener(event, listener);
+  })
 }
 
-// returning a object {id, label, functionalNeeds[id, label]}
-async function lookupFunctionalNeedCategories () {
-	let fncs = new Array();
-	let fns = new Array();
-	
-	//functional needs
-	const fnSparql = 'select ?cId ?id ?label where { ?id a a11y:FunctionalNeed ; rdfs:label ?label ; a11y:supports ?cId . ?cId rdfs:label ?clabel } order by ?clabel ?label';	
-	const fnRes = await dbquery.selectQuery(fnSparql);
-	fnRes.results.bindings.forEach(function(fn) {
-		fns.push({"id": dbquery.idFrag(fn.id.value), "label": fn.label.value, "cId": dbquery.idFrag(fn.cId.value)});
-	});
+async function loadMatrix() {
+	const jsdomOptions = {url: fileUrl("./matrix2.html"), runScripts: "dangerously", resources: "usable"};
+	JSDOM.fromFile("./src/pages/matrix2.html", jsdomOptions).then(async (dom) => {
+		var window = dom.window;
 
-	//functional need categories
-	const fncRes = await lookupList('FunctionalNeedCategory');
-	fncRes.forEach(function(fnc) {
-		const filtered = fns.filter(obj => obj.cId == dbquery.idFrag(fnc.id));
-		fncs.push({"id": dbquery.idFrag(fnc.id), "label": fnc.label, "functionalNeeds": filtered});
+		await getPromiseFromEvent(window, "load");
+		//console.log(dom.serialize());
+		let table = window.document.getElementById("matrixTable");
+		return table;
 	});
-	return fncs;
 }
 
-async function lookupMappings() {
-	let matrix = new Array();
-	let statements = new Array();
-
-	const stmtSparql = 'select ?mId ?sId ?sLabel where { ?mId a a11y:MatrixMapping . ?sId a a11y:AccessibilityStatement ; a11y:supports ?mId ; rdfs:label ?sLabel }';
-	const stmtResult = await dbquery.selectQuery(stmtSparql);
-	stmtResult.results.bindings.forEach(function(stmt) {
-		statements.push({"id": dbquery.idFrag(stmt.sId.value), "label": stmt.sLabel.value, "mId": dbquery.idFrag(stmt.mId.value)});
-	});
-	
-	const sparql = 'select ?mId ?applicable ?fnId ?unId ?unrId where { ?mId a a11y:MatrixMapping ; a11y:supports ?fnId ; a11y:supports ?unId ; a11y:supports ?unrId . ?fnId a a11y:FunctionalNeed . ?unId a a11y:UserNeed . ?unrId a a11y:UserNeedRelevance . optional { ?mId a11y:applicable ?applicable } }';
-	const result = await dbquery.selectQuery(sparql);
-	result.results.bindings.forEach(function(mapping) {
-		const filtered = filterObjectByProperties(statements, {"mId": dbquery.idFrag(mapping.mId.value)}); //filter(obj => obj.mId == dbquery.idFrag(mapping.mId.value));
-		matrix.push({"id": dbquery.idFrag(mapping.mId.value), "applicable": true, "fnId": dbquery.idFrag(mapping.fnId.value), "unId": dbquery.idFrag(mapping.unId.value), "unrId": dbquery.idFrag(mapping.unrId.value), "statements": filtered});
-});
-	
-	return matrix;
-}
-
-async function lookupList(type) {
-	let returnval = new Array();
-	
-	const sparql = 'select ?id ?label where { ?id a a11y:' + type + ' ; rdfs:label ?label } order by ?label';
-	const result = await dbquery.selectQuery(sparql);
-
-	result.results.bindings.forEach(function(item) {
-		returnval.push({"id": dbquery.idFrag(item.id.value), "label": item.label.value});
-	});
-	
-	return returnval;
-}
-
-
+var table = await loadMatrix();
 ---
 <Layout title="Matrix">
 <link rel="stylesheet" type="text/css" href={baseUri + "matrix.css"}/>
@@ -144,6 +41,6 @@ window.addEventListener("load", attachListeners());
 <input type="checkbox" id="shrinkMatrixControl"/> <label for="shrinkMatrixControl">Fit matrix</label>
 <input type="checkbox" id="showPopupsControl" disabled=true/> <label for="showPopupsControl">Show enlarged popups</label>
 </p>
-<div id="matrix" set:html={table}>
+<div id="matrix" set:html={table.outerHTML}>
 </div>
 </Layout>

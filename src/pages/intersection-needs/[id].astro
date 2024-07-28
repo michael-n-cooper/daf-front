@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {baseUri, idFrag, apiGet} from '../../script/util.js';
+
+const {id} = Astro.params;
+
+const json = await apiGet("intersection-needs/" + id);
+
+---
+<Layout title={"Intersection need: " + json[0].label}>
+<p>This is an intersection of the functional needs <a href={baseUri + "functional-needs/" + idFrag(json[0].functionalNeeds[0].id)}>{json[0].functionalNeeds[0].label}</a> and <a href={baseUri + "functional-needs/" + idFrag(json[0].functionalNeeds[1].id)}>{json[0].functionalNeeds[1].label}</a>.</p>
+<p>There are {json[0].statements.length} guidance statements that support this intersection need:</p>
+<ul>
+{json[0].statements.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id)} title={statement.stmt}>{statement.label}</a></li>)}
+</ul>
+</Layout>

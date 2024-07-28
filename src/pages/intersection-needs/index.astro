@@ -1,0 +1,28 @@
+---
+import {baseUri, findObjectByProperties, idFrag, apiGet} from '../../script/util.js';
+import Layout from '../../layouts/Layout.astro';
+
+const section = "intersection-needs"
+const json = await apiGet(section);
+
+// eliminate duplicates
+let seen = new Array();
+let i = 0;
+json.forEach(function(item) {
+	let id = item.id;
+	/*
+	if (typeof findObjectByProperties(seen, {"id": id}) !== 'undefined') {
+		json.splice(i, 1);
+	} else {
+		seen.push(id);
+	}
+	*/
+	i++;
+});
+
+---
+
+<Layout title="Intersection Needs">
+	<IdLabel section="intersection-needs"></IdLabelSupports>
+</Layout>
+

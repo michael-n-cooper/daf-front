@@ -1,42 +1,57 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import * as dbquery from '../../script/dbquery.js';
+import {baseUri, idFrag, mdToHtml, apiGet} from '../../script/util.js';
 
 const {id} = Astro.params;
 
-// get the main statement
-const stmtSparql = 'select ?id ?label ?guidance ?contentIRI where { ?id rdfs:label ?label ; a11y:stmtGuidance ?guidance . optional {?id a11y:contentIRI ?contentIRI} . values ?id { :' + id + ' } } ';
-const stmtResult = await dbquery.selectQuery(stmtSparql);
+const json = await apiGet ("statements/" + id);
 
-// get the mappings
-const mapSparql = 'select ?fn_id ?fn_label ?un_id ?un_label ?unr_id ?unr_label where { values ?id { :' + id + ' } . ?id a11y:supports ?mapping . ?mapping a a11y:MatrixMapping ; a11y:supports ?fn_id ; a11y:supports ?un_id ; a11y:supports ?unr_id . ?fn_id a a11y:FunctionalNeed ; rdfs:label ?fn_label . ?un_id a a11y:UserNeed ; rdfs:label ?un_label . ?unr_id a a11y:UserNeedRelevance ; rdfs:label ?unr_label }';
-const mapResult = await dbquery.selectQuery(mapSparql);
+let rm = new Array();
+json[0].mappings.forEach(async function(mapping) {
+	let detail = apiGet("mappings/" + idFrag(mapping.id));
+	rm.push(detail);
+});
+const richerMappings = await Promise.all(rm).then((val) => {
+	var res = new Array();
+	for (let i = 0; i < val.length; i++) {
+		res.push(val[i][0]);
+	}
+	return res;
+});
 
-const refSparql = 'select ?iri ?note ?type where { values ?stmtid { :' + id + ' } . ?stmtid a11y:references ?id . ?id a a11y:Reference ; a11y:refIRI ?iri ; a11y:refNote ?note ; a11y:refType ?reftype . ?reftype rdfs:label ?type }';
-const refResult = await dbquery.selectQuery(refSparql);
 
-const tagSparql = 'select ?id ?label where { values ?stmtid { :' + id + ' } . ?stmtid a11y:tags ?id . ?id a a11y:Tag ; rdfs:label ?label }';
-const tagResult = await dbquery.selectQuery(tagSparql);
 ---
-<Layout title={stmtResult.results.bindings[0].label.value}>
-	<p>{stmtResult.results.bindings[0].guidance.value}</p>
-	<p>Imported from {stmtResult.results.bindings[0].contentIRI.value}</p>
+<style is:global>
+.stmt {
+	font-weight: bold;
+}
+main {
+	padding-left: 3em;
+}
+h2, h3, h4, h5, h6 {
+	position: relative;
+	left: -2em;
+}
+</style>
+<Layout title={json[0].label}>
+<div>
+	<p class="stmt">{json[0].stmt}</p>
+	{typeof json[0].note !== 'undefined' && json[0].note != null ? <Fragment set:html={"<h2>Notes</h2>" + mdToHtml(json[0].note)}></Fragment> : ""}
 	<h2>Supports</h2>
 	<table>
 		<thead>
-			<tr><th>Functional need</th><th>User need</th><th>Relevance</th></tr>
+			<tr><th>Functional need</th><th>User need</th><th>Context</th></tr>
 		</thead>
-		<tbody>
-			{mapResult.results.bindings.map((item) => <tr><td><a href={'/functional-needs/' + dbquery.idFrag(item.fn_id.value)}>{item.fn_label.value}</a></td><td><a href={'/user-needs/' + dbquery.idFrag(item.un_id.value)}>{item.un_label.value}</a></td><td><a href={'/user-need-relevances/' + dbquery.idFrag(item.unr_id.value)}>{item.unr_label.value}</a></td></tr>)}
-		</tbody>
+			{richerMappings.map((item) => <tr><td><a href={baseUri + (typeof item.functionalNeed === 'undefined' ? "intersection-needs/" : "functional-needs/" ) + idFrag(typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.id : item.functionalNeed.id)}>{typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.label : item.functionalNeed.label}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.userNeed.id)}>{item.userNeed.label}</a></td><td><a href={baseUri + 'user-need-contexts/' + idFrag(item.userNeedRelevance.id)}>{item.userNeedRelevance.label}</a></td></tr>)}		</tbody>
 	</table>
 	<h2>References</h2>
 	<ul>
-		{refResult.results.bindings.map((item) => <li>{item.type.value}: <a href={item.iri.value}>{item.note.value}</a></li>)}
+		{json[0].references.map((item) => <li>{idFrag(item.type)}: <a href={item.refIRI}>{item.refNote}</a></li>)}
 	</ul>
 	<h2>Tags</h2>
 	<ul>
-		{tagResult.results.bindings.map((item) => <li><a href={'/tags/' + dbquery.idFrag(item.id.value)}>{item.label.value}</a></li>)}
+		{json[0].tags.map((item) => <li><a href={baseUri + 'tags/' + idFrag(item.id)}>{item.label}</a></li>)}
 	</ul>
+	<p>Imported from <a href={json[0].contentIRI}>{json[0].contentIRI}</a></p>
+</div>
 </Layout>
-
