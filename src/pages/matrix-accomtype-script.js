@@ -1,5 +1,6 @@
 async function generateMatrix() {
-    const table = document.getElementById("matrixTable");
+    const table = document.createElement("table");
+    table.id = "matrixTable";
 
     let promises = new Array();
 
@@ -310,6 +311,7 @@ async function generateMatrix() {
             });
         });
     });
+    document.body.append(table);
     return table;
 }
 
