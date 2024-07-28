@@ -128,7 +128,7 @@ async function generateMatrix() {
                 let fagCell = document.createElement("th");
                 fagCell.id = idFrag(faGroup.id);
                 fagCell.scope = "rowgroup";
-                fagCell.rowSpan = faGroup.members.length;
+                fagCell.rowSpan = faGroup.members.length * accommodationTypes.length;
 
                 let fagLink = document.createElement("a");
                 fagLink.href =
