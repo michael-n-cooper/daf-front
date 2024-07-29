@@ -1,33 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import {table} from "../components/build-matrix.js";
 import {baseUri} from '../script/util.js';
+import {generateMatrix} from './matrix-accomtype-script.js';
 import { JSDOM } from 'jsdom';
 import fileUrl from 'file-url';
 
-function getPromiseFromEvent(item, event) {
-  return new Promise((resolve) => {
-    const listener = () => {
-      item.removeEventListener(event, listener);
-      resolve();
-						}
-    item.addEventListener(event, listener);
-  })
+console.log(1);
+/*
+async function getTable(document) {
+	console.log(2);
+	return new Promise((resolve) => {
+		console.log(3);
+		document.addEventListener("MatrixTableLoaded", function() {
+			console.log(document);
+			resolve(document.getElementById("matrixTable"));
+		})
+	})
 }
-
-async function loadMatrix() {
-	const jsdomOptions = {url: fileUrl("./matrix2.html"), runScripts: "dangerously", resources: "usable"};
-	JSDOM.fromFile("./src/pages/matrix2.html", jsdomOptions).then(async (dom) => {
-		var window = dom.window;
-
-		await getPromiseFromEvent(window, "load");
-		//console.log(dom.serialize());
-		let table = window.document.getElementById("matrixTable");
-		return table;
-	});
-}
-
-var table = await loadMatrix();
+	*/
+console.log(4)
+const jsdomOptions = {url: fileUrl("./matrix-accommtype.html"), runScripts: "outside-only"};
+console.log(5);
+const dom = new JSDOM('', jsdomOptions);
+console.log(6);
+//var document = dom.window.document;
+console.log(7);
+let table = await dom.window.eval(generateMatrix());
+console.log(8);
 ---
 <Layout title="Matrix">
 <link rel="stylesheet" type="text/css" href={baseUri + "matrix.css"}/>
@@ -41,6 +40,6 @@ window.addEventListener("load", attachListeners());
 <input type="checkbox" id="shrinkMatrixControl"/> <label for="shrinkMatrixControl">Fit matrix</label>
 <input type="checkbox" id="showPopupsControl" disabled=true/> <label for="showPopupsControl">Show enlarged popups</label>
 </p>
-<div id="matrix" set:html={table.outerHTML}>
+<div id="matrix" set:html={table}>
 </div>
 </Layout>

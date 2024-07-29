@@ -1,4 +1,4 @@
-async function generateMatrix() {
+export async function generateMatrix() {
     const table = document.createElement("table");
     table.id = "matrixTable";
 
@@ -50,7 +50,7 @@ async function generateMatrix() {
             });
 
             const base = "http://localhost:4321/";
-            const counts = {};
+            const counts = new Array();
 
             //thead
             let thead = document.createElement("thead");
@@ -312,6 +312,7 @@ async function generateMatrix() {
         });
     });
     document.body.append(table);
+    document.dispatchEvent(new document.Event("MatrixTableCreated", {bubbles: true, composed: true}));
     return table;
 }
 
