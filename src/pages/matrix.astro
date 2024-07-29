@@ -1,12 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import {baseUri} from '../script/util.js';
-import {generateMatrix} from './matrix-accomtype-script.js';
 import { JSDOM } from 'jsdom';
 import fileUrl from 'file-url';
+import { getPathByLocale } from 'astro:i18n';
 
 console.log(1);
-/*
 async function getTable(document) {
 	console.log(2);
 	return new Promise((resolve) => {
@@ -17,15 +16,15 @@ async function getTable(document) {
 		})
 	})
 }
-	*/
+
 console.log(4)
-const jsdomOptions = {url: fileUrl("./matrix-accommtype.html"), runScripts: "outside-only"};
+const jsdomOptions = {url: fileUrl("./matrix-accommtype.html"), runScripts: "dangerously", resources: "usable"};
 console.log(5);
 const dom = new JSDOM('', jsdomOptions);
 console.log(6);
 //var document = dom.window.document;
 console.log(7);
-let table = await dom.window.eval(generateMatrix());
+let table = await getTable(dom.window.document);
 console.log(8);
 ---
 <Layout title="Matrix">
