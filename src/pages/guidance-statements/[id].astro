@@ -1,25 +1,34 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import {baseUri, idFrag, mdToHtml, apiGet} from '../../script/util.js';
+import {baseUri, findObjectByProperties, idFrag, mdToHtml, apiGet} from '../../script/util.js';
 
 const {id} = Astro.params;
 
 const json = await apiGet ("statements/" + id);
+
+function cleanMappings(mappingsResult) {
+	console.log(mappingsResult);
+	var res = new Array();
+	mappingsResult.forEach(function(mappingsResult) {
+		if (!findObjectByProperties(res, {"id": mappingsResult[0].id})) res.push(mappingsResult[0]);
+	});
+	return res;
+}
 
 let rm = new Array();
 json[0].mappings.forEach(async function(mapping) {
 	let detail = apiGet("mappings/" + idFrag(mapping.id));
 	rm.push(detail);
 });
-const richerMappings = await Promise.all(rm).then((val) => {
-	var res = new Array();
-	for (let i = 0; i < val.length; i++) {
-		res.push(val[i][0]);
-	}
-	return res;
+const richerMappings = await Promise.all(rm).then((val) => cleanMappings(val));
+
+let actm = new Array();
+json[0]["accommtype-mappings"].forEach(async function(mapping) {
+	let detail = apiGet("accommtype-mappings/" + idFrag(mapping.id));
+	actm.push(detail);
 });
-
-
+const accommTypeMappings = await Promise.all(actm).then((val) => cleanMappings(val));
+//?id ?stmtId ?abilityId ?abilityLabel ?accomId ?accomLabel ?charId ?charLabel ?applicable
 ---
 <style is:global>
 .stmt {
@@ -37,12 +46,23 @@ h2, h3, h4, h5, h6 {
 <div>
 	<p class="stmt">{json[0].stmt}</p>
 	{typeof json[0].note !== 'undefined' && json[0].note != null ? <Fragment set:html={"<h2>Notes</h2>" + mdToHtml(json[0].note)}></Fragment> : ""}
-	<h2>Supports</h2>
+	<h2>Accommodation type mappings</h2>
+	<table>
+		<thead>
+			<tr><th>Functional ability</th><th>Accommodation type</th><th>Accessibility characteristic</th></tr>
+		</thead>
+		<tbody>
+			{accommTypeMappings.map((item) => <tr><td><a href={baseUri + "functional-abilities/" + idFrag(item.abilityId)}>{item.abilityLabel}</a></td><td><a href={baseUri + 'accommodation-types/' + idFrag(item.accommId)}>{item.accomLabel}</a></td><td><a href={baseUri + 'accessibility-characteristics/' + idFrag(item.charId)}>{item.charLabel}</a></td></tr>)}
+		</tbody>
+	</table>
+	<h2>Functional need mappings</h2>
 	<table>
 		<thead>
 			<tr><th>Functional need</th><th>User need</th><th>Context</th></tr>
 		</thead>
-			{richerMappings.map((item) => <tr><td><a href={baseUri + (typeof item.functionalNeed === 'undefined' ? "intersection-needs/" : "functional-needs/" ) + idFrag(typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.id : item.functionalNeed.id)}>{typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.label : item.functionalNeed.label}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.userNeed.id)}>{item.userNeed.label}</a></td><td><a href={baseUri + 'user-need-contexts/' + idFrag(item.userNeedRelevance.id)}>{item.userNeedRelevance.label}</a></td></tr>)}		</tbody>
+		<tbody>
+			{richerMappings.map((item) => <tr><td><a href={baseUri + (typeof item.functionalNeed === 'undefined' ? "intersection-needs/" : "functional-needs/" ) + idFrag(typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.id : item.functionalNeed.id)}>{typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.label : item.functionalNeed.label}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.userNeed.id)}>{item.userNeed.label}</a></td><td><a href={baseUri + 'user-need-contexts/' + idFrag(item.userNeedRelevance.id)}>{item.userNeedRelevance.label}</a></td></tr>)}
+		</tbody>
 	</table>
 	<h2>References</h2>
 	<ul>
