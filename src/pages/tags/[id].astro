@@ -1,13 +1,16 @@
 ---
-import MatrixItemDetails from '../../components/MatrixItemDetails.astro';
+import Layout from '../../layouts/Layout.astro';
+import { loadStaticPaths } from '../../components/load-static-paths';
 
 export async function getStaticPaths() { 
-	const module = await import('./ids.js');
-	const {ids} = module;
-	return (ids);
+	const section = "tags";
+	const paths = await loadStaticPaths(section);
+	return paths;
 }
 
 const {id} = Astro.params;
 ---
-<MatrixItemDetails id={id} type="Tag" section="tags"></MatrixItemDetails>
+<Layout type="Tag" section="tags">
+Fix Tags
+</Layout>
 
