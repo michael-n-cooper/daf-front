@@ -401,3 +401,4 @@ FodyWeavers.xsd
 dist/
 # generated types
 .astro/
+ids.js

@@ -1,6 +1,6 @@
 ---
-import {baseUri, findObjectByProperties, idFrag, apiGet} from '../../script/util.js';
-import Layout from '../../layouts/Layout.astro';
+import {apiGet} from '../../script/util.js';
+import IdLabel from '../../components/IdLabel.astro';
 
 const section = "intersection-needs"
 const json = await apiGet(section);
@@ -22,7 +22,5 @@ json.forEach(function(item) {
 
 ---
 
-<Layout title="Intersection Needs">
-	<IdLabel section="intersection-needs"></IdLabelSupports>
-</Layout>
+<IdLabel section="intersection-needs"></IdLabelSupports>
 
