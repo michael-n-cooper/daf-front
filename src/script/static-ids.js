@@ -6,14 +6,14 @@ async function lookupIds(type) {
 	const ids = await apiGet(type);
 	var val = new Array();
 	ids.forEach(function(obj) {
-		val.push(idFrag(obj.id));
+		val.push({ params: { id: idFrag(obj.id) } });
 	});
 	return val;
 }
 
 async function process(section) {
 	const ids = await lookupIds(section.path);
-	writeFile("../pages/" + section.localpath + "/ids.js", "export const ids = JSON.parse('" + JSON.stringify(ids) + "');");
+	writeFile("../pages/" + section.localpath + "/ids.js", JSON.stringify(ids));
 	console.log(section.path);
 }
 
