@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\pages",
+    "\\src\\pages\\functional-needs",
+    "\\src\\pages\\intersection-needs",
+    "\\src\\pages\\references",
+    "\\src\\pages\\tags",
+    "\\src\\pages\\user-need-categories",
+    "\\src\\pages\\user-need-contexts",
+    "\\src\\pages\\user-needs"
+  ],
+  "SelectedNode": "\\src\\pages\\matrix.astro",
+  "PreviewInSolutionExplorer": false
+}
