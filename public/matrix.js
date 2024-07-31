@@ -17,7 +17,7 @@ function focusRowCol(event) {
 		if (val.includes("col")) col = val.substr(3);
 	});
 	if (row != null && col != null) {
-//	console.log("row" + row + " col" + col);
+	console.log("row" + row + " col" + col);
 		show(document.getElementsByClassName("row" + row));
 		show(document.getElementsByClassName("col" + col));
 	}

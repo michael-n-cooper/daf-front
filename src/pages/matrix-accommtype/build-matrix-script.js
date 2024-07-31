@@ -10,6 +10,8 @@ function generateMatrix(data, baseUri) {
     table.id = "matrixTable";
 
     const counts = new Array();
+    let rowNum = 1;
+    let colNum = 1;
 
     //thead
     let thead = document.createElement("thead");
@@ -25,6 +27,7 @@ function generateMatrix(data, baseUri) {
         let cell = document.createElement("th");
         cell.id = idFrag(group.id);
         cell.scope = "colgroup";
+        cell.classList.add("row" + rowNum);
 
         let link = document.createElement("a");
         link.href =
@@ -38,6 +41,7 @@ function generateMatrix(data, baseUri) {
     });
 
     thead.append(row1);
+    rowNum++;
 
     // row 2: functional abilities in each group
     let row2 = document.createElement("tr");
@@ -46,10 +50,12 @@ function generateMatrix(data, baseUri) {
         document.createElement("td")
     );
 
+    colNum = 3;
     functionalAbilityGroups.forEach(function (faGroup) {
         counts[idFrag(faGroup.id)] = 0;
 
         row1.cells[idFrag(faGroup.id)].colSpan = faGroup.members.length;
+        row1.cells[idFrag(faGroup.id)].classList.add("col" + colNum);
 
         faGroup.members.forEach(function (item) {
             counts[idFrag(item.id)] = 0;
@@ -57,6 +63,8 @@ function generateMatrix(data, baseUri) {
             let cell = document.createElement("th");
             cell.id = idFrag(item.id);
             cell.scope = "col";
+            cell.classList.add("row" + rowNum);
+            cell.classList.add("col", colNum);
 
             let link = document.createElement("a");
             link.href =
@@ -67,15 +75,19 @@ function generateMatrix(data, baseUri) {
 
             cell.append(link);
             row2.append(cell);
+
+            colNum++;
         });
     });
 
     thead.append(row2);
+    rowNum++;
 
     table.append(thead);
 
     //tbody
     let tbody = document.createElement("tbody");
+    colNum = 4;
 
     // accessibility characteristic groups
     accessibilityCharacteristicGroups.forEach(function (acGroup) {
@@ -88,7 +100,9 @@ function generateMatrix(data, baseUri) {
         acgCell.id = idFrag(acGroup.id);
         acgCell.scope = "rowgroup";
         acgCell.rowSpan = acGroup.members.length * accommodationTypes.length;
-
+        acgCell.classList.add("row" + rowNum);
+        acgCell.classList.add("col1");
+        
         let acgLink = document.createElement("a");
         acgLink.href =
             baseUri + "functional-ability-groups/" + idFrag(acGroup.id);
@@ -114,6 +128,8 @@ function generateMatrix(data, baseUri) {
             acCell.id = characteristicId;
             acCell.scope = "rowgroup";
             acCell.rowSpan = accommodationTypes.length;
+            acCell.classList.add("row" + rowNum);
+            acCell.classList.add("col2");
 
             let acLink = document.createElement("a");
             acLink.href =
@@ -141,6 +157,8 @@ function generateMatrix(data, baseUri) {
                 let accTypeCell = document.createElement("th");
                 accTypeCell.id = idFrag(accommodationType.id);
                 accTypeCell.scope = "row";
+                accTypeCell.classList.add("row" + rowNum);
+                accTypeCell.classList.add("col3");
 
                 let accTypeLink = document.createElement("a");
                 accTypeLink.href =
@@ -160,6 +178,8 @@ function generateMatrix(data, baseUri) {
                         faGroup.members.forEach(
                             function (functionalAbility) {
                                 let cell = document.createElement("td");
+                                cell.classList.add("row" + rowNum);
+                                cell.classList.add("col" + colNum);
 
                                 let maps = filterObjectByProperties(
                                     simpleCurveMaps,
@@ -245,11 +265,14 @@ function generateMatrix(data, baseUri) {
                                 }
 
                                 accTypeRow.append(cell);
+                                colNum++;
                             }
                         );
                     }
                 );
                 tbody.append(accTypeRow);
+                rowNum++;
+                colNum = 4;
             });
         });
     });
