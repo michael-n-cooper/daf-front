@@ -1,18 +1,24 @@
-import {findObjectByProperties, filterObjectByProperties, baseUri, idFrag, apiGet} from '../script/util.js';
 import { JSDOM } from 'jsdom';
-import fileUrl from 'file-url';
+import { Script } from "node:vm";
+import { readFile } from 'node:fs/promises';
 
-const functionalNeedCategories = await apiGet("functional-need-categories");
-const functionalNeeds = await apiGet("functional-needs");
-const userNeeds = await apiGet("user-needs");
-const userNeedContexts = await apiGet("user-need-contexts");
-const mappings = await apiGet("mappings");
+export async function buildMatrix(scrPath, data) {
+    const jsdomOptions = {runScripts: "dangerously", resources: "usable"};
+    const dom = new JSDOM('', jsdomOptions);
+    const vmContext = dom.getInternalVMContext();
 
-const dom = new JSDOM("<table id = 'matrixTable'><table>", {url: fileUrl("matrix.html"), runScripts: "dangerously", resources: "usable"});
-const document = dom.window;
+    const scrData = "\nlet data = " + data + ";\ngenerateMatrix(data);\n"
+    const scr = await readFile(scrPath, 'utf8');
+    const scrCombined = scr + scrData;
+    const script = new Script(scrCombined);
 
-var tb = document.eval('document.getElementById("matrixTable")');
-
-var thead = document.eval('')
-
-export const table = tb.outerHTML;
+    let table = await new Promise((resolve) => {
+        dom.window.document.addEventListener("MatrixTableCreated", (e) => {
+            let result = dom.window.document.getElementById("matrixTable").outerHTML;
+            //console.log(result);
+            resolve(result);
+        });
+        script.runInContext(vmContext);
+    });
+    return table;
+}
