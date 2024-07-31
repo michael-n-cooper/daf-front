@@ -8,12 +8,6 @@ export async function getStaticPaths() {
 	return (ids);
 }
 
-export async function getStaticPaths() { 
-	const module = await import('./ids.js');
-	const {ids} = module;
-	return (ids);
-}
-
 const {id} = Astro.params;
 
 const json = await apiGet ("statements/" + id);
