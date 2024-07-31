@@ -4,10 +4,10 @@ import {baseUri} from '../script/util.js';
 ---
 
 <Layout title="Digital Accessibility Framework">
-	<p><a href={baseUri + "matrix"}>Matrix</a> | <a href={baseUri + "docs"}>Documentation</a></p>
+	<p><a href={baseUri + "matrix-accommtype"}>Matrix</a> | <a href={baseUri + "docs"}>Documentation</a></p>
 	
-	<p>This resource accesses a database of accessibility statements generated in the <a href="https://github.com/accessiblecommunity/Digital-Accessibility-Framework">Digital Accessibility Framework</a> project and presents it in a <a href={baseUri + "matrix"}>matrix</a> of functional needs, user needs, and user need contexts. This content can also be accessed by category:</p>
-	
+	<p>This resource accesses a database of accessibility statements generated in the <a href="https://github.com/accessiblecommunity/Digital-Accessibility-Framework">Digital Accessibility Framework</a> project and presents it in a <a href={baseUri + "matrix-accommtype"}>matrix</a> showing intersections of related aspects of the digital accessibility space.</p>
+
 	<ul>
 		<li><a href={baseUri + "guidance-statements"}>Accessibility statements</a>
 			<ul>
@@ -15,35 +15,44 @@ import {baseUri} from '../script/util.js';
 				<li><a href={baseUri + "references"}>References</a></li>
 			</ul>
 		</li>
-		<li><a href={baseUri + "functional-ability-groups"}>Functional ability groups<a>
-			<ul>
-			<li><a href={baseUri + "functional-abilities"}>Functional abilities</a></li>
-			</ul>
-		</li>
-		<li><a href={baseUri + "accommodation-types"}>Accommodation types</a></li>
-		<li><a href={baseUri + "accessibility-characteristic-groups"}>Accessibility characteristic groups</a>
-			<ul>
-				<li><a href={baseUri + "accessibility-characteristics"}>Accessibility characteristics</a></li>
-			</ul>
-		</li>
-		<li><a href={baseUri + "matrix-accommtype"}>Accommodation types matrix</a></li>
 	</ul>
 
-	<p>Version 1 mappings:</p>
-	<ul>
-		<li><a href={baseUri + "functional-need-categories"}>Functional need categories</a>
-			<ul>
-				<li><a href={baseUri + "functional-needs"}>Functional needs</a></li>
-				<li><a href={baseUri + "intersection-needs"}>Intersection needs</a></li>
-			</ul>
-		</li>
-		<li><a href={baseUri + "user-needs"}>User needs</a>
-			<ul>
-				<li><a href={baseUri + "user-need-contexts"}>User need contexts</a></li>
-			</ul>
-		</li>
-		<li><a href={baseUri + "matrix-functional-needs"}>Matrix</a></li>
-	</ul>
+	<section id="accommodation-type-mappings">
+		<h2>Accommodation type mappings</h2>
+	
+		<p>This approach maps guidance statements to functional abilities, accommodation types, and accessibility characteristics.</p>
+		<ul>
+			<li><a href={baseUri + "functional-ability-groups"}>Functional ability groups<a>
+				<ul>
+				<li><a href={baseUri + "functional-abilities"}>Functional abilities</a></li>
+				</ul>
+			</li>
+			<li><a href={baseUri + "accommodation-types"}>Accommodation types</a></li>
+			<li><a href={baseUri + "accessibility-characteristic-groups"}>Accessibility characteristic groups</a>
+				<ul>
+					<li><a href={baseUri + "accessibility-characteristics"}>Accessibility characteristics</a></li>
+				</ul>
+			</li>
+			<li><a href={baseUri + "matrix-accommtype"}>Accommodation types matrix</a></li>
+		</ul>
+	</section>
 
-	<p>This site is a static copy and not connnected the database that generates the content. Structured data in JSON-LD format is available at <a href={baseUri + "statements.jsonld"}>statements.jsonld</a>.</p>
+	<section id="functional-ability-mappings">
+		<h2>Functional ability mappings:</h2>
+		<p>This approach maps guidance statements to functional needs, user needs, and user need contexts. Currently, we do not think we will keep this approach.</p>
+		<ul>
+			<li><a href={baseUri + "functional-need-categories"}>Functional need categories</a>
+				<ul>
+					<li><a href={baseUri + "functional-needs"}>Functional needs</a></li>
+					<li><a href={baseUri + "intersection-needs"}>Intersection needs</a></li>
+				</ul>
+			</li>
+			<li><a href={baseUri + "user-needs"}>User needs</a>
+				<ul>
+					<li><a href={baseUri + "user-need-contexts"}>User need contexts</a></li>
+				</ul>
+			</li>
+			<li><a href={baseUri + "matrix-functional-needs"}>Matrix</a></li>
+		</ul>
+	</section>
 </Layout>
