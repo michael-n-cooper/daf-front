@@ -1,5 +1,5 @@
 // this script runs in JSDOM and must be in CommonJS
-function generateMatrix(data) {
+function generateMatrix(data, baseUri) {
     let functionalNeedCategories = data.functionalNeedCategories;
     let functionalNeeds = data.functionalNeeds;
     let userNeeds = data.userNeeds;
@@ -10,7 +10,7 @@ function generateMatrix(data) {
     const table = document.createElement("table");
     table.id = "matrixTable";
 
-	const base = "http://localhost:4321/";
+	const baseUri = "http://localhost:4321/";
 	const counts = {};
 
 	//thead
@@ -26,7 +26,7 @@ function generateMatrix(data) {
 		cell.scope = "colgroup";
 
 		var link = document.createElement("a");
-		link.href = base + "functional-need-categories/" + idFrag(category.id);
+		link.href = baseUri + "functional-need-categories/" + idFrag(category.id);
 		link.append(document.createTextNode(category.label));
 
 		cell.append(link);
@@ -53,7 +53,7 @@ function generateMatrix(data) {
 			cell.scope = "col";
 
 			var link = document.createElement("a");
-			link.href = base + "functional-needs/" + idFrag(fn.id);
+			link.href = baseUri + "functional-needs/" + idFrag(fn.id);
 			link.append(document.createTextNode(fn.label));
 
 			cell.append(link);
@@ -85,7 +85,7 @@ function generateMatrix(data) {
 				cell.rowSpan = userNeedContexts.length;
 
 				var link = document.createElement("a");
-				link.href = base + "user-needs/" + idFrag(need.id);
+				link.href = baseUri + "user-needs/" + idFrag(need.id);
 				link.append(document.createTextNode(need.label));
 
 				cell.append(link);
@@ -99,7 +99,7 @@ function generateMatrix(data) {
 			cell.scope = "row";
 
 			var link = document.createElement("a");
-			link.href = base + "user-need-contexts/" + idFrag(context.id);
+			link.href = baseUri + "user-need-contexts/" + idFrag(context.id);
 			link.append(document.createTextNode(context.label));
 
 			cell.append(link);
@@ -129,7 +129,7 @@ function generateMatrix(data) {
 
 								var item = document.createElement("li");
 								var link = document.createElement("a");
-								link.href = base + "statements/" + idFrag(map.stmtId);
+								link.href = baseUri + "statements/" + idFrag(map.stmtId);
 								link.class = idFrag(map.stmtId);
 								link.title = stmt.stmt;
 								link.append(document.createTextNode(stmt.label));

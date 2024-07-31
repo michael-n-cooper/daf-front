@@ -1,13 +1,14 @@
 import { JSDOM } from 'jsdom';
 import { Script } from "node:vm";
 import { readFile } from 'node:fs/promises';
+import { baseUri } from '../script/util';
 
 export async function buildMatrix(scrPath, data) {
     const jsdomOptions = {runScripts: "dangerously", resources: "usable"};
     const dom = new JSDOM('', jsdomOptions);
     const vmContext = dom.getInternalVMContext();
 
-    const scrData = "\nlet data = " + data + ";\ngenerateMatrix(data);\n"
+    const scrData = "\nlet data = " + data + ";\ngenerateMatrix(data, '" + baseUri + "');\n";
     const scr = await readFile(scrPath, 'utf8');
     const scrCombined = scr + scrData;
     const script = new Script(scrCombined);

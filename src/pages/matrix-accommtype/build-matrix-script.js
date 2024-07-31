@@ -1,5 +1,5 @@
 // this script runs in JSDOM and must be in CommonJS
-function generateMatrix(data) {
+function generateMatrix(data, baseUri) {
     let accessibilityCharacteristicGroups = data.accessibilityCharacteristicGroups;
     let accommodationTypes = data.accommodationTypes;
     let functionalAbilityGroups = data.functionalAbilityGroups;
@@ -9,7 +9,6 @@ function generateMatrix(data) {
     const table = document.createElement("table");
     table.id = "matrixTable";
 
-    const base = "http://localhost:4321/";
     const counts = new Array();
 
     //thead
@@ -29,7 +28,7 @@ function generateMatrix(data) {
 
         let link = document.createElement("a");
         link.href =
-            base +
+            baseUri +
             "accessibility-characteristic-groups/" +
             idFrag(group.id);
         link.append(document.createTextNode(group.label));
@@ -61,7 +60,7 @@ function generateMatrix(data) {
 
             let link = document.createElement("a");
             link.href =
-                base +
+                baseUri +
                 "accessibility-characteristics/" +
                 idFrag(item.id);
             link.append(document.createTextNode(item.label));
@@ -92,7 +91,7 @@ function generateMatrix(data) {
 
         let fagLink = document.createElement("a");
         fagLink.href =
-            base + "functional-ability-groups/" + idFrag(faGroup.id);
+            baseUri + "functional-ability-groups/" + idFrag(faGroup.id);
         fagLink.append(document.createTextNode(faGroup.label));
 
         fagCell.append(fagLink);
@@ -118,7 +117,7 @@ function generateMatrix(data) {
 
             let faLink = document.createElement("a");
             faLink.href =
-                base +
+                baseUri +
                 "functional-abilities/" +
                 idFrag(functionalAbility.id);
             faLink.append(
@@ -145,7 +144,7 @@ function generateMatrix(data) {
 
                 let accTypeLink = document.createElement("a");
                 accTypeLink.href =
-                    base +
+                    baseUri +
                     "accommodation-types/" +
                     idFrag(accommodationType.id);
                 accTypeLink.append(
@@ -208,7 +207,7 @@ function generateMatrix(data) {
                                                     "a"
                                                 );
                                             link.href =
-                                                base +
+                                                baseUri +
                                                 "statements/" +
                                                 idFrag(map.stmtId);
                                             link.class = idFrag(
