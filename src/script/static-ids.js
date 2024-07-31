@@ -29,6 +29,7 @@ paths.push({"path": "intersection-needs", "localpath": "intersection-needs"});
 paths.push({"path": "statements", "localpath": "guidance-statements"});
 paths.push({"path": "references", "localpath": "references"});
 paths.push({"path": "tags", "localpath": "tags"});
+paths.push({"path": "user-need-categories", "localpath": "user-need-categories"});
 paths.push({"path": "user-need-contexts", "localpath": "user-need-contexts"});
 paths.push({"path": "user-needs", "localpath": "user-needs"});
 
