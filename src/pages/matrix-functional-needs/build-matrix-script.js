@@ -10,7 +10,6 @@ function generateMatrix(data, baseUri) {
     const table = document.createElement("table");
     table.id = "matrixTable";
 
-	const baseUri = "http://localhost:4321/";
 	const counts = {};
 
 	//thead
