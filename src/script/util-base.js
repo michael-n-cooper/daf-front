@@ -1,13 +1,14 @@
-import { readFile, writeFile, open } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import * as commonmark from 'commonmark';
 
-// Function to find an object based on multiple properties
+// Find an object based on multiple properties
 export function findObjectByProperties(array, properties) {
   return array.find(obj => {
     // Check if all specified properties match
     return Object.keys(properties).every(key => compareStr(obj[key], properties[key]));
   });
 }
+// Return multiple values of an object that match given properties
 export function filterObjectByProperties(array, properties) {
   return array.filter(obj => {
     // Check if all specified properties match
@@ -15,10 +16,12 @@ export function filterObjectByProperties(array, properties) {
   });
 }
 
-export function idFrag(uri) {
+// Return just the fragment part of a URIexport function findObjectByProperties(array, properties) {
+	export function idFrag(uri) {
 	return uri.substring(uri.indexOf("#") + 1)
 }
 
+// Boolean indicating if two strings match ignoring whitespace and case
 export function compareStr(str1, str2) {
 	if (str1.trim().replace(/\s+/g, ' ').toLowerCase() == str2.trim().replace(/\s+/g, ' ').toLowerCase()) return true;
 	else return false;

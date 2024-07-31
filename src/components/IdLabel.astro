@@ -1,11 +1,14 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import {baseUri, idFrag, apiGet} from '../script/util.js';
 
-const {section} = Astro.props;
+const {section, title} = Astro.props;
 const json = await apiGet(section);
 
 ---
+<Layout title={title}>
 <ul>
 	{json.map((item) => <li><a href={baseUri + section + '/' + idFrag(item.id)}>{item.label}</a></li>)}
 </ul>
 
+</Layout>

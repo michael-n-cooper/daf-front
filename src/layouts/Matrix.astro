@@ -1,15 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import {table} from "../components/build-matrix.js";
-import {baseUri} from '../script/util.js';
+import Layout from './Layout.astro';
+import { baseUri } from '../script/util';
 
+const { table, title } = Astro.props;
 ---
-<Layout title="Matrix">
+<Layout title={title}>
 <link rel="stylesheet" type="text/css" href={baseUri + "matrix.css"}/>
 <script src={baseUri + "matrix.js"} is:inline></script>
 <script>
 window.addEventListener("load", attachListeners());
 </script>
+<slot/>
 <p>
 <input type="checkbox" id="highlightSameStmtControl"/> <label for="highlightSameStmtControl">Show same statements</label>
 <input type="checkbox" id="highlightCellPosControl"/> <label for="highlightCellPosControl">Show cell position</label>

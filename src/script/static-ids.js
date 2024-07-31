@@ -18,6 +18,11 @@ async function process(section) {
 }
 
 let paths = new Array();
+paths.push({"path": "accessibility-characteristic-groups", "localpath": "accessibility-characteristic-groups"});
+paths.push({"path": "accessibility-characteristics", "localpath": "accessibility-characteristics"});
+paths.push({"path": "accommodation-types", "localpath": "accommodation-types"});
+paths.push({"path": "functional-abilities", "localpath": "functional-abilities"});
+paths.push({"path": "functional-ability-groups", "localpath": "functional-ability-groups"});
 paths.push({"path": "functional-need-categories", "localpath": "functional-need-categories"});
 paths.push({"path": "functional-needs", "localpath": "functional-needs"});
 paths.push({"path": "intersection-needs", "localpath": "intersection-needs"});

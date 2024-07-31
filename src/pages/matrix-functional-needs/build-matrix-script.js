@@ -1,24 +1,17 @@
-var promises = new Array();
+// this script runs in JSDOM and must be in CommonJS
+function generateMatrix(data) {
+    let functionalNeedCategories = data.functionalNeedCategories;
+    let functionalNeeds = data.functionalNeeds;
+    let userNeeds = data.userNeeds;
+    let userNeedContexts = data.userNeedContexts;
+    let mappings = data.mappings;
+    let statements = data.statements;
 
-promises.push(apiGet("functional-need-categories"));
-promises.push(apiGet("functional-needs"));
-promises.push(apiGet("user-needs"));
-promises.push(apiGet("user-need-contexts"));
-promises.push(apiGet("mappings"));
-promises.push(apiGet("statements"));
+    const table = document.createElement("table");
+    table.id = "matrixTable";
 
-Promise.all(promises).then((values) => {
-	const functionalNeedCategories = values[0];
-	const functionalNeeds = values[1];
-	const userNeeds = values[2];
-	const userNeedContexts = values[3];
-	const mappings = values[4];
-	const statements = values[5];
-	
 	const base = "http://localhost:4321/";
 	const counts = {};
-
-	const table = document.getElementById("matrixTable");
 
 	//thead
 	var thead = document.createElement("thead");
@@ -27,7 +20,7 @@ Promise.all(promises).then((values) => {
 	var row1 = document.createElement("tr");
 	row1.append(document.createElement("td"), document.createElement("td"));
 
-	functionalNeedCategories.forEach(function(category) {
+	functionalNeedCategories.forEach(function (category) {
 		var cell = document.createElement("th");
 		cell.id = idFrag(category.id);
 		cell.scope = "colgroup";
@@ -46,19 +39,19 @@ Promise.all(promises).then((values) => {
 	var row2 = document.createElement("tr");
 	row2.append(document.createElement("td"), document.createElement("td"));
 
-	functionalNeedCategories.forEach(function(category) {
+	functionalNeedCategories.forEach(function (category) {
 		counts[idFrag(category.id)] = 0;
 
-		functionalNeedList = filterObjectByProperties(functionalNeeds, {"categoryId": category.id});
+		functionalNeedList = filterObjectByProperties(functionalNeeds, { "categoryId": category.id });
 		row1.cells[idFrag(category.id)].colSpan = functionalNeedList.length;
 
-		functionalNeedList.forEach(function(fn) {
+		functionalNeedList.forEach(function (fn) {
 			counts[idFrag(fn.id)] = 0;
 
 			var cell = document.createElement("th");
 			cell.id = idFrag(fn.id);
 			cell.scope = "col";
-		
+
 			var link = document.createElement("a");
 			link.href = base + "functional-needs/" + idFrag(fn.id);
 			link.append(document.createTextNode(fn.label));
@@ -76,11 +69,11 @@ Promise.all(promises).then((values) => {
 	var tbody = document.createElement("tbody");
 
 	// loop user needs
-	userNeeds.forEach(function(need) {
+	userNeeds.forEach(function (need) {
 		var count = 0;
 
 		// loop user need contexts
-		userNeedContexts.forEach(function(context) {
+		userNeedContexts.forEach(function (context) {
 			var row = document.createElement("tr");
 
 			if (count == 0) {
@@ -90,7 +83,7 @@ Promise.all(promises).then((values) => {
 				cell.id = idFrag(need.id);
 				cell.scope = "rowgroup";
 				cell.rowSpan = userNeedContexts.length;
-		
+
 				var link = document.createElement("a");
 				link.href = base + "user-needs/" + idFrag(need.id);
 				link.append(document.createTextNode(need.label));
@@ -104,7 +97,7 @@ Promise.all(promises).then((values) => {
 			var cell = document.createElement("th");
 			cell.id = uncid;
 			cell.scope = "row";
-		
+
 			var link = document.createElement("a");
 			link.href = base + "user-need-contexts/" + idFrag(context.id);
 			link.append(document.createTextNode(context.label));
@@ -113,12 +106,12 @@ Promise.all(promises).then((values) => {
 			row.append(cell);
 
 			// loop functional needs
-			functionalNeedCategories.forEach(function(category) {
-				functionalNeedList = filterObjectByProperties(functionalNeeds, {"categoryId": category.id});
-				functionalNeedList.forEach(function(fn) {
+			functionalNeedCategories.forEach(function (category) {
+				functionalNeedList = filterObjectByProperties(functionalNeeds, { "categoryId": category.id });
+				functionalNeedList.forEach(function (fn) {
 					var cell = document.createElement("td");
 
-					var maps = filterObjectByProperties(mappings, {"fnId": fn.id, "unId": need.id, "unrId": context.id});
+					var maps = filterObjectByProperties(mappings, { "fnId": fn.id, "unId": need.id, "unrId": context.id });
 
 					if (maps.length > 0) {
 						var div = document.createElement("div");
@@ -129,10 +122,10 @@ Promise.all(promises).then((values) => {
 							div.append(document.createTextNode("NA"));
 						}
 
-						if (maps.length > 1 || maps[0].stmtId != null) {
-							var list = document.createElement("ul");
-							maps.forEach(function(map) {
-								var stmt = findObjectByProperties(statements, {"id": map.stmtId});
+						var list = document.createElement("ul");
+						maps.forEach(function (map) {
+							if (map.stmtId != null) {
+								var stmt = findObjectByProperties(statements, { "id": map.stmtId });
 
 								var item = document.createElement("li");
 								var link = document.createElement("a");
@@ -147,9 +140,10 @@ Promise.all(promises).then((values) => {
 								counts[uncid]++;
 								counts[idFrag(category.id)]++;
 								counts[idFrag(fn.id)]++;
-							});
-							div.append(list);
-						}
+							}
+						});
+						if (list.childNodes.length > 0) div.append(list);
+
 						cell.append(div);
 					}
 
@@ -165,43 +159,45 @@ Promise.all(promises).then((values) => {
 	});
 
 	table.append(tbody);
-	console.log(counts);
+    document.body.appendChild(table);
 
 	var countIterator = Object.keys(counts);
-	countIterator.forEach(function(c) {
+	countIterator.forEach(function (c) {
 		var cell = document.getElementById(c);
 		var span = document.createElement("span");
 		span.class = "total";
 		span.append(document.createTextNode(" (" + counts[c] + ") "));
 		cell.append(span);
 	});
-});
 
-async function apiGet(path) {
-	const data = await fetch ("http://localhost:3000/api/" + path);
-	const json = await data.json();
-	return json;
+    document.dispatchEvent(new Event("MatrixTableCreated", {bubbles: true, composed: true}));
 }
 
-// Function to find an object based on multiple properties
+/* functions copied from util */
+// Find an object based on multiple properties
 function findObjectByProperties(array, properties) {
-  return array.find(obj => {
-    // Check if all specified properties match
-    return Object.keys(properties).every(key => compareStr(obj[key], properties[key]));
-  });
+    return array.find((obj) => {
+        // Check if all specified properties match
+        return Object.keys(properties).every((key) =>
+            compareStr(obj[key], properties[key])
+        );
+    });
 }
+// Return multiple values of an object that match given properties
 function filterObjectByProperties(array, properties) {
-  return array.filter(obj => {
-    // Check if all specified properties match
-    return Object.keys(properties).every(key => compareStr(obj[key], properties[key]));
-  });
+    return array.filter((obj) => {
+        // Check if all specified properties match
+        return Object.keys(properties).every((key) =>
+            compareStr(obj[key], properties[key])
+        );
+    });
 }
+// Return just the fragment part of a URI
+function idFrag(uri) {
+    return uri.substring(uri.indexOf("#") + 1);
+}
+// Boolean indicating if two strings match ignoring whitespace and case
 function compareStr(str1, str2) {
 	if (str1.trim().replace(/\s+/g, ' ').toLowerCase() == str2.trim().replace(/\s+/g, ' ').toLowerCase()) return true;
 	else return false;
 }
-function idFrag(uri) {
-	return uri.substring(uri.indexOf("#") + 1)
-}
-
-

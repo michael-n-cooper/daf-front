@@ -1,0 +1,7 @@
+---
+import Matrix from '../../layouts/Matrix.astro';
+import { getTable } from './build-matrix';
+
+let table = await getTable();
+---
+<Matrix title="Accommodation types matrix" table={table}></Matrix>
