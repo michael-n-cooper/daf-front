@@ -1,7 +1,5 @@
 import {apiGet, idFrag} from '../../script/util.js';
-import { JSDOM } from 'jsdom';
-import { Script } from "node:vm";
-import { readFile } from 'node:fs/promises';
+import { buildMatrix } from '../../components/build-matrix.js';
 
 async function fetchData() {
 	return new Promise((resolve) => {
@@ -59,25 +57,9 @@ async function fetchData() {
 	});
 }
 
-export async function buildMatrix() {
+export async function getTable() {
     const data = await fetchData();
-
-    const jsdomOptions = {runScripts: "dangerously", resources: "usable"};
-    const dom = new JSDOM('', jsdomOptions);
-    const vmContext = dom.getInternalVMContext();
-
-    const scrData = "\nlet data = " + data + ";\ngenerateMatrix(data);\n"
-    const scr = await readFile("./src/pages/matrix-accommtype/build-matrix-script.js", 'utf8');
-    const scrCombined = scr + scrData;
-    const script = new Script(scrCombined);
-
-    let table = await new Promise((resolve) => {
-        dom.window.document.addEventListener("MatrixTableCreated", (e) => {
-            let result = dom.window.document.getElementById("matrixTable").outerHTML;
-            //console.log(result);
-            resolve(result);
-        });
-        script.runInContext(vmContext);
-    });
-    return table;
+	let scrPath = "./src/pages/matrix-accommtype/build-matrix-script.js";
+	let table = await buildMatrix(scrPath, data);
+	return table;
 }

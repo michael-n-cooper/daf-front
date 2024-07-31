@@ -1,24 +1,17 @@
-var promises = new Array();
+// this script runs in JSDOM and must be in CommonJS
+function generateMatrix(data) {
+    let functionalNeedCategories = data.functionalNeedCategories;
+    let functionalNeeds = data.functionalNeeds;
+    let userNeeds = data.userNeeds;
+    let userNeedContexts = data.userNeedContexts;
+    let mappings = data.mappings;
+    let statements = data.statements;
 
-promises.push(apiGet("functional-need-categories"));
-promises.push(apiGet("functional-needs"));
-promises.push(apiGet("user-needs"));
-promises.push(apiGet("user-need-contexts"));
-promises.push(apiGet("mappings"));
-promises.push(apiGet("statements"));
-
-Promise.all(promises).then((values) => {
-	const functionalNeedCategories = values[0];
-	const functionalNeeds = values[1];
-	const userNeeds = values[2];
-	const userNeedContexts = values[3];
-	const mappings = values[4];
-	const statements = values[5];
+    const table = document.createElement("table");
+    table.id = "matrixTable";
 
 	const base = "http://localhost:4321/";
 	const counts = {};
-
-	const table = document.getElementById("matrixTable");
 
 	//thead
 	var thead = document.createElement("thead");
@@ -166,7 +159,7 @@ Promise.all(promises).then((values) => {
 	});
 
 	table.append(tbody);
-	//console.log(counts);
+    document.body.appendChild(table);
 
 	var countIterator = Object.keys(counts);
 	countIterator.forEach(function (c) {
@@ -176,33 +169,35 @@ Promise.all(promises).then((values) => {
 		span.append(document.createTextNode(" (" + counts[c] + ") "));
 		cell.append(span);
 	});
-});
 
-async function apiGet(path) {
-	const data = await fetch ("http://localhost:3000/api/" + path);
-	const json = await data.json();
-	return json;
+    document.dispatchEvent(new Event("MatrixTableCreated", {bubbles: true, composed: true}));
 }
 
-// Function to find an object based on multiple properties
+/* functions copied from util */
+// Find an object based on multiple properties
 function findObjectByProperties(array, properties) {
-  return array.find(obj => {
-    // Check if all specified properties match
-    return Object.keys(properties).every(key => compareStr(obj[key], properties[key]));
-  });
+    return array.find((obj) => {
+        // Check if all specified properties match
+        return Object.keys(properties).every((key) =>
+            compareStr(obj[key], properties[key])
+        );
+    });
 }
+// Return multiple values of an object that match given properties
 function filterObjectByProperties(array, properties) {
-  return array.filter(obj => {
-    // Check if all specified properties match
-    return Object.keys(properties).every(key => compareStr(obj[key], properties[key]));
-  });
+    return array.filter((obj) => {
+        // Check if all specified properties match
+        return Object.keys(properties).every((key) =>
+            compareStr(obj[key], properties[key])
+        );
+    });
 }
+// Return just the fragment part of a URI
+function idFrag(uri) {
+    return uri.substring(uri.indexOf("#") + 1);
+}
+// Boolean indicating if two strings match ignoring whitespace and case
 function compareStr(str1, str2) {
 	if (str1.trim().replace(/\s+/g, ' ').toLowerCase() == str2.trim().replace(/\s+/g, ' ').toLowerCase()) return true;
 	else return false;
 }
-function idFrag(uri) {
-	return uri.substring(uri.indexOf("#") + 1)
-}
-
-
