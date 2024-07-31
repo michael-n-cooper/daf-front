@@ -1,10 +1,11 @@
 ---
 import IdGroupMembers from '../../components/IdGroupMembers.astro';
+import { loadStaticPaths } from '../../components/load-static-paths';
 
 export async function getStaticPaths() { 
-	const module = await import('./ids.js');
-	const {ids} = module;
-	return (ids);
+	const section = "functional-ability-groups";
+	const paths = await loadStaticPaths(section);
+	return paths;
 }
 
 const {id} = Astro.params;

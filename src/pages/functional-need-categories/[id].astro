@@ -1,11 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import {baseUri, idFrag, apiGet} from '../../script/util.js';
+import { loadStaticPaths } from '../../components/load-static-paths';
 
 export async function getStaticPaths() { 
-	const module = await import('./ids.js');
-	const {ids} = module;
-	return (ids);
+	const section = "functional-need-categories";
+	const paths = await loadStaticPaths(section);
+	return paths;
 }
 
 const {id} = Astro.params;
