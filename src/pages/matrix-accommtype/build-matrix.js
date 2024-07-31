@@ -1,8 +1,5 @@
----
-import Layout from '../layouts/Layout.astro';
-import {baseUri, apiGet, idFrag} from '../script/util.js';
+import {apiGet, idFrag} from '../../script/util.js';
 import { JSDOM } from 'jsdom';
-import fileUrl from 'file-url';
 import { Script } from "node:vm";
 import { readFile } from 'node:fs/promises';
 
@@ -62,39 +59,25 @@ async function fetchData() {
 	});
 }
 
-const data = await fetchData();
+export async function buildMatrix() {
+    const data = await fetchData();
 
-const jsdomOptions = {url: fileUrl("./src/pages/matrix-accommtype.html"), runScripts: "dangerously", resources: "usable"};
-const dom = new JSDOM('', jsdomOptions);
-const vmContext = dom.getInternalVMContext();
+    const jsdomOptions = {runScripts: "dangerously", resources: "usable"};
+    const dom = new JSDOM('', jsdomOptions);
+    const vmContext = dom.getInternalVMContext();
 
-const scrData = "\nlet data = " + data + ";\ngenerateMatrix(data);\n"
-const scr = await readFile("./src/pages/generate-matrix.js", 'utf8');
-const scrCombined = scr + scrData;
-const script = new Script(scrCombined);
+    const scrData = "\nlet data = " + data + ";\ngenerateMatrix(data);\n"
+    const scr = await readFile("./src/pages/matrix-accommtype/build-matrix-script.js", 'utf8');
+    const scrCombined = scr + scrData;
+    const script = new Script(scrCombined);
 
-let table = await new Promise((resolve) => {
-	dom.window.document.addEventListener("MatrixTableCreated", (e) => {
-		let result = dom.window.document.getElementById("matrixTable").outerHTML;
-		console.log(result);
-		resolve(result);
-	});
-	script.runInContext(vmContext);
-});
-
----
-<Layout title="Matrix">
-<link rel="stylesheet" type="text/css" href={baseUri + "matrix.css"}/>
-<script src={baseUri + "matrix.js"} is:inline></script>
-<script>
-window.addEventListener("load", attachListeners());
-</script>
-<p>
-<input type="checkbox" id="highlightSameStmtControl"/> <label for="highlightSameStmtControl">Show same statements</label>
-<input type="checkbox" id="highlightCellPosControl"/> <label for="highlightCellPosControl">Show cell position</label>
-<input type="checkbox" id="shrinkMatrixControl"/> <label for="shrinkMatrixControl">Fit matrix</label>
-<input type="checkbox" id="showPopupsControl" disabled=true/> <label for="showPopupsControl">Show enlarged popups</label>
-</p>
-<div id="matrix" set:html={table}>
-</div>
-</Layout>
+    let table = await new Promise((resolve) => {
+        dom.window.document.addEventListener("MatrixTableCreated", (e) => {
+            let result = dom.window.document.getElementById("matrixTable").outerHTML;
+            //console.log(result);
+            resolve(result);
+        });
+        script.runInContext(vmContext);
+    });
+    return table;
+}

@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { baseUri } from '../../script/util';
+import { buildMatrix } from './build-matrix';
+
+let table = await buildMatrix();
+---
+<Layout title="Matrix">
+<link rel="stylesheet" type="text/css" href={baseUri + "matrix.css"}/>
+<script src={baseUri + "matrix.js"} is:inline></script>
+<script>
+window.addEventListener("load", attachListeners());
+</script>
+<p>
+<input type="checkbox" id="highlightSameStmtControl"/> <label for="highlightSameStmtControl">Show same statements</label>
+<input type="checkbox" id="highlightCellPosControl"/> <label for="highlightCellPosControl">Show cell position</label>
+<input type="checkbox" id="shrinkMatrixControl"/> <label for="shrinkMatrixControl">Fit matrix</label>
+<input type="checkbox" id="showPopupsControl" disabled=true/> <label for="showPopupsControl">Show enlarged popups</label>
+</p>
+<div id="matrix" set:html={table}>
+</div>
+</Layout>

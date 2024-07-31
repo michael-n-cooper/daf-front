@@ -1,3 +1,4 @@
+// this script runs in JSDOM and must be in CommonJS
 function generateMatrix(data) {
     let accessibilityCharacteristicGroups = data.accessibilityCharacteristicGroups;
     let accommodationTypes = data.accommodationTypes;
@@ -5,7 +6,6 @@ function generateMatrix(data) {
     let simpleCurveMaps = data.simpleCurveMaps;
     let statements = data.statements;
 
-    console.log(data);
     const table = document.createElement("table");
     table.id = "matrixTable";
 
@@ -50,7 +50,6 @@ function generateMatrix(data) {
     accessibilityCharacteristicGroups.forEach(function (charGroup) {
         counts[idFrag(charGroup.id)] = 0;
 
-        console.log(1);
         row1.cells[idFrag(charGroup.id)].colSpan = charGroup.members.length;
 
         charGroup.members.forEach(function (item) {
@@ -89,7 +88,6 @@ function generateMatrix(data) {
         let fagCell = document.createElement("th");
         fagCell.id = idFrag(faGroup.id);
         fagCell.scope = "rowgroup";
-        console.log(accommodationTypes.length);
         fagCell.rowSpan = faGroup.members.length * accommodationTypes.length;
 
         let fagLink = document.createElement("a");
@@ -116,7 +114,6 @@ function generateMatrix(data) {
             let faCell = document.createElement("th");
             faCell.id = functionalAbilityId;
             faCell.scope = "rowgroup";
-            console.log(3);
             faCell.rowSpan = accommodationTypes.length;
 
             let faLink = document.createElement("a");
@@ -173,7 +170,6 @@ function generateMatrix(data) {
                                         charId: characteristic.id,
                                     }
                                 );
-console.log(4);
                                 if (maps.length > 0) {
                                     let div =
                                         document.createElement("div");
@@ -243,7 +239,6 @@ console.log(4);
                                             ]++;
                                         }
                                     });
-                                    console.log(5);
                                     if (list.childNodes.length > 0)
                                         div.append(list);
 

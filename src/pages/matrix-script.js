@@ -166,7 +166,7 @@ Promise.all(promises).then((values) => {
 	});
 
 	table.append(tbody);
-	console.log(counts);
+	//console.log(counts);
 
 	var countIterator = Object.keys(counts);
 	countIterator.forEach(function (c) {
