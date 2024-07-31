@@ -134,7 +134,7 @@ function attachPopovers() {
 				popover.addEventListener("mouseover", enterPopover);
 			}
 		}
-		const table = document.getElementById("table");
+		const table = document.getElementById("matrixTable");
 		const matrix = document.getElementById("matrix");
 		table.addEventListener("mouseover", clearPopover);
 		matrix.addEventListener("scrollend", sizePopovers);
@@ -156,7 +156,7 @@ function removePopovers() {
 				parent.removeChild(popover);
 			}
 		}
-		const table = document.getElementById("table");
+		const table = document.getElementById("matrixTable");
 		table.removeEventListener("mouseover", clearPopover);
 		matrix.removeEventListener("scrollend", sizePopovers);
 		usingPopovers = false;
@@ -166,7 +166,7 @@ function removePopovers() {
 function sizeTable(event) {
 	const shrink = this.checked;
 	const matrix = document.getElementById("matrix");
-	const table = document.getElementById("table");
+	const table = document.getElementById("matrixTable");
 	const showPopupsControl = document.getElementById("showPopupsControl");
 	if (shrink) {
 		proportion = matrix.clientWidth / table.scrollWidth;
