@@ -6,6 +6,8 @@ td, th {
 }
 th[rowspan] {
 	max-width: 3em;
+	writing-mode: sideways-lr;
+	text-align: center;
 }
 tr, td, th {
 	width: 100%;
@@ -14,25 +16,18 @@ tr, td, th {
 td {
 	padding: 0;
 }
-th[colspan], th[rowspan], th[rowspan] a:link, th[rowspan] a:visited {
+th[colspan], th[colspan] a:link, th[colspan] a:visited, th[rowspan], th[rowspan] a:link, th[rowspan] a:visited {
 	background-color: black;
 	color: white;
 }
 thead th[colspan] {
 	text-align: center;
 }
+th[colspan], th[rowspan] {
+	border-color: white;
+}
 th[rowspan] {
 	vertical-align: middle;
-}
-th[rowspan] div {
-	transform: rotate(-90deg);
-	transform-origin: center right;
-	position: relative;
-	left: -1.5em;
-	display: block;
-	margin: 0;
-	padding: 0;
-	text-wrap: nowrap;
 }
 .mapping {
 	width: calc(100% - 1ex);
@@ -89,4 +84,7 @@ input:disabled+label {
 footer {
 	margin-top: 0;
 	border-top: 0;
+}
+td.topleft {
+	background-color: black;
 }
