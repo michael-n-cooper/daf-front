@@ -4,11 +4,6 @@ body {
 td, th {
 	scroll-snap-align: start;
 }
-th[rowspan] {
-	max-width: 3em;
-	writing-mode: sideways-lr;
-	text-align: center;
-}
 tr, td, th {
 	width: 100%;
 	height: 100%;
@@ -16,18 +11,24 @@ tr, td, th {
 td {
 	padding: 0;
 }
-th[colspan], th[colspan] a:link, th[colspan] a:visited, th[rowspan], th[rowspan] a:link, th[rowspan] a:visited {
+th {
+	border: thin solid white;
+	min-width: 3ex;
+}
+th, th a:link, th a:visited {
 	background-color: black;
 	color: white;
 }
 thead th[colspan] {
 	text-align: center;
 }
-th[colspan], th[rowspan] {
-	border-color: white;
-}
 th[rowspan] {
 	vertical-align: middle;
+}
+th.col1 {
+	vertical-align: top;
+	writing-mode: sideways-lr;
+	text-align: center;
 }
 .mapping {
 	width: calc(100% - 1ex);
@@ -73,11 +74,6 @@ td .mapping
 	position: absolute;
 	background-color: white;
 }
-.total 
-{
-	font-weight: normal;
-	font-stretch: condensed;
-}
 input:disabled+label {
   color: #ccc;
 }
@@ -87,4 +83,10 @@ footer {
 }
 td.topleft {
 	background-color: black;
+}
+td.row1.topleft {
+	border-top: thin solid white;
+}
+td.col1.topleft {
+	border-left: thin solid white;
 }
