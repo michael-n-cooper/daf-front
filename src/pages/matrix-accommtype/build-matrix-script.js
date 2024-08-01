@@ -140,7 +140,14 @@ function generateMatrix(data, baseUri) {
                 document.createTextNode(characteristic.label)
             );
 
-            acCell.append(acLink);
+            let acContainerDiv = document.createElement("div");
+            acContainerDiv.classList.add("rowspan-header-container");
+            let acContentDiv = document.createElement("div");
+            acContentDiv.classList.add("rowspan-header-content");
+            acContentDiv.append(acLink);
+            acContainerDiv.append(acContentDiv);
+
+            acCell.append(acContainerDiv);
             acRow.append(acCell);
 
             let accTypeCount = 0;
@@ -283,11 +290,14 @@ function generateMatrix(data, baseUri) {
     let countIterator = Object.keys(counts);
     countIterator.forEach(function (c) {
         let cell = document.getElementById(c);
+        let div = cell.firstElementChild.firstElementChild;
+        let insertInto = div == null ? cell : div;
+
         let span = document.createElement("span");
         span.class = "total";
         span.append(document.createTextNode(" (" + counts[c] + ") "));
-        cell.append(document.createTextNode(" "));
-        cell.append(span);
+        insertInto.append(document.createTextNode(" "));
+        insertInto.append(span);
     });
     //return (document.getElementsByTagName("table").item(0));
     document.dispatchEvent(new Event("MatrixTableCreated", {bubbles: true, composed: true}));
