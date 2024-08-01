@@ -5,21 +5,34 @@ td, th {
 	scroll-snap-align: start;
 }
 th[rowspan] {
-	min-width: 3ex;
-	vertical-align: middle;
-	writing-mode: sideways-lr;
-	text-wrap: wrap;
+	max-width: 3em;
+}
+tr, td, th {
+	width: 100%;
+	height: 100%;
 }
 td {
 	padding: 0;
 }
-th[colspan], th[colspan] a:link, th[colspan] a:visited, th[rowspan], th[rowspan] a:link, th[rowspan] a:visited {
+th[colspan], th[rowspan], th[rowspan] a:link, th[rowspan] a:visited {
 	background-color: black;
 	color: white;
 }
 thead th[colspan] {
 	text-align: center;
-	text-wrap: wrap;
+}
+th[rowspan] {
+	vertical-align: middle;
+}
+th[rowspan] div {
+	transform: rotate(-90deg);
+	transform-origin: center right;
+	position: relative;
+	left: -1.5em;
+	display: block;
+	margin: 0;
+	padding: 0;
+	text-wrap: nowrap;
 }
 .mapping {
 	width: calc(100% - 1ex);
@@ -46,6 +59,9 @@ thead {
 th { 
 	left: 0; 
 	z-index: 1; 
+}
+td .mapping
+{
 }
 .rch {
 	background-color: #F9F9F9;
