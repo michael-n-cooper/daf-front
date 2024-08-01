@@ -18,7 +18,7 @@ function generateMatrix(data, baseUri) {
 
     // row 1: functional ability groups
     let row1 = document.createElement("tr");
-    createEmptyCells(row1);
+    createEmptyCells(row1, 1);
 
     functionalAbilityGroups.forEach(function (group) {
         let cell = document.createElement("th");
@@ -42,7 +42,7 @@ function generateMatrix(data, baseUri) {
 
     // row 2: functional abilities in each group
     let row2 = document.createElement("tr");
-    createEmptyCells(row2);
+    createEmptyCells(row2, 2);
 
     colNum = 3;
     functionalAbilityGroups.forEach(function (faGroup) {
@@ -289,10 +289,12 @@ function generateMatrix(data, baseUri) {
     //return (document.getElementsByTagName("table").item(0));
     document.dispatchEvent(new Event("MatrixTableCreated", {bubbles: true, composed: true}));
 
-    function createEmptyCells(row) {
-        for (i = 0; i <= 1; i++) {
+    function createEmptyCells(row, rowNum) {
+        for (i = 1; i <= 2; i++) {
             let cell = document.createElement("td");
             cell.classList.add("topleft");
+            cell.classList.add("row" + rowNum);
+            cell.classList.add("col" + i);
             row.append(cell);
         }
     }
