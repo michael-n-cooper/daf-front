@@ -5,7 +5,7 @@ td, th {
 	scroll-snap-align: start;
 }
 th[rowspan] {
-	max-width: 3em;
+	min-width: 3ex;
 	vertical-align: middle;
 	writing-mode: sideways-lr;
 	text-wrap: wrap;
@@ -13,8 +13,8 @@ th[rowspan] {
 td {
 	padding: 0;
 }
-th[colspan], th[rowspan], th[rowspan] a:link, th[rowspan] a:visited {
-	background-color: grey;
+th[colspan], th[colspan] a:link, th[colspan] a:visited, th[rowspan], th[rowspan] a:link, th[rowspan] a:visited {
+	background-color: black;
 	color: white;
 }
 thead th[colspan] {
@@ -46,9 +46,6 @@ thead {
 th { 
 	left: 0; 
 	z-index: 1; 
-}
-td .mapping
-{
 }
 .rch {
 	background-color: #F9F9F9;

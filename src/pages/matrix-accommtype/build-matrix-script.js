@@ -286,6 +286,7 @@ function generateMatrix(data, baseUri) {
         let span = document.createElement("span");
         span.class = "total";
         span.append(document.createTextNode(" (" + counts[c] + ") "));
+        cell.append(document.createTextNode(" "));
         cell.append(span);
     });
     //return (document.getElementsByTagName("table").item(0));
