@@ -1,5 +1,5 @@
 // this script runs in JSDOM and must be in CommonJS
-function generateMatrix(data) {
+function generateMatrix(data, baseUri) {
     let accessibilityCharacteristicGroups = data.accessibilityCharacteristicGroups;
     let accommodationTypes = data.accommodationTypes;
     let functionalAbilityGroups = data.functionalAbilityGroups;
@@ -9,28 +9,27 @@ function generateMatrix(data) {
     const table = document.createElement("table");
     table.id = "matrixTable";
 
-    const base = "http://localhost:4321/";
     const counts = new Array();
+    let rowNum = 1;
+    let colNum = 1;
 
     //thead
     let thead = document.createElement("thead");
 
-    // row 1: accessibility characteristic groups
+    // row 1: functional ability groups
     let row1 = document.createElement("tr");
-    row1.append(
-        document.createElement("td"),
-        document.createElement("td")
-    );
+    createEmptyCells(row1);
 
-    accessibilityCharacteristicGroups.forEach(function (group) {
+    functionalAbilityGroups.forEach(function (group) {
         let cell = document.createElement("th");
         cell.id = idFrag(group.id);
         cell.scope = "colgroup";
+        cell.classList.add("row" + rowNum);
 
         let link = document.createElement("a");
         link.href =
-            base +
-            "accessibility-characteristic-groups/" +
+            baseUri +
+            "functional-ability-groups/" +
             idFrag(group.id);
         link.append(document.createTextNode(group.label));
 
@@ -39,100 +38,110 @@ function generateMatrix(data) {
     });
 
     thead.append(row1);
+    rowNum++;
 
-    // row 2: accessibility characteristics in each group
+    // row 2: functional abilities in each group
     let row2 = document.createElement("tr");
-    row2.append(
-        document.createElement("td"),
-        document.createElement("td")
-    );
+    createEmptyCells(row2);
 
-    accessibilityCharacteristicGroups.forEach(function (charGroup) {
-        counts[idFrag(charGroup.id)] = 0;
+    colNum = 3;
+    functionalAbilityGroups.forEach(function (faGroup) {
+        counts[idFrag(faGroup.id)] = 0;
 
-        row1.cells[idFrag(charGroup.id)].colSpan = charGroup.members.length;
+        row1.cells[idFrag(faGroup.id)].colSpan = faGroup.members.length;
+        row1.cells[idFrag(faGroup.id)].classList.add("col" + colNum);
 
-        charGroup.members.forEach(function (item) {
+        faGroup.members.forEach(function (item) {
             counts[idFrag(item.id)] = 0;
 
             let cell = document.createElement("th");
             cell.id = idFrag(item.id);
             cell.scope = "col";
+            cell.classList.add("row" + rowNum);
+            cell.classList.add("col", colNum);
 
             let link = document.createElement("a");
             link.href =
-                base +
-                "accessibility-characteristics/" +
+                baseUri +
+                "functional-abilities/" +
                 idFrag(item.id);
             link.append(document.createTextNode(item.label));
 
             cell.append(link);
             row2.append(cell);
+
+            colNum++;
         });
     });
 
     thead.append(row2);
+    rowNum++;
 
     table.append(thead);
 
     //tbody
     let tbody = document.createElement("tbody");
+    colNum = 4;
 
-    // functional ability groups
-    functionalAbilityGroups.forEach(function (faGroup) {
-        let fagRow = document.createElement("tr");
+    // accessibility characteristic groups
+    accessibilityCharacteristicGroups.forEach(function (acGroup) {
+        let acgRow = document.createElement("tr");
 
-        counts[idFrag(faGroup.id)] = 0;
+        counts[idFrag(acGroup.id)] = 0;
 
         //col 1 header
-        let fagCell = document.createElement("th");
-        fagCell.id = idFrag(faGroup.id);
-        fagCell.scope = "rowgroup";
-        fagCell.rowSpan = faGroup.members.length * accommodationTypes.length;
+        let acgCell = document.createElement("th");
+        acgCell.id = idFrag(acGroup.id);
+        acgCell.scope = "rowgroup";
+        acgCell.rowSpan = acGroup.members.length * accommodationTypes.length;
+        acgCell.classList.add("row" + rowNum);
+        acgCell.classList.add("col1");
+        
+        let acgLink = document.createElement("a");
+        acgLink.href =
+            baseUri + "functional-ability-groups/" + idFrag(acGroup.id);
+        acgLink.append(document.createTextNode(acGroup.label));
 
-        let fagLink = document.createElement("a");
-        fagLink.href =
-            base + "functional-ability-groups/" + idFrag(faGroup.id);
-        fagLink.append(document.createTextNode(faGroup.label));
+        acgCell.append(acgLink);
+        acgRow.append(acgCell);
 
-        fagCell.append(fagLink);
-        fagRow.append(fagCell);
+        // accessibility characteristics in each group
+        let acMembers = acGroup.members;
+        let acCount = 0;
+        acMembers.forEach(function (characteristic) {
+            let acRow =
+                acCount == 0 ? acgRow : document.createElement("tr");
+            acCount++;
 
-        // functional abilities in each group
-        let faMembers = faGroup.members;
-        let faCount = 0;
-        faMembers.forEach(function (functionalAbility) {
-            let faRow =
-                faCount == 0 ? fagRow : document.createElement("tr");
-            faCount++;
-
-            let functionalAbilityId =
-                idFrag(faGroup.id) + "+" + idFrag(functionalAbility.id);
-            counts[functionalAbilityId] = 0;
+            let characteristicId =
+                idFrag(acGroup.id) + "+" + idFrag(characteristic.id);
+            counts[characteristicId] = 0;
 
             //col 2 header
-            let faCell = document.createElement("th");
-            faCell.id = functionalAbilityId;
-            faCell.scope = "rowgroup";
-            faCell.rowSpan = accommodationTypes.length;
+            let acCell = document.createElement("th");
+            acCell.id = characteristicId;
+            acCell.scope = "rowgroup";
+            acCell.rowSpan = accommodationTypes.length;
+            acCell.classList.add("row" + rowNum);
+            acCell.classList.add("col2");
 
-            let faLink = document.createElement("a");
-            faLink.href =
-                base +
-                "functional-abilities/" +
-                idFrag(functionalAbility.id);
-            faLink.append(
-                document.createTextNode(functionalAbility.label)
+            let acLink = document.createElement("a");
+            acLink.href =
+                baseUri +
+                "accessibility-characteristics/" +
+                idFrag(characteristic.id);
+            acLink.append(
+                document.createTextNode(characteristic.label)
             );
 
-            faCell.append(faLink);
-            faRow.append(faCell);
+            acCell.append(acLink);
+            acRow.append(acCell);
 
             let accTypeCount = 0;
             accommodationTypes.forEach(function (accommodationType) {
                 let accTypeRow =
                     accTypeCount == 0
-                        ? faRow
+                        ? acRow
                         : document.createElement("tr");
                 accTypeCount++;
 
@@ -142,10 +151,12 @@ function generateMatrix(data) {
                 let accTypeCell = document.createElement("th");
                 accTypeCell.id = idFrag(accommodationType.id);
                 accTypeCell.scope = "row";
+                accTypeCell.classList.add("row" + rowNum);
+                accTypeCell.classList.add("col3");
 
                 let accTypeLink = document.createElement("a");
                 accTypeLink.href =
-                    base +
+                    baseUri +
                     "accommodation-types/" +
                     idFrag(accommodationType.id);
                 accTypeLink.append(
@@ -155,12 +166,14 @@ function generateMatrix(data) {
                 accTypeCell.append(accTypeLink);
                 accTypeRow.append(accTypeCell);
 
-                // accessibility characteristic groups and individuals
-                accessibilityCharacteristicGroups.forEach(
-                    function (charGroup) {
-                        charGroup.members.forEach(
-                            function (characteristic) {
+                // functional ability groups and individuals
+                functionalAbilityGroups.forEach(
+                    function (faGroup) {
+                        faGroup.members.forEach(
+                            function (functionalAbility) {
                                 let cell = document.createElement("td");
+                                cell.classList.add("row" + rowNum);
+                                cell.classList.add("col" + colNum);
 
                                 let maps = filterObjectByProperties(
                                     simpleCurveMaps,
@@ -208,7 +221,7 @@ function generateMatrix(data) {
                                                     "a"
                                                 );
                                             link.href =
-                                                base +
+                                                baseUri +
                                                 "statements/" +
                                                 idFrag(map.stmtId);
                                             link.class = idFrag(
@@ -224,17 +237,17 @@ function generateMatrix(data) {
                                             list.append(item);
 
                                             counts[
-                                                idFrag(charGroup.id)
+                                                idFrag(faGroup.id)
                                             ]++;
                                             counts[
                                                 functionalAbilityId
                                             ]++;
                                             counts[
-                                                idFrag(charGroup.id)
+                                                idFrag(faGroup.id)
                                             ]++;
                                             counts[
                                                 idFrag(
-                                                    characteristic.id
+                                                    functionalNeed.id
                                                 )
                                             ]++;
                                         }
@@ -246,11 +259,14 @@ function generateMatrix(data) {
                                 }
 
                                 accTypeRow.append(cell);
+                                colNum++;
                             }
                         );
                     }
                 );
                 tbody.append(accTypeRow);
+                rowNum++;
+                colNum = 4;
             });
         });
     });
@@ -261,13 +277,25 @@ function generateMatrix(data) {
     let countIterator = Object.keys(counts);
     countIterator.forEach(function (c) {
         let cell = document.getElementById(c);
+        let div = cell.firstElementChild.firstElementChild;
+        let insertInto = div == null ? cell : div;
+
         let span = document.createElement("span");
         span.class = "total";
         span.append(document.createTextNode(" (" + counts[c] + ") "));
-        cell.append(span);
+        insertInto.append(document.createTextNode(" "));
+        insertInto.append(span);
     });
     //return (document.getElementsByTagName("table").item(0));
     document.dispatchEvent(new Event("MatrixTableCreated", {bubbles: true, composed: true}));
+
+    function createEmptyCells(row) {
+        for (i = 0; i <= 1; i++) {
+            let cell = document.createElement("td");
+            cell.classList.add("topleft");
+            row.append(cell);
+        }
+    }
 }
 
 // Function to find an object based on multiple properties
