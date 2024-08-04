@@ -179,7 +179,7 @@ function generateMatrix(data, baseUri) {
                                     simpleCurveMaps,
                                     {
                                         abilityId: functionalAbility.id,
-                                        accomId: accommodationType.id,
+                                        accommId: accommodationType.id,
                                         charId: characteristic.id,
                                     }
                                 );
@@ -240,14 +240,14 @@ function generateMatrix(data, baseUri) {
                                                 idFrag(faGroup.id)
                                             ]++;
                                             counts[
-                                                functionalAbilityId
+                                                idFrag(functionalAbility.id)
                                             ]++;
                                             counts[
                                                 idFrag(faGroup.id)
                                             ]++;
                                             counts[
                                                 idFrag(
-                                                    functionalNeed.id
+                                                    accommodationType.id
                                                 )
                                             ]++;
                                         }
@@ -302,21 +302,27 @@ function generateMatrix(data, baseUri) {
 
 // Function to find an object based on multiple properties
 function findObjectByProperties(array, properties) {
-    return array.find((obj) => {
-        // Check if all specified properties match
-        return Object.keys(properties).every((key) =>
-            compareStr(obj[key], properties[key])
-        );
-    });
+	return array.find(obj => {
+		// Check if all specified properties match
+		return Object.getOwnPropertyNames(properties).every(key => {
+			//console.log ("key: " + key + "; obj: " + obj[key] + "; property: " + properties[key])
+			if (compareStr(obj[key], properties[key])) return obj;
+		});
+	});
 }
 function filterObjectByProperties(array, properties) {
-    return array.filter((obj) => {
-        // Check if all specified properties match
-        return Object.keys(properties).every((key) =>
-            compareStr(obj[key], properties[key])
-        );
-    });
+	return array.filter(obj => {
+		// Check if all specified properties match
+		return Object.getOwnPropertyNames(properties).every(key => {
+			//console.log ("key: " + key + "; obj: " + obj[key] + "; property: " + properties[key])
+			if (compareStr(obj[key], properties[key])) return obj;
+		});
+	});
 }
 function idFrag(uri) {
     return uri.substring(uri.indexOf("#") + 1);
+}
+function compareStr(str1, str2) {
+	if (str1.trim().replace(/\s+/g, ' ').toLowerCase() == str2.trim().replace(/\s+/g, ' ').toLowerCase()) return true;
+	else return false;
 }
