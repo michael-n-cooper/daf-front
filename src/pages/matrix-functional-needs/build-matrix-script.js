@@ -128,7 +128,7 @@ function generateMatrix(data, baseUri) {
 
 								var item = document.createElement("li");
 								var link = document.createElement("a");
-								link.href = baseUri + "statements/" + idFrag(map.stmtId);
+								link.href = baseUri + "guidance-statements/" + idFrag(map.stmtId);
 								link.class = idFrag(map.stmtId);
 								link.title = stmt.stmt;
 								link.append(document.createTextNode(stmt.label));

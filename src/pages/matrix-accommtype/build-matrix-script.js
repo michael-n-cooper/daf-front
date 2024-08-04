@@ -222,7 +222,7 @@ function generateMatrix(data, baseUri) {
                                                 );
                                             link.href =
                                                 baseUri +
-                                                "statements/" +
+                                                "guidance-statements/" +
                                                 idFrag(map.stmtId);
                                             link.class = idFrag(
                                                 map.stmtId
