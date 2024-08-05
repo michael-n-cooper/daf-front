@@ -40,7 +40,6 @@ ul {
 	margin-top: 0;
 }
 #matrix {
-	max-width: 100vw;
 	max-height: calc(100vh - 10em);
 	overflow: auto;
 	scroll-snap-type: x mandatory;
@@ -89,4 +88,14 @@ td.row1.topleft {
 }
 td.col1.topleft {
 	border-left: thin solid white;
+}
+#disclaimer {
+	color:#F9F9F9;
+	position: fixed;
+	z-index: -1;
+	width: 100vw;
+	font-size: 8vw;
+	font-weight: bold;
+	text-align: center;
+	transform: translateY(50%);
 }
