@@ -14,10 +14,14 @@ td {
 th {
 	border: thin solid white;
 	min-width: 3ex;
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
 }
 th, th a:link, th a:visited {
 	background-color: black;
 	color: white;
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
 }
 thead th[colspan] {
 	text-align: center;
@@ -66,7 +70,8 @@ td .mapping
 	background-color: #ffffcc;
 }
 .na {
-	background-color: #DDDDDD;
+	background-color: black;
+	opacity: .1;
 }
 *[popover] {
 	margin: 0;
@@ -82,20 +87,50 @@ footer {
 }
 td.topleft {
 	background-color: black;
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
 }
 td.row1.topleft {
-	border-top: thin solid white;
+	border-top: thin solid transparent;
 }
 td.col1.topleft {
-	border-left: thin solid white;
+	border-left: thin solid transparent;
 }
 #disclaimer {
 	color:#F9F9F9;
 	position: fixed;
 	z-index: -1;
-	width: 100vw;
-	font-size: 8vw;
+	text-transform: uppercase;
+	width: 70vw;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 7vw;
 	font-weight: bold;
 	text-align: center;
-	transform: translateY(50%);
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%);
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
+}
+@media print {
+	#matrix {
+		max-height: 100%;
+	}
+	#disclaimer {
+		color:#F9F9F9;
+	}
+	a, a:link, a:visited {
+		color: black;
+		print-color-adjust: exact !important;
+	}
+	th, th a:link, th a:visited {
+		background-color: black !important;
+		color: white !important;
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+	}
+}
+thead {
+	display: table-header-group;
 }
