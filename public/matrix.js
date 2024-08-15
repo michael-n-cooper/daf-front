@@ -181,6 +181,18 @@ function sizeTable(event) {
 	}
 }
 
+function shrinkTable(event) {
+	const matrix = document.getElementById("matrix");
+	const table = document.getElementById("matrixTable");
+	let proportion = matrix.clientWidth / table.scrollWidth;
+	table.style = "width: " + 100 * proportion + "%; font-size: " + 100 * proportion + "% ";
+}
+
+function unshrinkTable(event) {
+	const table = document.getElementById("matrixTable");
+	table.style = "";
+}
+
 function togglePopovers(event) {
 	if (this.checked) attachPopovers();
 	else removePopovers();
@@ -228,6 +240,9 @@ function attachListeners() {
 
 	const showPopupsControl = document.getElementById("showPopupsControl");
 	showPopupsControl.addEventListener("change", togglePopovers);
+
+	window.addEventListener("beforePrint", shrinkTable);
+	window.addEventListener("afterprint", unshrinkTable);
 }
 
 

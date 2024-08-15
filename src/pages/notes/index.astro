@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {baseUri, idFrag, apiGet, mdToHtml } from '../../script/util.js';
+
+const section = "statements"
+const json = await apiGet(section);
+
+const notes = json.filter(stmt => stmt.note != null);
+---
+<style is:global>
+	p.stmtlink {
+		margin: 0;
+		margin-right: 1ex;
+		float: left;
+	}
+</style>
+<Layout title="Guidance statements">
+<p>{notes.length} notes in guidance statements:</p> 
+{notes.map((statement) => <div><p class="stmtlink"><a href={baseUri + 'guidance-statements/' + idFrag(statement.id)}>{statement.label}</a></p><Fragment set:html={mdToHtml(statement.note)}></Fragment></div>)}
+</Layout>
+

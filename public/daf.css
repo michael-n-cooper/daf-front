@@ -3,6 +3,9 @@ body {
 	background-color: white;
 	color: black;
 }
+body * {
+	background-color: transparent;
+}
 footer {
 	margin-top: 5em;
 	border-top: medium outset silver;
@@ -33,6 +36,6 @@ td, th {
 	padding: .5ex;
 	vertical-align: top;
 	text-align: left;
-	background-color: white;
+	background-color: transparent;
 	color: black;
 }

@@ -29,8 +29,8 @@ json[0].mappings.forEach(async function(mapping) {
 const richerMappings = await Promise.all(rm).then((val) => cleanMappings(val));
 
 let actm = new Array();
-json[0]["accommtype-mappings"].forEach(async function(mapping) {
-	let detail = apiGet("accommtype-mappings/" + idFrag(mapping.id));
+json[0]["simple-curve-maps"].forEach(async function(mapping) {
+	let detail = apiGet("simple-curve-maps/" + idFrag(mapping.id));
 	actm.push(detail);
 });
 const accommTypeMappings = await Promise.all(actm).then((val) => cleanMappings(val));
