@@ -290,7 +290,7 @@ function generateMatrix(data, baseUri) {
     document.dispatchEvent(new Event("MatrixTableCreated", {bubbles: true, composed: true}));
 
     function createEmptyCells(row, rowNum) {
-        for (i = 1; i <= 2; i++) {
+        for (i = 1; i <= 3; i++) {
             let cell = document.createElement("td");
             cell.classList.add("topleft");
             cell.classList.add("row" + rowNum);
