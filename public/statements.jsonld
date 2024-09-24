@@ -27,7 +27,7 @@
                 "@id": "http://www.w3.org/2002/07/owl#Thing"
             },
             {
-                "@id": "_:node1328"
+                "@id": "_:node1880"
             }
         ]
     },
@@ -41,7 +41,7 @@
                 "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
             },
             {
-                "@id": "_:node1322"
+                "@id": "_:node1874"
             }
         ]
     },
@@ -55,7 +55,7 @@
                 "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
             },
             {
-                "@id": "_:node1335"
+                "@id": "_:node1887"
             }
         ]
     },
@@ -102,7 +102,7 @@
                 "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
             },
             {
-                "@id": "_:node1319"
+                "@id": "_:node1871"
             }
         ]
     },
@@ -116,7 +116,7 @@
                 "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
             },
             {
-                "@id": "_:node1321"
+                "@id": "_:node1873"
             }
         ]
     },
@@ -172,7 +172,7 @@
                 "@id": "http://www.w3.org/2002/07/owl#Thing"
             },
             {
-                "@id": "_:node1320"
+                "@id": "_:node1872"
             }
         ]
     },
@@ -208,13 +208,13 @@
                 "@id": "https://aihal.net/accessibility/daf/#Mapping"
             },
             {
-                "@id": "_:node1325"
+                "@id": "_:node1877"
             },
             {
-                "@id": "_:node1326"
+                "@id": "_:node1878"
             },
             {
-                "@id": "_:node1327"
+                "@id": "_:node1879"
             }
         ]
     },
@@ -228,13 +228,13 @@
                 "@id": "https://aihal.net/accessibility/daf/#Mapping"
             },
             {
-                "@id": "_:node1329"
+                "@id": "_:node1881"
             },
             {
-                "@id": "_:node1330"
+                "@id": "_:node1882"
             },
             {
-                "@id": "_:node1331"
+                "@id": "_:node1883"
             }
         ]
     },
@@ -410,7 +410,7 @@
                 "@id": "http://www.w3.org/2002/07/owl#Thing"
             },
             {
-                "@id": "_:node1267"
+                "@id": "_:node1819"
             }
         ],
         "http://www.w3.org/2000/01/rdf-schema#range": [
@@ -1377,10 +1377,10 @@
                 "@id": "https://aihal.net/accessibility/daf/#CurveMapping"
             },
             {
-                "@id": "_:node1323"
+                "@id": "_:node1875"
             },
             {
-                "@id": "_:node1324"
+                "@id": "_:node1876"
             }
         ]
     },
@@ -1394,35 +1394,13 @@
                 "@id": "https://aihal.net/accessibility/daf/#CurveMapping"
             },
             {
-                "@id": "_:node1332"
+                "@id": "_:node1884"
             },
             {
-                "@id": "_:node1333"
+                "@id": "_:node1885"
             },
             {
-                "@id": "_:node1334"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#02269ca6-8039-4a44-93a9-f0c6b6979b54",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#unusual-words"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "Unusual Words"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
+                "@id": "_:node1886"
             }
         ]
     },
@@ -1435,83 +1413,6 @@
             {
                 "@language": "en",
                 "@value": "guidelines"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#024f8297-831d-4433-825a-0d6c8aa65e84",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement",
-            "http://www.w3.org/2002/07/owl#NamedIndividual"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Avoid overwhelming visuals"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e60daf35-a178-4bce-80cf-e6e46a229c50"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d74745ac-e81b-45ba-8cf3-c7f42a1dd3af"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7f4ca011-41ed-43be-bb31-73a1cf8f02cc"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6040826d-9fb2-45ff-9d3a-1a9f7c075862"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a1ff813a-74a2-45b4-8584-9f36e196b70d"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f2198ad2-ca31-4bd1-b3a4-fb73d404dfce"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-overwhelming-visuals.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#90880a18-6612-4fe2-b60e-ebe52ff261e2"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": "As a user with limited vision or who is easily overwhelmed by certain types of visual stimuli, I need to avoid visual events that may overload my perception."
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#note": [
-            {
-                "@language": "en",
-                "@value": "Note: Some of these issues may be due to motion or due to bold static patterns."
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#90880a18-6612-4fe2-b60e-ebe52ff261e2",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-5-a"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-5-a to avoid visual overloads"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
             }
         ]
     },
@@ -1624,167 +1525,6 @@
         ]
     },
     {
-        "@id": "https://aihal.net/accessibility/daf/#1d8f5d83-3937-4795-8998-87c39c401c8c",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#reading-level"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "Reading Level"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#1f7355e4-73b7-4f12-8676-3aeda1d352f2",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement",
-            "http://www.w3.org/2002/07/owl#NamedIndividual"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Alerts in appropriate modality"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2075f765-4945-486e-b0e9-afaa075bb96c"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#fbac8232-fe6d-49f5-9fb5-b56a68193824"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/alert-modality.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#34a8597f-ec81-4eb5-a353-49a49d60b373"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#532f4fed-a59e-4f92-950d-97ff6a400f54"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#46f54a13-176e-45c3-aa1f-03f68a19a27c"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#2b25c452-941b-4ab4-8665-0cc670e7c35f"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": "As a person who is most sensitive to alerts in a specific modality, I need to receive alerts regarding the existence of critically important information in a specific modality (auditory, visual, or tactile) regardless of the modality of the information itself."
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#tags": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5975c095-6121-4586-aa02-3abf11ff6b24"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#34a8597f-ec81-4eb5-a353-49a49d60b373",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-6"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-6 to have attention drawn to critically important information in the appropriate modality, form, and language"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#532f4fed-a59e-4f92-950d-97ff6a400f54",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-6-a"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-6-a to receive auditory alerts regarding the existence of critically important information (regardless of the modality of the information itself)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#46f54a13-176e-45c3-aa1f-03f68a19a27c",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-6-b"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-6-b to receive visual alerts regarding the existence of critically important information (regardless of the modality of the information itself)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#2b25c452-941b-4ab4-8665-0cc670e7c35f",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-6-c"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-6-c to receive tactile alerts regarding the existence of critically important information (regardless of the modality of the information itself)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2075f765-4945-486e-b0e9-afaa075bb96c",
         "@type": [
             "https://aihal.net/accessibility/daf/#MatrixMapping",
@@ -1833,50 +1573,6 @@
         ]
     },
     {
-        "@id": "https://aihal.net/accessibility/daf/#38e23921-7ba2-422c-8be4-1d5bdb24a4d6",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#support-simplification-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.9.3 Support Simplification (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#3cfdf341-8a4f-47bb-9007-586f5bd36f04",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#support-a-personalized-and-familiar-interface-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.9.4 Support a Personalized and Familiar Interface (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://aihal.net/accessibility/daf/#4bd95df0_27d4_4de2_b173_bc8f8c8b2504",
         "@type": [
             "http://www.w3.org/2002/07/owl#Class"
@@ -1894,28 +1590,6 @@
         ]
     },
     {
-        "@id": "https://aihal.net/accessibility/daf/#4f04b652-dac0-48a2-be3f-b3086b52641c",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#contrast-enhanced"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.6 Contrast (Enhanced)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://aihal.net/accessibility/daf/#52dd56da-a411-417e-a152-d83837a93973",
         "@type": [
             "https://aihal.net/accessibility/daf/#Reference"
@@ -1929,95 +1603,6 @@
             {
                 "@language": "en",
                 "@value": "5-5-d to avoid cognitive overloads"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#5bffffcf-a6ca-4a11-ad47-16fe0bc161cd",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-5-c"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-4-5-c to limit heat (and other forms of radiation) from devices to avoid injury/discomfort to the user"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#6370f528-e7ac-4ff8-bc81-2de6dd1f769d",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement",
-            "http://www.w3.org/2002/07/owl#NamedIndividual"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Avoid excessive vibration"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7f4ca011-41ed-43be-bb31-73a1cf8f02cc"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6040826d-9fb2-45ff-9d3a-1a9f7c075862"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-excessive-vibration.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#b5cfdae0-0d71-4c8f-b1d0-f29035e2a87c"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": "As a person who is using tactile features of a devices who may be sensitive to or overwhelmed by vibration, I need devices to limit the amount of vibration so that it does not interfere with my ability to perceive tactile information."
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#tags": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5975c095-6121-4586-aa02-3abf11ff6b24"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#b5cfdae0-0d71-4c8f-b1d0-f29035e2a87c",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-5-b"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-4-5-b to limit vibration to avoid interfering with perception of tactile information"
             }
         ],
         "https://aihal.net/accessibility/daf/#refType": [
@@ -2101,221 +1686,6 @@
         ]
     },
     {
-        "@id": "https://aihal.net/accessibility/daf/#7189ca4d-85da-4750-8c26-5fe6dbd58d83",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-2-g"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-4-2-g to avoid haptic effects that prevent executing a tactile task"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#774f87a5-74cc-473a-8bf0-ebe4fdb1c27f",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#non-text-contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.11 Non-text Contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#8f7cebf3-a7d8-41fa-9ded-9f1b4f0ac86f",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-2-2-e"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-2-2-e to have simplified text"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#908a49e4-d0c1-47d6-9749-58f8f7e5ceb8",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://getevinced.github.io/mcag/#text-color-contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.1. Text Color Contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#94f082ec-969b-47ab-978c-8d6d08dd00e0",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement",
-            "http://www.w3.org/2002/07/owl#NamedIndividual"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Alternate Versions"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0e985e52-f221-4c8d-b367-dc48e83bf824"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/alternate-versions.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#02269ca6-8039-4a44-93a9-f0c6b6979b54"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#1d8f5d83-3937-4795-8998-87c39c401c8c"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#38e23921-7ba2-422c-8be4-1d5bdb24a4d6"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#3cfdf341-8a4f-47bb-9007-586f5bd36f04"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#8f7cebf3-a7d8-41fa-9ded-9f1b4f0ac86f"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#c6eaa6a5-7db7-4f00-a231-a8f9fb1b9887"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#d9c75f78-4d0b-4053-a030-1e44fe8f597f"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#b02a4b63-b629-4a3c-ba3f-175dd2075230"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": "As a user with limited ability to interpret content, I need alternative versions of content (iconography, simplified, summarized, etc.)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#note": [
-            {
-                "@language": "en",
-                "@value": "This includes both the alternative versions from the author perspective adn the need to allow AT to present alternatives."
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#c6eaa6a5-7db7-4f00-a231-a8f9fb1b9887",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#abbreviations"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "Abbreviations"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#d9c75f78-4d0b-4053-a030-1e44fe8f597f",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#pronunciation"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "Pronunciation"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#b02a4b63-b629-4a3c-ba3f-175dd2075230",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/coga-usable/#provide-alternative-content-for-complex-information-and-tasks-pattern"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "4.8.2 Provide Alternative Content for Complex Information and Tasks (Pattern)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#0e985e52-f221-4c8d-b367-dc48e83bf824",
         "@type": [
             "https://aihal.net/accessibility/daf/#MatrixMapping",
@@ -2330,82 +1700,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6c299fff-a166-455c-8dcb-0b7390d4fb6e"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#9f696abe-06fe-4d97-92d2-ba06e886b90f",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement",
-            "http://www.w3.org/2002/07/owl#NamedIndividual"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Avoid excessive heat"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7f4ca011-41ed-43be-bb31-73a1cf8f02cc"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6040826d-9fb2-45ff-9d3a-1a9f7c075862"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#535be4a4-a226-4f89-b141-c3b6b8281a93"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d6fc0297-861d-4ef0-8970-be5a58c9470c"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-excessive-heat.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#5bffffcf-a6ca-4a11-ad47-16fe0bc161cd"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#d262d84c-155c-4c6b-8a57-6e3179c1bde3"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": "As a person who is using tactile features of a devices who may be sensitive to or overwhelmed by heat, I need devices to limit the amount of heat (or other radiation) felt at touch points so that it (a) does not interfere with my ability to perceive tactile information and (b) does not cause discomfort or injury."
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#tags": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5975c095-6121-4586-aa02-3abf11ff6b24"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f629947b-8b34-4729-bc0c-0712e3571228"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#d262d84c-155c-4c6b-8a57-6e3179c1bde3",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-5-a"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-4-5-a to limit heat from devices to avoid interfering with perception of tactile information"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
             }
         ]
     },
@@ -2442,118 +1736,6 @@
             },
             {
                 "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#057b5d27-6d1f-46a7-bf79-d47582f0f447"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#a3685839-b755-455c-a6ca-0af383c839b7",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-4-1-b"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-4-1-b to have controls that visually contrast with their surroundings"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#aa39e8f3-f635-4aca-9132-fe27e0466994",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement",
-            "http://www.w3.org/2002/07/owl#NamedIndividual"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Nontext Contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e60daf35-a178-4bce-80cf-e6e46a229c50"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d74745ac-e81b-45ba-8cf3-c7f42a1dd3af"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/nontext-contrast.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#774f87a5-74cc-473a-8bf0-ebe4fdb1c27f"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#a3685839-b755-455c-a6ca-0af383c839b7"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#bfaf2fde-5942-483d-ae7a-3c7ce88e9e2d"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#b559eeb0-9da6-4e71-a0ef-74ba6511ceb0"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": "As a user with low vision, I need user interface components and graphical objects to have sufficient contrast with adjacent colors."
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#bfaf2fde-5942-483d-ae7a-3c7ce88e9e2d",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-2-1-d"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-2-1-d to have foreground colours sufficiently contrast with background colours"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#b559eeb0-9da6-4e71-a0ef-74ba6511ceb0",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-2-1-e"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-2-1-e to have sufficient contrast between colours"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
             }
         ]
     },
@@ -2606,28 +1788,6 @@
         ]
     },
     {
-        "@id": "https://aihal.net/accessibility/daf/#aba6a10f-ff2f-4427-8534-6536186b4c2c",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-2-5-f"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-2-5-f to silence audio output"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://aihal.net/accessibility/daf/#b0a64ec1-cdf3-4808-a791-ad21d1d728c4",
         "@type": [
             "https://aihal.net/accessibility/daf/#MatrixMapping",
@@ -2659,101 +1819,6 @@
         ]
     },
     {
-        "@id": "https://aihal.net/accessibility/daf/#b14b39a7-757d-43c5-9d2c-6beeab757fe3",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement",
-            "http://www.w3.org/2002/07/owl#NamedIndividual"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Text Contrast"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#e60daf35-a178-4bce-80cf-e6e46a229c50"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#d74745ac-e81b-45ba-8cf3-c7f42a1dd3af"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/text-contrast.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#4f04b652-dac0-48a2-be3f-b3086b52641c"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#908a49e4-d0c1-47d6-9749-58f8f7e5ceb8"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#b51b15f5-a7b5-4c0d-8ec5-bbd254c88a60"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#f4b92590-1ff2-4867-afda-1e7e6b1acff6"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": "As a user with low vision, I need text to have sufficient contrast with its background."
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#tags": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f0e1ea99-ceba-4233-b603-b701290e6fa1"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#b51b15f5-a7b5-4c0d-8ec5-bbd254c88a60",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://www.w3.org/TR/WCAG22/#contrast-minimum"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "1.4.3 Contrast (Minimum)"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#f4b92590-1ff2-4867-afda-1e7e6b1acff6",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-2-2-c"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-2-2-c to have text contrasted with background"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
         "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f0e1ea99-ceba-4233-b603-b701290e6fa1",
         "@type": [
             "https://aihal.net/accessibility/daf/#Tag"
@@ -2762,122 +1827,6 @@
             {
                 "@language": "en",
                 "@value": "tag"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#e4bd5644-21fe-47aa-b465-05c7995246ea",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#Reference"
-        ],
-        "https://aihal.net/accessibility/daf/#refIRI": [
-            {
-                "@id": "https://github.com/jbjord/isoiec29138-1-2018-annexB#5-5-c"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refNote": [
-            {
-                "@language": "en",
-                "@value": "5-5-c to avoid tactile overloads"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#refType": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#2c77f5b5-09d7-4cac-ab10-3d5382792d84"
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#f15cb644-3f48-4a0e-b264-c4dd8906aab0",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement",
-            "http://www.w3.org/2002/07/owl#NamedIndividual"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Avoid overwhelming haptics"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#7f4ca011-41ed-43be-bb31-73a1cf8f02cc"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#6040826d-9fb2-45ff-9d3a-1a9f7c075862"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#a1ff813a-74a2-45b4-8584-9f36e196b70d"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#f2198ad2-ca31-4bd1-b3a4-fb73d404dfce"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/avoid-overwhelming-haptics.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#7189ca4d-85da-4750-8c26-5fe6dbd58d83"
-            },
-            {
-                "@id": "https://aihal.net/accessibility/daf/#e4bd5644-21fe-47aa-b465-05c7995246ea"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": "As a user who is easily overwhelmed by certain types of touch or haptic stimuli, I need to avoid haptic effects events that may overload my perception or prevent me from completing a tactile task."
-            }
-        ]
-    },
-    {
-        "@id": "https://aihal.net/accessibility/daf/#f4ff74a5-ff8b-45bc-a7ee-dba0453e6efb",
-        "@type": [
-            "https://aihal.net/accessibility/daf/#AccessibilityStatement",
-            "http://www.w3.org/2002/07/owl#NamedIndividual"
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@language": "en",
-                "@value": "Mute all audio"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#supports": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#c88d0661-d2b6-4e1b-b6e1-739f7ad8b33c"
-            },
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#9c25068f-1dab-47a2-b436-5433e7f90e6d"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#contentIRI": [
-            {
-                "@id": "https://github.com/accessiblecommunity/Digital-Accessibility-Framework/mute-audio.md"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#references": [
-            {
-                "@id": "https://aihal.net/accessibility/daf/#aba6a10f-ff2f-4427-8534-6536186b4c2c"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#stmtGuidance": [
-            {
-                "@language": "en",
-                "@value": "As a person using a system with audio output, I need the ability to silence or mute all audio output."
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#tags": [
-            {
-                "@id": "https://github.com/michael-n-cooper/a11y-data/daf/#5975c095-6121-4586-aa02-3abf11ff6b24"
-            }
-        ],
-        "https://aihal.net/accessibility/daf/#note": [
-            {
-                "@language": "en",
-                "@value": "There may be many reasons people need to be able to mute the audio output:\n* Because it is distracting or overwhelming\n* Because it conflicts with audio from another task the user is working on\n* Because a user wants custom music or audio\n* Because it conflicts with audio from assistive technology\n* Because the user needs to remain silent in the current environment or circumstances"
             }
         ]
     },
@@ -43505,109 +42454,109 @@
         ]
     },
     {
-        "@id": "_:node1268",
+        "@id": "_:node1820",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1271",
+        "@id": "_:node1823",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1274",
+        "@id": "_:node1826",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1277",
+        "@id": "_:node1829",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1280",
+        "@id": "_:node1832",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1283",
+        "@id": "_:node1835",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1286",
+        "@id": "_:node1838",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1289",
+        "@id": "_:node1841",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1292",
+        "@id": "_:node1844",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1295",
+        "@id": "_:node1847",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1298",
+        "@id": "_:node1850",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1301",
+        "@id": "_:node1853",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1304",
+        "@id": "_:node1856",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1307",
+        "@id": "_:node1859",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1310",
+        "@id": "_:node1862",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1313",
+        "@id": "_:node1865",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1316",
+        "@id": "_:node1868",
         "@type": [
             "http://www.w3.org/2002/07/owl#Restriction"
         ]
     },
     {
-        "@id": "_:node1270",
+        "@id": "_:node1822",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#AccessibilityCharacteristicGroup"
@@ -43615,7 +42564,7 @@
         ]
     },
     {
-        "@id": "_:node1273",
+        "@id": "_:node1825",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#MatrixDimension"
@@ -43623,7 +42572,7 @@
         ]
     },
     {
-        "@id": "_:node1276",
+        "@id": "_:node1828",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#FunctionalAbilityGroup"
@@ -43631,7 +42580,7 @@
         ]
     },
     {
-        "@id": "_:node1279",
+        "@id": "_:node1831",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#FunctionalNeedCategory"
@@ -43639,7 +42588,7 @@
         ]
     },
     {
-        "@id": "_:node1282",
+        "@id": "_:node1834",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#AbilityAccommodationIntersection"
@@ -43647,7 +42596,7 @@
         ]
     },
     {
-        "@id": "_:node1285",
+        "@id": "_:node1837",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#AccessibilityCharacteristic"
@@ -43655,7 +42604,7 @@
         ]
     },
     {
-        "@id": "_:node1288",
+        "@id": "_:node1840",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#IntersectionNeed"
@@ -43663,7 +42612,7 @@
         ]
     },
     {
-        "@id": "_:node1291",
+        "@id": "_:node1843",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#UserNeed"
@@ -43671,7 +42620,7 @@
         ]
     },
     {
-        "@id": "_:node1294",
+        "@id": "_:node1846",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#UserNeedRelevance"
@@ -43679,7 +42628,7 @@
         ]
     },
     {
-        "@id": "_:node1297",
+        "@id": "_:node1849",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#FunctionalNeed"
@@ -43687,7 +42636,7 @@
         ]
     },
     {
-        "@id": "_:node1300",
+        "@id": "_:node1852",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#UserNeed"
@@ -43695,7 +42644,7 @@
         ]
     },
     {
-        "@id": "_:node1303",
+        "@id": "_:node1855",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#UserNeedRelevance"
@@ -43703,7 +42652,7 @@
         ]
     },
     {
-        "@id": "_:node1306",
+        "@id": "_:node1858",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#AccessibilityCharacteristic"
@@ -43711,7 +42660,7 @@
         ]
     },
     {
-        "@id": "_:node1309",
+        "@id": "_:node1861",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#AccommodationType"
@@ -43719,7 +42668,7 @@
         ]
     },
     {
-        "@id": "_:node1312",
+        "@id": "_:node1864",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#FunctionalAbility"
@@ -43727,7 +42676,7 @@
         ]
     },
     {
-        "@id": "_:node1315",
+        "@id": "_:node1867",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#UserNeedCategory"
@@ -43735,7 +42684,7 @@
         ]
     },
     {
-        "@id": "_:node1318",
+        "@id": "_:node1870",
         "http://www.w3.org/2002/07/owl#someValuesFrom": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#Mapping"
@@ -43743,7 +42692,7 @@
         ]
     },
     {
-        "@id": "_:node1269",
+        "@id": "_:node1821",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43751,7 +42700,7 @@
         ]
     },
     {
-        "@id": "_:node1272",
+        "@id": "_:node1824",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43759,7 +42708,7 @@
         ]
     },
     {
-        "@id": "_:node1275",
+        "@id": "_:node1827",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43767,7 +42716,7 @@
         ]
     },
     {
-        "@id": "_:node1278",
+        "@id": "_:node1830",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43775,7 +42724,7 @@
         ]
     },
     {
-        "@id": "_:node1281",
+        "@id": "_:node1833",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43783,7 +42732,7 @@
         ]
     },
     {
-        "@id": "_:node1284",
+        "@id": "_:node1836",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43791,7 +42740,7 @@
         ]
     },
     {
-        "@id": "_:node1287",
+        "@id": "_:node1839",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43799,7 +42748,7 @@
         ]
     },
     {
-        "@id": "_:node1290",
+        "@id": "_:node1842",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43807,7 +42756,7 @@
         ]
     },
     {
-        "@id": "_:node1293",
+        "@id": "_:node1845",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43815,7 +42764,7 @@
         ]
     },
     {
-        "@id": "_:node1296",
+        "@id": "_:node1848",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43823,7 +42772,7 @@
         ]
     },
     {
-        "@id": "_:node1299",
+        "@id": "_:node1851",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43831,7 +42780,7 @@
         ]
     },
     {
-        "@id": "_:node1302",
+        "@id": "_:node1854",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43839,7 +42788,7 @@
         ]
     },
     {
-        "@id": "_:node1305",
+        "@id": "_:node1857",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43847,7 +42796,7 @@
         ]
     },
     {
-        "@id": "_:node1308",
+        "@id": "_:node1860",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43855,7 +42804,7 @@
         ]
     },
     {
-        "@id": "_:node1311",
+        "@id": "_:node1863",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43863,7 +42812,7 @@
         ]
     },
     {
-        "@id": "_:node1314",
+        "@id": "_:node1866",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
@@ -43871,7 +42820,7 @@
         ]
     },
     {
-        "@id": "_:node1317",
+        "@id": "_:node1869",
         "http://www.w3.org/2002/07/owl#onProperty": [
             {
                 "@id": "https://aihal.net/accessibility/daf/#supports"
