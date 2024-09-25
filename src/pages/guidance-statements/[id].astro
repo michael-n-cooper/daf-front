@@ -15,25 +15,27 @@ const json = await apiGet ("statements/" + id);
 
 function cleanMappings(mappingsResult) {
 	var res = new Array();
-	mappingsResult.forEach(function(mappingsResult) {
-		if (!findObjectByProperties(res, {"id": mappingsResult[0].id})) res.push(mappingsResult[0]);
+	mappingsResult.forEach(function(mapping) {
+		if (mapping.id != "" && !findObjectByProperties(res, {"id": mapping.id})) res.push(mapping);
 	});
 	return res;
 }
 
-let rm = new Array();
-json[0].mappings.forEach(async function(mapping) {
-	let detail = apiGet("mappings/" + idFrag(mapping.id));
-	rm.push(detail);
-});
-const richerMappings = await Promise.all(rm).then((val) => cleanMappings(val));
+var rm = new Array();
+for await (let mapping of json[0].mappings) {
+	let detail = await apiGet("mappings/" + idFrag(mapping.id));
+	rm = rm.concat(detail);
+};
+const richerMappings = cleanMappings(rm);
 
-let actm = new Array();
-json[0]["simple-curve-maps"].forEach(async function(mapping) {
-	let detail = apiGet("simple-curve-maps/" + idFrag(mapping.id));
-	actm.push(detail);
-});
-const accommTypeMappings = await Promise.all(actm).then((val) => cleanMappings(val));
+var actm = new Array();
+for await (let mapping of json[0]["simple-curve-maps"]) {
+	let detail = await apiGet("simple-curve-maps/" + idFrag(mapping.id));
+	
+	actm = actm.concat(detail);
+};
+const accommTypeMappings = cleanMappings(actm);
+//console.log(accommTypeMappings)
 //?id ?stmtId ?abilityId ?abilityLabel ?accomId ?accomLabel ?charId ?charLabel ?applicable
 ---
 <style is:global>
@@ -58,7 +60,7 @@ h2, h3, h4, h5, h6 {
 			<tr><th>Functional ability</th><th>Accommodation type</th><th>Accessibility characteristic</th></tr>
 		</thead>
 		<tbody>
-			{accommTypeMappings.map((item) => <tr><td><a href={baseUri + "functional-abilities/" + idFrag(item.abilityId)}>{item.abilityLabel}</a></td><td><a href={baseUri + 'accommodation-types/' + idFrag(item.accommId)}>{item.accomLabel}</a></td><td><a href={baseUri + 'accessibility-characteristics/' + idFrag(item.charId)}>{item.charLabel}</a></td></tr>)}
+			{accommTypeMappings.map((item) => <tr><td><a href={baseUri + "functional-abilities/" + idFrag(item.abilityId)}>{item.abilityLabel}</a></td><td><a href={baseUri + 'accommodation-types/' + idFrag(item.accommId)}>{item.accommLabel}</a></td><td><a href={baseUri + 'accessibility-characteristics/' + idFrag(item.charId)}>{item.charLabel}</a></td></tr>)}
 		</tbody>
 	</table>
 	<h2>Functional need mappings</h2>
