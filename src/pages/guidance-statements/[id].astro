@@ -14,26 +14,28 @@ const {id} = Astro.params;
 const json = await apiGet ("statements/" + id);
 
 function cleanMappings(mappingsResult) {
+	console.log(mappingsResult)
 	var res = new Array();
-	mappingsResult.forEach(function(mappingsResult) {
-		if (!findObjectByProperties(res, {"id": mappingsResult[0].id})) res.push(mappingsResult[0]);
+	mappingsResult.forEach(function(mapping) {
+		if (mapping.id != "" && !findObjectByProperties(res, {"id": mapping.id})) res.push(mapping);
 	});
 	return res;
 }
 
-let rm = new Array();
-json[0].mappings.forEach(async function(mapping) {
-	let detail = apiGet("mappings/" + idFrag(mapping.id));
-	rm.push(detail);
-});
-const richerMappings = await Promise.all(rm).then((val) => cleanMappings(val));
+var rm = new Array();
+for await (let mapping of json[0].mappings) {
+	let detail = await apiGet("mappings/" + idFrag(mapping.id));
+	rm = rm.concat(detail);
+};
+const richerMappings = cleanMappings(rm);
 
-let actm = new Array();
-json[0]["simple-curve-maps"].forEach(async function(mapping) {
-	let detail = apiGet("simple-curve-maps/" + idFrag(mapping.id));
-	actm.push(detail);
-});
-const accommTypeMappings = await Promise.all(actm).then((val) => cleanMappings(val));
+var actm = new Array();
+for await (let mapping of json[0]["simple-curve-maps"]) {
+	let detail = await apiGet("simple-curve-maps/" + idFrag(mapping.id));
+	
+	actm = actm.concat(detail);
+};
+const accommTypeMappings = cleanMappings(actm);
 //?id ?stmtId ?abilityId ?abilityLabel ?accomId ?accomLabel ?charId ?charLabel ?applicable
 ---
 <style is:global>
