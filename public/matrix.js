@@ -8,22 +8,20 @@ function rc(row, col) {
 	return "row" + row + " col" + col;
 }
 
-
 function focusRowCol(event) {
 	var row = null; var col = null;
 	let cell = this;
-	cell.classList.forEach(function(val) {
+	cell.classList.forEach(function (val) {
 		if (val.includes("row")) row = val.substr(3);
 		if (val.includes("col")) col = val.substr(3);
 	});
 	if (row != null && col != null) {
-	console.log("row" + row + " col" + col);
 		show(document.getElementsByClassName("row" + row));
 		show(document.getElementsByClassName("col" + col));
 	}
 	function show(list) {
 		for (let i = 0; i < list.length; i++) {
-			list[i].classList.add("rch");
+			if (list[i].nodeName == "TD") list[i].classList.add("rch");
 		}
 	}
 }
@@ -31,7 +29,7 @@ function focusRowCol(event) {
 function blurRowCol(event) {
 	var row = null; var col = null;
 	let cell = this;
-	cell.classList.forEach(function(val) {
+	cell.classList.forEach(function (val) {
 		if (val.includes("row")) row = val.substr(3);
 		if (val.includes("col")) col = val.substr(3);
 	});
@@ -80,25 +78,25 @@ function enterPopover(event) {
 
 // Events to show/hide the subpopover when the mouse moves over and out
 function openPopover(id) {
-  const popover = document.getElementById(id + "-popover");
-  popover.showPopover();
+	const popover = document.getElementById(id + "-popover");
+	popover.showPopover();
 }
 
 function closePopover(id) {
 	const popover = document.getElementById(id + "-popover");
-  if (popover != null && popover.matches(":popover-open")) {
-    popover.hidePopover();
-  }
+	if (popover != null && popover.matches(":popover-open")) {
+		popover.hidePopover();
+	}
 }
 
 function clearPopover() {
 	if (curPopoverId != "") {
 		popover = document.getElementById(curPopoverId + "-popover");
-	  if (popover != null && popover.matches(":popover-open")) {
-	    popover.hidePopover();
-	  }
-	  curPopoverId = "";
-	  curOpenerId = "";
+		if (popover != null && popover.matches(":popover-open")) {
+			popover.hidePopover();
+		}
+		curPopoverId = "";
+		curOpenerId = "";
 	}
 }
 
@@ -110,7 +108,7 @@ function sizePopovers() {
 				const opener = divs[i];
 				const popover = document.getElementById(opener.id + "-popover");
 				const rect = opener.getBoundingClientRect();
-	
+
 				popover.style = "left: " + rect.left + "px; top: calc(" + rect.top + "px + 3ex); width: " + rect.width / proportion + "px; height: " + rect.height / proportion + "px; font-size: " + 100 / proportion + "%;";
 			}
 		}
@@ -130,7 +128,7 @@ function attachPopovers() {
 				popover.innerHTML = opener.innerHTML;
 				opener.insertAdjacentElement("afterend", popover);
 				opener.addEventListener("mouseover", enterCell);
-				opener.addEventListener("focus", enterCell, {capture: true});
+				opener.addEventListener("focus", enterCell, { capture: true });
 				popover.addEventListener("mouseover", enterPopover);
 			}
 		}
@@ -171,9 +169,9 @@ function sizeTable(event) {
 	if (shrink) {
 		proportion = matrix.clientWidth / table.scrollWidth;
 		table.style = "width: " + 100 * proportion + "%; font-size: " + 100 * proportion + "% ";
-		
+
 		showPopupsControl.disabled = false;
-		
+
 	} else {
 		showPopupsControl.disabled = true;
 		table.style = "";
@@ -184,7 +182,7 @@ function sizeTable(event) {
 function shrinkTable(event) {
 	const matrix = document.getElementById("matrix");
 	const table = document.getElementById("matrixTable");
-	let proportion = matrix.clientWidth / table.scrollWidth;
+	let proportion = window.innerWidth / (table.scrollWidth);
 	table.style = "width: " + 100 * proportion + "%; font-size: " + 100 * proportion + "% ";
 }
 
@@ -231,10 +229,10 @@ function highlightSameStmt(event) {
 function attachListeners() {
 	const highlightCellPosControl = document.getElementById("highlightCellPosControl");
 	highlightCellPosControl.addEventListener("change", highlightCellPos);
-	
+
 	const highlightSameStmtControl = document.getElementById("highlightSameStmtControl");
 	highlightSameStmtControl.addEventListener("change", highlightSameStmt);
-	
+
 	const shrinkTableControl = document.getElementById("shrinkMatrixControl");
 	shrinkTableControl.addEventListener("change", sizeTable);
 

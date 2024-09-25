@@ -96,7 +96,7 @@ function generateMatrix(data, baseUri) {
         acgCell.rowSpan = acGroup.members.length * accommodationTypes.length;
         acgCell.classList.add("row" + rowNum);
         acgCell.classList.add("col1");
-        
+
         let acgLink = document.createElement("a");
         acgLink.href =
             baseUri + "functional-ability-groups/" + idFrag(acGroup.id);
@@ -206,6 +206,7 @@ function generateMatrix(data, baseUri) {
 
                                     maps.forEach(function (map) {
                                         if (map.stmtId != null) {
+                                            div.setAttribute("popovertarget", maps[0].id + "-popover");
                                             let stmt =
                                                 findObjectByProperties(
                                                     statements,
@@ -224,8 +225,8 @@ function generateMatrix(data, baseUri) {
                                                 baseUri +
                                                 "guidance-statements/" +
                                                 idFrag(map.stmtId);
-                                            link.class = idFrag(
-                                                map.stmtId
+                                            link.classList.add(idFrag(
+                                                map.stmtId)
                                             );
                                             link.title = stmt.stmt;
                                             link.append(
@@ -287,10 +288,10 @@ function generateMatrix(data, baseUri) {
         insertInto.append(span);
     });
     //return (document.getElementsByTagName("table").item(0));
-    document.dispatchEvent(new Event("MatrixTableCreated", {bubbles: true, composed: true}));
+    document.dispatchEvent(new Event("MatrixTableCreated", { bubbles: true, composed: true }));
 
     function createEmptyCells(row, rowNum) {
-        for (i = 1; i <= 2; i++) {
+        for (i = 1; i <= 3; i++) {
             let cell = document.createElement("td");
             cell.classList.add("topleft");
             cell.classList.add("row" + rowNum);
@@ -302,27 +303,27 @@ function generateMatrix(data, baseUri) {
 
 // Function to find an object based on multiple properties
 function findObjectByProperties(array, properties) {
-	return array.find(obj => {
-		// Check if all specified properties match
-		return Object.getOwnPropertyNames(properties).every(key => {
-			//console.log ("key: " + key + "; obj: " + obj[key] + "; property: " + properties[key])
-			if (compareStr(obj[key], properties[key])) return obj;
-		});
-	});
+    return array.find(obj => {
+        // Check if all specified properties match
+        return Object.getOwnPropertyNames(properties).every(key => {
+            //console.log ("key: " + key + "; obj: " + obj[key] + "; property: " + properties[key])
+            if (compareStr(obj[key], properties[key])) return obj;
+        });
+    });
 }
 function filterObjectByProperties(array, properties) {
-	return array.filter(obj => {
-		// Check if all specified properties match
-		return Object.getOwnPropertyNames(properties).every(key => {
-			//console.log ("key: " + key + "; obj: " + obj[key] + "; property: " + properties[key])
-			if (compareStr(obj[key], properties[key])) return obj;
-		});
-	});
+    return array.filter(obj => {
+        // Check if all specified properties match
+        return Object.getOwnPropertyNames(properties).every(key => {
+            //console.log ("key: " + key + "; obj: " + obj[key] + "; property: " + properties[key])
+            if (compareStr(obj[key], properties[key])) return obj;
+        });
+    });
 }
 function idFrag(uri) {
     return uri.substring(uri.indexOf("#") + 1);
 }
 function compareStr(str1, str2) {
-	if (str1.trim().replace(/\s+/g, ' ').toLowerCase() == str2.trim().replace(/\s+/g, ' ').toLowerCase()) return true;
-	else return false;
+    if (str1.trim().replace(/\s+/g, ' ').toLowerCase() == str2.trim().replace(/\s+/g, ' ').toLowerCase()) return true;
+    else return false;
 }
