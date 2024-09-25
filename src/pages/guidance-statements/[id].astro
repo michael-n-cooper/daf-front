@@ -14,7 +14,6 @@ const {id} = Astro.params;
 const json = await apiGet ("statements/" + id);
 
 function cleanMappings(mappingsResult) {
-	console.log(mappingsResult)
 	var res = new Array();
 	mappingsResult.forEach(function(mapping) {
 		if (mapping.id != "" && !findObjectByProperties(res, {"id": mapping.id})) res.push(mapping);
@@ -36,6 +35,7 @@ for await (let mapping of json[0]["simple-curve-maps"]) {
 	actm = actm.concat(detail);
 };
 const accommTypeMappings = cleanMappings(actm);
+//console.log(accommTypeMappings)
 //?id ?stmtId ?abilityId ?abilityLabel ?accomId ?accomLabel ?charId ?charLabel ?applicable
 ---
 <style is:global>
@@ -60,7 +60,7 @@ h2, h3, h4, h5, h6 {
 			<tr><th>Functional ability</th><th>Accommodation type</th><th>Accessibility characteristic</th></tr>
 		</thead>
 		<tbody>
-			{accommTypeMappings.map((item) => <tr><td><a href={baseUri + "functional-abilities/" + idFrag(item.abilityId)}>{item.abilityLabel}</a></td><td><a href={baseUri + 'accommodation-types/' + idFrag(item.accommId)}>{item.accomLabel}</a></td><td><a href={baseUri + 'accessibility-characteristics/' + idFrag(item.charId)}>{item.charLabel}</a></td></tr>)}
+			{accommTypeMappings.map((item) => <tr><td><a href={baseUri + "functional-abilities/" + idFrag(item.abilityId)}>{item.abilityLabel}</a></td><td><a href={baseUri + 'accommodation-types/' + idFrag(item.accommId)}>{item.accommLabel}</a></td><td><a href={baseUri + 'accessibility-characteristics/' + idFrag(item.charId)}>{item.charLabel}</a></td></tr>)}
 		</tbody>
 	</table>
 	<h2>Functional need mappings</h2>
