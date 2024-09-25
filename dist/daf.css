@@ -20,7 +20,7 @@ a:link, a:visited {
 
 a:hover, a:active {
 	text-shadow: .25ex .25ex .5ex #ffd800;
-	cursor: link;
+	cursor: pointer;
 }
 li {
     padding-bottom: 1ex;
