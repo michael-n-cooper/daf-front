@@ -24,7 +24,6 @@ function cleanMappings(mappingsResult) {
 
 async function getMappings(id) {
 	await scheduler.wait(100); 
-	console.log(id);
 	let maps = await apiGet(id); 
 	return maps;
 }
