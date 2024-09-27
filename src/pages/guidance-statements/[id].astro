@@ -21,19 +21,20 @@ function cleanMappings(mappingsResult) {
 	return res;
 }
 
-var rm = new Array();
-for await (let mapping of json[0].mappings) {
-	let detail = await apiGet("mappings/" + idFrag(mapping.id));
-	rm = rm.concat(detail);
-};
+var rmPromises = new Array();
+json[0].mappings.forEach((mapping) => rmPromises.push(apiGet("mappings/" + idFrag(mapping.id))));
+let rm = [];
+await Promise.all(rmPromises).then(function (results) {
+	results.forEach((result) => rm = rm.concat(result));
+});
 const richerMappings = cleanMappings(rm);
 
-var actm = new Array();
-for await (let mapping of json[0]["simple-curve-maps"]) {
-	let detail = await apiGet("simple-curve-maps/" + idFrag(mapping.id));
-	
-	actm = actm.concat(detail);
-};
+var actmPromises = new Array();
+json[0]["simple-curve-maps"].forEach((mapping) => actmPromises.push(apiGet("simple-curve-maps/" + idFrag(mapping.id))));
+let actm = [];
+await Promise.all(actmPromises).then(function(results) {
+	results.forEach((result) => actm = actm.concat(result));
+});
 const accommTypeMappings = cleanMappings(actm);
 //console.log(accommTypeMappings)
 //?id ?stmtId ?abilityId ?abilityLabel ?accomId ?accomLabel ?charId ?charLabel ?applicable
