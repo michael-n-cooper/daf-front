@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import {baseUri, findObjectByProperties, idFrag, mdToHtml, apiGet} from '../../script/util.js';
 import { loadStaticPaths } from '../../components/load-static-paths';
+import { scheduler } from "node:timers/promises";
 
 export async function getStaticPaths() { 
 	const section = "guidance-statements";
@@ -21,8 +22,15 @@ function cleanMappings(mappingsResult) {
 	return res;
 }
 
+async function getMappings(id) {
+	await scheduler.wait(100); 
+	console.log(id);
+	let maps = await apiGet(id); 
+	return maps;
+}
+
 var rmPromises = new Array();
-json[0].mappings.forEach((mapping) => rmPromises.push(apiGet("mappings/" + idFrag(mapping.id))));
+json[0].mappings.forEach((mapping) => rmPromises.push(getMappings("mappings/" + idFrag(mapping.id))));
 let rm = [];
 await Promise.all(rmPromises).then(function (results) {
 	results.forEach((result) => rm = rm.concat(result));
@@ -30,7 +38,7 @@ await Promise.all(rmPromises).then(function (results) {
 const richerMappings = cleanMappings(rm);
 
 var actmPromises = new Array();
-json[0]["simple-curve-maps"].forEach((mapping) => actmPromises.push(apiGet("simple-curve-maps/" + idFrag(mapping.id))));
+json[0]["simple-curve-maps"].forEach((mapping) => actmPromises.push(getMappings("simple-curve-maps/", idFrag(mapping.id))));
 let actm = [];
 await Promise.all(actmPromises).then(function(results) {
 	results.forEach((result) => actm = actm.concat(result));
