@@ -2,7 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import {baseUri, findObjectByProperties, idFrag, mdToHtml, apiGet} from '../../script/util.js';
 import { loadStaticPaths } from '../../components/load-static-paths';
-import { scheduler } from "node:timers/promises";
+import pLimit from "p-limit";
+
+const limit = pLimit(10);
 
 export async function getStaticPaths() { 
 	const section = "guidance-statements";
@@ -23,9 +25,7 @@ function cleanMappings(mappingsResult) {
 }
 
 async function getMappings(id) {
-	await scheduler.wait(100); 
-	let maps = await apiGet(id); 
-	return maps;
+	return limit(() => apiGet(id));
 }
 
 var rmPromises = new Array();
@@ -34,16 +34,17 @@ let rm = [];
 await Promise.all(rmPromises).then(function (results) {
 	results.forEach((result) => rm = rm.concat(result));
 });
+//console.log(results)
 const richerMappings = cleanMappings(rm);
 
 var actmPromises = new Array();
-json[0]["simple-curve-maps"].forEach((mapping) => actmPromises.push(getMappings("simple-curve-maps/", idFrag(mapping.id))));
+json[0]["simple-curve-maps"].forEach((mapping) => actmPromises.push(getMappings("simple-curve-maps/" + idFrag(mapping.id))));
 let actm = [];
+//console.log(actmPromises)
 await Promise.all(actmPromises).then(function(results) {
 	results.forEach((result) => actm = actm.concat(result));
 });
 const accommTypeMappings = cleanMappings(actm);
-//console.log(accommTypeMappings)
 //?id ?stmtId ?abilityId ?abilityLabel ?accomId ?accomLabel ?charId ?charLabel ?applicable
 ---
 <style is:global>
