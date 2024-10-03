@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "daf-front",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -16,6 +16,7 @@
     "file-url": "^4.0.0",
     "inquirer": "^9.2.15",
     "jsdom": "^24.1.0",
+    "p-limit": "^6.1.0",
     "parse-md": "^3.0.3",
     "uuid": "^9.0.1"
   }
