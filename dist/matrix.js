@@ -163,7 +163,7 @@ function removePopovers() {
 
 function sizeTable(event) {
 	const shrink = this.checked;
-	const matrix = document.getElementById("matrix");
+	const matrix = document.querySelector("body");
 	const table = document.getElementById("matrixTable");
 	const showPopupsControl = document.getElementById("showPopupsControl");
 	if (shrink) {
