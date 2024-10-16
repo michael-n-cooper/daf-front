@@ -1,0 +1,136 @@
+body {
+	overflow: hidden;
+}
+td, th {
+	scroll-snap-align: start;
+}
+tr, td, th {
+	width: 100%;
+	height: 100%;
+}
+td {
+	padding: 0;
+}
+th {
+	border: thin solid white;
+	min-width: 3ex;
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
+}
+th, th a:link, th a:visited {
+	background-color: black;
+	color: white;
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
+}
+thead th[colspan] {
+	text-align: center;
+}
+th[rowspan] {
+	vertical-align: middle;
+}
+th.col1 {
+	vertical-align: top;
+	writing-mode: sideways-lr;
+	text-align: center;
+}
+.mapping {
+	width: calc(100% - 1ex);
+	height: calc(100% - 1ex);
+	padding: .5ex;
+}
+ul {
+	padding-left: 1em;
+	margin-top: 0;
+}
+#matrix {
+	max-height: calc(100vh - 10em);
+	overflow: auto;
+	scroll-snap-type: x mandatory;
+}
+thead, th { 
+	position: sticky; 
+}
+thead { 
+	top: 0; 
+	z-index: 2; 
+}
+th { 
+	left: 0; 
+	z-index: 1; 
+}
+td .mapping
+{
+}
+.rch {
+	background-color: #F9F9F9;
+}
+.stmt, .stmt:link, .stmt:active, .stmt:visited {
+	color: #283d2b;
+	background-color: #ffffcc;
+}
+.na {
+	background-color: black;
+	opacity: .1;
+}
+*[popover] {
+	margin: 0;
+	position: absolute;
+	background-color: white;
+}
+input:disabled+label {
+  color: #ccc;
+}
+footer {
+	margin-top: 0;
+	border-top: 0;
+}
+td.topleft {
+	background-color: black;
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
+}
+td.row1.topleft {
+	border-top: thin solid transparent;
+}
+td.col1.topleft {
+	border-left: thin solid transparent;
+}
+#disclaimer {
+	color:#F9F9F9;
+	position: fixed;
+	z-index: -1;
+	text-transform: uppercase;
+	width: 70vw;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 7vw;
+	font-weight: bold;
+	text-align: center;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%);
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
+}
+@media print {
+	#matrix {
+		max-height: 100%;
+	}
+	#disclaimer {
+		color:#F9F9F9;
+	}
+	a, a:link, a:visited {
+		color: black;
+		print-color-adjust: exact !important;
+	}
+	th, th a:link, th a:visited {
+		background-color: black !important;
+		color: white !important;
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+	}
+}
+thead {
+	display: table-header-group;
+}
