@@ -1,6 +1,3 @@
-body {
-	overflow: hidden;
-}
 td, th {
 	scroll-snap-align: start;
 }
@@ -44,8 +41,6 @@ ul {
 	margin-top: 0;
 }
 #matrix {
-	max-height: calc(100vh - 10em);
-	overflow: auto;
 	scroll-snap-type: x mandatory;
 }
 thead, th { 
