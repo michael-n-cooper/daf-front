@@ -1,25 +1,35 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import {baseUri, findObjectByProperties, idFrag, mdToHtml, apiGet} from '../../script/util.js';
-import { loadStaticPaths } from '../../components/load-static-paths';
+import Layout from "../../layouts/Layout.astro";
+import {
+	baseUri,
+	findObjectByProperties,
+	idFrag,
+	mdToHtml,
+	apiGet,
+} from "../../script/util.js";
+import { loadStaticPaths } from "../../components/load-static-paths";
 import pLimit from "p-limit";
 
 const limit = pLimit(10);
 
-export async function getStaticPaths() { 
+export async function getStaticPaths() {
 	const section = "guidance-statements";
 	const paths = await loadStaticPaths(section);
 	return paths;
 }
 
-const {id} = Astro.params;
+const { id } = Astro.params;
 
-const json = await apiGet ("statements/" + id);
+const json = await apiGet("statements/" + id);
 
 function cleanMappings(mappingsResult) {
 	var res = new Array();
-	mappingsResult.forEach(function(mapping) {
-		if (mapping.id != "" && !findObjectByProperties(res, {"id": mapping.id})) res.push(mapping);
+	mappingsResult.forEach(function (mapping) {
+		if (
+			mapping.id != "" &&
+			!findObjectByProperties(res, { id: mapping.id })
+		)
+			res.push(mapping);
 	});
 	return res;
 }
@@ -28,67 +38,131 @@ async function getMappings(id) {
 	return limit(() => apiGet(id));
 }
 
-var rmPromises = new Array();
-json[0].mappings.forEach((mapping) => rmPromises.push(getMappings("mappings/" + idFrag(mapping.id))));
-let rm = [];
-await Promise.all(rmPromises).then(function (results) {
-	results.forEach((result) => rm = rm.concat(result));
-});
-//console.log(results)
-const richerMappings = cleanMappings(rm);
-
 var actmPromises = new Array();
-json[0]["simple-curve-maps"].forEach((mapping) => actmPromises.push(getMappings("simple-curve-maps/" + idFrag(mapping.id))));
+json[0]["simple-curve-maps"].forEach((mapping) =>
+	actmPromises.push(getMappings("simple-curve-maps/" + idFrag(mapping.id)))
+);
 let actm = [];
 //console.log(actmPromises)
-await Promise.all(actmPromises).then(function(results) {
-	results.forEach((result) => actm = actm.concat(result));
+await Promise.all(actmPromises).then(function (results) {
+	results.forEach((result) => (actm = actm.concat(result)));
 });
 const accommTypeMappings = cleanMappings(actm);
 //?id ?stmtId ?abilityId ?abilityLabel ?accomId ?accomLabel ?charId ?charLabel ?applicable
 ---
+
 <style is:global>
-.stmt {
-	font-weight: bold;
-}
-main {
-	padding-left: 3em;
-}
-h2, h3, h4, h5, h6 {
-	position: relative;
-	left: -2em;
-}
+	.stmt {
+		font-weight: bold;
+	}
+	main {
+		padding-left: 3em;
+	}
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		position: relative;
+		left: -2em;
+	}
 </style>
 <Layout title={json[0].label}>
-<div>
-	<p class="stmt">{json[0].stmt}</p>
-	{typeof json[0].note !== 'undefined' && json[0].note != null ? <Fragment set:html={"<h2>Notes</h2>" + mdToHtml(json[0].note)}></Fragment> : ""}
-	<h2>Accommodation type mappings</h2>
-	<table>
-		<thead>
-			<tr><th>Functional ability</th><th>Accommodation type</th><th>Accessibility characteristic</th></tr>
-		</thead>
-		<tbody>
-			{accommTypeMappings.map((item) => <tr><td><a href={baseUri + "functional-abilities/" + idFrag(item.abilityId)}>{item.abilityLabel}</a></td><td><a href={baseUri + 'accommodation-types/' + idFrag(item.accommId)}>{item.accommLabel}</a></td><td><a href={baseUri + 'accessibility-characteristics/' + idFrag(item.charId)}>{item.charLabel}</a></td></tr>)}
-		</tbody>
-	</table>
-	<h2>Functional need mappings</h2>
-	<table>
-		<thead>
-			<tr><th>Functional need</th><th>User need</th><th>Context</th></tr>
-		</thead>
-		<tbody>
-			{richerMappings.map((item) => <tr><td><a href={baseUri + (typeof item.functionalNeed === 'undefined' ? "intersection-needs/" : "functional-needs/" ) + idFrag(typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.id : item.functionalNeed.id)}>{typeof item.functionalNeed === 'undefined' ? item.intersectionNeed.label : item.functionalNeed.label}</a></td><td><a href={baseUri + 'user-needs/' + idFrag(item.userNeed.id)}>{item.userNeed.label}</a></td><td><a href={baseUri + 'user-need-contexts/' + idFrag(item.userNeedRelevance.id)}>{item.userNeedRelevance.label}</a></td></tr>)}
-		</tbody>
-	</table>
-	<h2>References</h2>
-	<ul>
-		{json[0].references.map((item) => <li>{idFrag(item.type)}: <a href={item.refIRI}>{item.refNote}</a></li>)}
-	</ul>
-	<h2>Tags</h2>
-	<ul>
-		{json[0].tags.map((item) => <li><a href={baseUri + 'tags/' + idFrag(item.id)}>{item.label}</a></li>)}
-	</ul>
-	<p>Imported from <a href={json[0].contentIRI}>{json[0].contentIRI}</a></p>
-</div>
+	<div>
+		<p class="stmt">{json[0].stmt}</p>
+		{
+			typeof json[0].note !== "undefined" && json[0].note != null ? (
+				<Fragment
+					set:html={"<h2>Notes</h2>" + mdToHtml(json[0].note)}
+				/>
+			) : (
+				""
+			)
+		}
+		<section>
+			<h2>Mappings</h2>
+			<table>
+				<thead>
+					<tr
+						><th>Functional ability</th><th>Accommodation type</th
+						><th>Accessibility characteristic</th></tr
+					>
+				</thead>
+				<tbody>
+					{
+						accommTypeMappings.map((item) => (
+							<tr>
+								<>
+									<td>
+										<a
+											href={
+												baseUri +
+												"functional-abilities/" +
+												idFrag(item.abilityId)
+											}
+										>
+											{item.abilityLabel}
+										</a>
+									</td>
+									<td>
+										<a
+											href={
+												baseUri +
+												"accommodation-types/" +
+												idFrag(item.accommId)
+											}
+										>
+											{item.accommLabel}
+										</a>
+									</td>
+									<td>
+										<a
+											href={
+												baseUri +
+												"accessibility-characteristics/" +
+												idFrag(item.charId)
+											}
+										>
+											{item.charLabel}
+										</a>
+									</td>
+								</>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</section>
+		<section>
+			<h2>References</h2>
+			<ul>
+				{
+					json[0].references.map((item) => (
+						<li>
+							{idFrag(item.type)}:{" "}
+							<a href={item.refIRI}>{item.refNote}</a>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+		<section>
+			<h2>Tags</h2>
+			<ul>
+				{
+					json[0].tags.map((item) => (
+						<li>
+							<a href={baseUri + "tags/" + idFrag(item.id)}>
+								{item.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<p>
+				Imported from <a href={json[0].contentIRI}
+					>{json[0].contentIRI}</a>
+			</p>
+		</section>
+	</div>
 </Layout>
