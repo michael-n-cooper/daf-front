@@ -84,49 +84,48 @@ const accommTypeMappings = cleanMappings(actm);
 			<table>
 				<thead>
 					<tr
-						><th>Required ability</th><th>Accommodation type</th
-						><th>Accessibility characteristic</th></tr
+						><th>Required ability</th><th
+							>Accessibility characteristic</th
+						><th>Support needed</th></tr
 					>
 				</thead>
 				<tbody>
 					{
 						accommTypeMappings.map((item) => (
 							<tr>
-								<>
-									<td>
-										<a
-											href={
-												baseUri +
-												"functional-abilities/" +
-												idFrag(item.abilityId)
-											}
-										>
-											{item.abilityLabel}
-										</a>
-									</td>
-									<td>
-										<a
-											href={
-												baseUri +
-												"accommodation-types/" +
-												idFrag(item.accommId)
-											}
-										>
-											{item.accommLabel}
-										</a>
-									</td>
-									<td>
-										<a
-											href={
-												baseUri +
-												"accessibility-characteristics/" +
-												idFrag(item.charId)
-											}
-										>
-											{item.charLabel}
-										</a>
-									</td>
-								</>
+								<td>
+									<a
+										href={
+											baseUri +
+											"functional-abilities/" +
+											idFrag(item.abilityId)
+										}
+									>
+										{item.abilityLabel}
+									</a>
+								</td>
+								<td>
+									<a
+										href={
+											baseUri +
+											"accessibility-characteristics/" +
+											idFrag(item.charId)
+										}
+									>
+										{item.charLabel}
+									</a>
+								</td>
+								<td>
+									<a
+										href={
+											baseUri +
+											"accommodation-types/" +
+											idFrag(item.accommId)
+										}
+									>
+										{item.accommLabel}
+									</a>
+								</td>
 							</tr>
 						))
 					}
@@ -161,7 +160,8 @@ const accommTypeMappings = cleanMappings(actm);
 			</ul>
 			<p>
 				Imported from <a href={json[0].contentIRI}
-					>{json[0].contentIRI}</a>
+					>{json[0].contentIRI}</a
+				>
 			</p>
 		</section>
 	</div>
