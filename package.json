@@ -19,5 +19,8 @@
     "p-limit": "^6.1.0",
     "parse-md": "^3.0.3",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0"
   }
 }
