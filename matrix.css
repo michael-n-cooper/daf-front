@@ -26,7 +26,7 @@ thead th[colspan] {
 th[rowspan] {
 	vertical-align: middle;
 }
-th.col1 {
+th.col1, th.col2 {
 	vertical-align: top;
 	writing-mode: sideways-lr;
 	text-align: center;
