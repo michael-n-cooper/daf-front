@@ -5,30 +5,22 @@ import { baseUri } from "../script/util.js";
 
 <Layout title="Digital Accessibility Framework">
 	<p>
-		<a href={baseUri + "matrix-accommtype"}>Matrix</a> | <a
-			href={baseUri + "docs"}>Documentation</a
-		>
-	</p>
-
-	<p>
 		This resource accesses a database of accessibility statements generated
 		in the <a
-			href="https://github.com/accessiblecommunity/Digital-Accessibility-Framework"
+			href="https://accessiblecommunity.org/daf/"
 			>Digital Accessibility Framework</a
-		> project and presents it in a <a href={baseUri + "matrix-accommtype"}
-			>matrix</a
-		> showing intersections of related aspects of the digital accessibility space.
+		> project and presents it in a matrix showing intersections of related aspects of the digital accessibility space. Refer to that site for an introduction to the structure of the information below.
 	</p>
 
 	<ul>
 		<li>
 			<a href={baseUri + "guidance-statements"}
 				>Accessibility statements</a
-			>
+			> - simple statements of an individual characteristic and needed environment affordance
 			<ul>
-				<li><a href={baseUri + "notes"}>Notes</a></li>
-				<li><a href={baseUri + "references"}>References</a></li>
-				<li><a href={baseUri + "tags"}>Tags</a></li>
+				<li><a href={baseUri + "notes"}>Notes</a> about the statement</li>
+				<li><a href={baseUri + "references"}>References</a> to research and guidelines</li>
+				<li><a href={baseUri + "tags"}>Tags</a> for categorization</li>
 			</ul>
 		</li>
 		<li>
@@ -39,17 +31,17 @@ import { baseUri } from "../script/util.js";
 						>Individual abilities by group</a
 					> | <a href={baseUri + "functional-abilities"}
 						>Full list of individual abilities</a
-					>
+					> - Characteristics of the person using digital content
 				</li>
 				<li>
 					<a href={baseUri + "accessibility-characteristic-groups"}
 						>Object characteristics by group</a
 					> | <a href={baseUri + "accessibility-characteristics"}
 						>Full list of object characteristics</a
-					>
+					> - Properties of the digital content being presented
 				</li>
 				<li>
-					<a href={baseUri + "accommodation-types"}>Support needed</a>
+					<a href={baseUri + "accommodation-types"}>Support needed</a> - Type of accessibility requirement at the intersections of the above
 				</li>
 			</ul>
 		</li>
