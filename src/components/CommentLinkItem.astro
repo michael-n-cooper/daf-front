@@ -1,0 +1,7 @@
+---
+const {id, label} = Astro.props;
+const formLink = "https://docs.google.com/forms/d/e/1FAIpQLSeOS3r6PxYfnh3RP4VUyThEyv7WGLBw7tehOMrRJFuMOA1s8Q/viewform?usp=pp_url&entry.1127361599=" + id + "&entry.1782654797=" + encodeURIComponent(label);
+---
+<p>
+	<a href={formLink} target="_blank" class="commentLink">Comment on this item</a>
+</p>

@@ -57,3 +57,20 @@ td, th {
 	background-color: transparent;
 	color: black;
 }
+
+.commentLink:link {
+	border-width: .25ex;
+	border-color: gainsboro;
+	border-style: outset;
+	border-radius: .5ex;
+	background-color: gainsboro;
+	color: black;
+	text-shadow: 0 0 .5ex white;
+	padding: .5ex;
+}
+
+.commentLink:active {
+	border-style: inset;
+	background-color:whitesmoke;
+	border-color: whitesmoke;
+}
