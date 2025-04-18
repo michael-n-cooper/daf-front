@@ -1,0 +1,76 @@
+body {
+	font-family: "Atkinson Hyperlegible", sans-serif;
+	display: grid;
+	grid-template-rows: min-content 1fr min-content;
+	min-height: 100vh;
+	margin: 0;
+}
+* {
+	background-color: transparent;
+}
+header, main, footer {
+	background-color: white;
+	color: black;
+	padding: 0 .5em;
+}
+header {
+	grid-row: 1;
+}
+main {
+	grid-row: 2;
+}
+footer {
+	grid-row: 3;
+	position: sticky;
+	bottom: 0;
+	z-index: 1;
+}
+footer {
+	border-top: medium outset silver;
+}
+h2 {
+	font-weight: normal;
+}
+a:link, a:visited {
+  color: #000099;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+	text-shadow: .25ex .25ex .5ex #ffd800;
+	cursor: pointer;
+}
+li {
+    padding-bottom: 1ex;
+}
+li > ul {
+	padding-top: 1ex;
+}
+table, td, th {
+	border: thin solid black;
+	border-collapse: collapse;
+}
+td, th {
+	padding: .5ex;
+	vertical-align: top;
+	text-align: left;
+	background-color: transparent;
+	color: black;
+}
+
+.commentLink:link {
+	border-width: .25ex;
+	border-color: gainsboro;
+	border-style: outset;
+	border-radius: .5ex;
+	background-color: gainsboro;
+	color: black;
+	text-shadow: 0 0 .5ex white;
+	padding: .5ex;
+}
+
+.commentLink:active {
+	border-style: inset;
+	background-color:whitesmoke;
+	border-color: whitesmoke;
+}
