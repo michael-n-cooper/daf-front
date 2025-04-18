@@ -10,8 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^8.2.0",
-    "astro": "^4.3.7",
+    "@astrojs/node": "^9.2.0",
+    "astro": "^5.7.2",
     "commonmark": "^0.31.0",
     "file-url": "^4.0.0",
     "inquirer": "^9.2.15",

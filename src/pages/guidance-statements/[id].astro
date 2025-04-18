@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import CommentLinkItem from "../../components/CommentLinkItem.astro";
 import {
 	baseUri,
 	findObjectByProperties,
@@ -55,20 +56,8 @@ const accommTypeMappings = cleanMappings(actm);
 	.stmt {
 		font-weight: bold;
 	}
-	main {
-		padding-left: 3em;
-	}
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		position: relative;
-		left: -2em;
-	}
 </style>
 <Layout title={json[0].label}>
-	<div>
 		<p class="stmt">{json[0].stmt}</p>
 		{
 			typeof json[0].note !== "undefined" && json[0].note != null ? (
@@ -79,7 +68,8 @@ const accommTypeMappings = cleanMappings(actm);
 				""
 			)
 		}
-		<section>
+	<CommentLinkItem id={id} label={json[0].label}></CommentLinkItem>
+	<section>
 			<h2>Mappings</h2>
 			<table>
 				<thead>
@@ -164,5 +154,4 @@ const accommTypeMappings = cleanMappings(actm);
 				>
 			</p>
 		</section>
-	</div>
 </Layout>

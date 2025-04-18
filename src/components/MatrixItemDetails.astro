@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import {baseUri, idFrag, apiGet} from '../script/util.js';
+import CommentLinkItem from './CommentLinkItem.astro';
 
 const {section, id, type} = Astro.props;
 const json = await apiGet(section + "/" + id);
 
 ---
 <Layout title={type + ": " + json[0].label}>
+	<CommentLinkItem id={id} label={json[0].label}></CommentLinkItem>
 <p>{json[0].statements.length} guidance statements support this {type.toLowerCase()}:</p>
 <ul>
 {json[0].statements.map((statement) => <li><a href={baseUri + 'guidance-statements/' + idFrag(statement.id)}>{statement.label}</a> - {statement.stmt}</li>)}
