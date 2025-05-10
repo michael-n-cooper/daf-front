@@ -58,7 +58,7 @@ td .mapping
 {
 }
 .rch {
-	background-color: #F9F9F9;
+	background-color: hsl(0, 0%, 80%)
 }
 .stmt, .stmt:link, .stmt:active, .stmt:visited {
 	color: #283d2b;
