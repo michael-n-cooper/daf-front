@@ -59,6 +59,7 @@ const accommTypeMappings = cleanMappings(actm);
 </style>
 <Layout title={json[0].label}>
 		<p class="stmt">{json[0].stmt}</p>
+		<CommentLinkItem id={id} label={json[0].label}></CommentLinkItem>
 		{
 			typeof json[0].note !== "undefined" && json[0].note != null ? (
 				<Fragment
@@ -68,7 +69,6 @@ const accommTypeMappings = cleanMappings(actm);
 				""
 			)
 		}
-	<CommentLinkItem id={id} label={json[0].label}></CommentLinkItem>
 	<section>
 			<h2>Mappings</h2>
 			<table>
